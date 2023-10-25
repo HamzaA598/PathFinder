@@ -1,49 +1,62 @@
 version: "3.1"
 
 stories:
+  - story: beginning of flow
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - checkpoint: greetings
 
-- story: beginning of flow
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - checkpoint: greetings
+  - story: happy path
+    steps:
+      - checkpoint: greetings
+      - intent: mood_great
+      - action: utter_happy
+      - intent: goodbye
+      - action: utter_goodbye
 
-- story: happy path
-  steps:
-  - checkpoint: greetings
-  - intent: mood_great
-  - action: utter_happy
-  - intent: goodbye
-  - action: utter_goodbye
+  - story: Information about Computer Science
+    steps:
+      - checkpoint: greetings
+      - intent: ask_cs
+      - action: utter_info_cs
+      - intent: goodbye
+      - action: utter_goodbye
 
-- story: happy path 2
-  steps:
-  - checkpoint: greetings
-  - intent: ask_cs
-  - action: utter_info_cs
-  - intent: goodbye
-  - action: utter_goodbye
+  - story: Information about Computer Science colleges
+    steps:
+      - checkpoint: greetings
+      - intent: ask_colleges
+      - action: utter_info_colleges
+      - intent: goodbye
+      - action: utter_goodbye
 
-- story: sad path 1
-  steps:
-  - checkpoint: greetings
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-  - intent: goodbye
-  - action: utter_goodbye
+  - story: Information about Computer Science departments
+    steps:
+      - checkpoint: greetings
+      - intent: ask_departments
+      - action: utter_info_departments
+      - intent: goodbye
+      - action: utter_goodbye
 
-- story: sad path 2
-  steps:
-  - checkpoint: greetings
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_sorry
-  - intent: goodbye
-  - action: utter_goodbye
+  - story: sad path 1
+    steps:
+      - checkpoint: greetings
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: affirm
+      - action: utter_happy
+      - intent: goodbye
+      - action: utter_goodbye
 
-
+  - story: sad path 2
+    steps:
+      - checkpoint: greetings
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: deny
+      - action: utter_sorry
+      - intent: goodbye
+      - action: utter_goodbye
