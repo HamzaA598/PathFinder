@@ -1,0 +1,41 @@
+version: "3.1"
+
+stories:
+
+- story: beginning of flow
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - checkpoint: greetings
+
+- story: happy path
+  steps:
+  - checkpoint: greetings
+  - intent: mood_great
+  - action: utter_happy
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: sad path 1
+  steps:
+  - checkpoint: greetings
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: sad path 2
+  steps:
+  - checkpoint: greetings
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry
+  - intent: goodbye
+  - action: utter_goodbye
+
+
