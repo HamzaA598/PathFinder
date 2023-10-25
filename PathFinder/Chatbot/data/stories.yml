@@ -16,6 +16,14 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
+- story: happy path 2
+  steps:
+  - checkpoint: greetings
+  - intent: ask_cs
+  - action: utter_info_cs
+  - intent: goodbye
+  - action: utter_goodbye
+
 - story: sad path 1
   steps:
   - checkpoint: greetings
