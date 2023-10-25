@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.statically.io/gh/weberi/chatroom/master/dist/Chatroom.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.statically.io/gh/weberi/chatroom/master/index.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.statically.io/gh/weberi/chatroom/master/themes/theme3.css" />
+  </head>
+  <body>  
+    <div class="chat-container"></div>
+    <script src="https://cdn.statically.io/gh/weberi/chatroom/master/dist/Chatroom.js"></script>
+
+    <script type="text/javascript">
+      var chatroom = new window.Chatroom({
+        host: "http://localhost:5005",
+        title: "تحدث مع بوت",
+        container: document.querySelector(".chat-container"),
+        welcomeMessage: "اهلا بك, كيف يمكنني مساعدتك",
+        welcomeButtons: [
+          { title: "اهلا", payload: "\greet" },
+          { title: "إلى اللقاء", payload: "\goodbye" }
+        ],
+        speechRecognition: "ar",
+        voiceLang: "ar"
+      });
+      chatroom.openChat();
+    </script>
+  </body>
+</html>
