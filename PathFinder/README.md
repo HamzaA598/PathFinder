@@ -6,7 +6,6 @@ Prerequisites
 Before you begin, ensure that you have the following prerequisites installed on your system:
 
 Rasa
-A modern web browser
 
 ## Step 1: Run the Chatbot
 
