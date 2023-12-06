@@ -3,10 +3,10 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 # mongodb atlas
-# mongo_uri = "your_mongodb_atlas_connection_string"
-# client = MongoClient(mongo_uri)
-# db = client.get_database("your_database_name")
-# collection = db.get_collection("your_collection_name")
+mongo_uri = "mongodb+srv://pathfinder_tool:wUu8Sdd77eYSTy7X@tooldb.ym2vggy.mongodb.net/?retryWrites=true&w=majority"
+client = MongoClient(mongo_uri)
+db = client.get_database("tooldb")
+collection = db.get_collection("answers")
 
 i = -1
 
@@ -23,7 +23,8 @@ def submit():
     user_answer = request.form.get('answer')
 
     # Insert the user's answer into the MongoDB collection
-    # collection.insert_one({'answer': user_answer})
+    collection.insert_one({'answer': user_answer})
+
     print(user_answer)
     print(i)
     new_question = get_next_question()
