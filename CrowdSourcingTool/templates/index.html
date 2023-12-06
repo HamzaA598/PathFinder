@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PathFinder</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        #question-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #555;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-style: solid;
+            border-color: #000;
+            border-width: 1.5px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);
+        }
+
+        #question {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #answer {
+            width: 50%;
+            height: 100px; /* Adjust the height as needed */
+            padding: 10px;
+            background-color: #555;
+            color: #fff;
+            border-style: solid;
+            border-color: #000;
+            border-width: 1.5px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+            resize:none;
+            box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);
+        }
+    
+
+        #btn-continue {
+            padding: 10px 20px;
+            font-size: 12px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #btn-continue {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #btn-continue:hover {
+            background-color: #357e3d; /* Darker green on hover */
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h1>PathFinder</h1>
+    <p>What is your answer to the following question?</p>
+    <div id="question-container">
+        <div id="question">
+            <!-- Replace the question below with your actual question -->
+            <p>{{ question }}</p>
+        </div>
+    </div>
+
+    <textarea name="answerArea" id="answer" cols="30" rows="5" placeholder="Type your answer here."></textarea>
+    <!-- <input type="text" id="answer" placeholder="Your answer"> -->
+
+    <br>
+
+    <button id="btn-continue" onclick="askAnotherQuestion()">Continue to another question</button>
+
+    <script>
+        function askAnotherQuestion() {
+            // You can implement logic here to fetch and display another question
+            document.getElementById('answer').value = ''; // Clear the answer input
+        }
+    </script>
+</body>
+</html>
