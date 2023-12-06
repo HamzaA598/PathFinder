@@ -95,11 +95,15 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         function askAnotherQuestion() {
-            var ans = $("answer").val()
-            $.post('/submit', { answer: ans }, function(response) 
-            {
+            var ans = $("#answer").val()
+            console.log(ans);
+            $.post('/submit', { answer: ans }, function(response) {
                 // Handle the response if needed
                 console.log(response);
+                // Update the question if there is a new question
+                if (response.new_question) {
+                    $('#question p').text(response.new_question);
+                }
             });
         }
     </script>
