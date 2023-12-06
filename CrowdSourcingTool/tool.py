@@ -25,7 +25,8 @@ def submit():
     user_answer = request.form.get('answer')
 
     # Insert the user's answer into the MongoDB collection
-    collection.insert_one({'answer': user_answer})
+    # collection.insert_one({'answer': user_answer})
+    print(user_answer)
 
     # Redirect to the index route to fetch a new question
     return index()
