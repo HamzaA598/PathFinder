@@ -1,14 +1,15 @@
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
-i = 1
+i = 0
+
+questions = ["Lorem", "ipsum", "dolor", "sit", "amet"]
 
 @app.route('/')
 def index():
     global i
-    # logic to fetch quesiton here
-    i += 1
-    question = "Replace this text with your question."
+    i = (i + 1) % len(questions)
+    question = questions[i]
     return render_template('index.html', question=question)
 
 
