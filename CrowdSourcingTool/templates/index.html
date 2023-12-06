@@ -92,10 +92,15 @@
 
     <button id="btn-continue" onclick="askAnotherQuestion()">Continue to another question</button>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         function askAnotherQuestion() {
-            // You can implement logic here to fetch and display another question
-            document.getElementById('answer').value = ''; // Clear the answer input
+            var ans = $("answer").val()
+            $.post('/submit', { answer: ans }, function(response) 
+            {
+                // Handle the response if needed
+                console.log(response);
+            });
         }
     </script>
 </body>
