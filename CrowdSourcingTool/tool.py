@@ -19,11 +19,15 @@ def index():
 
 @app.route('/submit', methods=['POST'])
 def submit():
+    global i
     # Retrieve user's answer from the form
     user_answer = request.form.get('answer')
 
     # Insert the user's answer into the MongoDB collection
-    collection.insert_one({'answer': user_answer})
+    collection.update_one(
+    {str(i): {'$exists': True}},
+    {"$push": {"answers": user_answer}}
+    )
 
     if user_answer is not None:
         print(user_answer)
