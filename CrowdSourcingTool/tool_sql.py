@@ -27,9 +27,12 @@ def submit():
     global i
     # Retrieve user's answer from the form
     user_answer = request.form.get('answer')
+    answer_record = Answer(text = user_answer, question_id = i)
 
     # Insert the user's answer into the MongoDB collection
 
+    db.session.add(answer_record)
+    db.session.commit()
 
     if user_answer is not None:
         print(user_answer)
@@ -50,7 +53,13 @@ if __name__ == '__main__':
 
 
 # Models
-
 class Question(db.Model):
-    __tablename = "Question"
-    id = db.Column(db.Integer, )
+    __tablename__ = "Question"
+    id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    text = db.Column(db.String(length = 1024))
+
+class Answer(db.Model):
+    __tablename__ = "Answer"
+    id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    text = db.Column(db.String(length = 4096))
+    question_id = db.Column(db.Integer, db.ForeignKey('Question.id'))
