@@ -52,8 +52,7 @@
             box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);
         }
     
-
-        #btn-continue {
+        .button {
             padding: 10px 20px;
             font-size: 12px;
             margin: 10px;
@@ -63,12 +62,12 @@
             transition: background-color 0.3s ease;
         }
 
-        #btn-continue {
+        .button {
             background-color: #4CAF50;
             color: white;
         }
 
-        #btn-continue:hover {
+        .button:hover {
             background-color: #357e3d; /* Darker green on hover */
         }
 
@@ -92,22 +91,35 @@
 
     <br>
 
-    <button id="btn-continue" onclick="askAnotherQuestion()">Submit & Continue</button>
+    <button class = "button" id="btn-continue" onclick="askAnotherQuestion()">Submit & Continue</button>
+    <button class = "button" id="btn-skip" onclick="skip()">Skip</button>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         function askAnotherQuestion() {
             var ans = $("#answer").val()
-            console.log(ans);
+            if (ans == ""){
+                alert("اكتب حاجة يسطا")
+                return
+            }
             $.post('/submit', { answer: ans }, function(response) {
                 // Handle the response if needed
-                console.log(response);
+                
                 // Update the question if there is a new question
                 if (response.new_question) {
                     $('#question p').text(response.new_question);
                 }
             });
             $("#answer").val('')
+        }
+
+        function skip() {
+            $.get('/skip', function(response) {
+                // Update the question if there is a new question
+                if (response.new_question) {
+                    $('#question p').text(response.new_question);
+                }
+            });
         }
     </script>
 </body>
