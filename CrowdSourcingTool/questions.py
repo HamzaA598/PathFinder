@@ -82,3 +82,9 @@ QUESTIONS = [
     "ما هي انواع الوظائف في مجال البرمجه ؟",
     "اقدر اشتغل وانا بدرس"
 ]
+
+questions_dict = {question: index for question, index in enumerate(QUESTIONS)}
+
+with open(, 'w') as json_file:
+    json.dump(questions_dict, json_file)
+

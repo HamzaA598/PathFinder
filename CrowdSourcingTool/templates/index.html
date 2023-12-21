@@ -1,126 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PathFinder</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            margin: 20px;
-            background-color: #333;
-            color: #fff;
-        }
-
-        h1 {
-            color: #4CAF50;
-        }
-
-        #question-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #555;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border-style: solid;
-            border-color: #000;
-            border-width: 1.5px;
-            border-radius: 10px;
-            box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);
-        }
-
-        #question {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        #answer {
-            width: 50%;
-            height: 100px; /* Adjust the height as needed */
-            padding: 10px;
-            background-color: #555;
-            color: #fff;
-            border-style: solid;
-            border-color: #000;
-            border-width: 1.5px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-sizing: border-box; /* Include padding and border in element's total width and height */
-            resize:none;
-            box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);
-        }
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src = "index.js"></script>
     
-        .button {
-            padding: 10px 20px;
-            font-size: 12px;
-            margin: 10px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .button {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .button:hover {
-            background-color: #357e3d; /* Darker green on hover */
-        }
-
-        
-    </style>
-</head>
-<body>
+    <title>PathFinder</title>
+  </head>
+  <body>
     <h1>PathFinder</h1>
     <p dir="rtl">أجب عن السؤال التالي باللغة العربية (بالنسبة لكلية حاسبات):</p>
     <div id="question-container">
-        <div id="question">
-            <!-- Replace the question below with your actual question -->
-            <p>{{ question }}</p>
-        </div>
+      <div id="question">
+        <!-- Replace the question below with your actual question -->
+        <p>{{ question }}</p>
+      </div>
     </div>
 
-    <textarea name="answerArea" id="answer" 
-    cols="30" rows="5" placeholder="اكتب إجابتك هنا"
-    dir="rtl"></textarea>
+    <textarea
+      name="answerArea"
+      id="answer"
+      cols="30"
+      rows="5"
+      placeholder="اكتب إجابتك هنا"
+      dir="rtl"
+    ></textarea>
     <!-- <input type="text" id="answer" placeholder="Your answer"> -->
 
-    <br>
+    <br />
 
-    <button class = "button" id="btn-continue" onclick="askAnotherQuestion()">Submit & Continue</button>
-    <button class = "button" id="btn-skip" onclick="skip()">Skip</button>
-
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        function askAnotherQuestion() {
-            var ans = $("#answer").val()
-            if (ans == ""){
-                alert("اكتب حاجة يسطا")
-                return
-            }
-            $.post('/submit', { answer: ans }, function(response) {
-                // Handle the response if needed
-                
-                // Update the question if there is a new question
-                if (response.new_question) {
-                    $('#question p').text(response.new_question);
-                }
-            });
-            $("#answer").val('')
-        }
-
-        function skip() {
-            $.get('/skip', function(response) {
-                // Update the question if there is a new question
-                if (response.new_question) {
-                    $('#question p').text(response.new_question);
-                }
-            });
-        }
-    </script>
-</body>
+    <button class="button" id="btn-continue" onclick="askAnotherQuestion()">
+      Submit & Continue
+    </button>
+    <button class="button" id="btn-skip" onclick="skip()">Skip</button>
+    
+  </body>
 </html>

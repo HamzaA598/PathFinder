@@ -33,7 +33,7 @@ def submit():
     # Retrieve user's answer from the form
     user_answer = request.form.get('answer')
 
-    answer_record = Answer(text = user_answer, question_id = i)
+    answer_record = Answer(text = user_answer, question_id = )
 
     # Insert the user's answer into the sql db
 
