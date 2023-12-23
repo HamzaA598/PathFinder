@@ -100,13 +100,12 @@ let QUESTIONS = [
     
     });
   
-    
-    $("#question p").val(getNextQuestion());
+    $("#question p").text(getNextQuestion());
     $("#answer").val("");
   }
   
   function skip() {
-    $("#question p").val(getNextQuestion());
+    $("#question p").text(getNextQuestion());
   }
   
   function CustomAlert() {
