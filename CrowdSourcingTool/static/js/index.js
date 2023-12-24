@@ -106,7 +106,7 @@ let QUESTIONS = [
   
   function skip() {
     $("#question p").text(getNextQuestion());
-    $("#answer").text("");
+    $("#answer").val("");
   }
   
   function CustomAlert() {
@@ -150,6 +150,7 @@ let QUESTIONS = [
   }
   
   instructions = "\
+  - إذا صادفت نفس السؤال مرتين، اضغط تخطي.\n<br>\
   - أجب عن الأسئلة التالية باللغة العربية.\n<br>\
   - جميع الأسئلة التالية تخص كليات حاسبات ومعلومات بالجامعات المصرية.\n<br>\
   - أكتب جملة علي الأقل.\n<br>\
