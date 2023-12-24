@@ -106,7 +106,7 @@ let QUESTIONS = [
   
   function skip() {
     $("#question p").text(getNextQuestion());
-    $("#answer").val("");
+    $("#answer").text("");
   }
   
   function CustomAlert() {

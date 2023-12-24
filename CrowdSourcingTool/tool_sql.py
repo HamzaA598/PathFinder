@@ -29,9 +29,10 @@ def index():
 def submit():
     # Retrieve user's answer from the form
     user_answer = request.form.get('answer')
-    question_id = request.form.get('question_id')
+    # from zero based to one based
+    question_id = int(request.form.get('question_id')) + 1
 
-    answer_record = Answer(text = user_answer, question_id = question_id)
+    answer_record = Answer(text = user_answer, question_id = str(question_id))
 
     # Insert the user's answer into the sql db
 
