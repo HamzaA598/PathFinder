@@ -93,7 +93,6 @@ intents:
   - freelancing_opportunities_in_various_specializations
   - job_opportunities_in_software_development_field
   - working_while_studying
-  - types_of_jobs_available_in_software_development_field
 
 
 
@@ -354,8 +353,6 @@ responses:
     - text: "تتنوع وظائف مجال البرمجة بشكل كبير وتشمل مجموعة متنوعة من التخصصات مثل مطور الويب، محلل البيانات، مهندس الشبكات، مطور تطبيقات الموبايل، مختص أمن سيبراني، مهندس في مجال الذكاء الاصطناعي، وغيرها الكثير."
   utter_working_while_studying:
     - text: "نعم، بالطبع يمكنك العمل أثناء الدراسة، ولكن يعتمد ذلك على جدولك الزمني وقدرتك على إدارة الوقت بشكل فعال، كما يمكن أن تكون هناك فرص للعمل بدوام جزئي أو العمل عن بعد والتي يمكن أن تكون مناسبة للطلاب."
-  utter_types_of_jobs_available_in_software_development_field:
-    - text: "تتنوع وظائف مجال تطوير البرمجيات بشكل كبير وتشمل مجموعة متنوعة من التخصصات والمسميات الوظيفية التي تتيح فرص عمل مثل مطور البرمجيات، مهندس البرمجيات، مهندس الجودة، مطور تطبيقات الهاتف المحمول، مطور واجهات المستخدم، مهندس البيانات، وغيرها الكثير."
 
 
 # full list of colleges
