@@ -170,86 +170,330 @@ nlu:
       - ما هي أشهر كليات الحاسبات والذكاء الإصطناعي في مصر؟
       - أريد أن أدرس علوم الحاسب في مصر, هل يمكنك أن ترشح لي أشهر كليات الحاسبات والمعلومات المصرية؟
 
-  - intent: best_department
-  - intent: difference_between_college_and_institute
-  - intent: difference_between_public_and_private_universities
-  - intent: available_career_opportunities_after_graduation
-  - intent: duration_of_study
-  - intent: required_skills_during_study
-  - intent: successful_egyptian_engineers
-  - intent: difference_between_computer_science_departments
-  - intent: core_educational_materials_besides_programming
-  - intent: application_process_for_college_admission
-  - intent: scholarship_availability
-  - intent: software_engineering_specialization
-  - intent: profitability_of_computer_science_field
-  - intent: difficulty_of_learning_programming
-  - intent: prerequisite_programming_experience
-  - intent: job_opportunities_comparison
-  - intent: essential_skills_in_computer_science_field
-  - intent: study_costs_in_colleges
-  - intent: reasons_for_choosing_computer_science
-  - intent: computer_science_field_definition
-  - intent: average_salaries_for_software_engineers_in_egypt
-  - intent: computer_science_field_definition
-  - intent: difference_between_computer_engineering_and_information_technology
-  - intent: recommend_online_courses
-  - intent: coordination_start_date
-  - intent: work_as_programmer_without_college
-  - intent: difference_between_programming_and_software_engineering
-  - intent: average_salaries_for_software_engineers_in_gulf_and_arab_countries
-  - intent: educational_materials_in_computer_science_colleges
-  - intent: why_choose_computer_science_over_engineering
-  - intent: scientific_students_enrollment_in_computer_science_colleges
-  - intent: study_plan_without_iti
-  - intent: available_specializations_in_computer_science_college
-  - intent: demand_for_computer_science_graduates
-  - intent: educational_content_in_computer_science_colleges
-  - intent: choose_computer_science_or_engineering
-  - intent: total_required_admission_score
-  - intent: best_time_to_study_specific_field
-  - intent: available_specializations_in_computer_science
-  - intent: opportunities_for_egyptian_software_engineers_abroad
-  - intent: cost_of_studying_programming
-  - intent: courses_for_high_school_students_preparation
-  - intent: difference_between_computer_science_and_computer_engineering
-  - intent: difference_between_mathematics_and_science_in_computer_science_context
-  - intent: suitable_learning_approach_for_first_year
-  - intent: egyptian_software_engineers_working_in_large_companies
-  - intent: coordination_system_for_each_college
-  - intent: admission_of_scientific_students_to_computer_colleges
-  - intent: reasons_to_choose_computer_science_over_engineering
-  - intent: high_school_general_certificate_requirements_for_college_admission
-  - intent: college_directly_qualify_for_job_market_or_additional_studies
-  - intent: available_tracks_within_the_college
-  - intent: examples_of_egyptian_software_development_companies
-  - intent: college_admission_tests_if_exist
-  - intent: nature_of_study_in_college_difficulty_and_ease
-  - intent: existence_of_student_union_and_its_name_and_address
-  - intent: departments_of_the_college
-  - intent: job_opportunities_for_computer_college_graduates
-  - intent: location_of_each_college
-  - intent: proficiency_in_mathematics_for_computer_science
-  - intent: problem_solving_skill_definition
-  - intent: available_housing_options_for_college_students
-  - intent: enjoyment_of_computer_science_without_extensive_computer_knowledge
-  - intent: replacement_of_programmers_by_artificial_intelligence
-  - intent: leading_software_development_companies_in_egypt
-  - intent: college_ranking
-  - intent: college_curriculum_qualification_for_job_market
-  - intent: study_costs_in_colleges
-  - intent: skills_required_for_job_market_after_graduation
-  - intent: learning_scope_in_computer_science_and_next_steps
-  - intent: preferred_department_in_college
-  - intent: college_course_subjects
-  - intent: differences_in_computer_science_work_fields
-  - intent: important_subjects_in_college
-  - intent: computer_science_college_specializations
-  - intent: nature_of_work_for_computer_science_graduates
-  - intent: duration_of_study_in_college
-  - intent: programming_and_codes_in_college_departments
-  - intent: differences_between_computer_science_departments
-  - intent: freelancing_opportunities_in_various_specializations
-  - intent: job_opportunities_in_software_development_field
-  - intent: working_while_studying
-  - intent: types_of_jobs_available_in_software_development_field
+- intent: best_department
+  examples: |
+    - "ما هو افضل قسم في الكلية؟"
+
+- intent: difference_between_college_and_institute
+  examples: |
+    - "ما الاختلاف بين كلية الحاسبات ومعهد الحاسبات؟"
+
+- intent: difference_between_public_and_private_universities
+  examples: |
+    - "ما الفارق بين الجامعات الحكومية والجامعات الخاصة؟"
+
+- intent: available_career_opportunities_after_graduation
+  examples: |
+    - "ما هي مجالات العمل المتاحة بعد انتهاء سنوات الدراسة في الكلية؟"
+
+- intent: duration_of_study
+  examples: |
+    - "ما هو عدد سنوات الدراسة؟"
+
+- intent: required_skills_during_study
+  examples: |
+    - "ما هي المهارات المطلوبة خلال سنوات الدراسة؟"
+
+- intent: successful_egyptian_engineers
+  examples: |
+    - "ذكر أمثلة لمهندسين مصريين حققوا نجاحات ملحوظة."
+
+- intent: difference_between_computer_science_departments
+  examples: |
+    - "ما الاختلاف بين قسم الحاسبات في كلية الهندسة وقسم الحاسبات في كلية العلوم وكلية الحاسبات والمعلومات؟"
+
+- intent: core_educational_materials_besides_programming
+  examples: |
+    - "ما هي المواد التعليمية الأساسية بجانب البرمجة؟"
+
+- intent: application_process_for_college_admission
+  examples: |
+    - "كيف يمكنني التقديم للالتحاق بالكلية؟"
+
+- intent: scholarship_availability
+  examples: |
+    - "هل تقدم الكلية منحًا دراسية للطلاب؟ وما هي التفاصيل؟"
+
+- intent: software_engineering_specialization
+  examples: |
+    - "ما هي تخصص هندسة البرمجيات؟"
+
+- intent: profitability_of_computer_science_field
+  examples: |
+    - "هل تعتبر مجال علوم الحاسب مجالًا رابحًا؟"
+
+- intent: difficulty_of_learning_programming
+  examples: |
+    - "هل صعبة دراسة البرمجة؟"
+
+- intent: prerequisite_programming_experience
+  examples: |
+    - "هل يلزم أن يكون لدي خبرة مسبقة في البرمجة للالتحاق بالكلية؟"
+
+- intent: job_opportunities_comparison
+  examples: |
+    - "هل هناك فرق في فرص العمل بين خريجي قسم الحاسبات في كلية الهندسة وقسم الحاسبات في كلية العلوم وكلية الحاسبات والمعلومات؟"
+
+- intent: essential_skills_in_computer_science_field
+  examples: |
+    - "ما هي المهارات التي يجب اكتسابها في مجال الحاسبات؟"
+
+- intent: study_costs_in_colleges
+  examples: |
+    - "ما هي تكاليف الدراسة في كل كلية، سواء كانت حكومية أو خاصة؟"
+
+- intent: reasons_for_choosing_computer_science
+  examples: |
+    - "لماذا يجب اختيار تخصص الحاسبات؟"
+
+- intent: computer_science_field_definition
+  examples: |
+    - "ما هو مجال علوم الحاسب؟"
+
+- intent: average_salaries_for_software_engineers_in_egypt
+  examples: |
+    - "ما هو متوسط الرواتب لمهندسي البرمجيات في مصر؟"
+
+- intent: computer_science_field_definition
+  examples: |
+    - "ما هو مجال علوم الحاسب؟"
+
+- intent: difference_between_computer_engineering_and_information_technology
+  examples: |
+    - "ما الاختلاف بين هندسة الحاسبات وكلية الحاسبات والمعلومات؟"
+
+- intent: recommend_online_courses
+  examples: |
+    - "هل يمكنك توصية بدورات دراسية عبر الإنترنت؟"
+
+- intent: coordination_start_date
+  examples: |
+    - "متى يبدأ التنسيق؟"
+
+- intent: work_as_programmer_without_college
+  examples: |
+    - "هل يمكنني العمل كمبرمج دون حاجة للالتحاق بالكلية؟"
+
+- intent: difference_between_programming_and_software_engineering
+  examples: |
+    - "ما الفارق بين البرمجة وهندسة البرمجيات؟"
+
+- intent: average_salaries_for_software_engineers_in_gulf_and_arab_countries
+  examples: |
+    - "ما هو متوسط الرواتب لمهندسي البرمجيات في الخليج وبقية الدول العربية؟"
+
+- intent: educational_materials_in_computer_science_colleges
+  examples: |
+    - "ما هي المواد التعليمية التي يتم دراستها في كليات الحاسبات والمعلومات؟"
+
+- intent: why_choose_computer_science_over_engineering
+  examples: |
+    - "لماذا يجب الالتحاق بتخصص الحاسبات والمعلومات على الرغم من حصولي على نسبة كافية للالتحاق بتخصص الهندسة؟"
+
+- intent: scientific_students_enrollment_in_computer_science_colleges
+  examples: |
+    - "هل يمكن للطلاب العلميين الالتحاق بكليات الحاسبات؟"
+
+- intent: study_plan_without_iti
+  examples: |
+    - "هل يمكنك توجيهي بخطة دراسية لمدة أربع سنوات تساعدني في تحديد مساري المهني دون الحاجة إلى الانضمام إلى برنامج مثل ITI أو قضاء أشهر في الاستعداد لمتطلبات سوق العمل بعد التخرج؟"
+
+- intent: available_specializations_in_computer_science_college
+  examples: |
+    - "ما هي التخصصات المتاحة في كلية الحاسبات والمعلومات في جامعة القاهرة؟"
+
+- intent: demand_for_computer_science_graduates
+  examples: |
+    - "هل هناك عدد كبير من الشركات التي تبحث عن خريجي كليات الحاسبات والمعلومات؟"
+
+- intent: educational_content_in_computer_science_colleges
+  examples: |
+    - "ما هو محتوى التعليم في كلية الحاسبات والمعلومات؟"
+
+- intent: choose_computer_science_or_engineering
+  examples: |
+    - "هل يجب الالتحاق بتخصص الحاسبات والمعلومات أم الهندسة؟"
+
+- intent: total_required_admission_score
+  examples: |
+    - "ما هو المجموع الكلي المطلوب للقبول؟"
+
+- intent: best_time_to_study_specific_field
+  examples: |
+    - "هل يمكنك أن توجهني إلى أفضل وقت لدراسة مجال معين في كلية الحاسبات والمعلومات؟"
+
+- intent: available_specializations_in_computer_science
+  examples: |
+    - "ما هي التخصصات المتاحة في مجال الحاسبات؟"
+
+- intent: opportunities_for_egyptian_software_engineers_abroad
+  examples: |
+    - "هل توجد فرص للسفر إلى أوروبا والولايات المتحدة لمهندسي البرمجيات المصريين؟"
+
+- intent: cost_of_studying_programming
+  examples: |
+    - "هل تعتبر دراسة البرمجة مكلفة؟"
+
+- intent: courses_for_high_school_students_preparation
+  examples: |
+    - "ما هي الدورات المتاحة لتهيئة طلاب الثانوية العامة للالتحاق بالكلية؟"
+
+- intent: difference_between_computer_science_and_computer_engineering
+  examples: |
+    - "ما الفارق بين تخصص الحاسبات وهندسة الحاسب؟"
+
+- intent: difference_between_mathematics_and_science_in_computer_science_context
+  examples: |
+    - "ما الاختلاف بين الرياضيات والعلوم في سياق الحاسبات؟"
+
+- intent: suitable_learning_approach_for_first_year
+  examples: |
+    - "في سنة أولى نركز على حل المشاكل البرمجية، ومن الممكن في السنة الثانية دراسة الجانب الخلفي للتطبيقات لفهم قواعد البيانات وهياكل البيانات أو تعلم التعلم الآلي للتفاعل مع البيانات. هل هذا مناسب؟"
+
+- intent: egyptian_software_engineers_working_in_large_companies
+  examples: |
+    - "هل يمكن لمهندسي البرمجيات المصريين العمل في شركات كبيرة مثل جوجل وفيسبوك وأمازون ومايكروسوفت؟"
+
+- intent: coordination_system_for_each_college
+  examples: |
+    - "ما هو نظام التنسيق لكل كلية؟"
+
+- intent: admission_of_scientific_students_to_computer_colleges
+  examples: |
+    - "هل يمكن لطلاب العلمي الالتحاق بكليات الحاسبات؟"
+
+- intent: reasons_to_choose_computer_science_over_engineering
+  examples: |
+    - "لماذا ينبغي اختيار تخصص الحاسبات بدلاً من الهندسة؟"
+
+- intent: high_school_general_certificate_requirements_for_college_admission
+  examples: |
+    - "ما هي المادة المطلوبة في الثانوية العامة للالتحاق بالكلية؟"
+
+- intent: college_directly_qualify_for_job_market_or_additional_studies
+  examples: |
+    - "هل تؤهلني الكلية مباشرة لسوق العمل بعد الانتهاء من الدراسة؟ أم أنه يجب علي القيام بدراسات جانبية؟"
+
+- intent: available_tracks_within_the_college
+  examples: |
+    - "ما هي المسارات المتاحة داخل الكلية؟"
+
+- intent: examples_of_egyptian_software_development_companies
+  examples: |
+    - "ذكر أمثلة لشركات مصرية تعمل في مجال تطوير البرمجيات."
+
+- intent: college_admission_tests_if_exist
+  examples: |
+    - "هل هناك اختبارات للالتحاق بالكلية؟ وإذا كان الأمر كذلك، فما هي؟"
+
+- intent: nature_of_study_in_college_difficulty_and_ease
+  examples: |
+    - "ما هي طبيعة الدراسة في الكلية من حيث صعوبة وسهولة المواد؟"
+
+- intent: existence_of_student_union_and_its_name_and_address
+  examples: |
+    - "هل هناك نقابة لطلاب الكلية؟ وما هو اسمها وعنوانها؟"
+
+- intent: departments_of_the_college
+  examples: |
+    - "ما هي أقسام الكلية؟"
+
+- intent: job_opportunities_for_computer_college_graduates
+  examples: |
+    - "ما هي فرص العمل المتاحة لخريجي كليات الحاسبات؟"
+
+- intent: location_of_each_college
+  examples: |
+    - "ما هو موقع كل كلية؟"
+
+- intent: proficiency_in_mathematics_for_computer_science
+  examples: |
+    - "هل يجب أن أكون ماهرًا في الرياضيات؟"
+
+- intent: problem_solving_skill_definition
+  examples: |
+    - "ما هي مهارة حل المشاكل (Problem Solving)؟"
+
+- intent: available_housing_options_for_college_students
+  examples: |
+    - "ما هي خيارات السكن المتاحة لطلاب الكليات؟"
+
+- intent: enjoyment_of_computer_science_without_extensive_computer_knowledge
+  examples: |
+    - "هل ستكون دراسة الحاسبات ممتعة إذا كنت لا تملك معرفة واسعة بأجهزة الكمبيوتر؟"
+
+- intent: replacement_of_programmers_by_artificial_intelligence
+  examples: |
+    - "هل سيتم استبدال المبرمجين بالذكاء الاصطناعي؟"
+
+- intent: leading_software_development_companies_in_egypt
+  examples: |
+    - "ما هي الشركات الرائدة في مجال تطوير البرمجيات في مصر؟"
+
+- intent: college_ranking
+  examples: |
+    - "ما هو تصنيف الكليات؟"
+
+- intent: college_curriculum_qualification_for_job_market
+  examples: |
+    - "هل المحتوى الدراسي في الكلية يؤهل الطلاب لسوق العمل؟"
+
+- intent: college_tuition_fees
+  examples: |
+    - "ما هي تكاليف الدراسة في الكليات؟"
+
+- intent: skills_required_for_job_market_after_graduation
+  examples: |
+    - "ما هي المهارات التي يجب اكتسابها لتأهيل نفسي لسوق العمل بمجرد التخرج؟"
+
+- intent: learning_scope_in_computer_science_and_next_steps
+  examples: |
+    - "ما الذي يجب تعلمه في تخصص الحاسبات، وما الخطوات التالية بعد ذلك؟"
+
+- intent: preferred_department_in_college
+  examples: |
+    - "ما هو القسم المفضل في الكلية؟"
+
+- intent: college_course_subjects
+  examples: |
+    - "ما هي المواد الدراسية؟"
+
+- intent: differences_in_computer_science_work_fields
+  examples: |
+    - "ما هي اختلافات مجالات العمل داخل تخصص الحاسبات؟"
+
+- intent: important_subjects_in_college
+  examples: |
+    - "ما هي أهم المواد في الكلية؟"
+
+- intent: computer_science_college_specializations
+  examples: |
+    - "ما هي تخصصات كلية الحاسبات؟"
+
+- intent: nature_of_work_for_computer_science_graduates
+  examples: |
+    - "ما هي طبيعة العمل للخريجين من كلية الحاسبات؟"
+
+- intent: duration_of_study_in_college
+  examples: |
+    - "ما هو مدة الدراسة في الكلية؟"
+
+- intent: programming_and_codes_in_college_departments
+  examples: |
+    - "هل تتضمن جميع أقسام الكلية البرمجة والأكواد فقط؟"
+
+- intent: differences_between_computer_science_departments
+  examples: |
+    - "هل هناك اختلاف بين أقسام كلية الحاسبات؟"
+
+- intent: freelancing_opportunities_in_various_specializations
+  examples: |
+    - "هل يمكن العمل بشكل حر في جميع التخصصات؟"
+
+- intent: job_opportunities_in_software_development_field
+  examples: |
+    - "ما هي أنواع الوظائف المتاحة في مجال تطوير البرمجيات؟"
+
+- intent: working_while_studying
+  examples: |
+    - "هل يمكن العمل أثناء الدراسة؟"
