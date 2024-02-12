@@ -21,22 +21,28 @@ rules:
       - intent: nlu_fallback
       - action: utter_please_rephrase
 
-  - rule: Tell the user information about Computer Science in general
+  - rule: respond to FAQs
     steps:
-      - intent: ask_cs
-      - action: utter_info_cs
+    - intent: faq
+    - action: utter_faq
 
-  - rule: Tell the user information about the Computer Science departments
-    steps:
-      - intent: ask_departments
-      - action: utter_info_departments
 
-  - rule: Tell the user information about available Computer Science colleges in Egypt
-    steps:
-      - intent: ask_colleges
-      - action: utter_info_colleges
+  # - rule: Tell the user information about Computer Science in general
+  #   steps:
+  #     - intent: ask_cs
+  #     - action: utter_info_cs
 
-  - rule: Answer when the student asks about the best department
-    steps:
-      - intent: best_department
-      - action: utter_best_department
+  # - rule: Tell the user information about the Computer Science departments
+  #   steps:
+  #     - intent: ask_departments
+  #     - action: utter_info_departments
+
+  # - rule: Tell the user information about available Computer Science colleges in Egypt
+  #   steps:
+  #     - intent: ask_colleges
+  #     - action: utter_info_colleges
+
+  # - rule: Answer when the student asks about the best department
+  #   steps:
+  #     - intent: best_department
+  #     - action: utter_best_department

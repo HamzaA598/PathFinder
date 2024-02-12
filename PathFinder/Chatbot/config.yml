@@ -15,6 +15,7 @@ pipeline:
   - name: EntitySynonymMapper
   - name: ResponseSelector
     epochs: 100
+    retrieval_intent: faq
 
 policies:
   - name: MemoizationPolicy

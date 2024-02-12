@@ -8,89 +8,91 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - ask_cs
-  - ask_departments
-  - ask_colleges
-  - best_department
-  - difference_between_college_and_institute
-  - difference_between_public_and_private_universities
-  - available_career_opportunities_after_graduation
-  - duration_of_study
-  - required_skills_during_study
-  - successful_egyptian_engineers
-  - difference_between_computer_science_departments
-  - core_educational_materials_besides_programming
-  - application_process_for_college_admission
-  - scholarship_availability
-  - software_engineering_specialization
-  - profitability_of_computer_science_field
-  - difficulty_of_learning_programming
-  - prerequisite_programming_experience
-  - job_opportunities_comparison
-  - essential_skills_in_computer_science_field
-  - study_costs_in_colleges
-  - reasons_for_choosing_computer_science
-  - computer_science_field_definition
-  - average_salaries_for_software_engineers_in_egypt
-  - difference_between_computer_engineering_and_information_technology
-  - recommend_online_courses
-  - coordination_start_date
-  - work_as_programmer_without_college
-  - difference_between_programming_and_software_engineering
-  - average_salaries_for_software_engineers_in_gulf_and_arab_countries
-  - educational_materials_in_computer_science_colleges
-  - why_choose_computer_science_over_engineering
-  - scientific_students_enrollment_in_computer_science_colleges
-  - study_plan_without_iti
-  - available_specializations_in_computer_science_college
-  - demand_for_computer_science_graduates
-  - educational_content_in_computer_science_colleges
-  - choose_computer_science_or_engineering
-  - total_required_admission_score
-  - best_time_to_study_specific_field
-  - available_specializations_in_computer_science
-  - opportunities_for_egyptian_software_engineers_abroad
-  - cost_of_studying_programming
-  - courses_for_high_school_students_preparation
-  - difference_between_computer_science_and_computer_engineering
-  - difference_between_mathematics_and_science_in_computer_science_context
-  - suitable_learning_approach_for_first_year
-  - egyptian_software_engineers_working_in_large_companies
-  - coordination_system_for_each_college
-  - admission_of_scientific_students_to_computer_colleges
-  - reasons_to_choose_computer_science_over_engineering
-  - high_school_general_certificate_requirements_for_college_admission
-  - college_directly_qualify_for_job_market_or_additional_studies
-  - available_tracks_within_the_college
-  - examples_of_egyptian_software_development_companies
-  - college_admission_tests_if_exist
-  - nature_of_study_in_college_difficulty_and_ease
-  - existence_of_student_union_and_its_name_and_address
-  - departments_of_the_college
-  - job_opportunities_for_computer_college_graduates
-  - location_of_each_college
-  - proficiency_in_mathematics_for_computer_science
-  - problem_solving_skill_definition
-  - available_housing_options_for_college_students
-  - enjoyment_of_computer_science_without_extensive_computer_knowledge
-  - replacement_of_programmers_by_artificial_intelligence
-  - leading_software_development_companies_in_egypt
-  - college_ranking
-  - college_curriculum_qualification_for_job_market
-  - skills_required_for_job_market_after_graduation
-  - learning_scope_in_computer_science_and_next_steps
-  - preferred_department_in_college
-  - college_course_subjects
-  - differences_in_computer_science_work_fields
-  - important_subjects_in_college
-  - computer_science_college_specializations
-  - nature_of_work_for_computer_science_graduates
-  - duration_of_study_in_college
-  - programming_and_codes_in_college_departments
-  - differences_between_computer_science_departments
-  - freelancing_opportunities_in_various_specializations
-  - job_opportunities_in_software_development_field
-  - working_while_studying
+  - faq
+# intents in retrieval intent faq
+  # - ask_cs
+  # - ask_departments
+  # - ask_colleges
+  # - best_department
+  # - difference_between_college_and_institute
+  # - difference_between_public_and_private_universities
+  # - available_career_opportunities_after_graduation
+  # - duration_of_study
+  # - required_skills_during_study
+  # - successful_egyptian_engineers
+  # - difference_between_computer_science_departments
+  # - core_educational_materials_besides_programming
+  # - application_process_for_college_admission
+  # - scholarship_availability
+  # - software_engineering_specialization
+  # - profitability_of_computer_science_field
+  # - difficulty_of_learning_programming
+  # - prerequisite_programming_experience
+  # - job_opportunities_comparison
+  # - essential_skills_in_computer_science_field
+  # - study_costs_in_colleges
+  # - reasons_for_choosing_computer_science
+  # - computer_science_field_definition
+  # - average_salaries_for_software_engineers_in_egypt
+  # - difference_between_computer_engineering_and_information_technology
+  # - recommend_online_courses
+  # - coordination_start_date
+  # - work_as_programmer_without_college
+  # - difference_between_programming_and_software_engineering
+  # - average_salaries_for_software_engineers_in_gulf_and_arab_countries
+  # - educational_materials_in_computer_science_colleges
+  # - why_choose_computer_science_over_engineering
+  # - scientific_students_enrollment_in_computer_science_colleges
+  # - study_plan_without_iti
+  # - available_specializations_in_computer_science_college
+  # - demand_for_computer_science_graduates
+  # - educational_content_in_computer_science_colleges
+  # - choose_computer_science_or_engineering
+  # - total_required_admission_score
+  # - best_time_to_study_specific_field
+  # - available_specializations_in_computer_science
+  # - opportunities_for_egyptian_software_engineers_abroad
+  # - cost_of_studying_programming
+  # - courses_for_high_school_students_preparation
+  # - difference_between_computer_science_and_computer_engineering
+  # - difference_between_mathematics_and_science_in_computer_science_context
+  # - suitable_learning_approach_for_first_year
+  # - egyptian_software_engineers_working_in_large_companies
+  # - coordination_system_for_each_college
+  # - admission_of_scientific_students_to_computer_colleges
+  # - reasons_to_choose_computer_science_over_engineering
+  # - high_school_general_certificate_requirements_for_college_admission
+  # - college_directly_qualify_for_job_market_or_additional_studies
+  # - available_tracks_within_the_college
+  # - examples_of_egyptian_software_development_companies
+  # - college_admission_tests_if_exist
+  # - nature_of_study_in_college_difficulty_and_ease
+  # - existence_of_student_union_and_its_name_and_address
+  # - departments_of_the_college
+  # - job_opportunities_for_computer_college_graduates
+  # - location_of_each_college
+  # - proficiency_in_mathematics_for_computer_science
+  # - problem_solving_skill_definition
+  # - available_housing_options_for_college_students
+  # - enjoyment_of_computer_science_without_extensive_computer_knowledge
+  # - replacement_of_programmers_by_artificial_intelligence
+  # - leading_software_development_companies_in_egypt
+  # - college_ranking
+  # - college_curriculum_qualification_for_job_market
+  # - skills_required_for_job_market_after_graduation
+  # - learning_scope_in_computer_science_and_next_steps
+  # - preferred_department_in_college
+  # - college_course_subjects
+  # - differences_in_computer_science_work_fields
+  # - important_subjects_in_college
+  # - computer_science_college_specializations
+  # - nature_of_work_for_computer_science_graduates
+  # - duration_of_study_in_college
+  # - programming_and_codes_in_college_departments
+  # - differences_between_computer_science_departments
+  # - freelancing_opportunities_in_various_specializations
+  # - job_opportunities_in_software_development_field
+  # - working_while_studying
 
 responses:
 
@@ -157,13 +159,13 @@ responses:
     - text: "أنا آسف، لم أفهم ذلك جيدًا. هل بإمكانك إعادة الصياغة؟"
     - text: "عذرًا، لم يتسنى لي فهم ذلك تمامًا. هل يمكنك تعديل ما قلت؟"
 
-  utter_info_cs:
+  utter_faq/ask_cs:
     - text: "علم الحاسوب هو مجال دراسة يركز على فهم واستخدام التكنولوجيا المعلوماتية والحوسبة. يشمل علم الحاسوب مجموعة واسعة من المواضيع والمفاهيم التي تتعلق بالبرمجة وأنظمة الحاسوب وتطوير البرمجيات والذكاء الاصطناعي والعديد من المجالات الأخرى."
     - text: "علم الحاسوب هو مجال دراسة يركز على الفهم والاستفادة من التكنولوجيا المعلوماتية والحوسبة. يشمل هذا العلم مجموعة واسعة من المفاهيم والمواضيع التي تشمل البرمجة وأنظمة الحاسوب وتطوير البرمجيات والذكاء الاصطناعي ومجالات أخرى متعددة."
     - text: "علم الحاسوب يمثل مجال دراسة يركز على فهم واستخدام التكنولوجيا المعلوماتية والحوسبة. يتضمن هذا المجال مجموعة واسعة من المفاهيم والمواضيع المتعلقة بالبرمجة وأنظمة الحاسوب وتطوير البرمجيات والذكاء الاصطناعي والمزيد."
     - text: "علم الحاسوب هو المجال الذي يركز على فهم واستخدام التكنولوجيا المعلوماتية والحوسبة. يشمل هذا المجال العديد من المفاهيم والمواضيع مثل البرمجة وأنظمة الحاسوب وتطوير البرمجيات والذكاء الاصطناعي والمزيد."
   
-  utter_info_departments:
+  utter_faq/ask_departments:
     - text: "هناك عدة أقسام في مجال الحوسبة:
        - قسم علم الحاسوب يركز على البرمجة وتصميم الأنظمة.
        - قسم نظم المعلومات يتعامل مع جمع وتخزين المعلومات وإدارة المشاريع.
@@ -185,7 +187,7 @@ responses:
        - قسم الذكاء الاصطناعي يطور أنظمة ذكية مثل تعلم الآلة ومعالجة اللغة الطبيعية.
        - قسم دعم اتخاذ القرار يعمل على تحليل البيانات وتقديم المعلومات لاتخاذ القرارات."
   
-  utter_info_colleges:
+  utter_faq/ask_colleges:
     - text: "هناك العديد من الجامعات في مصر التي تقدم برامج علم الحاسوب, علي سبيل المثال:
        - كلية الحاسبات والذكاء الاصطناعي جامعة القاهرة
        - كلية الحاسبات والذكاء الاصطناعي جامعة حلوان
@@ -234,169 +236,169 @@ responses:
        - جامعة الجيزة
        - جامعة الأقصر "
 
-  utter_best_department:
+  utter_faq/best_department:
     - text: "يعتمد ذلك على اهتماماتك الشخصية وأهدافك المستقبلية. قد يكون قسم علوم الحاسوب (CS) مناسبًا إذا كنت مهتمًا بتكنولوجيا المعلومات وتطوير البرمجيات، بينما قد يكون قسم علوم البيانات (DS) مناسبًا إذا كنت تفضل تحليل البيانات والذكاء الاصطناعي."
     - text: "لا يوجد ما يسمي بأفضل قسم في الكلية. يكون الاختيار بناء علي مهاراتك ورغباتك."
 
-  utter_difference_between_college_and_institute:
+  utter_faq/difference_between_college_and_institute:
     - text: "الفرق الرئيسي بين كلية الحاسبات والمعهد هو مستوى التعليم المقدم. عادةً ما تقدم الكليات برامج دراسية تشمل درجات البكالوريوس والدراسات العليا، بينما يقدم المعاهد تعليمًا مهنيًا أو تقنيًا قصير المدى مصممًا لتزويد الطلاب بالمهارات العملية للاندماج في سوق العمل بسرعة."
-  utter_difference_between_public_and_private_universities:
+  utter_faq/difference_between_public_and_private_universities:
     - text: "الفرق بين الجامعات الحكومية والخاصة يمكن أن يكون متعدد الأوجه. على الرغم من أن الجودة التعليمية يمكن أن تكون متقاربة في بعض الأحيان، إلا أن هناك اختلافات في الحياة الجامعية والتجهيزات والموارد المتاحة. بينما قد يتميز الحكومية بتوفير تكاليف أقل وعدد كبير من الطلاب مما يسهل التفاعل وتبادل الخبرات، فإن الخاصة قد توفر بيئة دراسية أكثر تخصصًا وموارد إضافية للطلاب. ومع ذلك، فإن اختيار الجامعة يعتمد بشكل كبير على احتياجات وأهداف كل طالب."
-  utter_available_career_opportunities_after_graduation:
+  utter_faq/available_career_opportunities_after_graduation:
     - text: "بعد الدراسة في الكلية، يمكن العمل في مجالات متعددة في صناعة البرمجيات، مثل تطوير تطبيقات الويب والمطور المتنقل (Mobile developer) ونظم الأنظمة المضمنة (Embedded system)، بالإضافة إلى مجالات أخرى متنوعة تعتمد على اختصاصاتك والمهارات التي اكتسبتها خلال فترة دراستك. من المهم أيضًا الاستمرار في التعلم واتباع دورات متخصصة لزيادة فرص العمل وتحسين المهارات اللازمة لسوق العمل المتغير."
-  utter_duration_of_study:
+  utter_faq/duration_of_study:
     - text: "عدد سنين الدراسة في كلية الحاسبات هو أربع سنوات."
-  utter_required_skills_during_study:
+  utter_faq/required_skills_during_study:
     - text: "المهارات التي قد تفيد خلال سنوات الدراسة تشمل القدرة على الكتابة بسرعة على لوحة المفاتيح، قوة التركيز والتحمل للضغوط، مهارات حل المشكلات، والقدرة على التعامل مع الكمبيوتر بفاعلية."
-  utter_successful_egyptian_engineers:
+  utter_faq/successful_egyptian_engineers:
     - text: "من بين الأمثلة على المهندسين المصريين الذين حققوا نجاحات باهرة: محمد مشرف ومصطفى سعد."
-  utter_difference_between_computer_science_departments:
+  utter_faq/difference_between_computer_science_departments:
     - text: "تختلف الكليات في التركيزات والمناهج التعليمية والبرامج الأكاديمية التي تُقدم. على سبيل المثال، قسم الحاسبات في كلية الهندسة يمكن أن يركز أكثر على الجوانب الهندسية والتطبيقية، بينما قسم الحاسبات في كلية العلوم يمكن أن يركز على الجوانب العلمية والنظرية."
-  utter_core_educational_materials_besides_programming:
+  utter_faq/core_educational_materials_besides_programming:
     - text: "بالإضافة إلى مهارات البرمجة، المواد التعليمية المهمة تشمل الرياضيات، المهارات الشخصية (soft skills)، إدارة المشاريع (project management)، وغيرها."
-  utter_application_process_for_college_admission:
+  utter_faq/application_process_for_college_admission:
     - text: "يمكنك التقديم على الكلية من خلال موقع التنسيق الحكومي."
-  utter_scholarship_availability:
+  utter_faq/scholarship_availability:
     - text: "لا، لا تقدم هذه الكلية منحًا للطلاب."
-  utter_software_engineering_specialization:
+  utter_faq/software_engineering_specialization:
     - text: "هندسة البرمجيات هي مجال يعنى بتطوير وإدارة البرمجيات بطرق مهنية ومنهجية، وضمان جودتها وتحسين أدائها على مدار دورة حياتها."
-  utter_profitability_of_computer_science_field:
+  utter_faq/profitability_of_computer_science_field:
     - text: "مجال علوم الحاسب يعتمد بشكل كبير على الشغف والمهارات الفردية. بالرغم من أنه قد لا يكون من بين المجالات السهلة في التعامل معها، إلا أنه يمكن أن يكون مربحًا للأفراد الذين يتمتعون بالمهارات والشغف اللازمين للنجاح فيه."
-  utter_difficulty_of_learning_programming:
+  utter_faq/difficulty_of_learning_programming:
     - text: "دراسة البرمجة تعتمد على اهداف المتعلم ومدى الاجتهاد والتدريب الذي يقوم به. قد لا تكون بالصعوبة البالغة، لكن قد تواجه بعض العقبات التي تحتاج إلى مجهود واستمرارية لتجاوزها."
-  utter_prerequisite_programming_experience:
+  utter_faq/prerequisite_programming_experience:
     - text: "لا، لا تحتاج الكلية إلى معرفة مسبقة بالبرمجة ولكن يفضل تعلم البرمجة قبل دخول الكلية."
-  utter_job_opportunities_comparison:
+  utter_faq/job_opportunities_comparison:
     - text: "لا، عمومًا لا يوجد تمييز في سوق العمل بين خريجي قسم الحاسبات في الكلية الهندسية وقسم الحاسبات في كلية العلوم وكلية حاسبات ومعلومات."
-  utter_essential_skills_in_computer_science_field:
+  utter_faq/essential_skills_in_computer_science_field:
     - text: "في قسم الحاسبات، تتعلم الأساسيات في البرمجة ومهارة حل المشكلات، ومن الضروري أيضًا الاستمرار في التعلم الذاتي وزيادة المهارات والمعرفة بشكل مستمر."
-  utter_study_costs_in_colleges:
+  utter_faq/study_costs_in_colleges:
     - text: "لا أستطيع تقديم معلومات بشأن مصاريف الكليات."
     - text: "قد تختلف مصاريف الكليات حسب الجامعة والكلية والبرنامج الدراسي، ويمكن أن تشمل تكاليف الدراسة الرسوم الدراسية وكتب الدراسة والمواد التعليمية الإضافية."
-  utter_reasons_for_choosing_computer_science:
+  utter_faq/reasons_for_choosing_computer_science:
     - text: "السبب في اختيار دراسة حاسبات يعتمد على كل طالب، ولكن من بين الأسباب يمكن أن تكون التطورات التكنولوجية وفرص العمل المتنوعة وطبيعة العمل العملية التي تقدمها دراسة حاسبات."
-  utter_computer_science_field_definition:
+  utter_faq/computer_science_field_definition:
     - text: "مجال علوم الحاسب هو المجال الذي يدرس التصميم والتطوير والتحليل وتطبيق الأنظمة البرمجية والأجهزة الحاسوبية والبرمجيات والتطبيقات المختلفة."
     - text: "علم الحاسوب هو مجال يدرس أنظمة الحوسبة وتصميم البرمجيات وتحليلها وتطبيقاتها المختلفة، ويعتبر من أهم العلوم الحديثة ويشمل عدة تخصصات مثل تطوير البرمجيات وهندسة البرمجيات وأمن المعلومات وغيرها."
-  utter_average_salaries_for_software_engineers_in_egypt:
+  utter_faq/average_salaries_for_software_engineers_in_egypt:
     - text: "على حسب التخصص والخبرة، فإن متوسط مرتبات مهندسي البرمجيات في مصر قد تتراوح وتختلف بشكل كبير."
-  utter_difference_between_computer_engineering_and_information_technology:
+  utter_faq/difference_between_computer_engineering_and_information_technology:
     - text: "الفرق بين هندسة الحاسبات وكلية الحاسبات والمعلومات يمكن أن يتمثل في وجود سنة إضافية في هندسة الحاسبات بالإضافة إلى بعض المواد الخاصة بالدوائر الكهربائية، بينما تتناول كلية الحاسبات والمعلومات مواد أكثر تخصصًا في مجال تكنولوجيا المعلومات وتطبيقاتها."
-  utter_recommend_online_courses:
+  utter_faq/recommend_online_courses:
     - text: "من بين أفضل المنصات للتعلم عبر الإنترنت: بلورال سايت وكورسيرا لمجموعة متنوعة من الكورسات، بالإضافة إلى دورات Data Science والفاند بتاعهم سهلة. يمكن أيضًا البحث على اليوتيوب لمزيد من الدروس والتعليم المجاني."
-  utter_coordination_start_date:
+  utter_faq/coordination_start_date:
     - text: "نسبة التنسيق تختلف من محافظة لأخرى، ولكن عمومًا تتراوح بين 80% إلى 84%."
-  utter_work_as_programmer_without_college:
+  utter_faq/work_as_programmer_without_college:
     - text: "نعم، يمكنك العمل كمبرمج بدون الحصول على درجة جامعية، سواء كفريلانسر أو في شركة تحت إشراف مباشر. يمكن، ولكن يتطلب ذلك مجهودًا إضافيًا وقد يكون مستوى الجودة أقل."
-  utter_difference_between_programming_and_software_engineering:
+  utter_faq/difference_between_programming_and_software_engineering:
     - text: "البرمجة تتعلق بكتابة الكود وتطوير التطبيقات، بينما هندسة البرمجيات تشمل مراحل تطوير البرمجيات بشكل شامل من التخطيط والتصميم والتوثيق واختبار الجودة."
-  utter_average_salaries_for_software_engineers_in_gulf_and_arab_countries:
+  utter_faq/average_salaries_for_software_engineers_in_gulf_and_arab_countries:
     - text: "من الصعب تحديد متوسط مرتبات مهندسي البرمجيات في الخليج وباقي الدول العربية، حيث تختلف الرواتب بشكل كبير بناءً على الخبرة، والمؤهلات، والمجالات العملية، وشروط السوق في كل دولة."
-  utter_educational_materials_in_computer_science_colleges:
+  utter_faq/educational_materials_in_computer_science_colleges:
     - text: "المواد التعليمية التي تدرس في كليات الحاسبات والمعلومات تشمل لغات البرمجة مثل C، C++، Java، JavaFX، Java Swing، Python، JavaScript، الرياضيات، شبكات الحاسب، قواعد البيانات، مقدمة في نظم المعلومات، مقدمة في الحوسبة، هندسة البرمجيات، نظم التشغيل، تنظيم الحاسب، ويب داتا استراكتشر، وديسكريت ماث أو تركيب محددة."
-  utter_why_choose_computer_science_over_engineering:
+  utter_faq/why_choose_computer_science_over_engineering:
     - text: "يعتبر اختيار قسم الحاسبات والمعلومات مقارنة بالهندسة معتمدًا على الاهتمامات والأهداف الشخصية. في قسم الحاسبات والمعلومات، يركز التعليم على البرمجة وتطبيقات الحاسوب وتقنيات المعلومات، بينما قسم الهندسة يتناول مجالات مختلفة مثل الهندسة الميكانيكية والكهربائية وغيرها."
-  utter_scientific_students_enrollment_in_computer_science_colleges:
+  utter_faq/scientific_students_enrollment_in_computer_science_colleges:
     - text: "نعم، يستطيع طلاب العلمي علوم التقديم في كلية الحاسبات."
-  utter_study_plan_without_iti:
+  utter_faq/study_plan_without_iti:
     - text: "على حسب المجال، يمكنك وضع خطة تقوم باتباعها طول الأربع سنوات لتحقيق أهدافك وتطوير مهاراتك بما يتناسب مع مجالك المهني. يمكنك الرجوع إلى مواقع مثل roadmap.io للحصول على خطط تفصيلية لمسارات مختلفة في مجال تكنولوجيا المعلومات."
-  utter_available_specializations_in_computer_science_college:
+  utter_faq/available_specializations_in_computer_science_college:
     - text: "بالنسبة لجامعة القاهرة، التخصصات المتاحة في كلية الحاسبات والمعلومات تشمل علوم الحاسب، ونظم المعلومات، وتكنولوجيا المعلومات، بالإضافة إلى تخصصات أخرى."
-  utter_demand_for_computer_science_graduates:
+  utter_faq/demand_for_computer_science_graduates:
     - text: "نعم، هناك شركات كثيرة تبحث عن خريجي كليات الحاسبات والمعلومات بسبب الطلب المتزايد على المهارات التقنية في سوق العمل. بالإضافة إلى ذلك، يعتبر التخصص في الحاسبات والمعلومات واسع الانتشار ويغطي مجموعة واسعة من المجالات التقنية، مما يجعل الخريجين في هذا المجال مرغوبين لدى العديد من الشركات."
-  utter_educational_content_in_computer_science_colleges:
+  utter_faq/educational_content_in_computer_science_colleges:
     - text: "يمكن تعريف المحتوى التعليمي لكلية حاسبات ومعلومات بأنه يتضمن العديد من المواد التقنية والبرمجية مثل مبادئ هندسة البرمجيات وغيرها من المواد المتخصصة في مجالات الحوسبة وتكنولوجيا المعلومات."
-  utter_choose_computer_science_or_engineering:
+  utter_faq/choose_computer_science_or_engineering:
     - text: "يعتمد اختيارك على تفضيلك الشخصي واهتماماتك. يمكنك اختيار دراسة الحاسبات إذا كنت مهتمًا بتفاصيل المعالجات الدقيقة وبرمجيات الحاسوب. بالنسبة للشروط المادية وظروف العمل، قد يكون العمل في مجال الحاسبات أكثر مرونة، حيث يمكن العمل من المنزل. يمكنك أيضًا التواصل مع طلاب وخريجين الكليتين للحصول على نصائح أكثر تحديدًا."
-  utter_total_required_admission_score:
+  utter_faq/total_required_admission_score:
     - text: "يختلف متوسط القبول كل عام، لكن المتوسط الحالي هو حوالي 84%."
-  utter_best_time_to_study_specific_field:
+  utter_faq/best_time_to_study_specific_field:
     - text: "يمكنك الاستفادة من إجازة الصيف والاستمرار بدراسة بواقع خفيف أثناء الدراسة، خاصة في الأسابيع الأولى من كل فصل دراسي لتخفيف الضغط. يمكنك أيضًا استغلال إجازة منتصف العام للتركيز على الدراسة وتعزيز المفاهيم والمهارات."
-  utter_available_specializations_in_computer_science:
+  utter_faq/available_specializations_in_computer_science:
     - text: "مجالات حاسبات تشمل: هندسة البرمجيات، تكنولوجيا المعلومات، أمن المعلومات، الذكاء الاصطناعي، علوم البيانات، هندسة البيانات، وهندسة النظم."
-  utter_opportunities_for_egyptian_software_engineers_abroad:
+  utter_faq/opportunities_for_egyptian_software_engineers_abroad:
     - text: "نعم، هناك فرص سفر لمهندسي البرمجيات المصريين إلى الخارج، حيث يعمل بعضهم في أوروبا والولايات المتحدة. يمكنك الاطلاع على تجارب النجاح لبعض المطورين المصريين مثل دكتور مصطفى سعد، المهندس أحمد طلبة، ومحمد مشرف."
-  utter_cost_of_studying_programming:
+  utter_faq/cost_of_studying_programming:
     - text: "لا، لكن يمكن أن تحتاج إلى بعض الموارد الأساسية مثل الكمبيوتر والإنترنت."
-  utter_courses_for_high_school_students_preparation:
+  utter_faq/courses_for_high_school_students_preparation:
     - text: "هناك العديد من الموارد المتاحة عبر الإنترنت والكتب التعليمية التي يمكن لطلاب الثانوية العامة الاستفادة منها للتحضير للدراسة في الكلية. يمكنهم التركيز على المواد الأساسية المتعلقة بالرياضيات والعلوم واللغة الإنجليزية."
-  utter_difference_between_computer_science_and_computer_engineering:
+  utter_faq/difference_between_computer_science_and_computer_engineering:
     - text: "الفرق بين حاسبات وهندسة يمكن أن يكون في الأساليب والتقنيات المستخدمة ونطاق التخصص، ولكن الإجابة على هذا السؤال تتطلب فهمًا أعمق للتخصصات والمجالات الدقيقة لكل منهما."
-  utter_difference_between_mathematics_and_science_in_computer_science_context:
+  utter_faq/difference_between_mathematics_and_science_in_computer_science_context:
     - text: "الفرق بين علوم ورياضة فيما يتعلق بحاسبات قد يكون في الخلفية الرياضية المتقدمة التي يحتاجها الطلاب في شعبة الرياضيات. قد يكون هناك فرق في مستوى التحضير الرياضي بين الطلاب في السنوات الأولى من الدراسة، ولكن ذلك يختلف من جامعة إلى أخرى."
-  utter_suitable_learning_approach_for_first_year:
+  utter_faq/suitable_learning_approach_for_first_year:
     - text: "أنا لا أفضل هذا النهج من التعلم، حيث يمكن أن يؤدي جمع معلومات غير مترابطة إلى تشتت في التعلم وعدم التركيز على الأساسيات بشكل كافٍ."
-  utter_egyptian_software_engineers_working_in_large_companies:
+  utter_faq/egyptian_software_engineers_working_in_large_companies:
     - text: "نعم، من الممكن للمهندسين البرمجيات المصريين العمل في الشركات الكبرى مثل جوجل وفيسبوك وأمازون ومايكروسوفت، وهناك أمثلة ناجحة لهذا النمط في العمل."
-  utter_coordination_system_for_each_college:
+  utter_faq/coordination_system_for_each_college:
     - text: "عادة ما يتم تحديد تنسيق القبول في كل كلية استنادًا إلى المجاميع التي يحققها الطلاب في كل سنة."
-  utter_admission_of_scientific_students_to_computer_colleges:
+  utter_faq/admission_of_scientific_students_to_computer_colleges:
     - text: "نعم، يمكن للطلاب العلميين أن يدخلوا إلى هذه الكلية، ولكن قد يحتاجون إلى اجتياز منهج الرياضيات صفر أولاً في بعض الأحيان."
-  utter_reasons_to_choose_computer_science_over_engineering:
+  utter_faq/reasons_to_choose_computer_science_over_engineering:
     - text: "يمكنك اختيار حاسبات على هندسة إذا كنت غير مهتم ببعض المواد مثل الحاكمات الدقيقة والمعالجات الدقيقة، وإذا كنت تفضل العمل بشكل أكثر برمجية. كما أن دراسة الحاسبات عادةً ما تستغرق أربع سنوات بينما هندسة تستغرق خمس سنوات."
-  utter_high_school_general_certificate_requirements_for_college_admission:
+  utter_faq/high_school_general_certificate_requirements_for_college_admission:
     - text: "لا تعتمد الكلية على مادة معينة في الثانوية العامة من حيث التنسيق، ولكن تعتمد بشكل كبير على الرياضيات واللغة الإنجليزية كأساسيات للدراسة."
-  utter_college_directly_qualify_for_job_market_or_additional_studies:
+  utter_faq/college_directly_qualify_for_job_market_or_additional_studies:
     - text: "يبدو أن الدراسة الجانبية ضرورية بالإضافة إلى الكلية حتى تحصل على فرصة عمل جيدة في السوق."
-  utter_available_tracks_within_the_college:
+  utter_faq/available_tracks_within_the_college:
     - text: "يتضمن أقسام الكلية في جامعة القاهرة: قسم علوم الحاسب، قسم نظم المعلومات، قسم تكنولوجيا المعلومات، قسم الذكاء الاصطناعي، وقسم دعم القرار."
-  utter_examples_of_egyptian_software_development_companies:
+  utter_faq/examples_of_egyptian_software_development_companies:
     - text: "اي تي وركس ، سوفت تيك ، لينك ديف, Robusta, RAA"
-  utter_college_admission_tests_if_exist:
+  utter_faq/college_admission_tests_if_exist:
     - text: "لا يوجد معلومات محددة حول وجود اختبارات للكلية."
-  utter_nature_of_study_in_college_difficulty_and_ease:
+  utter_faq/nature_of_study_in_college_difficulty_and_ease:
     - text: "يبدو أنه لا توجد إجابات محددة حول طبيعة الدراسة في الكلية بالنسبة لصعوبة وسهولة المواد."
-  utter_existence_of_student_union_and_its_name_and_address:
+  utter_faq/existence_of_student_union_and_its_name_and_address:
     - text: "نعم، توجد نقابة المبرمجين لخريجي حاسبات وهندسة، لكن لا يوجد معلومات عن عنوانها الآن."
-  utter_departments_of_the_college:
+  utter_faq/departments_of_the_college:
     - text: "يتضمن أقسام الكلية في جامعة القاهرة: قسم علوم الحاسب، قسم نظم المعلومات، قسم تكنولوجيا المعلومات، قسم الذكاء الاصطناعي، وقسم دعم القرار."
-  utter_job_opportunities_for_computer_college_graduates:
+  utter_faq/job_opportunities_for_computer_college_graduates:
     - text: "بالتأكيد، هناك فرص عمل كثيرة لخريجي كليات الحاسبات في مختلف القطاعات والشركات."
-  utter_location_of_each_college:
+  utter_faq/location_of_each_college:
     - text: "يبدو أن المواقع الجغرافية للكليات متنوعة وتشمل مناطق مختلفة في العديد من المحافظات."
-  utter_proficiency_in_mathematics_for_computer_science:
+  utter_faq/proficiency_in_mathematics_for_computer_science:
     - text: "لا، ليس من الضروري أن تكون ماهرًا في الرياضيات، ولكن من الجيد أن تكون على دراية بالمفاهيم الأساسية، ومن الممكن أن تنجح في مجال هندسة البرمجيات بدون الحاجة لمستوى عالٍ من الرياضيات. يمكنك تطوير فهمك بمرور الوقت وستجد أنه سيساعدك في فهم المواد بشكل أفضل."
-  utter_problem_solving_skill_definition:
+  utter_faq/problem_solving_skill_definition:
     - text: "عملية حل المشكلات بواسطة البرمجة تعتبر مهمة جداً في عالم تكنولوجيا المعلومات وتطوير البرمجيات."
-  utter_available_housing_options_for_college_students:
+  utter_faq/available_housing_options_for_college_students:
     - text: "السكن في الكليات يشير إلى الإقامة في مساكن الطلاب التابعة للجامعة."
-  utter_enjoyment_of_computer_science_without_extensive_computer_knowledge:
+  utter_faq/enjoyment_of_computer_science_without_extensive_computer_knowledge:
     - text: "يمكن أن تكون كلية الحاسبات تحديًا مثيرًا حتى للطلاب الذين ليس لديهم خبرة كبيرة في مجال الكمبيوتر، حيث يمكنهم اكتساب مهارات جديدة واستكشاف مجالات جديدة من التكنولوجيا والبرمجة."
-  utter_replacement_of_programmers_by_artificial_intelligence:
+  utter_faq/replacement_of_programmers_by_artificial_intelligence:
     - text: "الذكاء الاصطناعي قد يؤدي إلى أتمتة بعض المهام الروتينية في البرمجة، لكن لا يمكن استبدال المبرمجين بالكامل بسبب قدرتهم على فهم وحل المشكلات المعقدة بطرق مبتكرة."
-  utter_leading_software_development_companies_in_egypt:
+  utter_faq/leading_software_development_companies_in_egypt:
     - text: "تعتبر شركات البرمجيات مثل مايكروسوفت وفاويري وإيجاد من بين أبرز الشركات في مصر في مجال تطوير البرمجيات."
-  utter_college_ranking:
+  utter_faq/college_ranking:
     - text: "تصنيف الكليات يعتمد على عدة عوامل مثل جودة التعليم والتخصصات المتاحة وسمعة الجامعة في مجتمع العمل وغيرها."
-  utter_college_curriculum_qualification_for_job_market:
+  utter_faq/college_curriculum_qualification_for_job_market:
     - text: "تعتمد قدرة الكلية على تأهيل الطلاب لسوق العمل على محتوى مناهجها وجودة التعليم المقدم، كما يمكن أن تساعد الكليات في توفير فرص تدريبية ودورات إضافية تساعد الطلاب على تطوير مهاراتهم وزيادة فرصهم في الحصول على وظائف مناسبة."
-  utter_skills_required_for_job_market_after_graduation:
+  utter_faq/skills_required_for_job_market_after_graduation:
     - text: "تختلف المهارات المطلوبة لدخول سوق العمل على الفور باختلاف التخصصات والمجالات، ولكن من المهارات الأساسية التي يمكن أن تساعد في دخول السوق بسرعة هي مهارات الاتصال الفعّالة، والقدرة على العمل ضمن فريق، والمرونة في التعلم وتكوين المهارات الجديدة، والقدرة على حل المشكلات واتخاذ القرارات بشكل مستقل."
-  utter_learning_scope_in_computer_science_and_next_steps:
+  utter_faq/learning_scope_in_computer_science_and_next_steps:
     - text: "بعد دراسة تخصص الحاسبات، يمكن الاستفادة من دورات إضافية في التخصصات الناشئة مثل تطوير تطبيقات الهاتف المحمول، والذكاء الاصطناعي، وتطوير الويب، بالإضافة إلى اكتساب مهارات العمل الجماعي والاتصال الفعّال مع الآخرين."
-  utter_preferred_department_in_college:
+  utter_faq/preferred_department_in_college:
     - text: "لا يوجد قسم محدد يمكن اعتباره الأفضل في الكلية بل يعتمد ذلك على اهتمامات وميول كل طالب، حيث يمكن أن يختار الطالب القسم الذي يناسبه ويتوافق مع أهدافه الشخصية والمهنية."
-  utter_college_course_subjects:
+  utter_faq/college_course_subjects:
     - text: "يتضمن منهج الكلية مجموعة متنوعة من المواد التي تشمل المقررات الأساسية والاختيارية في مجال تخصص الطالب، ويتم تصميمها لتمكين الطلاب من اكتساب المعرفة والمهارات اللازمة لتحقيق أهدافهم التعليمية والمهنية."
-  utter_differences_in_computer_science_work_fields:
+  utter_faq/differences_in_computer_science_work_fields:
     - text: "تختلف مجالات العمل داخل مجال الحاسبات حسب طبيعة العمل والمتطلبات المهنية، فمنها من يتطلب التخصص في مجالات معينة مثل علوم البيانات والذكاء الاصطناعي، ومنها من يركز على تطوير البرمجيات أو تصميم وتطوير الأنظمة المدمجة، ولكل مجال متطلباته الخاصة بالمعرفة والمهارات التقنية المطلوبة."
-  utter_important_subjects_in_college:
+  utter_faq/important_subjects_in_college:
     - text: "من المهم أيضًا التركيز على مواد تعليمية تغطي مفاهيم تكنولوجيا المعلومات وقواعد البيانات وتصميم الأنظمة لتوفير فهم شامل لعلوم الحاسب وتطبيقاتها المختلفة."
-  utter_computer_science_college_specializations:
+  utter_faq/computer_science_college_specializations:
     - text: "تتيح كلية الحاسبات فرصًا متعددة للطلاب لاختيار التخصص الذي يناسب اهتماماتهم وأهدافهم المهنية المستقبلية، ويمكن للطلاب اكتساب مهارات متخصصة في مجالات متنوعة لتلبية احتياجات سوق العمل المتغيرة."
-  utter_nature_of_work_for_computer_science_graduates:
+  utter_faq/nature_of_work_for_computer_science_graduates:
     - text: "تتنوع طبيعة عمل خريجي كلية الحاسبات حسب تخصصاتهم واهتماماتهم الشخصية، حيث يمكنهم العمل كمطوري برمجيات، ومهندسي برمجيات، ومختصين في تكنولوجيا المعلومات، ومحللي بيانات، ومديري شبكات، ومتخصصين في أمن المعلومات، وغيرها من الوظائف العلمية والتقنية التي تتطلب مهارات الحاسب والبرمجة."
-  utter_duration_of_study_in_college:
+  utter_faq/duration_of_study_in_college:
     - text: "تتراوح مدة الدراسة في كلية الحاسبات عادة بين أربع سنوات. يمكن أن تختلف مدة الدراسة في بعض الجامعات والبرامج الأكاديمية وفقًا للمناهج والتخصصات المقدمة."
-  utter_programming_and_codes_in_college_departments:
+  utter_faq/programming_and_codes_in_college_departments:
     - text: "لا، ليست جميع أقسام الكلية عبارة عن برمجة وأكواد فقط. بالإضافة إلى تخصصات البرمجة، تتضمن بعض الأقسام في الكلية مواد تدرس مثل شبكات الحاسب وقواعد البيانات والذكاء الاصطناعي وغيرها، مما يوسع نطاق الاختصاصات والمجالات التي يمكن للطلاب الاختيار من بينها."
-  utter_differences_between_computer_science_departments:
+  utter_faq/differences_between_computer_science_departments:
     - text: "نعم، هناك اختلاف بين أقسام كلية الحاسبات، حيث يتميز كل قسم بمواد تخصصية مختلفة في الفرقة الثالثة والفرقة الرابعة، مما يتيح للطلاب اختيار المجال الذي يفضلونه وفقًا لاهتماماتهم وأهدافهم المهنية."
-  utter_freelancing_opportunities_in_various_specializations:
+  utter_faq/freelancing_opportunities_in_various_specializations:
     - text: "لا، ليست جميع التخصصات يمكن العمل فيها عمل حر، ولكن بعض التخصصات يمكن أن تمنح الفرصة للعمل الحر بناءً على المهارات والاهتمامات الشخصية للفرد، وتتطلب هذه الخطوة التخصص والتدريب المستمر لبناء قاعدة معرفية ومهارية قوية."
-  utter_job_opportunities_in_software_development_field:
+  utter_faq/job_opportunities_in_software_development_field:
     - text: "تتنوع وظائف مجال البرمجة بشكل كبير وتشمل مجموعة متنوعة من التخصصات مثل مطور الويب، محلل البيانات، مهندس الشبكات، مطور تطبيقات الموبايل، مختص أمن سيبراني، مهندس في مجال الذكاء الاصطناعي، وغيرها الكثير."
-  utter_working_while_studying:
+  utter_faq/working_while_studying:
     - text: "نعم، بالطبع يمكنك العمل أثناء الدراسة، ولكن يعتمد ذلك على جدولك الزمني وقدرتك على إدارة الوقت بشكل فعال، كما يمكن أن تكون هناك فرص للعمل بدوام جزئي أو العمل عن بعد والتي يمكن أن تكون مناسبة للطلاب."
 
 # full list of colleges
