@@ -60,3 +60,11 @@ stories:
       - action: utter_sorry
       - intent: goodbye
       - action: utter_goodbye
+
+  - story: best department
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: best_department
+      - action: utter_best_department
+      

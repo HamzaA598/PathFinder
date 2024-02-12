@@ -35,3 +35,8 @@ rules:
     steps:
       - intent: ask_colleges
       - action: utter_info_colleges
+
+  - rule: Answer when the student asks about the best department
+    steps:
+      - intent: best_department
+      - action: utter_best_department

@@ -1,4 +1,5 @@
 CrowdSourcingTool/venv/
 CrowdSourcingTool/__pycache__/
-PathFinder/Chatbot/models
+PathFinder/Chatbot/models/
+PathFinder/Chatbot/.rasa/cache/
 Documentation/~$commendation System.docx
