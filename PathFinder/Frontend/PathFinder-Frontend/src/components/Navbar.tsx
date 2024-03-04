@@ -25,7 +25,7 @@ interface RouteProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "",
+    href: "/chat",
     label: "Chatbot",
   },
   {
@@ -136,7 +136,6 @@ export const Navbar = () => {
           <div className="hidden md:flex gap-2">
           <Link
               to="/login"
-              target="_blank"
               className={`border ${buttonVariants({ variant: "secondary" })}`}
             >
               Sign in
