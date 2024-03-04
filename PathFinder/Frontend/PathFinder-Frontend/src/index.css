@@ -2,6 +2,11 @@ html {
   scroll-behavior: smooth;
 }
 
+input {
+  text-align: start;
+  unicode-bidi: plaintext;
+}
+
 /* HeroCards background shadow */
 .shadow {
   position: absolute;
@@ -21,6 +26,7 @@ html {
     background: hsl(var(--primary) / 20%);
     right: 460px;
   }
+
   to {
     background: hsl(var(--primary) / 80%);
     right: 160px;
@@ -37,6 +43,7 @@ html {
       background: hsl(var(--primary) / 20%);
       right: 460px;
     }
+
     to {
       background: hsl(var(--primary) / 50%);
       right: 160px;
@@ -57,6 +64,7 @@ html {
       background: hsl(var(--primary) / 20%);
       right: 280px;
     }
+
     to {
       background: hsl(var(--primary) / 30%);
       right: 100px;

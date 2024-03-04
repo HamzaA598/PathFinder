@@ -4,12 +4,15 @@ import App from "./App.tsx";
 import { ThemeProvider } from "@/components/theme-provider.tsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
+import { TooltipProvider } from "@radix-ui/react-tooltip";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider>
-        <App />
+        <TooltipProvider>
+          <App />
+        </TooltipProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
