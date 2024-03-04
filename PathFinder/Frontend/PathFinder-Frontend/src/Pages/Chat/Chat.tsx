@@ -2,6 +2,7 @@ import { Message, useChat } from "ai/react";
 import ChatMain from "./Components/ChatMain";
 import PromptForm from "./Components/PromptForm";
 import { toast } from "@/components/ui/use-toast";
+import ChatPanel from "./Components/ChatPanel";
 
 export interface ChatProps extends React.ComponentProps<"div"> {
   initialMessages?: Message[];
@@ -29,8 +30,16 @@ function Chat({ id, initialMessages, className }: ChatProps) {
 
   return (
     <div className="grid grid-rows-2">
-      <ChatMain></ChatMain>
-
+      <ChatPanel
+        id={id}
+        isLoading={isLoading}
+        stop={stop}
+        append={append}
+        reload={reload}
+        messages={messages}
+        input={input}
+        setInput={setInput}
+      ></ChatPanel>
       <PromptForm
         onSubmit={async (value) => {
           await append({

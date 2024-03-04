@@ -3,7 +3,7 @@ import { IconArrowElbow, IconPlus } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { UseChatHelpers } from "ai/react";
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
 import React from "react";
 
 export interface PromptProps
