@@ -24,7 +24,7 @@ interface SociaNetworkslProps {
 const teamList: TeamProps[] = [
   {
     imageUrl: "",
-    name: "Ziad Ibrahin",
+    name: "Ziad Ibrahim",
     position: "Position",
     socialNetworks: [
       {
