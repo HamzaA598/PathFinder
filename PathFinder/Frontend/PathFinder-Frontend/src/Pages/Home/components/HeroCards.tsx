@@ -20,10 +20,7 @@ export const HeroCards = () => {
       <Card className="absolute w-[340px] -top-[15px] drop-shadow-xl shadow-black/10 dark:shadow-white/10">
         <CardHeader className="flex flex-row items-center gap-4 pb-2">
           <Avatar>
-            <AvatarImage
-              alt=""
-              src="https://github.com/shadcn.png"
-            />
+            <AvatarImage alt="" src="https://github.com/shadcn.png" />
             <AvatarFallback>SH</AvatarFallback>
           </Avatar>
 
@@ -110,10 +107,7 @@ export const HeroCards = () => {
         <CardHeader>
           <CardTitle className="flex item-center justify-between">
             Free
-            <Badge
-              variant="secondary"
-              className="text-sm text-primary"
-            >
+            <Badge variant="secondary" className="text-sm text-primary">
               Most popular
             </Badge>
           </CardTitle>
@@ -137,10 +131,7 @@ export const HeroCards = () => {
           <div className="space-y-4">
             {["4 Team member", "4 GB Storage", "Upto 6 pages"].map(
               (benefit: string) => (
-                <span
-                  key={benefit}
-                  className="flex"
-                >
+                <span key={benefit} className="flex">
                   <Check className="text-green-500" />{" "}
                   <h3 className="ml-2">{benefit}</h3>
                 </span>

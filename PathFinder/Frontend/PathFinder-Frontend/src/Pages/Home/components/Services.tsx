@@ -1,4 +1,9 @@
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { MagnifierIcon, WalletIcon, ChartIcon } from "@/components/Icons";
 
 interface ServiceProps {
@@ -63,7 +68,6 @@ export const Services = () => {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

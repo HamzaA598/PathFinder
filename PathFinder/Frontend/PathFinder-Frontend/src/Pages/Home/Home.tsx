@@ -7,17 +7,17 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import { Team } from "./components/Team";
 
 const Home = () => {
-    return ( 
-        <>
-            <Hero />
-            <About />
-            <HowItWorks />
-            <Features />
-            <Team />
-            <FAQ />
-            <ScrollToTop />
-        </>
-     );
-}
- 
+  return (
+    <>
+      <Hero />
+      <About />
+      <HowItWorks />
+      <Features />
+      <Team />
+      <FAQ />
+      <ScrollToTop />
+    </>
+  );
+};
+
 export default Home;

@@ -7,10 +7,7 @@ export const Footer = () => {
 
       <section className="container py-20 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-12 gap-y-8">
         <div className="col-span-full xl:col-span-2">
-          <a
-            href="/"
-            className="font-bold text-xl flex"
-          >
+          <a href="/" className="font-bold text-xl flex">
             <LogoIcon />
             PathFinder
           </a>
@@ -19,10 +16,7 @@ export const Footer = () => {
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Follow US</h3>
           <div>
-            <a
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
+            <a href="#" className="opacity-60 hover:opacity-100">
               Github
             </a>
           </div>
@@ -31,29 +25,19 @@ export const Footer = () => {
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">About</h3>
           <div>
-            <a
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
+            <a href="#" className="opacity-60 hover:opacity-100">
               Landing Page
             </a>
           </div>
 
           <div>
-            <a
-              href="#features"
-              className="opacity-60 hover:opacity-100"
-            >
+            <a href="#features" className="opacity-60 hover:opacity-100">
               Features
             </a>
           </div>
 
-
           <div>
-            <a
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
+            <a href="#" className="opacity-60 hover:opacity-100">
               FAQ
             </a>
           </div>
@@ -62,33 +46,23 @@ export const Footer = () => {
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Use our features</h3>
           <div>
-            <a
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
+            <a href="#" className="opacity-60 hover:opacity-100">
               Chatbot
             </a>
           </div>
 
           <div>
-            <a
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
+            <a href="#" className="opacity-60 hover:opacity-100">
               College Info
             </a>
           </div>
 
           <div>
-            <a
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
+            <a href="#" className="opacity-60 hover:opacity-100">
               Other features
             </a>
           </div>
         </div>
-
       </section>
 
       <section className="container pb-14 text-center">

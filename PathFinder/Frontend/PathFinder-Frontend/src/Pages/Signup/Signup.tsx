@@ -1,8 +1,8 @@
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
-import { Link } from "react-router-dom"
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Link } from "react-router-dom";
 
 export default function Signup() {
   return (
@@ -11,7 +11,9 @@ export default function Signup() {
         <div className="space-y-4">
           <div className="space-y-2 text-center">
             <h1 className="text-4xl font-bold">Sign up</h1>
-            <p className="text-gray-500 dark:text-gray-400">Sign up for an account</p>
+            <p className="text-gray-500 dark:text-gray-400">
+              Sign up for an account
+            </p>
           </div>
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
@@ -26,7 +28,12 @@ export default function Signup() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" placeholder="johndoe@example.com" required type="email" />
+              <Input
+                id="email"
+                placeholder="johndoe@example.com"
+                required
+                type="email"
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
@@ -46,6 +53,5 @@ export default function Signup() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-

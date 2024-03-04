@@ -27,9 +27,9 @@ const teamList: TeamProps[] = [
     name: "Ziad Ibrahin",
     position: "Position",
     socialNetworks: [
-      { 
-        name: "Linkedin", 
-        url: "http://linkedin.com" 
+      {
+        name: "Linkedin",
+        url: "http://linkedin.com",
       },
       {
         name: "Facebook",
@@ -111,10 +111,7 @@ export const Team = () => {
   };
 
   return (
-    <section
-      id="team"
-      className="container py-24 sm:py-32"
-    >
+    <section id="team" className="container py-24 sm:py-32">
       <h2 className="text-3xl md:text-4xl font-bold">
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
           Our Dedicated{" "}

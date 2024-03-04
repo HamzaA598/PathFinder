@@ -7,7 +7,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-
 interface FeatureProps {
   title: string;
   description: string;
@@ -60,12 +59,9 @@ const featureList: string[] = [
 
 export const Features = () => {
   return (
-    <section
-      id="features"
-      className="container py-24 sm:py-32 space-y-8"
-    >
+    <section id="features" className="container py-24 sm:py-32 space-y-8">
       <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
-      Our{" "}
+        Our{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
           Features
         </span>
@@ -74,10 +70,7 @@ export const Features = () => {
       <div className="flex flex-wrap md:justify-center gap-4">
         {featureList.map((feature: string) => (
           <div key={feature}>
-            <Badge
-              variant="secondary"
-              className="text-sm"
-            >
+            <Badge variant="secondary" className="text-sm">
               {feature}
             </Badge>
           </div>
