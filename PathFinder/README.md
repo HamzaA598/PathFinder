@@ -1,4 +1,13 @@
-# Chatbot and Frontend
+# Chatbot and Demo Frontend
+
+**NOTE**: this readme contains instructions on running the chatbot and the demo frontend.
+to run the webapp front end do the following
+
+```bash
+cd Frontend/PathFinder-Frontend
+npm install
+npm run dev
+```
 
 This readme provides step-by-step instructions for running the chatbot and frontend components. The chatbot is built using Rasa, and the frontend is a simple HTML file. Follow these steps to run both components.
 
@@ -23,7 +32,7 @@ rasa run --enable-api --cors "*"
 
 This command will start the Rasa chatbot server and enable cross-origin resource sharing (CORS) to allow communication with the frontend.
 
-## Step 2: Run the Frontend
+## Step 2: Run the Demo Frontend
 
 Navigate to the frontend directory:
 
