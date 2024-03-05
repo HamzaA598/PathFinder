@@ -8,7 +8,7 @@ import React from "react";
 
 export interface PromptProps
   extends Pick<UseChatHelpers, "input" | "setInput"> {
-  onSubmit: (value: string) => void;
+  onSubmit: (value: string, user: string) => void;
   isLoading: boolean;
 }
 
@@ -29,7 +29,7 @@ function PromptForm({ onSubmit, input, setInput, isLoading }: PromptProps) {
           return;
         }
         setInput("");
-        await onSubmit(input);
+        onSubmit(input, "user");
       }}
       ref={formRef}
     >
