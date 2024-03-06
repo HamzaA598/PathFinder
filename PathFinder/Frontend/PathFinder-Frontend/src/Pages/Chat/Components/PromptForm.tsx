@@ -28,8 +28,8 @@ function PromptForm({ onSubmit, input, setInput, isLoading }: PromptProps) {
         if (!input?.trim()) {
           return;
         }
-        setInput("");
         onSubmit(input, "user");
+        setInput("");
       }}
       ref={formRef}
     >
