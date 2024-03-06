@@ -12,7 +12,7 @@ export function ChatConvo({ messages }: ChatConvo) {
   // }
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto px-4 py-12 bg-muted/50 border rounded-lg  dark:border-slate-700">
+    <div className="relative h-full w-full max-w-4xl mx-auto px-4 py-12 bg-muted/50 border rounded-lg dark:border-slate-700 ">
       {messages.map((message, index) => (
         <div key={index} className="">
           <ChatMessage message={message} />

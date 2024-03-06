@@ -77,10 +77,10 @@ function Chat() {
 
   return (
     <div className="grid grid-rows-2">
-      <>
+      <div>
         <ChatConvo messages={messages} />
         {/* <ChatScrollAnchor trackVisibility={isLoading} /> */}
-      </>
+      </div>
       <PromptForm
         onSubmit={append}
         input={input}

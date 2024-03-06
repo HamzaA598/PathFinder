@@ -5,6 +5,7 @@ import { UseChatHelpers } from "ai/react";
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
 // import { cn } from "@/lib/utils";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export interface PromptProps
   extends Pick<UseChatHelpers, "input" | "setInput"> {
@@ -15,6 +16,8 @@ export interface PromptProps
 function PromptForm({ onSubmit, input, setInput, isLoading }: PromptProps) {
   const { formRef, onKeyDown } = useEnterSubmit();
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
+
   React.useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -33,7 +36,7 @@ function PromptForm({ onSubmit, input, setInput, isLoading }: PromptProps) {
       }}
       ref={formRef}
     >
-      <div className="flex items-center">
+      <div className="fixed inset-x-0 bottom-0 flex items-center">
         <div className="flex gap-2 w-full max-w-4xl my-2 mx-auto bg-muted/50 border rounded-lg py-4 px-4 dark:border-slate-700">
           <Input
             className=""
@@ -58,7 +61,7 @@ function PromptForm({ onSubmit, input, setInput, isLoading }: PromptProps) {
             </Button>
             <Button
               onClick={() => {
-                location.reload();
+                navigate(0);
               }}
               variant="secondary"
             >
