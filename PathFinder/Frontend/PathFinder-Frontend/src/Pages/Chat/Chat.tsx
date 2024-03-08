@@ -3,7 +3,6 @@ import PromptForm from "./Components/PromptForm";
 import { toast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { ChatConvo } from "./Components/ChatConvo";
-import { ChatScrollAnchor } from "./Components/chat-scroll-anchor";
 export interface Message {
   id: number;
   message: string;
@@ -55,7 +54,7 @@ function Chat() {
       append(response.data.message, "chatbot");
     } catch (error) {
       // messages.pop();
-      append("bye", "chatbot");
+      // append("bye", "chatbot");
       toast({
         title: "Uh oh! Something went wrong.",
         description: "There was a problem with your request.",
@@ -76,17 +75,18 @@ function Chat() {
   }, [messages]);
 
   return (
-    <div className="grid grid-rows-2">
-      <div>
+    <div className="flex">
+      <div className="flex-1">
         <ChatConvo messages={messages} />
-        {/* <ChatScrollAnchor trackVisibility={isLoading} /> */}
       </div>
-      <PromptForm
-        onSubmit={append}
-        input={input}
-        setInput={setInput}
-        isLoading={isLoading}
-      ></PromptForm>
+      <div>
+        <PromptForm
+          onSubmit={append}
+          input={input}
+          setInput={setInput}
+          isLoading={isLoading}
+        ></PromptForm>
+      </div>
     </div>
   );
 }
