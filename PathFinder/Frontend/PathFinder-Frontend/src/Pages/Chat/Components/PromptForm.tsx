@@ -55,7 +55,7 @@ function PromptForm({ onSubmit, input, setInput, isLoading }: PromptProps) {
             }}
             placeholder="Send a message."
             spellCheck={true}
-            disabled={isLoading}
+            // disabled={isLoading}
           ></Input>
           <div className="grid grid-cols-2">
             <Button

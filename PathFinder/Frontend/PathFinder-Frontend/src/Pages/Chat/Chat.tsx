@@ -76,7 +76,7 @@ function Chat() {
 
   return (
     <div className="flex">
-      <div className="flex-1">
+      <div className="flex-1 h-[calc(100vh-145px)]">
         <ChatConvo messages={messages} />
       </div>
       <div>

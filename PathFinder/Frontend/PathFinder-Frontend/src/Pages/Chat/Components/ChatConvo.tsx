@@ -22,8 +22,8 @@ export function ChatConvo({ messages }: ChatConvo) {
   });
 
   return (
-    <div className="left-0 flex justify-center items-center h-[calc(100vh-145px)] h-full w-full  overflow-y-auto no-scrollbar">
-      <div className="max-h-screen overflow-auto h-full w-full max-w-4xl px-4 py-12 bg-muted/50 border rounded-lg dark:border-slate-700 ">
+    <div className="left-0 flex justify-center items-center  h-full w-full overflow-y-auto no-scrollbar">
+      <div className="max-h-screen overflow-auto h-full w-full max-w-4xl px-4 py-12 bg-muted/50 border rounded-lg dark:border-slate-700 no-scrollbar">
         {messages.map((message, index) => (
           <div key={index} className="">
             <ChatMessage message={message} />
