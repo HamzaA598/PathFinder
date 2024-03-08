@@ -10,15 +10,15 @@ def endpoint(request):
     return Response(person)
 
 @api_view(['POST'])
-def chat_with_bot(request):
+def chatbot(request):
     if request.method == 'POST':
-        text = request.data.get('text')
+        message = request.data.get('message')
 
-        rasa_url = 'http://localhost:5005/model/parse'
+        rasa_url = 'http://localhost:5005/webhooks/rest/webhook'
 
         payload = {
             "sender": "user",
-            "text": text
+            "message": message
         }
 
         try:
