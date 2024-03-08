@@ -29,8 +29,8 @@ const routeList: RouteProps[] = [
     label: "Chatbot",
   },
   {
-    href: "",
-    label: "College Info",
+    href: "/University",
+    label: "Universities",
   },
   {
     href: "",

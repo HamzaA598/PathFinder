@@ -1,19 +1,29 @@
-import ChatMain from "./Components/ChatMain";
 import { useEffect, useState } from "react";
 import PromptForm from "./Components/PromptForm";
 import { toast } from "@/components/ui/use-toast";
-import ChatPanel from "./Components/ChatPanel";
+import axios from "axios";
 import { ChatConvo } from "./Components/ChatConvo";
-interface Message {
+import { ChatScrollAnchor } from "./Components/chat-scroll-anchor";
+export interface Message {
   id: number;
   message: string;
-  user: string;
+  role: string;
 }
 
 function Chat() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
-  const isLoading = false;
+  const [isLoading, setIsLoading] = useState(false);
+
+  const append = (value: string, user: string) => {
+    const newMessage: Message = {
+      id: messages.length + 1,
+      message: value,
+      role: user,
+    };
+    setMessages([...messages, newMessage]);
+  };
+
   // const { messages, append, reload, stop, isLoading } = useChat({
   //   initialMessages,
   //   id,
@@ -31,36 +41,46 @@ function Chat() {
   //     }
   //   },
   // });
-
-  const append = (value: string, user: string) => {
-    const newMessage: Message = {
-      id: messages.length + 1,
-      message: value,
-      user: user,
-    };
-    setMessages([...messages, newMessage]);
+  const fetchAmswer = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.post(
+        "http://localhost:5005/webhooks/rest/webhook",
+        {
+          sender: "tester",
+          message: messages[messages.length - 1],
+        }
+      );
+      // handle incoming bot message
+      append(response.data.message, "chatbot");
+    } catch (error) {
+      // messages.pop();
+      append("bye", "chatbot");
+      toast({
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+      });
+    }
+    setIsLoading(false);
   };
 
   useEffect(() => {
     if (
       messages.length === 0 ||
-      messages[messages.length - 1].user === "chatbot"
+      messages[messages.length - 1].role === "chatbot"
     ) {
       return;
     }
-    if (messages[messages.length - 1].user === "user") {
-      console.log(messages);
-      // api request here!!!
-      append("answer", "chatbot");
-    }
+    console.log(messages);
+    fetchAmswer();
   }, [messages]);
 
   return (
     <div className="grid grid-rows-2">
-      <>
-        {/* <ChatConvo messages={messages} />
-        <ChatScrollAnchor trackVisibility={isLoading} /> */}
-      </>
+      <div>
+        <ChatConvo messages={messages} />
+        {/* <ChatScrollAnchor trackVisibility={isLoading} /> */}
+      </div>
       <PromptForm
         onSubmit={append}
         input={input}
