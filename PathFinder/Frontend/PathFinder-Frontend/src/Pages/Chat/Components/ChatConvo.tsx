@@ -12,6 +12,7 @@ export function ChatConvo({ messages }: ChatConvo) {
   //   return null;
   // }
   const ref = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (messages.length) {
       ref.current?.scrollIntoView({

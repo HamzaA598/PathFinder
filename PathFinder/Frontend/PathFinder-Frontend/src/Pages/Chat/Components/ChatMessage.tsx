@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { type Message } from "../Chat";
 import { IconOpenAI, IconUser } from "@/components/ui/icons";
 import { MemoizedReactMarkdown } from "./markdown";
-import { useTypewriter } from "@/lib/hooks/use-typewrite";
+import { useEffect } from "react";
 
 export interface ChatMessageProps {
   message: Message;
@@ -10,7 +10,10 @@ export interface ChatMessageProps {
 }
 
 function ChatMessage({ message, typewrite, ...props }: ChatMessageProps) {
-  const displayText = useTypewriter(message.message, 20);
+  // const displayText = useTypewriter(message.message, 20);
+  useEffect(() => {
+    console.log("typing");
+  });
   return (
     <div className={cn("grid grid-cols-2 group relative mb-4 flex")} {...props}>
       <div className="flex size-8 shrink-0 select-none items-center justify-center rounded-md border bg-background white">
@@ -26,7 +29,7 @@ function ChatMessage({ message, typewrite, ...props }: ChatMessageProps) {
             },
           }}
         >
-          {!typewrite ? message.message : displayText}
+          {message.message}
         </MemoizedReactMarkdown>
         {/* <ChatMessageActions message={message} /> */}
       </div>
