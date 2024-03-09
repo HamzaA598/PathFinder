@@ -1,17 +1,12 @@
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "@/components/ui/use-toast";
+import LoginForn from "./components/LoginForm";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const login = async () => {
+  const login = async (email: string, password: string) => {
     try {
       const response = await axios.post(
         // login endpoint
@@ -40,60 +35,7 @@ export default function Login() {
             Log in to your account
           </p>
         </div>
-
-        <form
-          onSubmit={async (e) => {
-            e.preventDefault();
-            if (!email?.trim() || !password?.trim()) {
-              return;
-            }
-            await login();
-          }}
-        >
-          <div className="space-y-4 mt-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                placeholder="m@example.com"
-                required
-                type="email"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                required
-                type="password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-            </div>
-
-            <Button className="w-full" type="submit">
-              Login
-            </Button>
-
-            <div className="text-center text-sm mt-4">
-              <Link className="text-sm underline " to="#">
-                Forgot your password?
-              </Link>
-            </div>
-          </div>
-        </form>
-
-        <div className="text-center text-sm mt-4">
-          Don't have an account?{" "}
-          <Link className="underline" to="/signup">
-            Sign up
-          </Link>
-        </div>
+        <LoginForn login={login}></LoginForn>
       </div>
     </div>
   );
