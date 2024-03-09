@@ -47,11 +47,11 @@ function Chat() {
         "http://localhost:5005/webhooks/rest/webhook",
         {
           sender: "tester",
-          message: messages[messages.length - 1],
+          message: messages[messages.length - 1].message,
         }
       );
       // handle incoming bot message
-      append(response.data.message, "chatbot");
+      append(response.data[0].text, "chatbot");
     } catch (error) {
       // messages.pop();
       // append("bye", "chatbot");
