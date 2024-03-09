@@ -22,24 +22,6 @@ function Chat() {
     };
     setMessages([...messages, newMessage]);
   };
-
-  // const { messages, append, reload, stop, isLoading } = useChat({
-  //   initialMessages,
-  //   id,
-  //   api: "http://0.0.0.0:5005/webhooks/rest/webhook",
-  //   body: {
-  //     // add body to send to api endpoint
-  //     sender: "tester",
-  //   },
-  //   onResponse(response) {
-  //     if (response.status >= 400) {
-  //       toast({
-  //         title: "Uh oh! Something went wrong.",
-  //         description: "There was a problem with your request.",
-  //       });
-  //     }
-  //   },
-  // });
   const fetchAmswer = async () => {
     setIsLoading(true);
     try {
@@ -53,8 +35,6 @@ function Chat() {
       // handle incoming bot message
       append(response.data[0].text, "chatbot");
     } catch (error) {
-      // messages.pop();
-      // append("bye", "chatbot");
       toast({
         title: "Uh oh! Something went wrong.",
         description: "There was a problem with your request.",

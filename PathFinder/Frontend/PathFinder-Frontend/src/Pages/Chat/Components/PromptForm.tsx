@@ -42,7 +42,7 @@ function PromptForm({ onSubmit, input, setInput, isLoading }: PromptProps) {
       ref={formRef}
     >
       <div className="fixed inset-x-0 bottom-0 flex items-center">
-        <div className="flex gap-2 w-full max-w-4xl my-2 mx-auto bg-muted/50 border rounded-lg py-4 px-4 dark:border-slate-700">
+        <div className="flex gap-2 w-full max-w-4xl my-2 mx-auto bg-muted/100 dark:bg-muted/50 border rounded-lg py-4 px-4 dark:border-slate-700">
           <Input
             className=""
             ref={inputRef}
