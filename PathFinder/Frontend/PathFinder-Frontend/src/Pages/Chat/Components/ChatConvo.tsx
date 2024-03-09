@@ -26,11 +26,12 @@ export function ChatConvo({ messages }: ChatConvo) {
       <div className="max-h-screen overflow-auto h-full w-full max-w-4xl px-4 py-12 bg-muted/100 dark:bg-muted/50 border rounded-lg dark:border-slate-700 no-scrollbar">
         {messages.map((message, index) => (
           <div key={index} className="">
-            {index === messages.length - 1 && message.role === "chatbot" ? (
-              <ChatMessage message={message} typewrite={true} />
-            ) : (
-              <ChatMessage message={message} typewrite={false} />
-            )}
+            <ChatMessage
+              message={message}
+              typewrite={
+                index === messages.length - 1 && message.role === "chatbot"
+              }
+            />
             {index < messages.length - 1 && (
               <Separator className="my-4 md:my-8 border dark:border-slate-700" />
             )}

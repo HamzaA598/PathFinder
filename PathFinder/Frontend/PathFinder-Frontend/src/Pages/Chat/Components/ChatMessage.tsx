@@ -22,7 +22,7 @@ function ChatMessage({ message, typewrite, ...props }: ChatMessageProps) {
           className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0"
           components={{
             p({ children }) {
-              return <p className="mb-2 last:mb-0">{children}</p>;
+              return <p className="text-base mb-2 last:mb-0">{children}</p>;
             },
           }}
         >
