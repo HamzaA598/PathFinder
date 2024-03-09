@@ -25,7 +25,7 @@ function Chat() {
   const fetchAmswer = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post("http://localhost:800/chat/", {
+      const response = await axios.post("http://localhost:800/chatbot/chat/", {
         sender: "tester",
         message: messages[messages.length - 1].message,
       });
