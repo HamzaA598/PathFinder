@@ -1,31 +1,38 @@
 import requests
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from django.http import JsonResponse
-
-# endpoints
-@api_view(['GET'])
-def endpoint(request):
-    person = {'name': 'test name', 'age': 11}
-    return Response(person)
 
 @api_view(['POST'])
-def chatbot(request):
-    if request.method == 'POST':
-        message = request.data.get('message')
+def chat(request):
+    # handling missing fields
+    if 'sender' not in request.data:
+        return Response({"error": "missing sender"})
+    if 'message' not in request.data:
+        return Response({"error": "missing message"})
+    
+    sender = request.data.get('sender')
+    message = request.data.get('message')
 
-        rasa_url = 'http://localhost:5005/webhooks/rest/webhook'
+    # handling empty prompts
+    if not message:
+        return Response({"error": "prompt should not be empty!"})
 
-        payload = {
-            "sender": "user",
-            "message": message
-        }
+    rasa_url = 'http://localhost:5005/webhooks/rest/webhook'
 
-        try:
-            response = requests.post(rasa_url, json=payload)
+    payload = {
+        "sender": sender,
+        "message": message
+    }
+
+    try:
+        response = requests.post(rasa_url, json=payload)
+        rasa_response = response.json()
+
+        # todo: do i need to handle [0]?
+        # handling bad responses
+        if 'recipient_id' not in rasa_response[0] or 'text' not in rasa_response[0]:
+            return Response({"error": "Bad response"})
             
-            rasa_response = response.json()
-            
-            return Response(rasa_response)
-        except Exception as e:
-            return Response({"error": str(e)}, status=500)
+        return Response(rasa_response)
+    except Exception as e:
+        return Response({"error": str(e)}, status=500)
