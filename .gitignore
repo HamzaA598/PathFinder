@@ -5,6 +5,9 @@ PathFinder/Chatbot/.rasa/cache/
 Documentation/~$commendation System.docx
 PathFinder/Chatbot/.rasa/cache/cache.db
 PathFinder/Chatbot/.rasa/cache/cache.db
-PathFinder/Backend/Backend/__pycache__/
-Backend/__pycache__/
-chatbot/__pycache__/
+__pycache__/
+.env
+.venv
+env/
+venv/
+ENV/
