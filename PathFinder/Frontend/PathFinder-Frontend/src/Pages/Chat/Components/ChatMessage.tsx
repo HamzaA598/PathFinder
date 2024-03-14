@@ -2,12 +2,15 @@ import { cn } from "@/lib/utils";
 import { type Message } from "../Chat";
 import { IconOpenAI, IconUser } from "@/components/ui/icons";
 import { MemoizedReactMarkdown } from "./markdown";
+import { useEffect } from "react";
 
 export interface ChatMessageProps {
   message: Message;
+  typewrite: boolean;
 }
 
-function ChatMessage({ message, ...props }: ChatMessageProps) {
+function ChatMessage({ message, typewrite, ...props }: ChatMessageProps) {
+  // const displayText = useTypewriter(message.message, 20);
   return (
     <div className={cn("grid grid-cols-2 group relative mb-4 flex")} {...props}>
       <div className="flex size-8 shrink-0 select-none items-center justify-center rounded-md border bg-background white">
@@ -19,7 +22,7 @@ function ChatMessage({ message, ...props }: ChatMessageProps) {
           className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0"
           components={{
             p({ children }) {
-              return <p className="mb-2 last:mb-0">{children}</p>;
+              return <p className="text-base mb-2 last:mb-0">{children}</p>;
             },
           }}
         >

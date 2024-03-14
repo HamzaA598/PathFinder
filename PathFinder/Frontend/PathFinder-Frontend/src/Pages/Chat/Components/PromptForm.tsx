@@ -1,24 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { IconArrowElbow, IconPlus } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
-import { UseChatHelpers } from "ai/react";
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
-// import { cn } from "@/lib/utils";
-import React from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-export interface PromptProps
-  extends Pick<UseChatHelpers, "input" | "setInput"> {
+interface PromptProps {
+  setInput: (value: string) => void;
   onSubmit: (value: string, user: string) => void;
   isLoading: boolean;
+  input: string;
 }
 
 function PromptForm({ onSubmit, input, setInput, isLoading }: PromptProps) {
   const { formRef, onKeyDown } = useEnterSubmit();
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
-  React.useEffect(() => {
+  useEffect(() => {
+    if (!isLoading && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isLoading]);
+
+  useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
@@ -37,7 +42,7 @@ function PromptForm({ onSubmit, input, setInput, isLoading }: PromptProps) {
       ref={formRef}
     >
       <div className="fixed inset-x-0 bottom-0 flex items-center">
-        <div className="flex gap-2 w-full max-w-4xl my-2 mx-auto bg-muted/50 border rounded-lg py-4 px-4 dark:border-slate-700">
+        <div className="flex gap-2 w-full max-w-4xl my-2 mx-auto bg-muted/100 dark:bg-muted/50 border rounded-lg py-4 px-4 dark:border-slate-700">
           <Input
             className=""
             ref={inputRef}
@@ -50,6 +55,7 @@ function PromptForm({ onSubmit, input, setInput, isLoading }: PromptProps) {
             }}
             placeholder="Send a message."
             spellCheck={true}
+            disabled={isLoading}
           ></Input>
           <div className="grid grid-cols-2">
             <Button
