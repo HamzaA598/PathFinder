@@ -11,9 +11,6 @@ export interface ChatMessageProps {
 
 function ChatMessage({ message, typewrite, ...props }: ChatMessageProps) {
   // const displayText = useTypewriter(message.message, 20);
-  useEffect(() => {
-    console.log("typing");
-  });
   return (
     <div className={cn("grid grid-cols-2 group relative mb-4 flex")} {...props}>
       <div className="flex size-8 shrink-0 select-none items-center justify-center rounded-md border bg-background white">
