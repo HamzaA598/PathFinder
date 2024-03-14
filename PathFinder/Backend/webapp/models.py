@@ -1,8 +1,5 @@
 from django.db import models
 
-# Create your models here.
-from django.db import models
-
 class Admin(models.Model):
     id = models.AutoField(primary_key=True)
     email = models.EmailField()
@@ -30,14 +27,17 @@ class Student(models.Model):
     feedback = models.TextField()
     
 class University(models.Model):
-    id = models.AutoField(primary_key=True)
+    _id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=100)
     location = models.TextField()
     description = models.TextField()
     establishedAt = models.DateField()
-    admin = models.OneToOneField(UniversityAdmin, on_delete=models.CASCADE)
+    admin = models.OneToOneField(UniversityAdmin, on_delete=models.CASCADE, blank=True,)
+
+    def __str__(self):
+        return self.name
     
 class College(models.Model):
     id = models.AutoField(primary_key=True)
@@ -52,6 +52,9 @@ class College(models.Model):
     fees = models.IntegerField()    
     admin = models.OneToOneField(CollegeAdmin, on_delete=models.CASCADE)
     universities = models.ForeignKey(University, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
     
 class Department(models.Model):
     id = models.AutoField(primary_key=True)
