@@ -26,4 +26,31 @@ def UniversityInfo(request, id):
 
     return Response(status=status.HTTP_404_NOT_FOUND)
 
+# TODO: get all colleges
+# TODO: get all colleges of a university by its id
+# TODO get a college by id
 
+@api_view(['GET'])
+def AllColleges(request):
+    colleges = College.objects.values('_id', 'name')
+    colleges = [{'_id': str(college['_id']), 'name': college['name']} for college in colleges]
+    return Response(list(colleges), status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def CollegeInfo(request, id):
+    college = College.objects.all()
+    for col in college:
+        if col._id == ObjectId(id):
+            col._id = id
+            return JsonResponse(model_to_dict(col), status=status.HTTP_200_OK)
+
+    return Response(status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['GET'])
+def CollegeByUniversity(request, id):
+    universities = University.objects.all()
+    for uni in universities:
+        if uni._id == ObjectId(id):
+            colleges = College.objects.filter(universities=uni)
+            colleges = [{'_id': str(college._id), 'name': college.name} for college in colleges]
+            return Response(list(colleges), status=status.HTTP_200_OK)
