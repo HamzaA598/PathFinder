@@ -3,7 +3,6 @@ import PromptForm from "./Components/PromptForm";
 import { toast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { ChatConvo } from "./Components/ChatConvo";
-import { ChatScrollAnchor } from "./Components/chat-scroll-anchor";
 export interface Message {
   id: number;
   message: string;
@@ -23,39 +22,16 @@ function Chat() {
     };
     setMessages([...messages, newMessage]);
   };
-
-  // const { messages, append, reload, stop, isLoading } = useChat({
-  //   initialMessages,
-  //   id,
-  //   api: "http://0.0.0.0:5005/webhooks/rest/webhook",
-  //   body: {
-  //     // add body to send to api endpoint
-  //     sender: "tester",
-  //   },
-  //   onResponse(response) {
-  //     if (response.status >= 400) {
-  //       toast({
-  //         title: "Uh oh! Something went wrong.",
-  //         description: "There was a problem with your request.",
-  //       });
-  //     }
-  //   },
-  // });
   const fetchAmswer = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:5005/webhooks/rest/webhook",
-        {
-          sender: "tester",
-          message: messages[messages.length - 1],
-        }
-      );
+      const response = await axios.post("http://localhost:8000/chatbot/", {
+        sender: "tester",
+        message: messages[messages.length - 1].message,
+      });
       // handle incoming bot message
-      append(response.data.message, "chatbot");
+      append(response.data[0].text, "chatbot");
     } catch (error) {
-      // messages.pop();
-      append("bye", "chatbot");
       toast({
         title: "Uh oh! Something went wrong.",
         description: "There was a problem with your request.",
@@ -76,17 +52,18 @@ function Chat() {
   }, [messages]);
 
   return (
-    <div className="grid grid-rows-2">
-      <div>
+    <div className="flex">
+      <div className="flex-1 h-[calc(100vh-145px)]">
         <ChatConvo messages={messages} />
-        {/* <ChatScrollAnchor trackVisibility={isLoading} /> */}
       </div>
-      <PromptForm
-        onSubmit={append}
-        input={input}
-        setInput={setInput}
-        isLoading={isLoading}
-      ></PromptForm>
+      <div>
+        <PromptForm
+          onSubmit={append}
+          input={input}
+          setInput={setInput}
+          isLoading={isLoading}
+        ></PromptForm>
+      </div>
     </div>
   );
 }
