@@ -18,7 +18,7 @@ const UniversityInfo = () => {
     axios.get(url).then((response) => {
       setUniversityInfo(response.data);
     });
-  }, []);
+  }, [universityInfo, url]);
 
   console.log(universityInfo);
 
