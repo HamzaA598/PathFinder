@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
+import React from "react";
+import axios from "axios";
 
 const University = () => {
   const [universities, setUniversities] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:8000/names")
-      .then((response) => response.json())
-      .then((data) => setUniversities(data))
-      .catch((error) => console.error("Error fetching universities:", error));
-  }, []);
+  //npx json-server --watch uni_data/university_names.json --port 8000
+  React.useEffect(() => {
+    axios.get("http://localhost:8000/names").then((response) => {
+      setUniversities(response.data);
+    });
+  }, [universities]);
 
   return (
     <div className="container py-8 sm:py-8 space-y-8  university">
