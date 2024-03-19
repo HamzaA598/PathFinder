@@ -1,7 +1,9 @@
 import { useLocation } from "react-router-dom";
 import SideNav from "./components/SideNav";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import React from "react";
+import axios from "axios";
 
 const UniversityInfo = () => {
   const { state } = useLocation();
@@ -11,11 +13,11 @@ const UniversityInfo = () => {
 
   const url = "http://localhost:9000/" + university;
 
-  useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => setUniversityInfo(data))
-      .catch((error) => console.error("Error fetching universities:", error));
+  //npx json-server --watch uni_data/public_universities.json --port 9000
+  React.useEffect(() => {
+    axios.get(url).then((response) => {
+      setUniversityInfo(response.data);
+    });
   }, []);
 
   console.log(universityInfo);
