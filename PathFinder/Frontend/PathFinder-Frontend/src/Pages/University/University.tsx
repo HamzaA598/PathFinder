@@ -13,7 +13,7 @@ const University = () => {
     axios.get("http://localhost:8000/names").then((response) => {
       setUniversities(response.data);
     });
-  }, [universities]);
+  }, []);
 
   return (
     <div className="container py-8 sm:py-8 space-y-8  university">
