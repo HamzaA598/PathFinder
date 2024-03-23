@@ -11,6 +11,7 @@ interface University {
 
 const University = () => {
   const [universities, setUniversities] = useState<University[]>([]);
+  const [search, setSearch] = useState<string>('');
 
   // Fetch universities data
   useEffect(() => {
@@ -19,19 +20,34 @@ const University = () => {
     });
   }, []);
 
+  // Update search query state
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(event.target.value);
+  };
+
   return (
     <div className="container py-8 sm:py-8 space-y-8  university">
-      <Input placeholder="Search" />
-      {universities.map((university) => (
-        <Link to="/UniversityInfo" state={university} key={university.id}>
-          <Button
-            className="m-5 w-60 p-7 pe-8 hover:bg-emerald-600 object-center content-center"
-            variant="secondary"
-          >
-            {university.name}
-          </Button>
-        </Link>
-      ))}
+      <Input 
+        onChange={handleSearchChange} 
+        value={search} 
+        placeholder="Search" 
+      />
+      {universities
+        .filter((university) => {
+          return search.toLowerCase() === '' 
+            ? university 
+            : university.name.toLowerCase().includes(search.toLowerCase());
+        })
+        .map((university) => (
+          <Link to="/UniversityInfo" state={university} key={university.id}>
+            <Button
+              className="m-5 w-60 p-7 pe-8 hover:bg-emerald-600 object-center content-center"
+              variant="secondary"
+            >
+              {university.name}
+            </Button>
+          </Link>
+        ))}
     </div>
   );
 };
