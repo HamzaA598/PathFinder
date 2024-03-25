@@ -11,13 +11,15 @@ interface University {
 
 const University = () => {
   const [universities, setUniversities] = useState<University[]>([]);
-  const [search, setSearch] = useState<string>('');
+  const [search, setSearch] = useState<string>("");
 
   // Fetch universities data
   useEffect(() => {
-    axios.get<University[]>("http://localhost:8000/universities").then((response) => {
-      setUniversities(response.data);
-    });
+    axios
+      .get<University[]>("http://localhost:8000/universities")
+      .then((response) => {
+        setUniversities(response.data);
+      });
   }, []);
 
   // Update search query state
@@ -27,15 +29,15 @@ const University = () => {
 
   return (
     <div className="container py-8 sm:py-8 space-y-8  university">
-      <Input 
-        onChange={handleSearchChange} 
-        value={search} 
-        placeholder="Search" 
+      <Input
+        onChange={handleSearchChange}
+        value={search}
+        placeholder="Search"
       />
       {universities
         .filter((university) => {
-          return search.toLowerCase() === '' 
-            ? university 
+          return search.toLowerCase() === ""
+            ? university
             : university.name.toLowerCase().includes(search.toLowerCase());
         })
         .map((university) => (
