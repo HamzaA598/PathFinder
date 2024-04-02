@@ -1,46 +1,45 @@
-import { useLocation } from "react-router-dom";
-import SideNav from "./components/SideNav";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
-import React from "react";
-import axios from "axios";
+import { useLocation } from "react-router-dom";
+import "./components/sidenav.css";
+import Overview from "./components/Overview";
+import Colleges from "./components/Colleges";
 
 const UniversityInfo = () => {
   const { state } = useLocation();
   const university = state;
-
-  const [universityInfo, setUniversityInfo] = useState([]);
-
-  const url = "http://localhost:9000/" + university;
-
-  //npx json-server --watch uni_data/public_universities.json --port 9000
-  React.useEffect(() => {
-    axios.get(url).then((response) => {
-      setUniversityInfo(response.data);
-    });
-  }, [universityInfo, url]);
-
-  console.log(universityInfo);
+  const [activeSection, setActiveSection] = useState("overview");
 
   return (
     <div className="grid grid-cols-4">
       <div className="ml-20">
-        <SideNav></SideNav>
+        <div className="fixed bg-emerald-500 shadow-lg shadow-emerald-500/50 background border-2 border-emerald-500 rounded-lg p-8 m-8 mt-20 w-40">
+          <ul>
+            <li>
+              <button
+                className="hover:text-emerald-400"
+                onClick={() => setActiveSection("overview")}
+              >
+                Overview
+              </button>
+            </li>
+            <li>
+              <button
+                className="hover:text-emerald-400"
+                onClick={() => setActiveSection("colleges")}
+              >
+                Colleges
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="col-span-3 m-8">
         <h1 className="m-8 text-4xl font-bold tracking-tight  md:text-5xl">
           <span className="block">{university}</span>
         </h1>
         <div className="grid gap-8">
-          {Object.entries(universityInfo).map(([key, value]) => (
-            <Card>
-              <CardHeader>
-                <CardTitle>{key}</CardTitle>
-              </CardHeader>
-
-              <CardContent>{value}</CardContent>
-            </Card>
-          ))}
+          {activeSection === "overview" && <Overview />}
+          {activeSection === "colleges" && <Colleges uni_name={university} />}
         </div>
       </div>
     </div>

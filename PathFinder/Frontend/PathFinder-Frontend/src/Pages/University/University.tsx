@@ -14,6 +14,7 @@ const University = () => {
   const [search, setSearch] = useState<string>("");
 
   // Fetch universities data
+  //npx json-server --watch uni_data/university_names.json --port 8000
   useEffect(() => {
     axios
       .get<University[]>("http://localhost:8000/universities")
@@ -41,7 +42,11 @@ const University = () => {
             : university.name.toLowerCase().includes(search.toLowerCase());
         })
         .map((university) => (
-          <Link to="/UniversityInfo" state={university} key={university.id}>
+          <Link
+            to={`/${encodeURIComponent(university.name)}`}
+            state={university.name}
+            key={university.id}
+          >
             <Button
               className="m-5 w-60 p-7 pe-8 hover:bg-emerald-600 object-center content-center"
               variant="secondary"

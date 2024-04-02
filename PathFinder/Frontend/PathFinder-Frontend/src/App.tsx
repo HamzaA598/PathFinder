@@ -9,6 +9,7 @@ import "./App.css";
 import { Toaster } from "./components/ui/toaster";
 import University from "./Pages/University/University";
 import UniversityInfo from "./Pages/UniversityInfo/UniversityInfo";
+import CollegeInfo from "./Pages/Home/CollegeInfo/CollegeInfo";
 
 function App() {
   // Get the current location using the useLocation hook
@@ -24,7 +25,8 @@ function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/chat" element={<Chat />}></Route>
         <Route path="/university" element={<University />}></Route>
-        <Route path="/universityInfo" element={<UniversityInfo />}></Route>
+        <Route path="/:name" element={<UniversityInfo />}></Route>
+        <Route path="/:name/:name" element={<CollegeInfo />}></Route>
       </Routes>
       {!isChatRoute && <Footer />}
       <Toaster />
