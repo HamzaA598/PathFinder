@@ -9,7 +9,7 @@ import "./App.css";
 import { Toaster } from "./components/ui/toaster";
 import University from "./Pages/University/University";
 import UniversityInfo from "./Pages/UniversityInfo/UniversityInfo";
-import CollegeInfo from "./Pages/Home/CollegeInfo/CollegeInfo";
+import CollegeInfo from "./Pages/CollegeInfo/CollegeInfo";
 
 function App() {
   // Get the current location using the useLocation hook
