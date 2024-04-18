@@ -1,0 +1,50 @@
+[
+  {
+    "text": "يبدو جيدًا",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.7464117407798767
+    }
+  },
+  {
+    "text": "كان يومي فظيعًا",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.3382126986980438
+    }
+  },
+  {
+    "text": "متحمس جدًا",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.7485833764076233
+    }
+  },
+  {
+    "text": "أنا سأنقذ العالم",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.9225630760192871
+    }
+  },
+  {
+    "text": "لا أشعر بأنني بحالة جيدة",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.8549169301986694
+    }
+  },
+  {
+    "text": "سلام",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.9995589852333069
+    }
+  }
+]

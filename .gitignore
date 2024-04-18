@@ -4,7 +4,7 @@ PathFinder/Chatbot/models/
 PathFinder/Chatbot/.rasa/cache/
 Documentation/~$commendation System.docx
 PathFinder/Chatbot/.rasa/cache/cache.db
-PathFinder/Chatbot/.rasa/cache/cache.db
+.rasa/
 __pycache__/
 .env
 .venv
