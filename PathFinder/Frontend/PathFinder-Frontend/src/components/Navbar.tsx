@@ -97,7 +97,7 @@ export const Navbar = () => {
                       variant: "secondary",
                     })}`}
                   >
-                    Sign in
+                    Log in
                   </Link>
                   <a
                     href=""
@@ -134,7 +134,7 @@ export const Navbar = () => {
               to="/login"
               className={`border ${buttonVariants({ variant: "secondary" })}`}
             >
-              Sign in
+              Log in
             </Link>
             <a
               href=""
