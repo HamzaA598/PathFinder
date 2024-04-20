@@ -11,9 +11,19 @@ export default function Signup() {
     fName: string,
     sName: string,
     email: string,
-    password: string
+    password: string,
+    repeatPassword: string,
+    institution: string,
+    dob: string
   ) => {
     try {
+      if (password !== repeatPassword) {
+        toast({
+          title: "Passwords do not match",
+          description: "Please make sure your passwords match.",
+        });
+        return;
+      }
       const response = await axios.post(
         //signup endpoint
         "",
@@ -22,6 +32,8 @@ export default function Signup() {
           sName: sName,
           email: email,
           password: password,
+          institution: institution,
+          dob: dob,
         }
       );
       // handle response

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 interface LoginProps {
   login: (email: string, password: string) => void;
 }
-function LoginForn({ login }: LoginProps) {
+function LoginForm({ login }: LoginProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   return (
@@ -66,4 +66,4 @@ function LoginForn({ login }: LoginProps) {
   );
 }
 
-export default LoginForn;
+export default LoginForm;

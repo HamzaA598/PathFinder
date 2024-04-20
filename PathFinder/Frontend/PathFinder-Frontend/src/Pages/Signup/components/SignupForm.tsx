@@ -10,7 +10,10 @@ interface SignupProps {
     fName: string,
     sName: string,
     email: string,
-    password: string
+    password: string,
+    repeatPassword: string,
+    institution: string,
+    dob: string
   ) => void;
 }
 
@@ -19,6 +22,10 @@ function SignupForm({ signup }: SignupProps) {
   const [fName, setFName] = useState("");
   const [sName, setSName] = useState("");
   const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const [institution, setInstitution] = useState("");
+  const [dob, setDob] = useState("");
+
   return (
     <form
       onSubmit={async (e) => {
@@ -27,11 +34,22 @@ function SignupForm({ signup }: SignupProps) {
           !email?.trim() ||
           !password?.trim() ||
           !fName?.trim() ||
-          !sName?.trim()
+          !sName?.trim() ||
+          !repeatPassword?.trim() ||
+          !institution?.trim() ||
+          !dob?.trim()
         ) {
           return;
         }
-        await signup(fName, sName, email, password);
+        await signup(
+          fName,
+          sName,
+          email,
+          password,
+          repeatPassword,
+          institution,
+          dob
+        );
       }}
     >
       <div className="space-y-4">
@@ -79,6 +97,39 @@ function SignupForm({ signup }: SignupProps) {
             type="password"
             onChange={(e) => {
               setPassword(e.target.value);
+            }}
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="repeat-password">Repeat Password</Label>
+          <Input
+            id="repeat-password"
+            required
+            type="password"
+            onChange={(e) => {
+              setRepeatPassword(e.target.value);
+            }}
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="institution">Institution</Label>
+          <Input
+            id="institution"
+            placeholder="Your School, University or Company"
+            onChange={(e) => {
+              setInstitution(e.target.value);
+            }}
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="dob">Date of Birth</Label>
+          <Input
+            id="dob"
+            placeholder="YYYY-MM-DD"
+            required
+            type="date"
+            onChange={(e) => {
+              setDob(e.target.value);
             }}
           />
         </div>
