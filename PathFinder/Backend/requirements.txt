@@ -6,3 +6,4 @@ djangorestframework
 requests
 django-cors-headers
 python-dotenv
+bson
