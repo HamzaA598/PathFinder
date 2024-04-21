@@ -10,6 +10,7 @@ import { Toaster } from "./components/ui/toaster";
 import University from "./Pages/University/University";
 import UniversityInfo from "./Pages/UniversityInfo/UniversityInfo";
 import CollegeInfo from "./Pages/CollegeInfo/CollegeInfo";
+import Compare from "./Pages/Compare/Compare";
 
 function App() {
   // Get the current location using the useLocation hook
@@ -27,6 +28,7 @@ function App() {
         <Route path="/university" element={<University />}></Route>
         <Route path="/:name" element={<UniversityInfo />}></Route>
         <Route path="/:name/:name" element={<CollegeInfo />}></Route>
+        <Route path="/Compare" element={<Compare />}></Route>
       </Routes>
       {!isChatRoute && <Footer />}
       <Toaster />
