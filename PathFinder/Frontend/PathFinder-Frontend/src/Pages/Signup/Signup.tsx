@@ -14,7 +14,10 @@ export default function Signup() {
     password: string,
     repeatPassword: string,
     institution: string,
-    dob: string
+    dob: string,
+    highSchoolSystem: string,
+    highSchoolGrade: number,
+    preferences: string
   ) => {
     try {
       if (password !== repeatPassword) {
@@ -34,6 +37,9 @@ export default function Signup() {
           password: password,
           institution: institution,
           dob: dob,
+          highSchoolSystem: highSchoolSystem,
+          highSchoolGrade: highSchoolGrade,
+          preferences: preferences,
         }
       );
       // handle response

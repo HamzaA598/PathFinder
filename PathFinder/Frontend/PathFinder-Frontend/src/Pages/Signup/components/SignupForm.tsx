@@ -13,7 +13,10 @@ interface SignupProps {
     password: string,
     repeatPassword: string,
     institution: string,
-    dob: string
+    dob: string,
+    highSchoolSystem: string,
+    highSchoolGrade: number,
+    preferences: string
   ) => void;
 }
 
@@ -25,6 +28,9 @@ function SignupForm({ signup }: SignupProps) {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [institution, setInstitution] = useState("");
   const [dob, setDob] = useState("");
+  const [highSchoolSystem, setHighSchoolSystem] = useState("");
+  const [highSchoolGrade, setHighSchoolGrade] = useState(0);
+  const [preferences, setPreferences] = useState("");
 
   return (
     <form
@@ -37,7 +43,10 @@ function SignupForm({ signup }: SignupProps) {
           !sName?.trim() ||
           !repeatPassword?.trim() ||
           !institution?.trim() ||
-          !dob?.trim()
+          !dob?.trim() ||
+          !highSchoolSystem.trim() ||
+          highSchoolGrade <= 0 ||
+          !preferences.trim()
         ) {
           return;
         }
@@ -48,7 +57,10 @@ function SignupForm({ signup }: SignupProps) {
           password,
           repeatPassword,
           institution,
-          dob
+          dob,
+          highSchoolSystem,
+          highSchoolGrade,
+          preferences
         );
       }}
     >
@@ -111,6 +123,37 @@ function SignupForm({ signup }: SignupProps) {
             }}
           />
         </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="dob">Date of Birth</Label>
+          <Input
+            id="dob"
+            placeholder="DD-MM-YYYY"
+            required
+            type="date"
+            onChange={(e) => {
+              setDob(e.target.value);
+            }}
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="highSchoolSystem">High School System</Label>
+          <select
+            id="highSchoolSystem"
+            required
+            value={highSchoolSystem}
+            onChange={(e) => setHighSchoolSystem(e.target.value)}
+            className="block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white text-black dark:bg-black dark:text-gray-200 dark:border-gray-700"
+          >
+            <option value="">Select your high school system</option>
+            <option value="Thanawya Amma">Thanawya Amma</option>
+            <option value="STEM">STEM</option>
+            <option value="American">American</option>
+            <option value="IG">IG</option>
+          </select>
+        </div>
+
         <div className="space-y-2">
           <Label htmlFor="institution">Institution</Label>
           <Input
@@ -121,18 +164,46 @@ function SignupForm({ signup }: SignupProps) {
             }}
           />
         </div>
+
         <div className="space-y-2">
-          <Label htmlFor="dob">Date of Birth</Label>
-          <Input
-            id="dob"
-            placeholder="YYYY-MM-DD"
-            required
-            type="date"
-            onChange={(e) => {
-              setDob(e.target.value);
-            }}
-          />
+          <Label htmlFor="highSchoolGrade">High School Grade</Label>
+          <div className="flex items-center">
+            {" "}
+            <Input
+              id="highSchoolGrade"
+              type="number"
+              placeholder="Your high school grade in percentage"
+              required
+              min={0}
+              max={100}
+              onChange={(e) => setHighSchoolGrade(parseInt(e.target.value))}
+              className="w-full"
+            />
+            <span className="ml-2">%</span>{" "}
+          </div>
         </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="preferences">College Preferences</Label>
+          <select
+            id="preferences"
+            required
+            value={preferences}
+            onChange={(e) => setPreferences(e.target.value)}
+            className="block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white text-black dark:bg-black dark:text-gray-200 dark:border-gray-700" // Black background in dark mode
+          >
+            {/* todo: need to add all majors */}
+            <option value="">Select a college preference</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Medicine">Medicine</option>
+            <option value="Law">Law</option>
+            <option value="Business">Business</option>
+            <option value="Arts">Arts</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Pharmacy">Pharmacy</option>
+          </select>
+        </div>
+
         <Button className="w-full" type="submit">
           Sign Up
         </Button>
