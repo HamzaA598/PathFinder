@@ -38,48 +38,95 @@ const Compare = () => {
   }, []);
 
   return (
-    <div>
-      <div className="University_menu ml-20 mb-10 mt-20">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button className="w-96" variant="outline">
-              {unitemp}
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className=" w-96">
-            <DropdownMenuGroup>
-              {universities.map((university) => (
-                <DropdownMenuItem
-                  key={university.id}
-                  onClick={() => handleUni(university.name)}
-                >
-                  <span>{university.name}</span>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+    <div className="grid grid-cols-2 h-screen">
+      <div className="ml-12">
+        <div className="University_menu ml-20 mb-10 mt-20">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button className="w-96" variant="outline">
+                {unitemp}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className=" w-96">
+              <DropdownMenuGroup>
+                {universities.map((university) => (
+                  <DropdownMenuItem
+                    key={university.id}
+                    onClick={() => handleUni(university.name)}
+                  >
+                    <span>{university.name}</span>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+        <div className="College_menu ml-20 mb-10">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button className="w-96" variant="outline">
+                {coltemp}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className=" w-96">
+              <DropdownMenuGroup>
+                {universities.map((university) => (
+                  <DropdownMenuItem
+                    key={university.id}
+                    onClick={() => handleCol(university.name)}
+                  >
+                    <span>{university.name}</span>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
-      <div className="College_menu ml-20 mb-10">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button className="w-96" variant="outline">
-              {coltemp}
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className=" w-96">
-            <DropdownMenuGroup>
-              {universities.map((university) => (
-                <DropdownMenuItem
-                  key={university.id}
-                  onClick={() => handleCol(university.name)}
-                >
-                  <span>{university.name}</span>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+
+      <div className="ml-12 ">
+        <div className="University_menu ml-20 mb-10 mt-20">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button className="w-96" variant="outline">
+                {unitemp}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className=" w-96">
+              <DropdownMenuGroup>
+                {universities.map((university) => (
+                  <DropdownMenuItem
+                    key={university.id}
+                    onClick={() => handleUni(university.name)}
+                  >
+                    <span>{university.name}</span>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+        <div className="College_menu ml-20 mb-10">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button className="w-96" variant="outline">
+                {coltemp}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className=" w-96">
+              <DropdownMenuGroup>
+                {universities.map((university) => (
+                  <DropdownMenuItem
+                    key={university.id}
+                    onClick={() => handleCol(university.name)}
+                  >
+                    <span>{university.name}</span>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
     </div>
   );
