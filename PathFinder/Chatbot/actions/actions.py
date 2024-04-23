@@ -27,12 +27,14 @@ class ActionGiveCollegeRecommendation(Action):
         location = tracker.get_slot("location")
         grade = tracker.get_slot("grade")
         private_college = tracker.get_slot("private_college")
+        # TODO: call recommendation engine and get recommendations using slots
 
         # Generate a message based on the slot values
+        college_type = "كلية خاصة" if private_college else "كلية حكومية"
         recommendation_message = (
-            f"Based on your preferences, you are looking for a college in {location}. "
-            f"Your grade level is {grade}. "
-            f"You prefer {'a private college' if private_college else 'a public college'}."
+            f"بناءً على تفضيلاتك، أنت تبحث عن كلية في {location}. "
+            f"مستوى درجتك هو {grade}. "
+            f"تفضل {college_type}."
         )
 
         # Send the message to the user
