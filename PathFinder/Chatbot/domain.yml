@@ -94,6 +94,39 @@ intents:
   # - job_opportunities_in_software_development_field
   # - working_while_studying
 
+entities:
+  - location
+  - grade
+  - private_college
+
+slots:
+  location:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: location
+  grade:
+    type: float
+    mappings:
+    - type: from_entity
+      entity: grade
+  private_college:
+    type: boolean
+    mappings:
+    - type: from_entity
+      entity: private_college
+
+forms:
+  recommend_college_form:
+    ignored_intents:
+      - faq
+    required_slots:
+      - location
+      - grade
+      - private_college
+
+
+
 responses:
 
   utter_greet:
