@@ -9,6 +9,7 @@ intents:
   - mood_unhappy
   - bot_challenge
   - faq
+  - recommend_college #TODO: add responses and examples to this intent
 # intents in retrieval intent faq
   # - ask_cs
   # - ask_departments
@@ -121,6 +122,9 @@ slots:
       entity: private_college
       conditions:
       - active_loop: recommed_college_form
+
+actions:
+  - give_college_recommendation #TODO: implement this custom action
 
 forms:
   recommend_college_form:

@@ -25,6 +25,23 @@ rules:
     steps:
     - intent: faq
     - action: utter_faq
+  
+  - rule: activate form
+    steps:
+    - intent: recommend_college
+    - action: recommend_college_form
+    - active_loop: recommend_college_form
+
+  -rule: submit form
+    conditions:
+    - active_loop: recommend_college_form
+    steps:
+    - action: recommend_college_form
+    - active_loop: null
+    - slot_was_set:
+        requested_slot: null
+    - action: give_college_recommendation
+
 
 
   # - rule: Tell the user information about Computer Science in general
