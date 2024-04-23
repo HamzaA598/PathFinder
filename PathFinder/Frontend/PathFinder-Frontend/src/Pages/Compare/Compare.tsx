@@ -14,14 +14,17 @@ interface University {
   name: string;
 }
 
-let flag = 0;
-
 const Compare = () => {
   const [universities, setUniversities] = useState<University[]>([]);
-  const [temp, setTemp] = useState("University");
+  const [unitemp, setuniTemp] = useState("University");
+  const [coltemp, setcolTemp] = useState("College");
 
-  const handleItemClick = (name: string) => {
-    setTemp(name);
+  const handleUni = (name: string) => {
+    setuniTemp(name);
+  };
+
+  const handleCol = (name: string) => {
+    setcolTemp(name);
   };
 
   // Fetch universities data
@@ -35,26 +38,49 @@ const Compare = () => {
   }, []);
 
   return (
-    <div className="m-20">
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button className="w-96" variant="outline">
-            {temp}
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className=" w-96">
-          <DropdownMenuGroup>
-            {universities.map((university) => (
-              <DropdownMenuItem
-                key={university.id}
-                onClick={() => handleItemClick(university.name)}
-              >
-                <span>{university.name}</span>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
+    <div>
+      <div className="University_menu ml-20 mb-10 mt-20">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button className="w-96" variant="outline">
+              {unitemp}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className=" w-96">
+            <DropdownMenuGroup>
+              {universities.map((university) => (
+                <DropdownMenuItem
+                  key={university.id}
+                  onClick={() => handleUni(university.name)}
+                >
+                  <span>{university.name}</span>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+      <div className="College_menu ml-20 mb-10">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button className="w-96" variant="outline">
+              {coltemp}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className=" w-96">
+            <DropdownMenuGroup>
+              {universities.map((university) => (
+                <DropdownMenuItem
+                  key={university.id}
+                  onClick={() => handleCol(university.name)}
+                >
+                  <span>{university.name}</span>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
     </div>
   );
 };

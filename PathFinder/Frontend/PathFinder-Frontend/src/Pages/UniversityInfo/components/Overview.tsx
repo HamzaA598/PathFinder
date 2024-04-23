@@ -4,13 +4,12 @@ import React from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-const Overview = () => {
-  const { state } = useLocation();
-  const university = state;
+const Overview = ({ uni_id }) => {
+  console.log("dicnsiucnsievn      " + uni_id);
 
   const [universityInfo, setUniversityInfo] = useState([]);
 
-  const url = "http://localhost:9000/" + university;
+  const url = `http://127.0.0.1:8000/webapp/University/${uni_id}`;
 
   //npx json-server --watch uni_data/public_universities.json --port 9000
   React.useEffect(() => {

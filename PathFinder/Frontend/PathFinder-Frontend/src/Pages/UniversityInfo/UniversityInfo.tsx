@@ -5,15 +5,18 @@ import Overview from "./components/Overview";
 import Colleges from "./components/Colleges";
 
 const UniversityInfo = () => {
-  const { state } = useLocation();
-  const university = state;
+  const location = useLocation();
+  const { uni } = location.state;
+
   const [activeSection, setActiveSection] = useState("overview");
 
-  const buttonColor = (section) => {
+  const buttonColor = (section: string) => {
     return activeSection === section
       ? "bg-emerald-600 text-white"
       : "hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-900 dark:text-white";
   };
+
+  console.log("helllooooo" + uni.name);
 
   return (
     <div className="grid grid-cols-4">
@@ -43,11 +46,11 @@ const UniversityInfo = () => {
       </div>
       <div className="col-span-3 m-8">
         <h1 className="m-8 text-4xl font-bold tracking-tight  md:text-5xl">
-          <span className="block">{university}</span>
+          <span className="block">{uni.name}</span>
         </h1>
         <div className="grid gap-8">
-          {activeSection === "overview" && <Overview />}
-          {activeSection === "colleges" && <Colleges uni_name={university} />}
+          {activeSection === "overview" && <Overview uni_id={uni._id} />}
+          {activeSection === "colleges" && <Colleges uni_name={uni.name} />}
         </div>
       </div>
     </div>

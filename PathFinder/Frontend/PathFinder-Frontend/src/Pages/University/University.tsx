@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 interface University {
-  id: number;
+  _id: number;
   name: string;
 }
 
@@ -17,7 +17,7 @@ const University = () => {
   //npx json-server --watch uni_data/university_names.json --port 8000
   useEffect(() => {
     axios
-      .get<University[]>("http://localhost:8000/universities")
+      .get<University[]>("http://127.0.0.1:8000/webapp/University")
       .then((response) => {
         setUniversities(response.data);
       });
@@ -44,8 +44,7 @@ const University = () => {
         .map((university) => (
           <Link
             to={`/${encodeURIComponent(university.name)}`}
-            state={university.name}
-            key={university.id}
+            state={{ uni: university }}
           >
             <Button
               className="m-5 w-60 p-7 pe-8 hover:bg-emerald-600 object-center content-center"

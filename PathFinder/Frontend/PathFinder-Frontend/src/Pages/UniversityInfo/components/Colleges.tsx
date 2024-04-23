@@ -15,9 +15,10 @@ const Colleges = ({ uni_name }) => {
 
   // Fetch universities data
   //npx json-server --watch uni_data/university_names.json --port 8000
+
   useEffect(() => {
     axios
-      .get<College[]>("http://localhost:8000/universities")
+      .get<College[]>(`http://127.0.0.1:8000/webapp/University/`)
       .then((response) => {
         setColleges(response.data);
       });
