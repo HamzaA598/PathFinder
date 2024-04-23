@@ -20,7 +20,7 @@ class ActionGiveCollegeRecommendation(Action):
 
     # Method to run when the action is triggered
     def run(
-        self, dispatcher: CollectingDispatcher, tracker: "Tracker", domain: "DomainDict"
+        self, dispatcher: CollectingDispatcher, tracker: "Tracker"
     ) -> List[Dict[Text, Any]]:
 
         # Retrieve the values of the slots
