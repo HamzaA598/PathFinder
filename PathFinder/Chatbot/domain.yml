@@ -102,25 +102,25 @@ entities:
 slots:
   location:
     type: text
-    conditions:
-    - active_loop: recommed_college_form
     mappings:
     - type: from_entity
       entity: location
+      conditions:
+      - active_loop: recommed_college_form
   grade:
     type: float
-    conditions:
-    - active_loop: recommed_college_form
     mappings:
     - type: from_entity
       entity: grade
+      conditions:
+      - active_loop: recommed_college_form
   private_college:
     type: boolean
-    conditions:
-    - active_loop: recommed_college_form
     mappings:
     - type: from_entity
       entity: private_college
+      conditions:
+      - active_loop: recommed_college_form
 
 forms:
   recommend_college_form:
