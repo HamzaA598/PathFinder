@@ -71,9 +71,8 @@ def signup(request):
     password = request.data.get('password')
     age = request.data.get('age')
     preferences = request.data.get('preferences')
-    gradeInHighSchool = request.data.get('gradeInHighSchool')
+    gradeInHighSchool = request.data.get('highSchoolGrade')
     highSchoolSystem = request.data.get('highSchoolSystem')
-    feedback = request.data.get('feedback')
 
     if not all([name, email, password, age, preferences, gradeInHighSchool, highSchoolSystem]):
         return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
@@ -87,12 +86,13 @@ def signup(request):
             preferences=preferences,
             gradeInHighSchool=gradeInHighSchool,
             highSchoolSystem=highSchoolSystem,
-            feedback=feedback,
         )
 
-        student.save()
-
-        return Response({"message": "Signup successful"}, status=status.HTTP_201_CREATED)
+        if student is not None:
+            student.save()
+            return Response({"message": "Signup successful"}, status=status.HTTP_201_CREATED)
+        else:
+            return Response({"error": "'student' is None. Cannot save."}, status=status.HTTP_400_BAD_REQUEST)
 
     except ValidationError as ve:
         return Response({"error": str(ve)}, status=status.HTTP_400_BAD_REQUEST)

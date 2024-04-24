@@ -29,21 +29,30 @@ export default function Signup() {
       }
       const response = await axios.post(
         //signup endpoint
-        "",
+        "http://localhost:8000/webapp/signup",
         {
-          fName: fName,
-          sName: sName,
+          name: `${fName} ${sName}`,
           email: email,
           password: password,
+          // todo: change to dob
+          age: calculateAge(dob),
           institution: institution,
-          dob: dob,
           highSchoolSystem: highSchoolSystem,
           highSchoolGrade: highSchoolGrade,
           preferences: preferences,
         }
       );
       // handle response
-      navigate("/login");
+      if (response.status === 201) {
+        toast({
+          title: "Signup successful!",
+          description:
+            "Your account has been created successfully! Please login.",
+        });
+        navigate("/login");
+      } else {
+        throw new Error("Unexpected response status");
+      }
     } catch (err) {
       toast({
         title: "Uh oh! Something went wrong.",
@@ -66,4 +75,16 @@ export default function Signup() {
       </div>
     </div>
   );
+}
+
+// todo: remove after saving dob directly in db
+function calculateAge(dob: string) {
+  const birthDate = new Date(dob);
+  const today = new Date();
+  const age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    return age - 1;
+  }
+  return age;
 }
