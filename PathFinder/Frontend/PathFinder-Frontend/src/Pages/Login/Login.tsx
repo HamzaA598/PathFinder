@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "@/components/ui/use-toast";
-import LoginForn from "./components/LoginForm";
+import LoginForm from "./components/LoginForm";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ export default function Login() {
             Log in to your account
           </p>
         </div>
-        <LoginForn login={login}></LoginForn>
+        <LoginForm login={login}></LoginForm>
       </div>
     </div>
   );
