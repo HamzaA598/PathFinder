@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from bson import ObjectId
 from django.forms.models import model_to_dict
 from .models import *
+from .serializers import *
 
 
 @api_view(['GET'])
@@ -18,11 +19,12 @@ def AllUniversities(request):
 
 @api_view(['GET'])
 def UniversityInfo(request, id):
-    university = University.objects.all()
-    for uni in university:
+    universities = University.objects.all()
+    for uni in universities:
         if uni._id == ObjectId(id):
             uni._id = id
-            return JsonResponse(model_to_dict(uni), status=status.HTTP_200_OK)
+            serializer = UniversitySerializer(uni)
+            return JsonResponse(serializer.data, status=status.HTTP_200_OK)
 
     return Response(status=status.HTTP_404_NOT_FOUND)
 
