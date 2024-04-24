@@ -10,14 +10,21 @@ export default function Login() {
     try {
       const response = await axios.post(
         // login endpoint
-        "",
+        "http://localhost:8000/webapp/login",
         {
           email: email,
           password: password,
         }
       );
       // handle response
-      navigate("/");
+      if (response.status === 200) {
+        toast({
+          title: "Login Successful",
+          description: "Welcome back!",
+        });
+
+        navigate("/");
+      }
     } catch (err) {
       toast({
         title: "Uh oh! Something went wrong.",

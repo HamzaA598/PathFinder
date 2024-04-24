@@ -9,4 +9,5 @@ urlpatterns = [
     path('College', views.AllColleges, name='GetAllColleges'),
     path('College/<str:id>', views.CollegeInfo, name='GetCollege'),
     path('signup', views.signup, name='signup'),
+    path('login', views.login, name='login'),
 ]
