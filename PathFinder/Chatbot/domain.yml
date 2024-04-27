@@ -100,11 +100,12 @@ entities:
   - grade
   - private_college
 
+# TODO: create utter_ask_slotname
 slots:
   location:
     type: text
     mappings:
-    - type: from_entity
+    - type: from_text 
       entity: location
       conditions:
       - active_loop: recommed_college_form
@@ -118,7 +119,7 @@ slots:
   private_college:
     type: boolean
     mappings:
-    - type: from_entity
+    - type: from_text
       entity: private_college
       conditions:
       - active_loop: recommed_college_form
