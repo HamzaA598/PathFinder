@@ -21,7 +21,10 @@ class ActionGiveCollegeRecommendation(Action):
 
     # Method to run when the action is triggered
     def run(
-        self, dispatcher: CollectingDispatcher, tracker: "Tracker"
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: "Tracker",
+        domain: DomainDict,
     ) -> List[Dict[Text, Any]]:
 
         # Retrieve the values of the slots
@@ -45,7 +48,7 @@ class ActionGiveCollegeRecommendation(Action):
         return []
 
 
-class ValidateNameForm(FormValidationAction):
+class ValidateRecommendationForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_recommend_college_form"
 
@@ -75,7 +78,7 @@ class ValidateNameForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `grade` value."""
-        # TODO: Make sure location is set correctly by validation
+        # TODO: Make sure grade is set correctly by validation
         # you can add print statements to help debugging
         # example validation
         # LOGIC TO VALIDATE SLOT_VALUE
@@ -93,7 +96,7 @@ class ValidateNameForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `private_college` value."""
-        # TODO: Make sure location is set correctly by validation
+        # TODO: Make sure private_college is set correctly by validation
         # you can add print statements to help debugging
         # example validation
         # LOGIC TO VALIDATE SLOT_VALUE
