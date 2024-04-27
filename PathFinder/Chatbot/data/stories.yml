@@ -38,8 +38,9 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
-# TODO: ADD a story representing the form (can use rasa interactive)
+# TODO: Add a story representing the form (can use rasa interactive)
 # TODO: Basic stroy structure
+# TODO: Put direct examples of slots values being set (see comments)
   - story: recommendation story 1
     steps:
       - checkpoint: greetings
@@ -48,10 +49,18 @@ stories:
       - active_loop: recommend_college_form
       - slot_was_set:
         - requested_slot: location
+      # - slot_was_set:
+      #   - location: "location"
       - slot_was_set:
         - requested_slot: grade
+      # - slot_was_set:
+      #   - grade: "grade"
       - slot_was_set:
         - requested_slot: private_college
+      # - slot_was_set:
+      #   - private_college: "private_college"
+      - slot_was_set:
+        - requested_slot: null
       - active_loop: null
       - action: give_college_recommendation
 
