@@ -1,5 +1,6 @@
 version: "3.1"
 
+
 stories:
   - story: beginning of flow
     steps:
@@ -37,6 +38,22 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
+# TODO: ADD a story representing the form (can use rasa interactive)
+# TODO: Basic stroy structure
+  - story: recommendation story 1
+    steps:
+      - checkpoint: greetings
+      - intent: recommend_college
+      - action: recommend_college_form
+      - active_loop: recommend_college_form
+      - slot_was_set:
+        - requested_slot: location
+      - slot_was_set:
+        - requested_slot: grade
+      - slot_was_set:
+        - requested_slot: private_college
+      - active_loop: null
+      - action: give_college_recommendation
 
   # - story: Information about Computer Science
   #   steps:
