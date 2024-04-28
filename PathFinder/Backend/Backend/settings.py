@@ -88,14 +88,11 @@ DATABASES = {
     "default": {
         "ENGINE": "djongo",
         "NAME": "PathFinder",
-       'CLIENT': {
-           'host': os.environ.get('CONNECTION_STRING'),
+        'CLIENT': {
+            'host': os.environ.get('CONNECTION_STRING'),
         }
     }
 }
-
-print(os.environ.get('CONNECTION_STRING'))
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

@@ -13,7 +13,7 @@ export default function Signup() {
     email: string,
     password: string,
     repeatPassword: string,
-    institution: string,
+    governorate: string,
     dob: string,
     highSchoolSystem: string,
     highSchoolGrade: number,
@@ -36,7 +36,7 @@ export default function Signup() {
           password: password,
           // todo: change to dob
           age: calculateAge(dob),
-          institution: institution,
+          governorate: governorate,
           highSchoolSystem: highSchoolSystem,
           highSchoolGrade: highSchoolGrade,
           preferences: preferences,
