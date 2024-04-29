@@ -9,7 +9,11 @@ intents:
   - mood_unhappy
   - bot_challenge
   - faq
-  - recommend_college #TODO: add responses and examples to this intent
+    #TODO: add responses and examples to the following intents
+  - recommend_college 
+  - inform_location #! EXAMPLES DONE
+  - inform_grade #! EXAMPLES DONE
+  - inform_private_college 
 # intents in retrieval intent faq
   # - ask_cs
   # - ask_departments
@@ -107,6 +111,8 @@ slots:
     type: text
     mappings:
     - type: from_text
+      conditions:
+      - active_loop: recommed_college_form
     - type: from_entity # TODO: check if correct having both 
       entity: location
       conditions:
@@ -115,6 +121,8 @@ slots:
     type: float
     mappings:
     - type: from_text # TODO: check if correct having both 
+      conditions:
+      - active_loop: recommed_college_form
     - type: from_entity
       entity: grade
       conditions:
@@ -123,6 +131,8 @@ slots:
     type: boolean
     mappings:
     - type: from_text
+      conditions:
+      - active_loop: recommed_college_form
     - type: from_entity # TODO: check if correct having both 
       entity: private_college
       conditions:

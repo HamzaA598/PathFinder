@@ -41,6 +41,7 @@ stories:
 # TODO: Add a story representing the form (can use rasa interactive)
 # TODO: Basic stroy structure
 # TODO: Put direct examples of slots values being set (see comments)
+# TODO: Create a story where the user interupts form with a faq then continues it
   - story: recommendation story 1
     steps:
       - checkpoint: greetings

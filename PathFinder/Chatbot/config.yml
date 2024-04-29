@@ -11,13 +11,13 @@ pipeline:
     analyzer: "char_wb"
     min_ngram: 1
     max_ngram: 4
-  - name: DIETClassifier  
+  - name: DIETClassifier
     epochs: 100
   - name: FallbackClassifier
     threshold: 0.5
-  - name: EntitySynonymMapper
+  # - name: EntitySynonymMapper #! removed component since it is not needed atm
   - name: ResponseSelector
-    epochs: 100
+    epochs: 300
     retrieval_intent: faq
 
 policies:
