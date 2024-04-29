@@ -4,6 +4,8 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 interface SignupProps {
   signup: (
@@ -27,7 +29,7 @@ function SignupForm({ signup }: SignupProps) {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [governorate, setGovernorate] = useState("");
-  const [dob, setDob] = useState("");
+  const [dob, setDob] = useState(null);
   const [highSchoolSystem, setHighSchoolSystem] = useState("");
   const [highSchoolGrade, setHighSchoolGrade] = useState(0);
   const [preferences, setPreferences] = useState("");
@@ -43,7 +45,7 @@ function SignupForm({ signup }: SignupProps) {
           !sName?.trim() ||
           !repeatPassword?.trim() ||
           !governorate?.trim() ||
-          !dob?.trim() ||
+          !dob ||
           !highSchoolSystem.trim() ||
           highSchoolGrade <= 0 ||
           !preferences.trim()
@@ -125,15 +127,18 @@ function SignupForm({ signup }: SignupProps) {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="dob">Date of Birth</Label>
-          <Input
+          <Label htmlFor="dob" className="block">
+            Date of Birth
+          </Label>
+          <DatePicker
             id="dob"
-            placeholder="DD-MM-YYYY"
             required
-            type="date"
-            onChange={(e) => {
-              setDob(e.target.value);
-            }}
+            selected={dob}
+            onChange={setDob}
+            dateFormat="dd/MM/yy"
+            placeholderText="dd/MM/yy"
+            isClearable
+            className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white text-black dark:bg-black dark:text-gray-200 dark:border-gray-700 "
           />
         </div>
 
