@@ -13,11 +13,9 @@ export default function Signup() {
     email: string,
     password: string,
     repeatPassword: string,
-    governorate: string,
     dob: string,
     highSchoolSystem: string,
-    highSchoolGrade: number,
-    preferences: string
+    governorate: string
   ) => {
     try {
       if (password !== repeatPassword) {
@@ -36,10 +34,8 @@ export default function Signup() {
           password: password,
           // todo: change to dob
           age: calculateAge(dob),
-          governorate: governorate,
           highSchoolSystem: highSchoolSystem,
-          highSchoolGrade: highSchoolGrade,
-          preferences: preferences,
+          governorate: governorate,
         }
       );
       // handle response

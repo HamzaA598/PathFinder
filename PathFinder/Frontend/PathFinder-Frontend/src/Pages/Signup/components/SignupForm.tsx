@@ -14,11 +14,9 @@ interface SignupProps {
     email: string,
     password: string,
     repeatPassword: string,
-    governorate: string,
     dob: string,
     highSchoolSystem: string,
-    highSchoolGrade: number,
-    preferences: string
+    governorate: string
   ) => void;
 }
 
@@ -28,11 +26,9 @@ function SignupForm({ signup }: SignupProps) {
   const [sName, setSName] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [governorate, setGovernorate] = useState("");
   const [dob, setDob] = useState(null);
   const [highSchoolSystem, setHighSchoolSystem] = useState("");
-  const [highSchoolGrade, setHighSchoolGrade] = useState(0);
-  const [preferences, setPreferences] = useState("");
+  const [governorate, setGovernorate] = useState("");
 
   return (
     <form
@@ -44,11 +40,9 @@ function SignupForm({ signup }: SignupProps) {
           !fName?.trim() ||
           !sName?.trim() ||
           !repeatPassword?.trim() ||
-          !governorate?.trim() ||
           !dob ||
           !highSchoolSystem.trim() ||
-          highSchoolGrade <= 0 ||
-          !preferences.trim()
+          !governorate?.trim()
         ) {
           return;
         }
@@ -58,11 +52,9 @@ function SignupForm({ signup }: SignupProps) {
           email,
           password,
           repeatPassword,
-          governorate,
           dob,
           highSchoolSystem,
-          highSchoolGrade,
-          preferences
+          governorate
         );
       }}
     >
@@ -197,45 +189,6 @@ function SignupForm({ signup }: SignupProps) {
             <option value="Sohag">Sohag</option>
             <option value="South Sinai">South Sinai</option>
             <option value="Suez">Suez</option>
-          </select>
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="highSchoolGrade">High School Grade</Label>
-          <div className="flex items-center">
-            {" "}
-            <Input
-              id="highSchoolGrade"
-              type="number"
-              placeholder="Your high school grade in percentage"
-              required
-              min={0}
-              max={100}
-              onChange={(e) => setHighSchoolGrade(parseInt(e.target.value))}
-              className="w-full"
-            />
-            <span className="ml-2">%</span>{" "}
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="preferences">College Preferences</Label>
-          <select
-            id="preferences"
-            required
-            value={preferences}
-            onChange={(e) => setPreferences(e.target.value)}
-            className="block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white text-black dark:bg-black dark:text-gray-200 dark:border-gray-700" // Black background in dark mode
-          >
-            {/* todo: need to add all majors */}
-            <option value="">Select a college preference</option>
-            <option value="Engineering">Engineering</option>
-            <option value="Medicine">Medicine</option>
-            <option value="Law">Law</option>
-            <option value="Business">Business</option>
-            <option value="Arts">Arts</option>
-            <option value="Computer Science">Computer Science</option>
-            <option value="Pharmacy">Pharmacy</option>
           </select>
         </div>
 

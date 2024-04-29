@@ -70,11 +70,9 @@ def signup(request):
     email = request.data.get('email')
     password = request.data.get('password')
     age = request.data.get('age')
-    preferences = request.data.get('preferences')
-    gradeInHighSchool = request.data.get('highSchoolGrade')
     highSchoolSystem = request.data.get('highSchoolSystem')
 
-    if not all([name, email, password, age, preferences, gradeInHighSchool, highSchoolSystem]):
+    if not all([name, email, password, age, highSchoolSystem]):
         return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
 
     try:
@@ -83,8 +81,6 @@ def signup(request):
             email=email,
             password=password,
             age=age,
-            preferences=preferences,
-            gradeInHighSchool=gradeInHighSchool,
             highSchoolSystem=highSchoolSystem,
         )
 
