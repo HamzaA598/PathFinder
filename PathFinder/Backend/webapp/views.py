@@ -70,8 +70,9 @@ def signup(request):
     password = request.data.get('password')
     dob = request.data.get('dob')
     highSchoolSystem = request.data.get('highSchoolSystem')
+    governorate = request.data.get('governorate')
 
-    if not all([name, email, password, dob, highSchoolSystem]):
+    if not all([name, email, password, dob, highSchoolSystem, governorate]):
         return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
 
     try:
@@ -81,6 +82,7 @@ def signup(request):
             password=password,
             dob=dob,
             highSchoolSystem=highSchoolSystem,
+            governorate=governorate
         )
 
         if student is not None:
