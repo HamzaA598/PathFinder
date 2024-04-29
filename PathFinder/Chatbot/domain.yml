@@ -113,30 +113,38 @@ slots:
     - type: from_text
       conditions:
       - active_loop: recommed_college_form
+        requested_slot: location
     - type: from_entity # TODO: check if correct having both 
       entity: location
       conditions:
       - active_loop: recommed_college_form
+        requested_slot: location
+
   grade:
     type: float
     mappings:
     - type: from_text # TODO: check if correct having both 
       conditions:
       - active_loop: recommed_college_form
+        requested_slot: grade
     - type: from_entity
       entity: grade
       conditions:
       - active_loop: recommed_college_form
+        requested_slot: grade
   private_college:
     type: boolean
     mappings:
     - type: from_text
       conditions:
       - active_loop: recommed_college_form
+        requested_slot: grade
     - type: from_entity # TODO: check if correct having both 
       entity: private_college
       conditions:
       - active_loop: recommed_college_form
+        requested_slot: grade
+
 
 actions:
   - give_college_recommendation #TODO: implement this custom action
@@ -154,6 +162,16 @@ forms:
 
 
 responses:
+
+  utter_ask_location:
+    - text: "في أي محافظة أنت؟"
+    - text: "من فضلك أخبرني، من أي محافظة أنت؟"
+
+  utter_ask_grade:
+    - text: "ما هي درجتك؟"
+    - text: "ما هي الدرجة التي حصلت عليها؟"
+
+  utter_ask_private_college:
 
   utter_greet:
     - text: "مرحبًا! كيف حالك؟ يمكنني مساعدتك في شيء معين؟"

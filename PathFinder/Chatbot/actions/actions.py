@@ -68,6 +68,9 @@ class ValidateRecommendationForm(FormValidationAction):
         #     dispatcher.utter_message(text="data entered incorrectly")
         #     return {"location": None} # reset slot value
         # return {"location": validated_slot_value}
+        if slot_value is None:
+            dispatcher.utter_message(response="utter_ask_location")
+            return {"location": None}
         return {"location": slot_value}
 
     def validate_grade(
@@ -86,6 +89,9 @@ class ValidateRecommendationForm(FormValidationAction):
         #     dispatcher.utter_message(text="data entered incorrectly")
         #     return {"grade": None} # reset slot value
         # return {"grade": validated_slot_value}
+        if slot_value is None:
+            dispatcher.utter_message(response="utter_ask_grade")
+            return {"grade": None}
         return {"grade": slot_value}
 
     def validate_private_college(
@@ -104,6 +110,9 @@ class ValidateRecommendationForm(FormValidationAction):
         #     dispatcher.utter_message(text="data entered incorrectly")
         #     return {"private_college": None} # reset slot value
         # return {"private_college": validated_slot_value}
+        if slot_value is None:
+            dispatcher.utter_message(response="utter_ask_private_college")
+            return {"private_college": None}
         return {"private_college": slot_value}
 
 
