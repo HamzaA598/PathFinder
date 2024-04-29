@@ -3,12 +3,11 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
-
-from bson import ObjectId
+from django.core.exceptions import ValidationError
 from django.forms.models import model_to_dict
 from .models import *
 
-from django.core.exceptions import ValidationError
+from bson import ObjectId
 
 
 @api_view(['GET'])
@@ -69,10 +68,10 @@ def signup(request):
     name = request.data.get('name')
     email = request.data.get('email')
     password = request.data.get('password')
-    age = request.data.get('age')
+    dob = request.data.get('dob')
     highSchoolSystem = request.data.get('highSchoolSystem')
 
-    if not all([name, email, password, age, highSchoolSystem]):
+    if not all([name, email, password, dob, highSchoolSystem]):
         return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
 
     try:
@@ -80,7 +79,7 @@ def signup(request):
             name=name,
             email=email,
             password=password,
-            age=age,
+            dob=dob,
             highSchoolSystem=highSchoolSystem,
         )
 

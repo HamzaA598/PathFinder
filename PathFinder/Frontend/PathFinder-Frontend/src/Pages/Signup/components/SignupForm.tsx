@@ -14,7 +14,7 @@ interface SignupProps {
     email: string,
     password: string,
     repeatPassword: string,
-    dob: string,
+    dob: Date,
     highSchoolSystem: string,
     governorate: string
   ) => void;
@@ -127,8 +127,8 @@ function SignupForm({ signup }: SignupProps) {
             required
             selected={dob}
             onChange={setDob}
-            dateFormat="dd/MM/yy"
-            placeholderText="dd/MM/yy"
+            dateFormat="yyyy-MM-dd"
+            placeholderText="yyyy-MM-dd"
             isClearable
             className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white text-black dark:bg-black dark:text-gray-200 dark:border-gray-700 "
           />

@@ -13,7 +13,7 @@ export default function Signup() {
     email: string,
     password: string,
     repeatPassword: string,
-    dob: string,
+    dob: Date,
     highSchoolSystem: string,
     governorate: string
   ) => {
@@ -32,8 +32,7 @@ export default function Signup() {
           name: `${fName} ${sName}`,
           email: email,
           password: password,
-          // todo: change to dob
-          age: calculateAge(dob),
+          dob: dob.toISOString().split("T")[0],
           highSchoolSystem: highSchoolSystem,
           governorate: governorate,
         }
@@ -50,6 +49,7 @@ export default function Signup() {
         throw new Error("Unexpected response status");
       }
     } catch (err) {
+      console.log(dob);
       toast({
         title: "Uh oh! Something went wrong.",
         description: "There was a problem with your Sign up.",
@@ -71,16 +71,4 @@ export default function Signup() {
       </div>
     </div>
   );
-}
-
-// todo: remove after saving dob directly in db
-function calculateAge(dob: string) {
-  const birthDate = new Date(dob);
-  const today = new Date();
-  const age = today.getFullYear() - birthDate.getFullYear();
-  const m = today.getMonth() - birthDate.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-    return age - 1;
-  }
-  return age;
 }
