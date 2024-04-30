@@ -113,7 +113,7 @@ slots:
     - type: from_entity
       entity: location
       conditions:
-      - active_loop: recommed_college_form
+      - active_loop: recommend_college_form
         requested_slot: location
   grade:
     type: float
@@ -121,22 +121,22 @@ slots:
     - type: from_entity
       entity: grade
       conditions:
-      - active_loop: recommed_college_form
+      - active_loop: recommend_college_form
         requested_slot: grade
   private_college:
-    type: boolean
+    type: bool
     mappings:
     - type: from_intent
       intent: affirm
       value: true
       conditions:
-      - active_loop: recommed_college_form
+      - active_loop: recommend_college_form
         requested_slot: grade
     - type: from_intent
       intent: deny
       value: false
       conditions:
-      - active_loop: recommed_college_form
+      - active_loop: recommend_college_form
         requested_slot: grade
 
 
@@ -166,6 +166,7 @@ responses:
     - text: "ما هي الدرجة التي حصلت عليها؟"
 
   utter_ask_private_college:
+    - text: "هل تفضل الكليات الخاصة على الكليات الحكومية؟"
 
   utter_greet:
     - text: "مرحبًا! كيف حالك؟ يمكنني مساعدتك في شيء معين؟"
