@@ -42,6 +42,14 @@ rules:
         requested_slot: null
     - action: give_college_recommendation
 
+  - rule: form interruption
+    condition:
+    - active_loop: restaurant_form
+    steps:
+    - intent: chitchat
+    - action: utter_chitchat
+    - action: restaurant_form
+    - active_loop: restaurant_form
 
 
   # - rule: Tell the user information about Computer Science in general

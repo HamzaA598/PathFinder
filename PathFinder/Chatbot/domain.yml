@@ -13,7 +13,7 @@ intents:
   - recommend_college 
   - inform_location #! EXAMPLES DONE
   - inform_grade #! EXAMPLES DONE
-  - inform_private_college 
+  # - inform_private_college #! NOT NEEDED SINCE IT USES INFORM/DENY INTENTS
 # intents in retrieval intent faq
   # - ask_cs
   # - ask_departments
@@ -110,23 +110,14 @@ slots:
   location:
     type: text
     mappings:
-    - type: from_text
-      conditions:
-      - active_loop: recommed_college_form
-        requested_slot: location
-    - type: from_entity # TODO: check if correct having both 
+    - type: from_entity
       entity: location
       conditions:
       - active_loop: recommed_college_form
         requested_slot: location
-
   grade:
     type: float
     mappings:
-    - type: from_text # TODO: check if correct having both 
-      conditions:
-      - active_loop: recommed_college_form
-        requested_slot: grade
     - type: from_entity
       entity: grade
       conditions:
@@ -135,12 +126,15 @@ slots:
   private_college:
     type: boolean
     mappings:
-    - type: from_text
+    - type: from_intent
+      intent: affirm
+      value: true
       conditions:
       - active_loop: recommed_college_form
         requested_slot: grade
-    - type: from_entity # TODO: check if correct having both 
-      entity: private_college
+    - type: from_intent
+      intent: deny
+      value: false
       conditions:
       - active_loop: recommed_college_form
         requested_slot: grade
