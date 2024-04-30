@@ -131,13 +131,13 @@ slots:
       value: true
       conditions:
       - active_loop: recommend_college_form
-        requested_slot: grade
+        requested_slot: private_college
     - type: from_intent
       intent: deny
       value: false
       conditions:
       - active_loop: recommend_college_form
-        requested_slot: grade
+        requested_slot: private_college
 
 
 actions:
