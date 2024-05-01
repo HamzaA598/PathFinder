@@ -113,7 +113,7 @@ def login(request):
         student = Student.objects.get(email=email)
         if student.password == password:
             return Response(
-                {'message': 'Login successful'},
+                {'message': 'Login successful', 'id': student.id},
                 status=status.HTTP_200_OK
             )
         else:
