@@ -38,7 +38,8 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
-# TODO: Add a story representing the form (can use rasa interactive)
+#* USE RASA INTERACTIVE TO BUILD STORIES!
+# TODO: Add a story representing the form (use rasa interactive)
 # TODO: Basic stroy structure
 # TODO: Put direct examples of slots values being set (see comments)
 # TODO: Use the intents inform_slotname and utterances utter_ask_slotname
@@ -53,6 +54,10 @@ stories:
         - requested_slot: location
       # - slot_was_set:
       #   - location: "location"
+      - slot_was_set:
+        - requested_slot: school_system
+      # - slot_was_set:
+      #   - school_system: "school_system"
       - slot_was_set:
         - requested_slot: grade
       # - slot_was_set:

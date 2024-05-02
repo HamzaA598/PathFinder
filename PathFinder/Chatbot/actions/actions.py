@@ -30,6 +30,7 @@ class ActionGiveCollegeRecommendation(Action):
         # Retrieve the values of the slots
         location = tracker.get_slot("location")
         grade = tracker.get_slot("grade")
+        school_system = tracker.get_slot("school_system")
         private_college = tracker.get_slot("private_college")
         # TODO: call recommendation engine and get recommendations using slots
 
@@ -93,6 +94,27 @@ class ValidateRecommendationForm(FormValidationAction):
             dispatcher.utter_message(response="utter_ask_grade")
             return {"grade": None}
         return {"grade": slot_value}
+
+    def validate_school_system(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        """Validate `school_system` value."""
+        # TODO: Make sure school_system is set correctly by validation
+        # you can add print statements to help debugging
+        # example validation
+        # LOGIC TO VALIDATE SLOT_VALUE
+        # if not correct:
+        #     dispatcher.utter_message(text="data entered incorrectly")
+        #     return {"school_system": None} # reset slot value
+        # return {"school_system": validated_slot_value}
+        if slot_value is None:
+            dispatcher.utter_message(response="utter_ask_school_system")
+            return {"school_system": None}
+        return {"school_system": slot_value}
 
     def validate_private_college(
         self,

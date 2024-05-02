@@ -9,10 +9,10 @@ intents:
   - mood_unhappy
   - bot_challenge
   - faq
-    #TODO: add responses and examples to the following intents
   - recommend_college 
   - inform_location #! EXAMPLES DONE
   - inform_grade #! EXAMPLES DONE
+  - inform_school_system #! EXAMPLES DONE
   # - inform_private_college #! NOT NEEDED SINCE IT USES INFORM/DENY INTENTS
 # intents in retrieval intent faq
   # - ask_cs
@@ -99,13 +99,20 @@ intents:
   # - job_opportunities_in_software_development_field
   # - working_while_studying
 
+#* To add new data to be collected in the form to the following steps:
+#* create new entity and slot representing data
+#* add slot to the form required slots
+#* create utter_ask_slotname
+#* create intents inform_slotname, add it to list of intents
+#* create slot validation in actions validate_slotname in form_validation_action
+#* add slot to stories
+
 entities:
   - location
+  - school_system
   - grade
   - private_college
 
-# TODO: create utter_ask_slotname
-# TODO: create intents inform_slotname
 slots:
   location:
     type: text
@@ -123,6 +130,14 @@ slots:
       conditions:
       - active_loop: recommend_college_form
         requested_slot: grade
+  school_system:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: school_system
+      conditions:
+      - active_loop: recommend_college_form
+        requested_slot: school_system
   private_college:
     type: bool
     mappings:
@@ -150,6 +165,7 @@ forms:
     - faq
     required_slots:
     - location
+    - school_system
     - grade
     - private_college
 
@@ -160,6 +176,9 @@ responses:
   utter_ask_location:
     - text: "في أي محافظة أنت؟"
     - text: "من فضلك أخبرني، من أي محافظة أنت؟"
+
+  utter_ask_school_system:
+    - text: "ما هو نظام مدرستك؟ يرجى اختيار واحد من الخيارات التالية: Thanawya، STEM، IG، American."
 
   utter_ask_grade:
     - text: "ما هي درجتك؟"

@@ -192,6 +192,26 @@ nlu:
       - [75](grade) 
       - [95%](grade) 
 
+#? Do i need a synomon for school_system to make them all standardized?
+- intent: inform_school_system
+    examples: |
+      - أنا في نظام [Thanawya](school_system)
+      - درست في نظام [STEM](school_system)
+      - أنا من نظام [IG](school_system)
+      - أنا في المدرسة الأمريكية ([American](school_system))
+      - نظام مدرستي هو [Thanawya](school_system)
+      - أدرس في [STEM](school_system)
+      - أتعلم ضمن نظام [IG](school_system)
+      - مدرستي تعمل بنظام [American](school_system)
+      - [Thanawya](school_system)
+      - [STEM](school_system)
+      - [IG](school_system)
+      - [American](school_system)
+      - نظامي [Thanawya](school_system)
+      - أدرس في [STEM](school_system)
+      - [IG](school_system)
+      - أنا في [American](school_system)
+      - نظام مدرستي [IG](school_system)
 
   - intent: faq/ask_cs
     examples: |
