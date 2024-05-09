@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 
 class Admin(models.Model):
@@ -24,9 +25,9 @@ class Student(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=100)
-    dob = models.DateField()
+    dob = models.DateField(default=datetime.date(2000, 1, 1))
     highSchoolSystem = models.CharField(max_length=100)
-    governorate = models.CharField(max_length=100)
+    governorate = models.CharField(max_length=100, default="Cairo")
     gradeInHighSchool = models.CharField(max_length=100)
     preferences = models.TextField()
     feedback = models.TextField()
