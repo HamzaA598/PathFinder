@@ -49,7 +49,6 @@ export default function Signup() {
         throw new Error("Unexpected response status");
       }
     } catch (err) {
-      console.log(dob);
       toast({
         title: "Uh oh! Something went wrong.",
         description: "There was a problem with your Sign up.",

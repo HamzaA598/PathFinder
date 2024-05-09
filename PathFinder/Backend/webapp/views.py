@@ -76,6 +76,9 @@ def signup(request):
         return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
 
     try:
+        if Student.objects.filter(email=email).exists():
+            return Response({"error": "A student with this email already exists."}, status=status.HTTP_400_BAD_REQUEST)
+
         student = Student(
             name=name,
             email=email,
