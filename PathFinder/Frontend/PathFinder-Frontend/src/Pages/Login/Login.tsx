@@ -6,7 +6,7 @@ import LoginForm from "./components/LoginForm";
 export default function Login() {
   const navigate = useNavigate();
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string, role: string) => {
     try {
       const response = await axios.post(
         // login endpoint
@@ -14,6 +14,7 @@ export default function Login() {
         {
           email: email,
           password: password,
+          role: role,
         }
       );
       // handle response
