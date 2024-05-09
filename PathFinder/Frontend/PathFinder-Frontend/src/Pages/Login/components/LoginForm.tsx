@@ -57,6 +57,7 @@ function LoginForm({ login }: LoginProps) {
             onChange={(e) => setRole(e.target.value)}
             className="block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white text-black dark:bg-black dark:text-gray-200 dark:border-gray-700"
           >
+            <option value="">Select a role</option>
             <option value="Student">Student</option>
             <option value="Admin">Admin</option>
           </select>

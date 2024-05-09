@@ -105,18 +105,24 @@ def signup(request):
 def login(request):
     email = request.data.get('email')
     password = request.data.get('password')
+    role = request.data.get('role')
 
-    if not email or not password:
+    if not email or not password or not role:
         return Response(
-            {'error': 'Email and password are required'},
+            {'error': 'Missing fields'},
             status=status.HTTP_400_BAD_REQUEST
         )
 
     try:
-        student = Student.objects.get(email=email)
-        if student.password == password:
+        obj = None
+        if role == 'Student':
+            obj = Student.objects.get(email=email)
+        elif role == 'Admin':
+            obj = Admin.objects.get(email=email)
+
+        if obj.password == password:
             return Response(
-                {'message': 'Login successful', 'id': student.id},
+                {'message': 'Login successful', 'id': obj.id, 'role': role},
                 status=status.HTTP_200_OK
             )
         else:
@@ -127,5 +133,10 @@ def login(request):
     except Student.DoesNotExist:
         return Response(
             {'error': 'No student with that email'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    except Admin.DoesNotExist:
+        return Response(
+            {'error': 'No Admin with that email'},
             status=status.HTTP_400_BAD_REQUEST
         )
