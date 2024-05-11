@@ -12,6 +12,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
+import re
 
 
 class ActionGiveCollegeRecommendation(Action):
@@ -83,16 +84,37 @@ class ValidateRecommendationForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `grade` value."""
         # TODO: Make sure grade is set correctly by validation
-        # you can add print statements to help debugging
-        # example validation
-        # LOGIC TO VALIDATE SLOT_VALUE
-        # if not correct:
-        #     dispatcher.utter_message(text="data entered incorrectly")
-        #     return {"grade": None} # reset slot value
-        # return {"grade": validated_slot_value}
         if slot_value is None:
             dispatcher.utter_message(response="utter_ask_grade")
             return {"grade": None}
+
+        school_system = tracker.get_slot("school_system")
+
+        correct_grade = False
+
+        thanawya_pattern = r"\b((100(\.0{1,2})?)|([0-9]?[0-9](\.[0-9]{1,2})?))%?\b"
+        stem_pattern = r"(\b(?<!\.)((?:1\d{2}|[2-6]\d{2}|700)(?:\.\d+)?)\b)"
+        # TODO: define these patterns once they are known
+        ig_pattern = None
+        american_pattern = None
+
+        if school_system == "thanawya":
+            if re.match(thanawya_pattern, slot_value):
+                correct_grade = True
+        elif school_system == "stem":
+            if re.match(stem_pattern, slot_value):
+                correct_grade = True
+        elif school_system == "ig":
+            correct_grade = True
+        elif school_system == "american":
+            correct_grade = True
+
+        if not correct_grade:
+            dispatcher.utter_message(
+                response="الدرجة الذي أدخلتها لا تتطابق مع نظام مدرستك"
+            )
+            return {"grade": None}
+
         return {"grade": slot_value}
 
     def validate_school_system(
