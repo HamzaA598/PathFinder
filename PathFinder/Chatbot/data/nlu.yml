@@ -145,31 +145,30 @@ nlu:
       - أريدك أن تقترح لي كلية جيدة
       - هل يمكنك أن تقترح لي جامعة مناسبة؟
 
-
   - intent: inform_location
     examples: |
-      - أنا في [القاهرة](location)
-      - أسكن في [الإسكندرية](location)
-      - أعيش في [الجيزة](location)
-      - أسكن في [طنطا](location)
-      - موقعي في [الإسماعيلية](location)
-      - أعيش في [المنيا](location)
-      - أسكن في [السويس](location)
-      - موقعي في [الأقصر](location)
-      - أعيش في [الفيوم](location)
-      - أسكن في [المنصورة](location)
-      - موقعي في [بورسعيد](location)
-      - أسكن في [دمياط](location)
-      - موقعي في [سوهاج](location)
-      - أعيش في [شرم الشيخ](location)
-      - [القاهرة](location)
-      - [الإسكندرية](location)
-      - [الجيزة](location)
-      - [طنطا](location)
-      - [الإسماعيلية](location)
-      - [المنيا](location)
-      - [السويس](location)
-      - [الأقصر](location)
+      - أنا في [القاهرة]{"entity": "location", "value": "cairo"}
+      - أسكن في [الإسكندرية]{"entity": "location", "value": "alexandria"}
+      - أعيش في [الجيزة]{"entity": "location", "value": "giza"}
+      - أسكن في [طنطا]{"entity": "location", "value": "tanta"}
+      - موقعي في [الإسماعيلية]{"entity": "location", "value": "ismailia"}
+      - أعيش في [المنيا]{"entity": "location", "value": "minya"}
+      - أسكن في [السويس]{"entity": "location", "value": "suez"}
+      - موقعي في [الأقصر]{"entity": "location", "value": "luxor"}
+      - أعيش في [الفيوم]{"entity": "location", "value": "fayoum"}
+      - أسكن في [المنصورة]{"entity": "location", "value": "mansoura"}
+      - موقعي في [بورسعيد]{"entity": "location", "value": "port said"}
+      - أسكن في [دمياط]{"entity": "location", "value": "damietta"}
+      - موقعي في [سوهاج]{"entity": "location", "value": "sohag"}
+      - أعيش في [شرم الشيخ]{"entity": "location", "value": "sharm el sheikh"}
+      - [القاهرة]{"entity": "location", "value": "cairo"}
+      - [الإسكندرية]{"entity": "location", "value": "alexandria"}
+      - [الجيزة]{"entity": "location", "value": "giza"}
+      - [طنطا]{"entity": "location", "value": "tanta"}
+      - [الإسماعيلية]{"entity": "location", "value": "ismailia"}
+      - [المنيا]{"entity": "location", "value": "minya"}
+      - [السويس]{"entity": "location", "value": "suez"}
+      - [الأقصر]{"entity": "location", "value": "luxor"}
 
   - intent: inform_grade
     examples: |
@@ -191,27 +190,56 @@ nlu:
       - [88](grade) 
       - [75](grade) 
       - [95%](grade) 
+      - لقد حصلت على [550](grade) 
+      - لقد حصلت على [650](grade) 
+      - نتيجتي كانت [200](grade) 
+      - حصلت على [375](grade) 
+      - درجتي [420.5](grade) 
+      - العلامة النهائية كانت [530](grade) 
+      - معدلي [300](grade) 
+      - حققت [675](grade) 
+      - نتيجتي كانت [430.7](grade) 
+      - درجاتي [180](grade) 
+      - حصلت على [350](grade) 
+      - [550](grade) 
+      - [650](grade) 
+      - [200](grade) 
+      - [375](grade) 
+      - [420.5](grade) 
+      - [530](grade) 
+      - [300](grade) 
+      - [675](grade) 
 
 #? Do i need a synomon for school_system to make them all standardized?
-- intent: inform_school_system
+  - intent: inform_school_system
     examples: |
-      - أنا في نظام [Thanawya](school_system)
-      - درست في نظام [STEM](school_system)
-      - أنا من نظام [IG](school_system)
-      - أنا في المدرسة الأمريكية ([American](school_system))
-      - نظام مدرستي هو [Thanawya](school_system)
-      - أدرس في [STEM](school_system)
-      - أتعلم ضمن نظام [IG](school_system)
-      - مدرستي تعمل بنظام [American](school_system)
-      - [Thanawya](school_system)
-      - [STEM](school_system)
-      - [IG](school_system)
-      - [American](school_system)
-      - نظامي [Thanawya](school_system)
-      - أدرس في [STEM](school_system)
-      - [IG](school_system)
-      - أنا في [American](school_system)
-      - نظام مدرستي [IG](school_system)
+      - أنا في نظام [thanawya](school_system)
+      - درست في نظام [stem](school_system)
+      - أنا من نظام [ig](school_system)
+      - أنا في المدرسة الأمريكية ([american](school_system))
+      - نظام مدرستي هو [thanawya](school_system)
+      - أدرس في [stem](school_system)
+      - أتعلم ضمن نظام [ig](school_system)
+      - مدرستي تعمل بنظام [american](school_system)
+      - [thanawya](school_system)
+      - [stem](school_system)
+      - [ig](school_system)
+      - [american](school_system)
+      - نظامي [thanawya](school_system)
+      - أدرس في [stem](school_system)
+      - [ig](school_system)
+      - أنا في [american](school_system)
+      - نظام مدرستي [ig](school_system)
+
+      - أنا في نظام [ثانوية]{"entity": "school_system, "value": "thanawya"}
+      - درست في نظام [ستيم]{"entity": "school_system, "value": "stem"}
+      - أنا في المدرسة [الامريكية]{"entity": "school_system, "value": "american"}
+      - نظام مدرستي هو [ثانوية]{"entity": "school_system, "value": "thanawya"}
+      - أدرس في [ستيم]{"entity": "school_system, "value": "stem"}
+      - مدرستي تعمل بنظام [الامريكي]{"entity": "school_system, "value": "american"}
+      - [ثانوية]{"entity": "school_system, "value": "thanawya"}
+      - [ستيم]{"entity": "school_system, "value": "stem"}
+      - [امريكي]{"entity": "school_system, "value": "american"}
 
   - intent: faq/ask_cs
     examples: |
@@ -895,6 +923,10 @@ nlu:
       - الواحات
       - الوادي الجديد
 
+    # has multiple regexes:
+    # one for thanawya system where grade is a percentage
+    # one for stem system where grade is a number from 100 to 700
+    #TODO: one for IG and one for american
   - regex: grade
     examples: |
-      -'\b((100(\.0{1,2})?)|([0-9]?[0-9](\.[0-9]{1,2})?))%?\b'
+      -'(\b((100(\.0{1,2})?)|([0-9]?[0-9](\.[0-9]{1,2})?))%?\b) | (\b(?<!\.)((?:1\d{2}|[2-6]\d{2}|700)(?:\.\d+)?)\b)'
