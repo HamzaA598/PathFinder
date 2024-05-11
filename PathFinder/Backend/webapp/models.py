@@ -30,7 +30,6 @@ class University(models.Model):
     _id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    password = models.CharField(max_length=100)
     Address = models.TextField()
     description = models.TextField()
     admin = models.OneToOneField(UniversityAdmin, on_delete=models.CASCADE, blank=True,)
