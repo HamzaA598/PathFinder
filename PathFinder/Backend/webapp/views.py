@@ -20,10 +20,19 @@ def AllUniversities(request):
 
 
 @api_view(['GET'])
-def UniversityInfo(request, id):
+def UniversityInfoById(request, id):
     try:
         university = University.objects.get(_id=id)
         return JsonResponse(model_to_dict(university), status=status.HTTP_200_OK)
+    except ObjectDoesNotExist:
+        return JsonResponse({'error': 'University not found'}, status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['GET'])
+def UniversityInfoByName(request, name):
+    try:
+        universities = University.objects.filter(name__icontains=name)
+        universities = UniversitySerializer(universities, many=True).data
+        return Response(list(universities), status=status.HTTP_200_OK)
     except ObjectDoesNotExist:
         return JsonResponse({'error': 'University not found'}, status=status.HTTP_404_NOT_FOUND)
 
@@ -46,6 +55,16 @@ def CollegeInfo(request, id):
         return JsonResponse(model_to_dict(college), status=status.HTTP_200_OK)
     except ObjectDoesNotExist:
         return JsonResponse({'error': 'college not found'}, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['GET'])
+def CollegeInfoByName(request, name):
+    try:
+        colleges = College.objects.filter(name__icontains=name)
+        colleges = CollegeSerializer(colleges, many=True).data
+        return Response(list(colleges), status=status.HTTP_200_OK)
+    except ObjectDoesNotExist:
+        return JsonResponse({'error': 'University not found'}, status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['GET'])
 def CollegeByUniversity(request, id):
