@@ -27,7 +27,7 @@ class Student(models.Model):
     feedback = models.TextField()
     
 class University(models.Model):
-    _id = models.AutoField(primary_key=True)
+    _id = models.CharField(primary_key=True, max_length=50)
     name = models.CharField(max_length=100)
     email = models.EmailField()
     Address = models.TextField()
@@ -45,7 +45,7 @@ class University(models.Model):
         return self.name
     
 class College(models.Model):
-    _id = models.AutoField(primary_key=True)
+    _id = models.CharField(primary_key=True, max_length=50)
     name = models.CharField(max_length=100)
     email = models.EmailField()
     Address = models.TextField()
@@ -66,9 +66,8 @@ class College(models.Model):
     PhoneNumber = models.CharField(max_length=100)
     SpecializationYear = models.CharField(max_length=100)
     YearFounded = models.CharField(max_length=50)
-
-
-    university = models.ForeignKey(University, on_delete=models.CASCADE, blank=True)
+#   ForeignKey
+    university = models.CharField(blank=True,  max_length=50)
 
     def __str__(self):
         return self.name
