@@ -29,7 +29,7 @@ const University = () => {
   };
 
   return (
-    <div className="container py-8 sm:py-8 space-y-8  university">
+    <div className="container py-8 sm:py-8 space-y-8 h-screen  university">
       <Input
         onChange={handleSearchChange}
         value={search}
