@@ -140,8 +140,13 @@ def login(request):
             {'error': 'No student with that email'},
             status=status.HTTP_400_BAD_REQUEST
         )
-    except Admin.DoesNotExist:
+    except UniversityAdmin.DoesNotExist:
         return Response(
-            {'error': 'No Admin with that email'},
+            {'error': 'No University Admin with that email'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    except CollegeAdmin.DoesNotExist:
+        return Response(
+            {'error': 'No College Admin with that email'},
             status=status.HTTP_400_BAD_REQUEST
         )
