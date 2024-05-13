@@ -114,15 +114,17 @@ def login(request):
         )
 
     try:
-        obj = None
+        user = None
         if role == 'Student':
-            obj = Student.objects.get(email=email)
-        elif role == 'Admin':
-            obj = Admin.objects.get(email=email)
+            user = Student.objects.get(email=email)
+        elif role == 'University Admin':
+            user = UniversityAdmin.objects.get(email=email)
+        elif role == 'College Admin':
+            user = CollegeAdmin.objects.get(email=email)
 
-        if obj.password == password:
+        if user.password == password:
             return Response(
-                {'message': 'Login successful', 'id': obj.id, 'role': role},
+                {'message': 'Login successful', 'id': user.id, 'role': role},
                 status=status.HTTP_200_OK
             )
         else:
