@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.core.exceptions import ValidationError
 from django.forms.models import model_to_dict
 from .models import *
+from django.contrib.auth.hashers import make_password, check_password
 
 from bson import ObjectId
 
@@ -79,10 +80,12 @@ def signup(request):
         if Student.objects.filter(email=email).exists():
             return Response({"error": "A student with this email already exists."}, status=status.HTTP_400_BAD_REQUEST)
 
+        hashed_password = make_password(password)
+
         student = Student(
             name=name,
             email=email,
-            password=password,
+            password=hashed_password,
             dob=dob,
             highSchoolSystem=highSchoolSystem,
             governorate=governorate
@@ -122,7 +125,7 @@ def login(request):
         elif role == 'College Admin':
             user = CollegeAdmin.objects.get(email=email)
 
-        if user.password == password:
+        if check_password(user.password, password):
             return Response(
                 {'message': 'Login successful', 'id': user.id, 'role': role},
                 status=status.HTTP_200_OK
