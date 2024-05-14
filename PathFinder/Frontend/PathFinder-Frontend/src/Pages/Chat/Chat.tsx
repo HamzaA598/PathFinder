@@ -3,34 +3,36 @@ import PromptForm from "./Components/PromptForm";
 import { toast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { ChatConvo } from "./Components/ChatConvo";
-export interface Message {
-  id: number;
-  message: string;
-  role: string;
-}
+import { Message, MessageButton } from "./Components/ChatInterfaces";
 
 function Chat() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const append = (value: string, user: string) => {
+  const append = (value: string, user: string, buttons?: MessageButton[]) => {
     const newMessage: Message = {
-      id: messages.length + 1,
-      message: value,
+      MessageNumber: messages.length + 1,
+      text: value,
       role: user,
+      buttons: buttons || [],
     };
+    console.log(newMessage);
     setMessages([...messages, newMessage]);
   };
   const fetchAmswer = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post("http://localhost:8000/chatbot/", {
-        sender: "tester",
-        message: messages[messages.length - 1].message,
-      });
+      const response = await axios.post(
+        "http://localhost:5005/webhooks/rest/webhook",
+        {
+          sender: "tester",
+          message: messages[messages.length - 1].text,
+        }
+      );
       // handle incoming bot message
-      append(response.data[0].text, "chatbot");
+      const responseData = response.data[0];
+      append(responseData.text, "chatbot", responseData.buttons);
     } catch (error) {
       toast({
         title: "Uh oh! Something went wrong.",

@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
-import { type Message } from "../Chat";
 import { IconOpenAI, IconUser } from "@/components/ui/icons";
 import { MemoizedReactMarkdown } from "./markdown";
 import { useEffect } from "react";
+import { Message } from "./ChatInterfaces";
 
 export interface ChatMessageProps {
   message: Message;
@@ -26,7 +26,7 @@ function ChatMessage({ message, typewrite, ...props }: ChatMessageProps) {
             },
           }}
         >
-          {message.message}
+          {message.text}
         </MemoizedReactMarkdown>
         {/* <ChatMessageActions message={message} /> */}
       </div>

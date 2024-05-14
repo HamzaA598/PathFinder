@@ -1,7 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import ChatMessage from "./ChatMessage";
-import { type Message } from "../Chat";
 import { useEffect, useRef } from "react";
+import { Message } from "./ChatInterfaces";
 
 export interface ChatConvo {
   messages: Message[];
