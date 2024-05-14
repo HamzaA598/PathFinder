@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PromptForm from "./Components/PromptForm";
 import { toast } from "@/components/ui/use-toast";
 import axios from "axios";
-import { ChatConvo, ChatConvoProps } from "./Components/ChatConvo";
+import { ChatConvo } from "./Components/ChatConvo";
 import { Message, MessageButton } from "./Components/ChatInterfaces";
 
 function Chat() {
