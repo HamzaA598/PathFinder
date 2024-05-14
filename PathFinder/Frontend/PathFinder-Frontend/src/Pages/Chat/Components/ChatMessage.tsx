@@ -1,8 +1,7 @@
 import { cn } from "@/lib/utils";
 import { IconOpenAI, IconUser } from "@/components/ui/icons";
-import { MemoizedReactMarkdown } from "./markdown";
-import { useEffect } from "react";
-import { Message } from "./ChatInterfaces";
+import { Message, MessageButton } from "./ChatInterfaces";
+import { Button } from "@/components/ui/button";
 
 export interface ChatMessageProps {
   message: Message;
@@ -18,6 +17,18 @@ function ChatMessage({ message, typewrite, ...props }: ChatMessageProps) {
       </div>
 
       <div className="flex-1 px-1 ml-4 space-y-2 overflow-hidden">
+        <p className="text-base mb-2 last:mb-0">{message.text}</p>
+        {message.buttons && message.buttons.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {message.buttons.map((button: MessageButton, index) => (
+              <Button key={index} variant="messageButton">
+                {button.title}
+              </Button>
+            ))}
+          </div>
+        )}
+      </div>
+      {/* <div className="flex-1 px-1 ml-4 space-y-2 overflow-hidden">
         <MemoizedReactMarkdown
           className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0"
           components={{
@@ -29,7 +40,7 @@ function ChatMessage({ message, typewrite, ...props }: ChatMessageProps) {
           {message.text}
         </MemoizedReactMarkdown>
         {/* <ChatMessageActions message={message} /> */}
-      </div>
+      {/* </div>*/}
     </div>
   );
 }
