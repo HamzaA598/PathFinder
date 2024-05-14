@@ -38,13 +38,10 @@ function Chat() {
         messages[messages.length - 1].payload !== ""
           ? messages[messages.length - 1].payload
           : messages[messages.length - 1].text;
-      const response = await axios.post(
-        "http://localhost:5005/webhooks/rest/webhook",
-        {
-          sender: "tester",
-          message: msgTxt,
-        }
-      );
+      const response = await axios.post("http://localhost:8000/chatbot/", {
+        sender: "tester",
+        message: msgTxt,
+      });
       // handle incoming bot message
       const responseData = response.data[0];
       append(responseData.text, "", "chatbot", responseData.buttons);
