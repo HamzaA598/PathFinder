@@ -4,10 +4,17 @@ import { Input } from "@/components/ui/input";
 import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { MessageButton } from "./ChatInterfaces";
 
 interface PromptProps {
   setInput: (value: string) => void;
-  onSubmit: (value: string, user: string) => void;
+  onSubmit: (
+    text: string,
+    payload: string,
+    user: string,
+    buttons?: MessageButton[]
+  ) => void;
+
   isLoading: boolean;
   input: string;
 }
@@ -36,7 +43,7 @@ function PromptForm({ onSubmit, input, setInput, isLoading }: PromptProps) {
         if (!input?.trim()) {
           return;
         }
-        onSubmit(input, "user");
+        onSubmit(input, "", "user");
         setInput("");
       }}
       ref={formRef}

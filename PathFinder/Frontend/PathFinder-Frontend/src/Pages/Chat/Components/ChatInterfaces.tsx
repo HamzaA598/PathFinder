@@ -6,6 +6,7 @@ export interface MessageButton {
 export interface Message {
   MessageNumber: number;
   text: string;
+  payload: string;
   role: string;
   buttons?: MessageButton[];
 }

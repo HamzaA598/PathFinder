@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PromptForm from "./Components/PromptForm";
 import { toast } from "@/components/ui/use-toast";
 import axios from "axios";
-import { ChatConvo } from "./Components/ChatConvo";
+import { ChatConvo, ChatConvoProps } from "./Components/ChatConvo";
 import { Message, MessageButton } from "./Components/ChatInterfaces";
 
 function Chat() {
@@ -10,29 +10,44 @@ function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const append = (value: string, user: string, buttons?: MessageButton[]) => {
+  const handleMessageButtonClick = (text: string, payload: string) => {
+    append(text, payload, "user");
+  };
+
+  const append = (
+    text: string,
+    payload: string,
+    user: string,
+    buttons?: MessageButton[]
+  ) => {
     const newMessage: Message = {
       MessageNumber: messages.length + 1,
-      text: value,
+      text: text,
+      payload: payload,
       role: user,
       buttons: buttons || [],
     };
     console.log(newMessage);
     setMessages([...messages, newMessage]);
   };
+
   const fetchAmswer = async () => {
     setIsLoading(true);
     try {
+      const msgTxt =
+        messages[messages.length - 1].payload !== ""
+          ? messages[messages.length - 1].payload
+          : messages[messages.length - 1].text;
       const response = await axios.post(
         "http://localhost:5005/webhooks/rest/webhook",
         {
           sender: "tester",
-          message: messages[messages.length - 1].text,
+          message: msgTxt,
         }
       );
       // handle incoming bot message
       const responseData = response.data[0];
-      append(responseData.text, "chatbot", responseData.buttons);
+      append(responseData.text, "", "chatbot", responseData.buttons);
     } catch (error) {
       toast({
         title: "Uh oh! Something went wrong.",
@@ -56,7 +71,10 @@ function Chat() {
   return (
     <div className="flex">
       <div className="flex-1 h-[calc(100vh-145px)]">
-        <ChatConvo messages={messages} />
+        <ChatConvo
+          messages={messages}
+          messageButtonClick={handleMessageButtonClick}
+        />
       </div>
       <div>
         <PromptForm
