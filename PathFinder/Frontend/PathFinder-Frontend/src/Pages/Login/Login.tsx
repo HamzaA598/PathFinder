@@ -26,10 +26,11 @@ export default function Login() {
 
         navigate("/");
       }
-    } catch (err) {
+    } catch (error: any) {
       toast({
         title: "Uh oh! Something went wrong.",
-        description: "There was a problem with your Login.",
+        description:
+          error.response?.data?.error || "There was a problem with your login.",
       });
     }
   };

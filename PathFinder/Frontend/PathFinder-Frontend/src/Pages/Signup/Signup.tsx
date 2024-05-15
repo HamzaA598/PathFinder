@@ -42,16 +42,16 @@ export default function Signup() {
         toast({
           title: "Signup successful!",
           description:
-            "Your account has been created successfully! Please login.",
+            "Your account has been created successfully! Please log in.",
         });
         navigate("/login");
-      } else {
-        throw new Error("Unexpected response status");
       }
-    } catch (err) {
+    } catch (error: any) {
       toast({
         title: "Uh oh! Something went wrong.",
-        description: "There was a problem with your Sign up.",
+        description:
+          error.response?.data?.error ||
+          "There was a problem with your signup.",
       });
     }
   };

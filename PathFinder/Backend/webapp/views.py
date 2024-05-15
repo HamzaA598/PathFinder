@@ -78,7 +78,7 @@ def signup(request):
 
     try:
         if Student.objects.filter(email=email).exists():
-            return Response({"error": "A student with this email already exists."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": "A student with this email already exists."}, status=status.HTTP_409_CONFLICT)
 
         hashed_password = make_password(password)
 
@@ -93,12 +93,9 @@ def signup(request):
 
         if student is not None:
             student.save()
-            return Response({"message": "Signup successful"}, status=status.HTTP_201_CREATED)
+            return Response({"message": "Signup successful!"}, status=status.HTTP_201_CREATED)
         else:
-            return Response({"error": "'student' is None. Cannot save."}, status=status.HTTP_400_BAD_REQUEST)
-
-    except ValidationError as ve:
-        return Response({"error": str(ve)}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": "'student' is None. Cannot save."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     except Exception as e:
         return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -110,9 +107,9 @@ def login(request):
     password = request.data.get('password')
     role = request.data.get('role')
 
-    if not email or not password or not role:
+    if not all([email, password, role]):
         return Response(
-            {'error': 'Missing fields'},
+            {'error': 'Missing required fields'},
             status=status.HTTP_400_BAD_REQUEST
         )
 
@@ -132,21 +129,21 @@ def login(request):
             )
         else:
             return Response(
-                {'error': 'Invalid password'},
-                status=status.HTTP_400_BAD_REQUEST
+                {'error': 'Incorrect Email or Password'},
+                status=status.HTTP_401_UNAUTHORIZED
             )
     except Student.DoesNotExist:
         return Response(
-            {'error': 'No student with that email'},
-            status=status.HTTP_400_BAD_REQUEST
+            {'error': 'Incorrect Email or Password'},
+            status=status.HTTP_401_UNAUTHORIZED
         )
     except UniversityAdmin.DoesNotExist:
         return Response(
-            {'error': 'No University Admin with that email'},
-            status=status.HTTP_400_BAD_REQUEST
+            {'error': 'Incorrect Email or Password'},
+            status=status.HTTP_401_UNAUTHORIZED
         )
     except CollegeAdmin.DoesNotExist:
         return Response(
-            {'error': 'No College Admin with that email'},
-            status=status.HTTP_400_BAD_REQUEST
+            {'error': 'Incorrect Email or Password'},
+            status=status.HTTP_401_UNAUTHORIZED
         )
