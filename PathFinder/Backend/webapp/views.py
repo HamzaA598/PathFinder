@@ -125,7 +125,7 @@ def login(request):
         elif role == 'College Admin':
             user = CollegeAdmin.objects.get(email=email)
 
-        if check_password(user.password, password):
+        if check_password(password, user.password):
             return Response(
                 {'message': 'Login successful', 'id': user.id, 'role': role},
                 status=status.HTTP_200_OK
