@@ -1,27 +1,36 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "@/components/ui/use-toast";
-import LoginForn from "./components/LoginForm";
+import LoginForm from "./components/LoginForm";
 
 export default function Login() {
   const navigate = useNavigate();
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string, role: string) => {
     try {
       const response = await axios.post(
         // login endpoint
-        "",
+        "http://localhost:8000/webapp/login",
         {
           email: email,
           password: password,
+          role: role,
         }
       );
       // handle response
-      navigate("/");
-    } catch (err) {
+      if (response.status === 200) {
+        toast({
+          title: "Login Successful",
+          description: "Welcome back!",
+        });
+
+        navigate("/");
+      }
+    } catch (error: any) {
       toast({
         title: "Uh oh! Something went wrong.",
-        description: "There was a problem with your Login.",
+        description:
+          error.response?.data?.error || "There was a problem with your login.",
       });
     }
   };
@@ -35,7 +44,7 @@ export default function Login() {
             Log in to your account
           </p>
         </div>
-        <LoginForn login={login}></LoginForn>
+        <LoginForm login={login}></LoginForm>
       </div>
     </div>
   );

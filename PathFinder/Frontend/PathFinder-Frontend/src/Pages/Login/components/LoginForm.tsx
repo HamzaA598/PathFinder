@@ -5,19 +5,21 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 interface LoginProps {
-  login: (email: string, password: string) => void;
+  login: (email: string, password: string, role: string) => void;
 }
-function LoginForn({ login }: LoginProps) {
+function LoginForm({ login }: LoginProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
+
   return (
     <form
       onSubmit={async (e) => {
         e.preventDefault();
-        if (!email?.trim() || !password?.trim()) {
+        if (!email?.trim() || !password?.trim() || !role?.trim()) {
           return;
         }
-        await login(email, password);
+        await login(email, password, role);
       }}
     >
       <div className="space-y-4 mt-4">
@@ -46,6 +48,22 @@ function LoginForn({ login }: LoginProps) {
           />
         </div>
 
+        <div className="space-y-2">
+          <Label htmlFor="role">Log in as</Label>
+          <select
+            id="role"
+            required
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className="block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-white text-black dark:bg-black dark:text-gray-200 dark:border-gray-700"
+          >
+            <option value="">Select a role</option>
+            <option value="Student">Student</option>
+            <option value="University Admin">University Admin</option>
+            <option value="College Admin">College Admin</option>
+          </select>
+        </div>
+
         <Button className="w-full" type="submit">
           Login
         </Button>
@@ -66,4 +84,4 @@ function LoginForn({ login }: LoginProps) {
   );
 }
 
-export default LoginForn;
+export default LoginForm;
