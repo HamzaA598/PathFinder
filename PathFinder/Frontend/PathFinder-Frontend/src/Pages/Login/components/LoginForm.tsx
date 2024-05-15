@@ -59,8 +59,8 @@ function LoginForm({ login }: LoginProps) {
           >
             <option value="">Select a role</option>
             <option value="Student">Student</option>
-            <option value="Admin">University Admin</option>
-            <option value="Admin">College Admin</option>
+            <option value="University Admin">University Admin</option>
+            <option value="College Admin">College Admin</option>
           </select>
         </div>
 
