@@ -1,13 +1,63 @@
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "@/components/ui/use-toast";
+import axios from "axios";
+import SignupForm from "./components/SignupForm";
 
 export default function Signup() {
+  // may need to add more fields or change fields
+
+  const navigate = useNavigate();
+  const signup = async (
+    fName: string,
+    sName: string,
+    email: string,
+    password: string,
+    repeatPassword: string,
+    dob: Date,
+    highSchoolSystem: string,
+    governorate: string
+  ) => {
+    try {
+      if (password !== repeatPassword) {
+        toast({
+          title: "Passwords do not match",
+          description: "Please make sure your passwords match.",
+        });
+        return;
+      }
+      const response = await axios.post(
+        //signup endpoint
+        "http://localhost:8000/webapp/signup",
+        {
+          name: `${fName} ${sName}`,
+          email: email,
+          password: password,
+          dob: dob.toISOString().split("T")[0],
+          highSchoolSystem: highSchoolSystem,
+          governorate: governorate,
+        }
+      );
+      // handle response
+      if (response.status === 201) {
+        toast({
+          title: "Signup successful!",
+          description:
+            "Your account has been created successfully! Please log in.",
+        });
+        navigate("/login");
+      }
+    } catch (error: any) {
+      toast({
+        title: "Uh oh! Something went wrong.",
+        description:
+          error.response?.data?.error ||
+          "There was a problem with your signup.",
+      });
+    }
+  };
   return (
     <div key="1" className="flex items-center h-full px-4 mt-20 mb-44">
-      <div className="w-full max-w-lg mx-auto  bg-muted/50 border rounded-lg py-12 p-4 dark:border-slate-700">
+      <div className="w-full max-w-lg mx-auto bg-muted/100 dark:bg-muted/50 border rounded-lg py-12 p-4 dark:border-slate-700">
         <div className="space-y-4">
           <div className="space-y-2 text-center">
             <h1 className="text-4xl font-bold">Sign up</h1>
@@ -15,41 +65,7 @@ export default function Signup() {
               Sign up for an account
             </p>
           </div>
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="first-name">First Name</Label>
-                <Input id="first-name" placeholder="John" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="last-name">Last Name</Label>
-                <Input id="last-name" placeholder="Doe" required />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                placeholder="johndoe@example.com"
-                required
-                type="email"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" required type="password" />
-            </div>
-            <Button className="w-full" type="submit">
-              Sign Up
-            </Button>
-            <Separator className="my-8" />
-            <div className="mt-4 text-center text-sm">
-              Already have an account?
-              <Link className="underline" to="/login">
-                Login
-              </Link>
-            </div>
-          </div>
+          <SignupForm signup={signup}></SignupForm>
         </div>
       </div>
     </div>

@@ -12,4 +12,6 @@ urlpatterns = [
     path('College/<str:id>', views.CollegeInfo, name='GetCollege'),
     path('College/name/<str:name>', views.CollegeInfoByName, name='GetCollegeByname'),
     path('College/edit', views.EditCollege, name='EditCollege'),
+    path('signup', views.signup, name='signup'),
+    path('login', views.login, name='login'),
 ]
