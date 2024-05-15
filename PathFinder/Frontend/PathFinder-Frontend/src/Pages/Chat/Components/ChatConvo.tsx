@@ -1,13 +1,14 @@
 import { Separator } from "@/components/ui/separator";
 import ChatMessage from "./ChatMessage";
-import { type Message } from "../Chat";
 import { useEffect, useRef } from "react";
+import { Message } from "./ChatInterfaces";
 
-export interface ChatConvo {
+export interface ChatConvoProps {
   messages: Message[];
+  messageButtonClick: (text: string, payload: string) => void;
 }
 
-export function ChatConvo({ messages }: ChatConvo) {
+export function ChatConvo({ messages, messageButtonClick }: ChatConvoProps) {
   // if (!messages.length) {
   //   return null;
   // }
@@ -29,7 +30,8 @@ export function ChatConvo({ messages }: ChatConvo) {
           <div key={index} className="">
             <ChatMessage
               message={message}
-              typewrite={
+              messageButtonClick={messageButtonClick}
+              lastMessage={
                 index === messages.length - 1 && message.role === "chatbot"
               }
             />

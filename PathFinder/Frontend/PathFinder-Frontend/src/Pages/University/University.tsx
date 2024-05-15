@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { toast } from "@/components/ui/use-toast";
 
 interface University {
   _id: number;
@@ -20,6 +21,25 @@ const University = () => {
       .get<University[]>("http://127.0.0.1:8000/webapp/University")
       .then((response) => {
         setUniversities(response.data);
+      })
+      .catch((error) => {
+        let errorMessage = "Uh oh! Something went wrong.";
+        let errorDesc = "There was a problem with your request.";
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          errorMessage = "Internal Server Error";
+          errorDesc = " Please try again later.";
+        } else if (error.request) {
+          // The request was made but no response was received
+          errorMessage = "Network Error";
+          errorDesc =
+            "Couldn't connect to the server. Please check your internet connection.";
+        }
+        toast({
+          title: errorMessage,
+          description: errorDesc,
+        });
       });
   }, []);
 
