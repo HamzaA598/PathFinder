@@ -11,25 +11,47 @@ export default function Signup() {
     fName: string,
     sName: string,
     email: string,
-    password: string
+    password: string,
+    repeatPassword: string,
+    dob: Date,
+    highSchoolSystem: string,
+    governorate: string
   ) => {
     try {
+      if (password !== repeatPassword) {
+        toast({
+          title: "Passwords do not match",
+          description: "Please make sure your passwords match.",
+        });
+        return;
+      }
       const response = await axios.post(
         //signup endpoint
-        "",
+        "http://localhost:8000/webapp/signup",
         {
-          fName: fName,
-          sName: sName,
+          name: `${fName} ${sName}`,
           email: email,
           password: password,
+          dob: dob.toISOString().split("T")[0],
+          highSchoolSystem: highSchoolSystem,
+          governorate: governorate,
         }
       );
       // handle response
-      navigate("/login");
-    } catch (err) {
+      if (response.status === 201) {
+        toast({
+          title: "Signup successful!",
+          description:
+            "Your account has been created successfully! Please log in.",
+        });
+        navigate("/login");
+      }
+    } catch (error: any) {
       toast({
         title: "Uh oh! Something went wrong.",
-        description: "There was a problem with your Sign up.",
+        description:
+          error.response?.data?.error ||
+          "There was a problem with your signup.",
       });
     }
   };

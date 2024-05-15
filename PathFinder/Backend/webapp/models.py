@@ -1,31 +1,37 @@
 from djongo import models
+import datetime
 
 class Admin(models.Model):
     id = models.AutoField(primary_key=True)
     email = models.EmailField()
     password = models.CharField(max_length=100)
-    
+
+
 class UniversityAdmin(models.Model):
     id = models.AutoField(primary_key=True)
     email = models.EmailField()
     password = models.CharField(max_length=100)
+
 
 class CollegeAdmin(models.Model):
     id = models.AutoField(primary_key=True)
     email = models.EmailField()
     password = models.CharField(max_length=100)
 
+
 class Student(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=100)
-    age = models.IntegerField()
-    preferences = models.TextField()
-    gradeInHighSchool = models.CharField(max_length=100)
+    dob = models.DateField(default=datetime.date(2000, 1, 1))
     highSchoolSystem = models.CharField(max_length=100)
+    governorate = models.CharField(max_length=100, default="Cairo")
+    gradeInHighSchool = models.CharField(max_length=100)
+    preferences = models.TextField()
     feedback = models.TextField()
-    
+
+
 class University(models.Model):
     _id = models.CharField(primary_key=True, max_length=50)
     name = models.CharField(max_length=100)
@@ -43,7 +49,8 @@ class University(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+
 class College(models.Model):
     _id = models.CharField(primary_key=True, max_length=50)
     name = models.CharField(max_length=100)
@@ -71,12 +78,14 @@ class College(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+
 class Department(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     thresholdGpa = models.FloatField()
     colleges = models.ForeignKey(College, on_delete=models.CASCADE)
+
 
 class Course(models.Model):
     id = models.AutoField(primary_key=True)
@@ -84,9 +93,11 @@ class Course(models.Model):
     maxStudents = models.IntegerField()
     creditHours = models.IntegerField()
     departments = models.ForeignKey(Department, on_delete=models.CASCADE)
-    
+
+
 class Announcement(models.Model):
     id = models.AutoField(primary_key=True)
     description = models.TextField()
     date = models.DateField()
-    colleges = models.ForeignKey(College, on_delete=models.CASCADE, blank=True, null=True)
+    colleges = models.ForeignKey(
+        College, on_delete=models.CASCADE, blank=True, null=True)
