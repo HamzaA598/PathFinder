@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { IconOpenAI, IconUser } from "@/components/ui/icons";
 import { Message, MessageButton } from "./ChatInterfaces";
 import { Button } from "@/components/ui/button";
+import ReactMarkdown from "react-markdown";
 
 interface ChatMessageProps {
   message: Message;
@@ -24,7 +25,9 @@ function ChatMessage({
       </div>
 
       <div className="flex-1 px-1 ml-4 space-y-2 overflow-hidden">
-        <p className="text-base mb-2 last:mb-0">{message.text}</p>
+        <ReactMarkdown className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 mb-2 last:mb-0">
+          {message.text}
+        </ReactMarkdown>
         {message.buttons && message.buttons.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {message.buttons.map((button: MessageButton, index) => (
@@ -42,19 +45,7 @@ function ChatMessage({
           </div>
         )}
       </div>
-      {/* <div className="flex-1 px-1 ml-4 space-y-2 overflow-hidden">
-        <MemoizedReactMarkdown
-          className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0"
-          components={{
-            p({ children }) {
-              return <p className="text-base mb-2 last:mb-0">{children}</p>;
-            },
-          }}
-        >
-          {message.text}
-        </MemoizedReactMarkdown>
-        {/* <ChatMessageActions message={message} /> */}
-      {/* </div>*/}
+      {/* <ChatMessageActions message={message} /> */}
     </div>
   );
 }

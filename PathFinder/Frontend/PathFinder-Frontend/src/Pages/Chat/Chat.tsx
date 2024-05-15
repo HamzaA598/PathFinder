@@ -46,9 +46,24 @@ function Chat() {
       const responseData = response.data[0];
       append(responseData.text, "", "chatbot", responseData.buttons);
     } catch (error) {
+      let errorMessage = "Uh oh! Something went wrong.";
+      let errorDesc = "There was a problem with your request.";
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          errorMessage = "Internal Server Error";
+          errorDesc = " Please try again later.";
+        } else if (error.request) {
+          // The request was made but no response was received
+          errorMessage = "Network Error";
+          errorDesc =
+            "Couldn't connect to the server. Please check your internet connection.";
+        }
+      }
       toast({
-        title: "Uh oh! Something went wrong.",
-        description: "There was a problem with your request.",
+        title: errorMessage,
+        description: errorDesc,
       });
     }
     setIsLoading(false);

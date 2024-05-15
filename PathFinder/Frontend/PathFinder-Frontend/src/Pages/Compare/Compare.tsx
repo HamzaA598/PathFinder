@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { toast } from "@/components/ui/use-toast";
 
 interface University_College {
   id: number;
@@ -54,6 +55,25 @@ const Compare = () => {
       .get<University_College[]>("http://localhost:8000/universities")
       .then((response) => {
         setUniversities(response.data);
+      })
+      .catch((error) => {
+        let errorMessage = "Uh oh! Something went wrong.";
+        let errorDesc = "There was a problem with your request.";
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          errorMessage = "Internal Server Error";
+          errorDesc = " Please try again later.";
+        } else if (error.request) {
+          // The request was made but no response was received
+          errorMessage = "Network Error";
+          errorDesc =
+            "Couldn't connect to the server. Please check your internet connection.";
+        }
+        toast({
+          title: errorMessage,
+          description: errorDesc,
+        });
       });
   }, []);
 
@@ -66,6 +86,25 @@ const Compare = () => {
         .get<University_College[]>("http://localhost:8000/universities")
         .then((response) => {
           setCollegesList1(response.data);
+        })
+        .catch((error) => {
+          let errorMessage = "Uh oh! Something went wrong.";
+          let errorDesc = "There was a problem with your request.";
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            errorMessage = "Internal Server Error";
+            errorDesc = " Please try again later.";
+          } else if (error.request) {
+            // The request was made but no response was received
+            errorMessage = "Network Error";
+            errorDesc =
+              "Couldn't connect to the server. Please check your internet connection.";
+          }
+          toast({
+            title: errorMessage,
+            description: errorDesc,
+          });
         });
     }
   }, [boolColList1]);
@@ -79,6 +118,25 @@ const Compare = () => {
         .get<University_College[]>("http://localhost:8000/universities")
         .then((response) => {
           setCollegesList2(response.data);
+        })
+        .catch((error) => {
+          let errorMessage = "Uh oh! Something went wrong.";
+          let errorDesc = "There was a problem with your request.";
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            errorMessage = "Internal Server Error";
+            errorDesc = " Please try again later.";
+          } else if (error.request) {
+            // The request was made but no response was received
+            errorMessage = "Network Error";
+            errorDesc =
+              "Couldn't connect to the server. Please check your internet connection.";
+          }
+          toast({
+            title: errorMessage,
+            description: errorDesc,
+          });
         });
     }
   }, [boolColList2]);
