@@ -33,8 +33,8 @@ const routeList: RouteProps[] = [
     label: "Universities",
   },
   {
-    href: "",
-    label: "Other Feature",
+    href: "/Compare",
+    label: "Compare",
   },
   {
     href: "",
