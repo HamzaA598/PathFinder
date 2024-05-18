@@ -11,6 +11,7 @@ import University from "./Pages/University/University";
 import UniversityInfo from "./Pages/UniversityInfo/UniversityInfo";
 import CollegeInfo from "./Pages/CollegeInfo/CollegeInfo";
 import Compare from "./Pages/Compare/Compare";
+import News from "./Pages/News/News";
 
 function App() {
   // Get the current location using the useLocation hook
@@ -29,6 +30,7 @@ function App() {
         <Route path="/:name" element={<UniversityInfo />}></Route>
         <Route path="/:name/:name" element={<CollegeInfo />}></Route>
         <Route path="/Compare" element={<Compare />}></Route>
+        <Route path="/News" element={<News />}></Route>
       </Routes>
       {!isChatRoute && <Footer />}
       <Toaster />

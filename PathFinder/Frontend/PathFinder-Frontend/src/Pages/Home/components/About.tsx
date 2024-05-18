@@ -12,11 +12,12 @@ export const About = () => {
                 PathFinder
               </h2>
               <p className="text-xl text-muted-foreground mt-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit.
+                Pathfinder aims to address the challenge faced by high school
+                students, particularly in Egypt, in choosing the most suitable
+                university or college for their further education. The platform
+                intends to provide a user-friendly and informative interface
+                that assists students in making informed decisions regarding
+                their academic and career aspirations.
               </p>
             </div>
           </div>

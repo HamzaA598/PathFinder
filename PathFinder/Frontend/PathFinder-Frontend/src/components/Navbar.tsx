@@ -37,8 +37,8 @@ const routeList: RouteProps[] = [
     label: "Compare",
   },
   {
-    href: "",
-    label: "Other Feature",
+    href: "/News",
+    label: "News page",
   },
   {
     href: "",
