@@ -25,7 +25,7 @@ const teamList: TeamProps[] = [
   {
     imageUrl: "",
     name: "Ziad Ibrahim",
-    position: "Position",
+    position: "Developer",
     socialNetworks: [
       {
         name: "Linkedin",
@@ -44,7 +44,7 @@ const teamList: TeamProps[] = [
   {
     imageUrl: "",
     name: "Hamza Abdul-Hameed",
-    position: "Position",
+    position: "Developer",
     socialNetworks: [
       { name: "Linkedin", url: "http://linkedin.com" },
       {
@@ -60,7 +60,7 @@ const teamList: TeamProps[] = [
   {
     imageUrl: "",
     name: "Yahia El-Hadidi",
-    position: "Position",
+    position: "Developer",
     socialNetworks: [
       { name: "Linkedin", url: "http://linkedin.com" },
 
@@ -73,7 +73,7 @@ const teamList: TeamProps[] = [
   {
     imageUrl: "",
     name: "Yahia Ashraf",
-    position: "Position",
+    position: "Developer",
     socialNetworks: [
       { name: "Linkedin", url: "http://linkedin.com" },
       {
@@ -85,7 +85,7 @@ const teamList: TeamProps[] = [
   {
     imageUrl: "",
     name: "Omar Tarek",
-    position: "Position",
+    position: "Developer",
     socialNetworks: [
       { name: "Linkedin", url: "http://linkedin.com" },
       {
@@ -142,10 +142,6 @@ export const Team = () => {
                   {position}
                 </CardDescription>
               </CardHeader>
-
-              <CardContent className="text-center pb-2">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              </CardContent>
 
               <CardFooter>
                 {socialNetworks.map(({ name, url }: SociaNetworkslProps) => (

@@ -12,25 +12,25 @@ const features: FeatureProps[] = [
     icon: <MedalIcon />,
     title: "Accesibility",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Ensuring that every student can easily access and navigate our platform, regardless of their abilities, to find the perfect college match",
   },
   {
     icon: <MapIcon />,
     title: "Community",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Connect with a supportive network through our chatbot and access a wealth of information on universities and colleges to help you make informed decisions",
   },
   {
     icon: <PlaneIcon />,
     title: "Scalability",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Our platform grows with you, providing personalized recommendations and insights as your preferences and ambitions evolve",
   },
   {
     icon: <GiftIcon />,
     title: "Gamification",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Engage with our interactive tools and challenges designed to make your college search exciting and rewarding",
   },
 ];
 
