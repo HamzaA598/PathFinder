@@ -2,22 +2,29 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 import { toast } from "@/components/ui/use-toast";
 
-const Overview = ({ uni_id }) => {
-  console.log("dicnsiucnsievn      " + uni_id);
+const Overview = ({ uni_name }) => {
+  console.log("dicnsiucnsievn " + uni_name);
 
   const [universityInfo, setUniversityInfo] = useState([]);
 
-  const url = `http://127.0.0.1:8000/webapp/University/${uni_id}`;
+  const url = `http://127.0.0.1:8000/webapp/University/name/${
+    uni_name.split(" ")[0]
+  }`;
+
+  console.log("dicnsiucnsievn " + url);
 
   //npx json-server --watch uni_data/public_universities.json --port 9000
   React.useEffect(() => {
     axios
       .get(url)
       .then((response) => {
-        setUniversityInfo(response.data);
+        response.data.map((uni_data) => {
+          if (uni_data.name == uni_name) {
+            setUniversityInfo(uni_data);
+          }
+        });
       })
       .catch((error) => {
         let errorMessage = "Uh oh! Something went wrong.";

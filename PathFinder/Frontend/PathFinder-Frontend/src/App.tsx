@@ -27,8 +27,8 @@ function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/chat" element={<Chat />}></Route>
         <Route path="/university" element={<University />}></Route>
-        <Route path="/:name" element={<UniversityInfo />}></Route>
-        <Route path="/:name/:name" element={<CollegeInfo />}></Route>
+        <Route path="/:uni_name" element={<UniversityInfo />}></Route>
+        <Route path="/:uni_name/:col_name" element={<CollegeInfo />}></Route>
         <Route path="/Compare" element={<Compare />}></Route>
         <Route path="/News" element={<News />}></Route>
       </Routes>

@@ -3,22 +3,28 @@ import axios from "axios";
 import React from "react";
 import { toast } from "@/components/ui/use-toast";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const CollegeInfo = () => {
-  const { state } = useLocation();
-  const College = state;
+  const { col_name } = useParams<{ col_name: string }>();
 
   const [collegeInfo, setCollegeInfo] = useState([]);
 
-  const url = "http://localhost:9000/" + College;
+  const url = `http://127.0.0.1:8000/webapp/College/name/${
+    col_name?.split(" ")[0]
+  }`;
 
   //npx json-server --watch uni_data/public_universities.json --port 9000
   React.useEffect(() => {
     axios
       .get(url)
       .then((response) => {
-        setCollegeInfo(response.data);
+        response.data.map((col_data) => {
+          if (col_data.name == col_name) {
+            setCollegeInfo(col_data);
+          }
+        });
+        //setCollegeInfo(response.data);
       })
       .catch((error) => {
         let errorMessage = "Uh oh! Something went wrong.";
@@ -47,7 +53,7 @@ const CollegeInfo = () => {
     <div>
       <div>
         <h1 className="m-20 text-4xl font-bold tracking-tight  md:text-5xl">
-          <span className="block">{College}</span>
+          <span className="block">{col_name}</span>
         </h1>
       </div>
       <div className="grid gap-8 m-20">
