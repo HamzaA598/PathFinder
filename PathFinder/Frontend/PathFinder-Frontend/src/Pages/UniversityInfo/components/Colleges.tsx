@@ -6,7 +6,7 @@ import axios from "axios";
 import { toast } from "@/components/ui/use-toast";
 
 interface College {
-  id: number;
+  _id: string;
   name: string;
 }
 
@@ -17,9 +17,13 @@ const Colleges = ({ uni_name }) => {
   // Fetch universities data
   //npx json-server --watch uni_data/university_names.json --port 8000
 
+  const url = `http://127.0.0.1:8000/webapp/College/name/${
+    uni_name.split(" ")[0]
+  }`;
+
   useEffect(() => {
     axios
-      .get<College[]>(`http://127.0.0.1:8000/webapp/University/`)
+      .get<College[]>(url)
       .then((response) => {
         setColleges(response.data);
       })
@@ -61,12 +65,7 @@ const Colleges = ({ uni_name }) => {
           ? college
           : college.name.toLowerCase().includes(search.toLowerCase());
       }).map((college) => (
-        <Link
-          to={`/${encodeURIComponent(uni_name)}/${encodeURIComponent(
-            college.name
-          )}`}
-          state={college.name}
-        >
+        <Link to={`/${uni_name}/${college.name}`}>
           <Button
             className="m-5 w-60 p-7 pe-8 hover:bg-emerald-600  content-center"
             variant="secondary"

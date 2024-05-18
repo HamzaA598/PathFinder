@@ -49,7 +49,7 @@ const University = () => {
   };
 
   return (
-    <div className="container py-8 sm:py-8 space-y-8 h-screen  university">
+    <div className="container h-[1200px] py-8 sm:py-8 space-y-8 h-screen  university">
       <Input
         onChange={handleSearchChange}
         value={search}
@@ -62,10 +62,7 @@ const University = () => {
             : university.name.toLowerCase().includes(search.toLowerCase());
         })
         .map((university) => (
-          <Link
-            to={`/${encodeURIComponent(university.name)}`}
-            state={{ uni: university }}
-          >
+          <Link to={`/${university.name}`} key={university._id}>
             <Button
               className="m-5 w-60 p-7 pe-8 hover:bg-emerald-600 object-center content-center"
               variant="secondary"
