@@ -13,6 +13,7 @@ intents:
   - inform_location #! EXAMPLES DONE
   - inform_grade #! EXAMPLES DONE
   - inform_school_system #! EXAMPLES DONE
+  - inform_preference #! EXAMPLES DONE
   # - inform_private_college #! NOT NEEDED SINCE IT USES INFORM/DENY INTENTS
 # intents in retrieval intent faq
   # - ask_cs
@@ -112,6 +113,7 @@ entities:
   - school_system
   - grade
   - private_college
+  - preference
 
 slots:
   location:
@@ -153,7 +155,14 @@ slots:
       conditions:
       - active_loop: recommend_college_form
         requested_slot: private_college
-
+  preference:
+   type: text
+   mappings:
+   - type: from_entity
+     entity: preference
+     conditions:
+      - active_loop: recommend_college_form
+        requested_slot: preference
 
 actions:
   - give_college_recommendation #TODO: implement this custom action
@@ -168,6 +177,7 @@ forms:
     - school_system
     - grade
     - private_college
+    - preference
 
 
 
@@ -179,6 +189,15 @@ responses:
 
   utter_ask_school_system:
     - text: "ما هو نظام مدرستك؟ يرجى اختيار واحد من الخيارات التالية: Thanawya، STEM، IG، American."
+       buttons:
+       - title: "Thanawya"
+         payload: /inform_school_system{{"school_system":"thanawya"}}
+       - title: "STEM"
+         payload: /inform_school_system{{"school_system":"stem"}}
+       - title: "IG"
+         payload: /inform_school_system{{"school_system":"ig"}}
+       - title: "American"
+         payload: /inform_school_system{{"school_system":"american"}}
 
   utter_ask_grade:
     - text: "ما هي درجتك؟"
@@ -186,6 +205,28 @@ responses:
 
   utter_ask_private_college:
     - text: "هل تفضل الكليات الخاصة على الكليات الحكومية؟"
+      buttons:
+      - title: "نعم"
+        payload: /affirm{{"private_college":"True"}}
+      - title: "لا"
+        payload: /deny{{"private_college":"False"}}
+  
+  utter_ask_preference:
+    - text: "ما هو مجال الدراسة الذي تفضله؟"
+      buttons:
+      - title: "علوم الكمبيوتر"
+        payload: '/inform_preference{{"preference":"computer science"}}'
+      - title: "الهندسة"
+        payload: '/inform_preference{{"preference":"engineering"}}'
+      - title: "الطب"
+        payload: '/inform_preference{{"preference":"medicine"}}'
+      - title: "القانون"
+        payload: '/inform_preference{{"preference":"law"}}'
+      - title: "إدارة الأعمال"
+        payload: '/inform_preference{{"preference":"business"}}'
+      - title: "الفنون"
+        payload: '/inform_preference{{"preference":"arts"}}'
+
 
   utter_greet:
     - text: "مرحبًا! كيف حالك؟ يمكنني مساعدتك في شيء معين؟"

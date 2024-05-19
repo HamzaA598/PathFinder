@@ -89,7 +89,7 @@ class ValidateRecommendationForm(FormValidationAction):
             return {"grade": None}
 
         school_system = tracker.get_slot("school_system")
-
+        grade_value = slot_value
         correct_grade = False
 
         thanawya_pattern = r"\b((100(\.0{1,2})?)|([0-9]?[0-9](\.[0-9]{1,2})?))%?\b"
@@ -104,6 +104,7 @@ class ValidateRecommendationForm(FormValidationAction):
         elif school_system == "stem":
             if re.match(stem_pattern, slot_value):
                 correct_grade = True
+                grade_value = 700 / slot_value
         elif school_system == "ig":
             correct_grade = True
         elif school_system == "american":
@@ -111,11 +112,11 @@ class ValidateRecommendationForm(FormValidationAction):
 
         if not correct_grade:
             dispatcher.utter_message(
-                response="الدرجة الذي أدخلتها لا تتطابق مع نظام مدرستك"
+                response="الدرجة التي أدخلتها لا تتطابق مع نظام مدرستك. يرجى إدخال الدرجة الصحيحة."
             )
             return {"grade": None}
 
-        return {"grade": slot_value}
+        return {"grade": grade_value}
 
     def validate_school_system(
         self,
@@ -125,17 +126,16 @@ class ValidateRecommendationForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `school_system` value."""
-        # TODO: Make sure school_system is set correctly by validation
-        # you can add print statements to help debugging
-        # example validation
-        # LOGIC TO VALIDATE SLOT_VALUE
-        # if not correct:
-        #     dispatcher.utter_message(text="data entered incorrectly")
-        #     return {"school_system": None} # reset slot value
-        # return {"school_system": validated_slot_value}
+
+        school_systems = ["thanawya", "american", "ig", "stem"]
         if slot_value is None:
             dispatcher.utter_message(response="utter_ask_school_system")
             return {"school_system": None}
+
+        if slot_value not in school_systems:
+            dispatcher.utter_message(response="utter_ask_school_system")
+            return {"school_system": None}
+
         return {"school_system": slot_value}
 
     def validate_private_college(
@@ -158,6 +158,42 @@ class ValidateRecommendationForm(FormValidationAction):
             dispatcher.utter_message(response="utter_ask_private_college")
             return {"private_college": None}
         return {"private_college": slot_value}
+
+    def validate_preference(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        """Validate `preference` value."""
+        # TODO: Make sure preference is set correctly by validation
+        preferences = [
+            "engineering",
+            "medicine",
+            "law",
+            "business",
+            "arts",
+            "computer science",
+        ]
+
+        if slot_value is None:
+            dispatcher.utter_message(response="utter_ask_preference")
+            return {"preference": None}
+
+        if slot_value.lower() not in preferences:
+            dispatcher.utter_message(
+                text="غير صحيح. يرجى اختيار مجال من الخيارات المتاحة."
+            )
+            return {"preference": None}
+
+        if slot_value.lower() != "computer science":
+            dispatcher.utter_message(
+                text="بسبب محدودية البيانات، نوصي فقط بكليات علوم الكمبيوتر في الوقت الحالي."
+            )
+            return {"preference": None}
+
+        return {"preference": slot_value}
 
 
 # class ActionHelloWorld(Action):

@@ -241,6 +241,22 @@ nlu:
       - [ستيم]{"entity": "school_system, "value": "stem"}
       - [امريكي]{"entity": "school_system, "value": "american"}
 
+
+  - intent: inform_preference
+    examples: |
+      - أفضّل [الهندسة]{"entity": "preference", "value": "engineering"}
+      - تفضيلي هو [الطب]{"entity": "preference", "value": "medicine"}
+      - أرغب في دراسة [القانون]{"entity": "preference", "value": "law"}
+      - أنا مهتم بـ [إدارة الأعمال]{"entity": "preference", "value": "business"}
+      - أريد أن أدرس [الفنون]{"entity": "preference", "value": "arts"}
+      - أختار [علوم الكمبيوتر]{"entity": "preference", "value": "computer science"}
+      - [الهندسة]{"entity": "preference", "value": "engineering"} هو اختياري
+      - أنا مهتم بـ [الطب]{"entity": "preference", "value": "medicine"}
+      - مجال اهتمامي هو [القانون]{"entity": "preference", "value": "law"}
+      - أفضّل دراسة [إدارة الأعمال]{"entity": "preference", "value": "business"}
+      - أميل نحو [الفنون]{"entity": "preference", "value": "arts"}
+      - أود التخصص في [علوم الكمبيوتر]{"entity": "preference", "value": "computer science"}
+      
   - intent: faq/ask_cs
     examples: |
       - قدم لي معلومات عامة عن علم الحاسوب.

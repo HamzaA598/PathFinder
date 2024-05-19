@@ -67,38 +67,10 @@ stories:
       # - slot_was_set:
       #   - private_college: "private_college"
       - slot_was_set:
+        - requested_slot: preference
+      - slot_was_set:
         - requested_slot: null
       - active_loop: null
       - action: give_college_recommendation
 
-  # - story: Information about Computer Science
-  #   steps:
-  #     - checkpoint: greetings
-  #     - intent: ask_cs
-  #     - action: utter_info_cs
-  #     - intent: goodbye
-  #     - action: utter_goodbye
-
-  # - story: Information about Computer Science colleges
-  #   steps:
-  #     - checkpoint: greetings
-  #     - intent: ask_colleges
-  #     - action: utter_info_colleges
-  #     - intent: goodbye
-  #     - action: utter_goodbye
-
-  # - story: Information about Computer Science departments
-  #   steps:
-  #     - checkpoint: greetings
-  #     - intent: ask_departments
-  #     - action: utter_info_departments
-  #     - intent: goodbye
-  #     - action: utter_goodbye
-
-  # - story: best department
-  #   steps:
-  #     - intent: greet
-  #     - action: utter_greet
-  #     - intent: best_department
-  #     - action: utter_best_department
       
