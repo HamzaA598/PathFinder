@@ -189,7 +189,7 @@ responses:
 
   utter_ask_school_system:
     - text: "ما هو نظام مدرستك؟ يرجى اختيار واحد من الخيارات التالية: Thanawya، STEM، IG، American."
-       buttons:
+      buttons:
        - title: "Thanawya"
          payload: /inform_school_system{{"school_system":"thanawya"}}
        - title: "STEM"

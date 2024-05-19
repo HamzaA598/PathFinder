@@ -230,16 +230,15 @@ nlu:
       - [ig](school_system)
       - أنا في [american](school_system)
       - نظام مدرستي [ig](school_system)
-
-      - أنا في نظام [ثانوية]{"entity": "school_system, "value": "thanawya"}
-      - درست في نظام [ستيم]{"entity": "school_system, "value": "stem"}
-      - أنا في المدرسة [الامريكية]{"entity": "school_system, "value": "american"}
-      - نظام مدرستي هو [ثانوية]{"entity": "school_system, "value": "thanawya"}
-      - أدرس في [ستيم]{"entity": "school_system, "value": "stem"}
-      - مدرستي تعمل بنظام [الامريكي]{"entity": "school_system, "value": "american"}
-      - [ثانوية]{"entity": "school_system, "value": "thanawya"}
-      - [ستيم]{"entity": "school_system, "value": "stem"}
-      - [امريكي]{"entity": "school_system, "value": "american"}
+      - أنا في نظام [ثانوية]{"entity": "school_system", "value": "thanawya"} 
+      - درست في نظام [ستيم]{"entity": "school_system", "value": "stem"}
+      - أنا في المدرسة [الامريكية]{"entity": "school_system", "value": "american"}
+      - نظام مدرستي هو [ثانوية]{"entity": "school_system", "value": "thanawya"}
+      - أدرس في [ستيم]{"entity": "school_system", "value": "stem"}
+      - مدرستي تعمل بنظام [الامريكي]{"entity": "school_system", "value": "american"}
+      - [ثانوية]{"entity": "school_system", "value": "thanawya"}
+      - [ستيم]{"entity": "school_system", "value": "stem"}
+      - [امريكي]{"entity": "school_system", "value": "american"}
 
 
   - intent: inform_preference
