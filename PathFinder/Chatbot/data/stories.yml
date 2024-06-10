@@ -74,66 +74,66 @@ stories:
       - action: give_college_recommendation
 
       
-- story: interactive_story_1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: recommend_college
-  - action: recommend_college_form
-  - active_loop: recommend_college_form
-  - slot_was_set:
-    - requested_slot: location
-  - intent: inform_location
-    entities:
-    - location: cairo
-  - slot_was_set:
-    - location: cairo
-  - action: recommend_college_form
-  - slot_was_set:
-    - location: cairo
-  - slot_was_set:
-    - requested_slot: school_system
-  - intent: inform_school_system
-    entities:
-    - school_system: thanawya
-  - slot_was_set:
-    - school_system: thanawya
-  - action: recommend_college_form
-  - slot_was_set:
-    - school_system: thanawya
-  - slot_was_set:
-    - requested_slot: grade
-  - intent: inform_grade
-    entities:
-    - grade: 92.5%
-  - slot_was_set:
-    - grade: 92.5%
-  - action: recommend_college_form
-  - slot_was_set:
-    - grade: 92.5%
-  - slot_was_set:
-    - requested_slot: private_college
-  - intent: affirm
-    entities:
-    - private_college: 'True'
-  - slot_was_set:
-    - private_college: true
-  - action: recommend_college_form
-  - slot_was_set:
-    - private_college: true
-  - slot_was_set:
-    - requested_slot: preference
-  - intent: inform_preference
-    entities:
-    - preference: computer science
-  - slot_was_set:
-    - preference: computer science
-  - action: recommend_college_form
-  - slot_was_set:
-    - preference: computer science
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: give_college_recommendation
-  - intent: goodbye
-  - action: utter_goodbye
+  - story: interactive_story_1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: recommend_college
+      - action: recommend_college_form
+      - active_loop: recommend_college_form
+      - slot_was_set:
+        - requested_slot: location
+      - intent: inform_location
+        entities:
+        - location: cairo
+      - slot_was_set:
+        - location: cairo
+      - action: recommend_college_form
+      - slot_was_set:
+        - location: cairo
+      - slot_was_set:
+        - requested_slot: school_system
+      - intent: inform_school_system
+        entities:
+        - school_system: thanawya
+      - slot_was_set:
+        - school_system: thanawya
+      - action: recommend_college_form
+      - slot_was_set:
+        - school_system: thanawya
+      - slot_was_set:
+        - requested_slot: grade
+      - intent: inform_grade
+        entities:
+        - grade: 92.5%
+      - slot_was_set:
+        - grade: 92.5%
+      - action: recommend_college_form
+      - slot_was_set:
+        - grade: 92.5%
+      - slot_was_set:
+        - requested_slot: private_college
+      - intent: affirm
+        entities:
+        - private_college: 'True'
+      - slot_was_set:
+        - private_college: true
+      - action: recommend_college_form
+      - slot_was_set:
+        - private_college: true
+      - slot_was_set:
+        - requested_slot: preference
+      - intent: inform_preference
+        entities:
+        - preference: computer science
+      - slot_was_set:
+        - preference: computer science
+      - action: recommend_college_form
+      - slot_was_set:
+        - preference: computer science
+      - slot_was_set:
+        - requested_slot: null
+      - active_loop: null
+      - action: give_college_recommendation
+      - intent: goodbye
+      - action: utter_goodbye
