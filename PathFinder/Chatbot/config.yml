@@ -1,6 +1,6 @@
 language: ar
 pipeline:
-  - name: WhitespaceTokenizer
+  - name: Components.CustomWhitespaceTokenizer.WhitespaceTokenizer
   - name: LanguageModelFeaturizer
     model_name: "bert"
     model_weights: "rasa/LaBSE"

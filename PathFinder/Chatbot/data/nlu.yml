@@ -172,8 +172,7 @@ nlu:
 
   - intent: inform_grade
     examples: |
-      - لقد حصلت على [85%](grade) 
-      - لقد حصلت على [85%](grade) 
+      - لقد حصلت علي [85%](grade) 
       - نتيجتي كانت [90%](grade) 
       - حصلت على [78](grade) 
       - درجتي [92.5](grade) 
