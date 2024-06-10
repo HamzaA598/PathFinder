@@ -13,3 +13,4 @@ venv/
 ENV/
 /PathFinder/Chatbot/.rasa
 PathFinder/Chatbot/story_graph.dot
+/PathFinder/Chatbot/actions/__pycache__
