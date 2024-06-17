@@ -13,7 +13,7 @@ from .serializers import *
 from django.contrib.auth.hashers import make_password, check_password
 from django.conf import settings
 import jwt
-from datetime import datetime
+from datetime import datetime, timedelta
 from bson import ObjectId
 
 
@@ -187,8 +187,8 @@ def login(request):
     payload = {
         'id': user.id,
         'role': role,
-        'exp': datetime.now(datetime.UTC) + datetime.timedelta(minutes=60),
-        'iat': datetime.now(datetime.UTC)
+        "exp": datetime.now() + timedelta(minutes=60),
+        "iat": datetime.now(),
     }
 
     # TODO: is it ok to use the django secret_key for jwt?
