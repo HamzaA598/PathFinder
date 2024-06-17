@@ -179,52 +179,32 @@ def login(request):
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    try:
-        user = None
-        if role == 'Student':
-            user = Student.objects.get(email=email)
-        elif role == 'University Admin':
-            user = UniversityAdmin.objects.get(email=email)
-        elif role == 'College Admin':
-            user = CollegeAdmin.objects.get(email=email)
+    user = get_user_from_models(role, 'email', email)
 
-        if not check_password(password, user.password):
-            return Response(
-                {'error': 'Incorrect Email or Password'},
-                status=status.HTTP_401_UNAUTHORIZED
-            )
+    # JWT
+    response = Response()
 
-        # JWT
-        response = Response()
+    payload = {
+        'id': user.id,
+        'role': role,
+        'exp': datetime.now(datetime.UTC) + datetime.timedelta(minutes=60),
+        'iat': datetime.now(datetime.UTC)
+    }
 
-        payload = {
-            'id': user.id,
-            'role': role,
-            'exp': datetime.now(datetime.UTC) + datetime.timedelta(minutes=60),
-            'iat': datetime.now(datetime.UTC)
-        }
+    # TODO: is it ok to use the django secret_key for jwt?
+    token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
 
-        # TODO: is it ok to use the django secret_key for jwt?
-        token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
+    response.set_cookie(key='jwt', value=token, httponly=True)
 
-        response.set_cookie(key='jwt', value=token, httponly=True)
+    response.data = {
+        # TODO: should i put the id or role here again?
+        'message': 'Login successful',
+        'jwt': token
+    }
 
-        response.data = {
-            # TODO: should i put the id or role here again?
-            'message': 'Login successful',
-            'jwt': token
-        }
+    response.status_code = status.HTTP_200_OK
 
-        response.status_code = status.HTTP_200_OK
-
-        return response
-
-    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist,
-            CollegeAdmin.DoesNotExist):
-        return Response(
-            {'error': 'Incorrect Email or Password'},
-            status=status.HTTP_401_UNAUTHORIZED
-        )
+    return response
 
 
 @api_view(['GET'])
@@ -247,26 +227,13 @@ def get_user_from_jwt(request):
     if not user_id or not role:
         raise AuthenticationFailed('Invalid payload!')
 
-    try:
-        user = None
-        if role == 'Student':
-            user = Student.objects.get(id=user_id)
-        elif role == 'University Admin':
-            user = UniversityAdmin.objects.get(id=user_id)
-        elif role == 'College Admin':
-            user = CollegeAdmin.objects.get(id=user_id)
+    user = get_user_from_models(role, 'id', user_id)
 
-        return Response({
-            'message': 'Authenticated successfully!',
-            'user_id': user.id,
-            'role': role
-        }, status=status.HTTP_200_OK)
-    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist,
-            CollegeAdmin.DoesNotExist):
-        return Response(
-            {'error': 'User not found!'},
-            status=status.HTTP_404_NOT_FOUND
-        )
+    return Response({
+        'message': 'Authenticated successfully!',
+        'user_id': user.id,
+        'role': role
+    }, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
@@ -277,3 +244,23 @@ def logout(request):
         'message': 'success'
     }
     return response
+
+
+def get_user_from_models(role, key, value):
+    try:
+        user = None
+        if role == 'Student':
+            user = Student.objects.get(**{key: value})
+        elif role == 'University Admin':
+            user = UniversityAdmin.objects.get(**{key: value})
+        elif role == 'College Admin':
+            user = CollegeAdmin.objects.get(**{key: value})
+
+        return user
+
+    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist,
+            CollegeAdmin.DoesNotExist):
+        return Response(
+            {'error': 'User not found!'},
+            status=status.HTTP_404_NOT_FOUND
+        )
