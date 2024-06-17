@@ -225,3 +225,55 @@ def login(request):
             {'error': 'Incorrect Email or Password'},
             status=status.HTTP_401_UNAUTHORIZED
         )
+
+
+@api_view(['GET'])
+def get_user_from_jwt(request):
+    token = request.COOKIES.get('jwt')
+
+    if not token:
+        # TODO: is this better or just using the response object?
+        raise AuthenticationFailed('Unauthenticated!')
+
+    try:
+        # TODO: is it ok to use the django secret_key for jwt?
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithm=['HS256'])
+    except jwt.ExpiredSignatureError:
+        raise AuthenticationFailed('Unauthenticated!')
+
+    user_id = payload.get('id')
+    role = payload.get('role')
+
+    if not user_id or not role:
+        raise AuthenticationFailed('Invalid payload!')
+
+    try:
+        user = None
+        if role == 'Student':
+            user = Student.objects.get(id=user_id)
+        elif role == 'University Admin':
+            user = UniversityAdmin.objects.get(id=user_id)
+        elif role == 'College Admin':
+            user = CollegeAdmin.objects.get(id=user_id)
+
+        return Response({
+            'message': 'Authenticated successfully!',
+            'user_id': user.id,
+            'role': role
+        }, status=status.HTTP_200_OK)
+    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist,
+            CollegeAdmin.DoesNotExist):
+        return Response(
+            {'error': 'User not found!'},
+            status=status.HTTP_404_NOT_FOUND
+        )
+
+
+@api_view(['POST'])
+def logout(request):
+    response = Response()
+    response.delete_cookie('jwt')
+    response.data = {
+        'message': 'success'
+    }
+    return response
