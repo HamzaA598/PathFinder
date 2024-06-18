@@ -142,10 +142,10 @@ def signup(request):
     if not all([name, email, password, dob, highSchoolSystem, governorate]):
         return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
 
-    try:
-        if Student.objects.filter(email=email).exists():
-            return Response({"error": "A student with this email already exists."}, status=status.HTTP_409_CONFLICT)
+    if Student.objects.filter(email=email).first():
+        return Response({"error": "A student with this email already exists."}, status=status.HTTP_409_CONFLICT)
 
+    try:
         hashed_password = make_password(password)
 
         student = Student(
