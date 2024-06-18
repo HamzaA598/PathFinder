@@ -179,7 +179,14 @@ def login(request):
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    user = get_user_from_models(role, 'email', email)
+    try:
+        user = get_user_from_models(role, 'email', email)
+    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist,
+            CollegeAdmin.DoesNotExist):
+        return Response(
+            {'error': 'User not found!'},
+            status=status.HTTP_404_NOT_FOUND
+        )
 
     # JWT
     response = Response()
@@ -227,7 +234,14 @@ def get_user_from_jwt(request):
     if not user_id or not role:
         raise AuthenticationFailed('Invalid payload!')
 
-    user = get_user_from_models(role, 'id', user_id)
+    try:
+        user = get_user_from_models(role, 'id', user_id)
+    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist,
+            CollegeAdmin.DoesNotExist):
+        return Response(
+            {'error': 'User not found!'},
+            status=status.HTTP_404_NOT_FOUND
+        )
 
     return Response({
         'message': 'Authenticated successfully!',
@@ -247,20 +261,12 @@ def logout(request):
 
 
 def get_user_from_models(role, key, value):
-    try:
-        user = None
-        if role == 'Student':
-            user = Student.objects.get(**{key: value})
-        elif role == 'University Admin':
-            user = UniversityAdmin.objects.get(**{key: value})
-        elif role == 'College Admin':
-            user = CollegeAdmin.objects.get(**{key: value})
+    user = None
+    if role == 'Student':
+        user = Student.objects.get(**{key: value})
+    elif role == 'University Admin':
+        user = UniversityAdmin.objects.get(**{key: value})
+    elif role == 'College Admin':
+        user = CollegeAdmin.objects.get(**{key: value})
 
-        return user
-
-    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist,
-            CollegeAdmin.DoesNotExist):
-        return Response(
-            {'error': 'User not found!'},
-            status=status.HTTP_404_NOT_FOUND
-        )
+    return user
