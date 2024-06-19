@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import { toast } from "./components/ui/use-toast";
@@ -25,8 +25,11 @@ function App() {
   const isChatRoute = location.pathname === "/chat";
 
   const [authenticated, setAuthenticated] = useState(false);
+  const effectRan = useRef(false);
 
   useEffect(() => {
+    if (effectRan.current) return;
+
     (async () => {
       const response = await fetch(
         "http://localhost:8000/webapp/get_user_from_jwt",
@@ -46,6 +49,8 @@ function App() {
           : "Please Log in",
       });
     })();
+
+    effectRan.current = true;
   }, []);
 
   return (
