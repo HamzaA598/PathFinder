@@ -99,5 +99,5 @@ class Announcement(models.Model):
     id = models.AutoField(primary_key=True)
     description = models.TextField()
     date = models.DateField()
-    colleges = models.ForeignKey(
-        College, on_delete=models.CASCADE, blank=True, null=True)
+    college = models.CharField(blank=True, null=True, max_length=50)
+    university = models.CharField(blank=True, null=True, max_length=50)
