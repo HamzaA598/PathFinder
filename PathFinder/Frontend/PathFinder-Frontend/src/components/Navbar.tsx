@@ -12,7 +12,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
@@ -70,9 +69,9 @@ export const Navbar = (props: {
     });
   };
 
-  let login;
+  let right_side;
   if (!props.authenticated) {
-    login = (
+    right_side = (
       <div className="hidden md:flex gap-2">
         <Link
           to="/login"
@@ -80,12 +79,17 @@ export const Navbar = (props: {
         >
           Log in
         </Link>
-
+        <Link
+          to="/signup"
+          className={`border ${buttonVariants({ variant: "secondary" })}`}
+        >
+          Sign up
+        </Link>
         <ModeToggle />
       </div>
     );
   } else {
-    login = (
+    right_side = (
       <div className="hidden md:flex gap-2">
         <Link
           to="/login"
@@ -151,16 +155,6 @@ export const Navbar = (props: {
                   >
                     Log in
                   </Link>
-                  <a
-                    href=""
-                    target="_blank"
-                    className={`w-[110px] border ${buttonVariants({
-                      variant: "secondary",
-                    })}`}
-                  >
-                    <GitHubLogoIcon className="mr-2 w-5 h-5" />
-                    Github
-                  </a>
                 </nav>
               </SheetContent>
             </Sheet>
@@ -181,7 +175,7 @@ export const Navbar = (props: {
             ))}
           </nav>
 
-          {login}
+          {right_side}
         </NavigationMenuList>
       </NavigationMenu>
     </header>
