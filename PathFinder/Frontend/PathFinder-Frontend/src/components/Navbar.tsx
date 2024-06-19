@@ -69,28 +69,9 @@ export const Navbar = (props: {
     });
   };
 
-  let right_side;
-  if (!props.authenticated) {
-    right_side = (
-      <div className="hidden md:flex gap-2">
-        <Link
-          to="/login"
-          className={`border ${buttonVariants({ variant: "secondary" })}`}
-        >
-          Log in
-        </Link>
-        <Link
-          to="/signup"
-          className={`border ${buttonVariants({ variant: "secondary" })}`}
-        >
-          Sign up
-        </Link>
-        <ModeToggle />
-      </div>
-    );
-  } else {
-    right_side = (
-      <div className="hidden md:flex gap-2">
+  const mobile_dynamic_buttons = (
+    <>
+      {props.authenticated ? (
         <Link
           to="/login"
           className={`border ${buttonVariants({ variant: "secondary" })}`}
@@ -98,11 +79,56 @@ export const Navbar = (props: {
         >
           Log out
         </Link>
+      ) : (
+        <>
+          <Link
+            to="/login"
+            className={`border ${buttonVariants({ variant: "secondary" })}`}
+          >
+            Log in
+          </Link>
+          <Link
+            to="/signup"
+            className={`border ${buttonVariants({ variant: "secondary" })}`}
+          >
+            Sign up
+          </Link>
+        </>
+      )}
+      <ModeToggle />
+    </>
+  );
 
-        <ModeToggle />
-      </div>
-    );
-  }
+  const desktop_dynamic_buttons = !props.authenticated ? (
+    <div className="hidden md:flex gap-2">
+      <Link
+        to="/login"
+        className={`border ${buttonVariants({ variant: "secondary" })}`}
+      >
+        Log in
+      </Link>
+      <Link
+        to="/signup"
+        className={`border ${buttonVariants({ variant: "secondary" })}`}
+      >
+        Sign up
+      </Link>
+
+      <ModeToggle />
+    </div>
+  ) : (
+    <div className="hidden md:flex gap-2">
+      <Link
+        to="/login"
+        className={`border ${buttonVariants({ variant: "secondary" })}`}
+        onClick={logout}
+      >
+        Log out
+      </Link>
+
+      <ModeToggle />
+    </div>
+  );
 
   return (
     <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
@@ -117,8 +143,6 @@ export const Navbar = (props: {
 
           {/* mobile */}
           <span className="flex md:hidden">
-            <ModeToggle />
-
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="px-2">
                 <Menu
@@ -146,15 +170,8 @@ export const Navbar = (props: {
                       {label}
                     </Link>
                   ))}
-                  <Link
-                    to=""
-                    target="_blank"
-                    className={`border ${buttonVariants({
-                      variant: "secondary",
-                    })}`}
-                  >
-                    Log in
-                  </Link>
+
+                  {mobile_dynamic_buttons}
                 </nav>
               </SheetContent>
             </Sheet>
@@ -175,7 +192,7 @@ export const Navbar = (props: {
             ))}
           </nav>
 
-          {right_side}
+          {desktop_dynamic_buttons}
         </NavigationMenuList>
       </NavigationMenu>
     </header>
