@@ -200,14 +200,15 @@ def login(request):
     payload = {
         'id': user.id,
         'role': role,
-        "exp": datetime.utcnow() + timedelta(minutes=60),
+        "exp": datetime.utcnow() + timedelta(hours=24),
         "iat": datetime.utcnow(),
     }
 
     # TODO: is it ok to use the django secret_key for jwt?
     token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
 
-    response.set_cookie(key='jwt', value=token, httponly=True)
+    response.set_cookie(key='jwt', value=token, httponly=True,
+                        expires=datetime.utcnow() + timedelta(hours=24))
 
     response.data = {
         # TODO: should i put the id or role here again?
