@@ -17,6 +17,7 @@ import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 import { LogoIcon } from "./Icons";
+import { toast } from "./ui/use-toast";
 
 interface RouteProps {
   href: string;
@@ -46,8 +47,59 @@ const routeList: RouteProps[] = [
   },
 ];
 
-export const Navbar = () => {
+export const Navbar = (props: {
+  authenticated: boolean;
+  setAuthenticated: (authenticated: boolean) => void;
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const logout = async () => {
+    const response = await fetch("http://localhost:8000/webapp/logout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    });
+
+    const content = await response.json();
+
+    props.setAuthenticated(false);
+
+    toast({
+      title: content.message,
+      description: "sad to see you leave",
+    });
+  };
+
+  let login;
+  if (!props.authenticated) {
+    login = (
+      <div className="hidden md:flex gap-2">
+        <Link
+          to="/login"
+          className={`border ${buttonVariants({ variant: "secondary" })}`}
+        >
+          Log in
+        </Link>
+
+        <ModeToggle />
+      </div>
+    );
+  } else {
+    login = (
+      <div className="hidden md:flex gap-2">
+        <Link
+          to="/login"
+          className={`border ${buttonVariants({ variant: "secondary" })}`}
+          onClick={logout}
+        >
+          Log out
+        </Link>
+
+        <ModeToggle />
+      </div>
+    );
+  }
+
   return (
     <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
       <NavigationMenu className="mx-auto">
@@ -129,24 +181,7 @@ export const Navbar = () => {
             ))}
           </nav>
 
-          <div className="hidden md:flex gap-2">
-            <Link
-              to="/login"
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
-            >
-              Log in
-            </Link>
-            <a
-              href=""
-              target="_blank"
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
-            >
-              <GitHubLogoIcon className="mr-2 w-5 h-5" />
-              Github
-            </a>
-
-            <ModeToggle />
-          </div>
+          {login}
         </NavigationMenuList>
       </NavigationMenu>
     </header>

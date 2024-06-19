@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { Link } from "react-router-dom";
 
 interface LoginProps {
@@ -12,16 +12,16 @@ function LoginForm({ login }: LoginProps) {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
 
+  const submit = async (e: SyntheticEvent) => {
+    e.preventDefault();
+    if (!email?.trim() || !password?.trim() || !role?.trim()) {
+      return;
+    }
+    await login(email, password, role);
+  };
+
   return (
-    <form
-      onSubmit={async (e) => {
-        e.preventDefault();
-        if (!email?.trim() || !password?.trim() || !role?.trim()) {
-          return;
-        }
-        await login(email, password, role);
-      }}
-    >
+    <form onSubmit={submit}>
       <div className="space-y-4 mt-4">
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>

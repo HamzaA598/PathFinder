@@ -188,14 +188,20 @@ def login(request):
             status=status.HTTP_404_NOT_FOUND
         )
 
+    if not check_password(password, user.password):
+        return Response(
+            {'error': 'Incorrect Email or Password'},
+            status=status.HTTP_401_UNAUTHORIZED
+        )
+
     # JWT
     response = Response()
 
     payload = {
         'id': user.id,
         'role': role,
-        "exp": datetime.now() + timedelta(minutes=60),
-        "iat": datetime.now(),
+        "exp": datetime.utcnow() + timedelta(minutes=60),
+        "iat": datetime.utcnow(),
     }
 
     # TODO: is it ok to use the django secret_key for jwt?
@@ -205,7 +211,8 @@ def login(request):
 
     response.data = {
         # TODO: should i put the id or role here again?
-        'message': 'Login successful',
+        'message': 'Login successful!',
+        'name': user.name,
         'jwt': token
     }
 
@@ -219,14 +226,17 @@ def get_user_from_jwt(request):
     token = request.COOKIES.get('jwt')
 
     if not token:
-        # TODO: is this better or just using the response object?
-        raise AuthenticationFailed('Unauthenticated!')
+        return Response({
+            'message': 'Unauthenticated'
+        }, status=status.HTTP_401_UNAUTHORIZED)
 
     try:
         # TODO: is it ok to use the django secret_key for jwt?
-        payload = jwt.decode(token, settings.SECRET_KEY, algorithm=['HS256'])
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
     except jwt.ExpiredSignatureError:
-        raise AuthenticationFailed('Unauthenticated!')
+        return Response({
+            'message': 'Unauthenticated'
+        }, status=status.HTTP_401_UNAUTHORIZED)
 
     user_id = payload.get('id')
     role = payload.get('role')
@@ -245,7 +255,8 @@ def get_user_from_jwt(request):
 
     return Response({
         'message': 'Authenticated successfully!',
-        'user_id': user.id,
+        'id': user.id,
+        'name': user.name,
         'role': role
     }, status=status.HTTP_200_OK)
 
@@ -255,9 +266,11 @@ def logout(request):
     response = Response()
     response.delete_cookie('jwt')
     response.data = {
-        'message': 'success'
+        'message': 'Logout successful'
     }
     return response
+
+# utils
 
 
 def get_user_from_models(role, key, value):

@@ -14,4 +14,6 @@ urlpatterns = [
     path('College/edit', views.EditCollege, name='EditCollege'),
     path('signup', views.signup, name='signup'),
     path('login', views.login, name='login'),
+    path('get_user_from_jwt', views.get_user_from_jwt, name='get_user_from_jwt'),
+    path('logout', views.logout, name='logout')
 ]
