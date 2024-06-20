@@ -3,7 +3,7 @@ from .models import *
 from django.contrib.auth.hashers import make_password
 
 
-class StudentSerializer(serializers.ModelSerializer):
+class SignupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
         fields = ['name', 'email', 'password',
@@ -11,7 +11,14 @@ class StudentSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         validated_data['password'] = make_password(validated_data['password'])
-        return super(StudentSerializer, self).create(validated_data)
+        return super(SignupSerializer, self).create(validated_data)
+
+
+class LoginSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField()
+    role = serializers.ChoiceField(
+        choices=['Student', 'University Admin', 'College Admin'])
 
 
 class UniversitySerializer(serializers.ModelSerializer):
