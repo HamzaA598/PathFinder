@@ -273,9 +273,9 @@ def logout(request):
 
 def get_user_from_models(role, field, value):
     model = {
-        'Student': Student,
-        'University Admin': UniversityAdmin,
-        'College Admin': CollegeAdmin,
+        'student': Student,
+        'university_admin': UniversityAdmin,
+        'college_admin': CollegeAdmin,
     }.get(role)
 
     if not model:

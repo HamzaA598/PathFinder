@@ -18,7 +18,7 @@ class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField()
     role = serializers.ChoiceField(
-        choices=['Student', 'University Admin', 'College Admin'])
+        choices=['student', 'university_admin', 'college_admin'])
 
 
 class UniversitySerializer(serializers.ModelSerializer):
