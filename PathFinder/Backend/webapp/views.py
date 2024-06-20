@@ -1,20 +1,21 @@
+from datetime import datetime, timedelta
+from django.db import transaction
+from django.conf import settings
+from django.http import JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import render
+from django.forms.models import model_to_dict
+from django.contrib.auth.hashers import check_password
+
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.exceptions import AuthenticationFailed
-from django.http import JsonResponse
+
 import json
-from bson import ObjectId
-from django.forms.models import model_to_dict
+import jwt
+
 from .models import *
 from .serializers import *
-from django.contrib.auth.hashers import make_password, check_password
-from django.conf import settings
-import jwt
-from datetime import datetime, timedelta
-from bson import ObjectId
 
 
 @api_view(['GET'])
@@ -151,39 +152,20 @@ def EditCollege(request):
 
 @api_view(['POST'])
 def signup(request):
-    name = request.data.get('name')
-    email = request.data.get('email')
-    password = request.data.get('password')
-    dob = request.data.get('dob')
-    highSchoolSystem = request.data.get('highSchoolSystem')
-    governorate = request.data.get('governorate')
+    serializer = StudentSerializer(data=request.data)
 
-    if not all([name, email, password, dob, highSchoolSystem, governorate]):
-        return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
+    if serializer.is_valid():
+        if Student.objects.filter(email=serializer.validated_data['email']).first():
+            return Response({"error": "A student with this email already exists."}, status=status.HTTP_409_CONFLICT)
 
-    if Student.objects.filter(email=email).first():
-        return Response({"error": "A student with this email already exists."}, status=status.HTTP_409_CONFLICT)
-
-    try:
-        hashed_password = make_password(password)
-
-        student = Student(
-            name=name,
-            email=email,
-            password=hashed_password,
-            dob=dob,
-            highSchoolSystem=highSchoolSystem,
-            governorate=governorate
-        )
-
-        if student is not None:
-            student.save()
+        try:
+            with transaction.atomic():
+                serializer.save()
             return Response({"message": "Signup successful!"}, status=status.HTTP_201_CREATED)
-        else:
-            return Response({"error": "'student' is None. Cannot save."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    except Exception as e:
-        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
