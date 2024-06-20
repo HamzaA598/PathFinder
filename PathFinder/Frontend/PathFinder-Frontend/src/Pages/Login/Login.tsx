@@ -1,32 +1,47 @@
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { toast } from "@/components/ui/use-toast";
 import LoginForm from "./components/LoginForm";
+import { useState } from "react";
 
-export default function Login() {
+const Login = (props: {
+  authenticated: boolean;
+  setAuthenticated: (authenticated: boolean) => void;
+}) => {
   const navigate = useNavigate();
+  const [redirect, setRedirect] = useState(false);
 
   const login = async (email: string, password: string, role: string) => {
     try {
-      const response = await axios.post(
-        // login endpoint
-        "http://localhost:8000/webapp/login",
-        {
-          email: email,
-          password: password,
-          role: role,
-        }
-      );
+      const response = await fetch("http://localhost:8000/webapp/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          email,
+          password,
+          role,
+        }),
+      });
+
       // handle response
+      const content = await response.json();
+
       if (response.status === 200) {
         toast({
-          title: "Login Successful",
-          description: "Welcome back!",
+          title: content.message,
+          // TODO: add the name of the user
+          description: `Welcome back ${content.name}!`,
         });
-
-        navigate("/");
+        props.setAuthenticated(true);
+        setRedirect(true);
+      } else if (response.status === 401) {
+        toast({
+          title: "Uh oh! Something went wrong.",
+          description: content.error,
+        });
       }
     } catch (error: any) {
+      console.log("catch");
       toast({
         title: "Uh oh! Something went wrong.",
         description:
@@ -34,6 +49,10 @@ export default function Login() {
       });
     }
   };
+
+  if (redirect) {
+    navigate("/");
+  }
 
   return (
     <div key="1" className="flex items-center h-full px-4 mt-20 mb-44">
@@ -48,4 +67,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+export default Login;
