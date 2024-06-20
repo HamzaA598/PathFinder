@@ -133,7 +133,7 @@ def EditCollege(request):
 
 @api_view(['POST'])
 def signup(request):
-    serializer = StudentSerializer(data=request.data)
+    serializer = SignupSerializer(data=request.data)
 
     if serializer.is_valid():
         if Student.objects.filter(email=serializer.validated_data['email']).first():
@@ -151,20 +151,21 @@ def signup(request):
 
 @api_view(['POST'])
 def login(request):
-    email = request.data.get('email')
-    password = request.data.get('password')
-    role = request.data.get('role')
+    serializer = LoginSerializer(data=request.data)
 
-    if not all([email, password, role]):
+    if not serializer.is_valid():
         return Response(
-            {'error': 'Missing required fields'},
+            serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
 
+    email = serializer.validated_data['email']
+    password = serializer.validated_data['password']
+    role = serializer.validated_data['role']
+
     try:
         user = get_user_from_models(role, 'email', email)
-    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist,
-            CollegeAdmin.DoesNotExist):
+    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist, CollegeAdmin.DoesNotExist):
         return Response(
             {'error': 'User not found!'},
             status=status.HTTP_404_NOT_FOUND
@@ -177,8 +178,6 @@ def login(request):
         )
 
     # JWT
-    response = Response()
-
     payload = {
         'id': user.id,
         'role': role,
@@ -189,16 +188,15 @@ def login(request):
     # TODO: is it ok to use the django secret_key for jwt?
     token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
 
+    response = Response()
     response.set_cookie(key='jwt', value=token, httponly=True,
                         expires=datetime.utcnow() + timedelta(hours=24))
-
     response.data = {
         # TODO: should i put the id or role here again?
         'message': 'Login successful!',
         'name': user.name,
         'jwt': token
     }
-
     response.status_code = status.HTTP_200_OK
 
     return response
@@ -256,13 +254,15 @@ def logout(request):
 # utils
 
 
-def get_user_from_models(role, key, value):
-    user = None
-    if role == 'Student':
-        user = Student.objects.get(**{key: value})
-    elif role == 'University Admin':
-        user = UniversityAdmin.objects.get(**{key: value})
-    elif role == 'College Admin':
-        user = CollegeAdmin.objects.get(**{key: value})
+def get_user_from_models(role, field, value):
+    model = {
+        'Student': Student,
+        'University Admin': UniversityAdmin,
+        'College Admin': CollegeAdmin,
+    }.get(role)
 
+    if not model:
+        raise ValueError("Invalid role")
+
+    user = model.objects.get(**{field: value})
     return user
