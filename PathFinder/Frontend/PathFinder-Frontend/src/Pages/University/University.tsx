@@ -49,12 +49,13 @@ const University = () => {
   };
 
   return (
-    <div className="container h-[1200px] py-8 sm:py-8 space-y-8 h-screen  university">
+    <div className="container  py-8 sm:py-8 space-y-8  university">
       <Input
         onChange={handleSearchChange}
         value={search}
         placeholder="Search"
       />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
       {universities
         .filter((university) => {
           return search.toLowerCase() === ""
@@ -64,7 +65,7 @@ const University = () => {
         .map((university) => (
           <Link to={`/${university.name}`} key={university._id}>
             <Button
-              className="m-5 w-60 p-7 pe-8 hover:bg-emerald-600 object-center content-center"
+              className=" m-5 w-60 p-7 pe-8 hover:bg-emerald-600 object-center text-balance"
               variant="secondary"
             >
               {university.name}
