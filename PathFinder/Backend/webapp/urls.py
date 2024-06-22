@@ -18,4 +18,6 @@ urlpatterns = [
 
     path('Announcement/add', views.addAnnouncement, name='Add Announcement'),
     path('Announcement', views.GetAllAnnouncement, name='Get All Announcement'),
+    path('get_user_from_jwt', views.get_user_from_jwt, name='get_user_from_jwt'),
+    path('logout', views.logout, name='logout')
 ]

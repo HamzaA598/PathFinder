@@ -3,6 +3,7 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.exceptions import AuthenticationFailed
 from django.http import JsonResponse
 import json
 from bson import ObjectId
@@ -10,6 +11,10 @@ from django.forms.models import model_to_dict
 from .models import *
 from .serializers import *
 from django.contrib.auth.hashers import make_password, check_password
+from django.conf import settings
+import jwt
+from datetime import datetime, timedelta
+from bson import ObjectId
 
 
 @api_view(['GET'])
@@ -28,6 +33,7 @@ def UniversityInfoById(request, id):
     except ObjectDoesNotExist:
         return JsonResponse({'error': 'University not found'}, status=status.HTTP_404_NOT_FOUND)
 
+
 @api_view(['GET'])
 def UniversityInfoByName(request, name):
     try:
@@ -36,7 +42,6 @@ def UniversityInfoByName(request, name):
         return Response(list(universities), status=status.HTTP_200_OK)
     except ObjectDoesNotExist:
         return JsonResponse({'error': 'University not found'}, status=status.HTTP_404_NOT_FOUND)
-
 
 
 # TODO: get all colleges
@@ -75,7 +80,8 @@ def CollegeInfoByName(request, name):
 def CollegeByUniversity(request, id):
     try:
         colleges = College.objects.filter(university=id)
-        colleges = [{'_id': str(college._id), 'name': college.name} for college in colleges]
+        colleges = [{'_id': str(college._id), 'name': college.name}
+                    for college in colleges]
         return Response(list(colleges), status=status.HTTP_200_OK)
     except ObjectDoesNotExist:
         return JsonResponse({'error': 'University not found'}, status=status.HTTP_404_NOT_FOUND)
@@ -123,6 +129,7 @@ def EditCollege(request):
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
 
+
 @api_view(['POST'])
 def signup(request):
     name = request.data.get('name')
@@ -135,10 +142,10 @@ def signup(request):
     if not all([name, email, password, dob, highSchoolSystem, governorate]):
         return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
 
-    try:
-        if Student.objects.filter(email=email).exists():
-            return Response({"error": "A student with this email already exists."}, status=status.HTTP_409_CONFLICT)
+    if Student.objects.filter(email=email).first():
+        return Response({"error": "A student with this email already exists."}, status=status.HTTP_409_CONFLICT)
 
+    try:
         hashed_password = make_password(password)
 
         student = Student(
@@ -173,39 +180,111 @@ def login(request):
         )
 
     try:
-        user = None
-        if role == 'Student':
-            user = Student.objects.get(email=email)
-        elif role == 'University Admin':
-            user = UniversityAdmin.objects.get(email=email)
-        elif role == 'College Admin':
-            user = CollegeAdmin.objects.get(email=email)
+        user = get_user_from_models(role, 'email', email)
+    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist,
+            CollegeAdmin.DoesNotExist):
+        return Response(
+            {'error': 'User not found!'},
+            status=status.HTTP_404_NOT_FOUND
+        )
 
-        if check_password(password, user.password):
-            return Response(
-                {'message': 'Login successful', 'id': user.id, 'role': role},
-                status=status.HTTP_200_OK
-            )
-        else:
-            return Response(
-                {'error': 'Incorrect Email or Password'},
-                status=status.HTTP_401_UNAUTHORIZED
-            )
-    except Student.DoesNotExist:
+    if not check_password(password, user.password):
         return Response(
             {'error': 'Incorrect Email or Password'},
             status=status.HTTP_401_UNAUTHORIZED
         )
-    except UniversityAdmin.DoesNotExist:
+
+    # JWT
+    response = Response()
+
+    payload = {
+        'id': user.id,
+        'role': role,
+        "exp": datetime.utcnow() + timedelta(hours=24),
+        "iat": datetime.utcnow(),
+    }
+
+    # TODO: is it ok to use the django secret_key for jwt?
+    token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
+
+    response.set_cookie(key='jwt', value=token, httponly=True,
+                        expires=datetime.utcnow() + timedelta(hours=24))
+
+    response.data = {
+        # TODO: should i put the id or role here again?
+        'message': 'Login successful!',
+        'name': user.name,
+        'jwt': token
+    }
+
+    response.status_code = status.HTTP_200_OK
+
+    return response
+
+
+@api_view(['GET'])
+def get_user_from_jwt(request):
+    token = request.COOKIES.get('jwt')
+
+    if not token:
+        return Response({
+            'message': 'Unauthenticated'
+        }, status=status.HTTP_401_UNAUTHORIZED)
+
+    try:
+        # TODO: is it ok to use the django secret_key for jwt?
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return Response({
+            'message': 'Unauthenticated'
+        }, status=status.HTTP_401_UNAUTHORIZED)
+
+    user_id = payload.get('id')
+    role = payload.get('role')
+
+    if not user_id or not role:
+        raise AuthenticationFailed('Invalid payload!')
+
+    try:
+        user = get_user_from_models(role, 'id', user_id)
+    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist,
+            CollegeAdmin.DoesNotExist):
         return Response(
-            {'error': 'Incorrect Email or Password'},
-            status=status.HTTP_401_UNAUTHORIZED
+            {'error': 'User not found!'},
+            status=status.HTTP_404_NOT_FOUND
         )
-    except CollegeAdmin.DoesNotExist:
-        return Response(
-            {'error': 'Incorrect Email or Password'},
-            status=status.HTTP_401_UNAUTHORIZED
-        )
+
+    return Response({
+        'message': 'Authenticated successfully!',
+        'id': user.id,
+        'name': user.name,
+        'role': role
+    }, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+def logout(request):
+    response = Response()
+    response.delete_cookie('jwt')
+    response.data = {
+        'message': 'Logout successful'
+    }
+    return response
+
+# utils
+
+
+def get_user_from_models(role, key, value):
+    user = None
+    if role == 'Student':
+        user = Student.objects.get(**{key: value})
+    elif role == 'University Admin':
+        user = UniversityAdmin.objects.get(**{key: value})
+    elif role == 'College Admin':
+        user = CollegeAdmin.objects.get(**{key: value})
+
+    return user
+
 
 # {
 #     "adminId"

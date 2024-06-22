@@ -59,6 +59,14 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
+CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_HEADERS = [
+#     'content-type',
+#     'authorization',
+#     'x-csrftoken',
+# ]
+
+# CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']
 
 ROOT_URLCONF = "Backend.urls"
 
