@@ -3,15 +3,14 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { toast } from "@/components/ui/use-toast";
+import { useParams } from "react-router-dom";
 
 const Overview = ({ uni_name }) => {
   console.log("dicnsiucnsievn " + uni_name);
 
   const [universityInfo, setUniversityInfo] = useState([]);
 
-  const url = `http://127.0.0.1:8000/webapp/University/name/${
-    uni_name.split(" ")[0]
-  }`;
+  const url = `http://127.0.0.1:8000/webapp/University/name/${uni_name}`;
 
   console.log("dicnsiucnsievn " + url);
 
@@ -20,16 +19,19 @@ const Overview = ({ uni_name }) => {
     axios
       .get(url)
       .then((response) => {
-        response.data.map((uni_data) => {
-          if (uni_data.name == uni_name) {
-            setUniversityInfo(uni_data);
-          }
-        });
+        if (response.data.length === 0) {
+          throw new Error("EmptyResponse");
+        }
+        setUniversityInfo(response.data[0]);
       })
       .catch((error) => {
         let errorMessage = "Uh oh! Something went wrong.";
         let errorDesc = "There was a problem with your request.";
-        if (error.response) {
+
+        if (error.message === "EmptyResponse") {
+          errorMessage = "No Data Found";
+          errorDesc = "The response data is empty.";
+        } else if (error.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
           errorMessage = "Internal Server Error";
@@ -40,6 +42,7 @@ const Overview = ({ uni_name }) => {
           errorDesc =
             "Couldn't connect to the server. Please check your internet connection.";
         }
+
         toast({
           title: errorMessage,
           description: errorDesc,

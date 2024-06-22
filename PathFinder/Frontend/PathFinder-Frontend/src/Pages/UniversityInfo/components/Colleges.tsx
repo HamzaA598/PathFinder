@@ -17,9 +17,7 @@ const Colleges = ({ uni_name }) => {
   // Fetch universities data
   //npx json-server --watch uni_data/university_names.json --port 8000
 
-  const url = `http://127.0.0.1:8000/webapp/College/name/${
-    uni_name.split(" ")[0]
-  }`;
+  const url = `http://127.0.0.1:8000/webapp/College/name/${uni_name}`;
 
   useEffect(() => {
     axios
@@ -67,7 +65,7 @@ const Colleges = ({ uni_name }) => {
       }).map((college) => (
         <Link to={`/${uni_name}/${college.name}`}>
           <Button
-            className="m-5 w-60 p-7 pe-8 hover:bg-emerald-600  content-center"
+            className="m-5 w-60 p-7 pe-8 hover:bg-emerald-600  content-center  text-balance"
             variant="secondary"
           >
             {college.name}
