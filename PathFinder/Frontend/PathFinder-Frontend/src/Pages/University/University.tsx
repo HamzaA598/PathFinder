@@ -55,23 +55,24 @@ const University = () => {
         value={search}
         placeholder="Search"
       />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-      {universities
-        .filter((university) => {
-          return search.toLowerCase() === ""
-            ? university
-            : university.name.toLowerCase().includes(search.toLowerCase());
-        })
-        .map((university) => (
-          <Link to={`/${university.name}`} key={university._id}>
-            <Button
-              className=" m-5 w-60 p-7 pe-8 hover:bg-emerald-600 object-center text-balance"
-              variant="secondary"
-            >
-              {university.name}
-            </Button>
-          </Link>
-        ))}
+      <div className="flex flex-wrap">
+        {universities
+          .filter((university) => {
+            return search.toLowerCase() === ""
+              ? university
+              : university.name.toLowerCase().includes(search.toLowerCase());
+          })
+          .map((university) => (
+            <Link to={`/${university.name}`} key={university._id}>
+              <Button
+                className="m-5 w-60 h-20 p-2 hover:bg-emerald-600 object-center content-center break-words whitespace-normal overflow-hidden"
+                variant="secondary"
+              >
+                {university.name}
+              </Button>
+            </Link>
+          ))}
+      </div>
     </div>
   );
 };
