@@ -4,9 +4,12 @@ import React from "react";
 import { useState } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { useParams } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const Overview = ({ uni_name }) => {
   console.log("dicnsiucnsievn " + uni_name);
+
+  const [university_admin, setUniversity_admin] = useState(true);
 
   const [universityInfo, setUniversityInfo] = useState([]);
 
@@ -54,13 +57,23 @@ const Overview = ({ uni_name }) => {
 
   return (
     <div className="grid gap-8">
+      {university_admin && <Button className="p-8S">add</Button>}
       {Object.entries(universityInfo).map(([key, value]) => (
-        <Card>
+        <Card key={key}>
           <CardHeader>
             <CardTitle>{key}</CardTitle>
           </CardHeader>
-
-          <CardContent>{value}</CardContent>
+          <CardContent>
+            <div className="content-wrapper">
+              <div className="content-text">{value}</div>
+              {university_admin && (
+                <Button className="edit-button">edit</Button>
+              )}
+              {university_admin && (
+                <Button className=" m-8 edit-button">delete</Button>
+              )}
+            </div>
+          </CardContent>
         </Card>
       ))}
     </div>
