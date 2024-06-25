@@ -50,10 +50,15 @@ function Chat() {
       let errorDesc = "There was a problem with your request.";
       if (axios.isAxiosError(error)) {
         if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          errorMessage = "Internal Server Error";
-          errorDesc = " Please try again later.";
+          if (error.response.status === 401) {
+            // Handle 401 Unauthorized
+            errorMessage = "Unauthorized";
+            errorDesc = "You are not authorized to perform this action. Please log in.";
+          } else {
+            // Handle other status codes
+            errorMessage = "Internal Server Error";
+            errorDesc = "Please try again later.";
+          }
         } else if (error.request) {
           // The request was made but no response was received
           errorMessage = "Network Error";

@@ -1,21 +1,17 @@
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import render
 from rest_framework import status
+from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from rest_framework.exceptions import AuthenticationFailed
 from django.http import JsonResponse
 import json
-from bson import ObjectId
 from django.forms.models import model_to_dict
+from django.contrib.auth.hashers import make_password, check_password
+import jwt
+from datetime import datetime as dt, timedelta
 from .models import *
 from .serializers import *
-from django.contrib.auth.hashers import make_password, check_password
 from django.conf import settings
-import jwt
-from datetime import datetime, timedelta
-from bson import ObjectId
-
 
 @api_view(['GET'])
 def AllUniversities(request):
@@ -95,8 +91,17 @@ def CollegeByUniversity(request, id):
 # }
 @api_view(['PUT'])
 def EditUniversity(request):
+    payload = authorize(request)
+    try:
+        adminId = payload.get('id')
+        role = payload.get('role')
+        user = get_user_from_models(role, 'id', adminId)
+    except Exception:
+        return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
+
+    if not user:
+        return
     data = json.loads(request.body.decode('utf-8'))
-    adminId = data['adminId']
     university = data['university']
     try:
         oldUniversity = University.objects.get(_id=str(university['_id']))
@@ -113,9 +118,17 @@ def EditUniversity(request):
 
 @api_view(['PUT'])
 def EditCollege(request):
+    payload = authorize(request)
+    try:
+        adminId = payload.get('id')
+        role = payload.get('role')
+        user = get_user_from_models(role, 'id', adminId)
+    except Exception:
+        return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
+
+    if not user:
+        return
     data = json.loads(request.body.decode('utf-8'))
-    adminId = data['adminId']
-    role = data['role']
     college = data['college']
     try:
         oldCollege = University.objects.get(_id=str(college['_id']))
@@ -200,64 +213,36 @@ def login(request):
     payload = {
         'id': user.id,
         'role': role,
-        "exp": datetime.utcnow() + timedelta(hours=24),
-        "iat": datetime.utcnow(),
+        "exp": dt.utcnow() + timedelta(hours=24),
+        "iat": dt.utcnow(),
     }
 
     # TODO: is it ok to use the django secret_key for jwt?
     token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
 
     response.set_cookie(key='jwt', value=token, httponly=True,
-                        expires=datetime.utcnow() + timedelta(hours=24))
+                        expires=dt.utcnow() + timedelta(hours=24))
+    print(token)
 
-    response.data = {
-        # TODO: should i put the id or role here again?
-        'message': 'Login successful!',
-        'name': user.name,
-        'jwt': token
-    }
-
-    response.status_code = status.HTTP_200_OK
-
-    return response
+    return Response(token, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
 def get_user_from_jwt(request):
-    token = request.COOKIES.get('jwt')
-
-    if not token:
-        return Response({
-            'message': 'Unauthenticated'
-        }, status=status.HTTP_401_UNAUTHORIZED)
-
+    payload = authorize(request)
     try:
-        # TODO: is it ok to use the django secret_key for jwt?
-        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return Response({
-            'message': 'Unauthenticated'
-        }, status=status.HTTP_401_UNAUTHORIZED)
-
-    user_id = payload.get('id')
-    role = payload.get('role')
-
-    if not user_id or not role:
-        raise AuthenticationFailed('Invalid payload!')
-
-    try:
+        user_id = payload.get('id')
+        role = payload.get('role')
         user = get_user_from_models(role, 'id', user_id)
-    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist,
-            CollegeAdmin.DoesNotExist):
-        return Response(
-            {'error': 'User not found!'},
-            status=status.HTTP_404_NOT_FOUND
-        )
+    except Exception:
+        return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
+
+    if not user:
+        return
 
     return Response({
         'message': 'Authenticated successfully!',
         'id': user.id,
-        'name': user.name,
         'role': role
     }, status=status.HTTP_200_OK)
 
@@ -274,6 +259,27 @@ def logout(request):
 # utils
 
 
+def authorize(request):
+    token = request.COOKIES.get('jwt')
+
+    if not token:
+        return 'Unauthenticated'
+
+    try:
+        # TODO: is it ok to use the django secret_key for jwt?
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return 'Unauthenticated'
+
+    user_id = payload.get('id')
+    role = payload.get('role')
+
+    if not user_id or not role:
+        raise AuthenticationFailed('Invalid payload!')
+
+    return payload
+
+
 def get_user_from_models(role, key, value):
     user = None
     if role == 'Student':
@@ -282,5 +288,6 @@ def get_user_from_models(role, key, value):
         user = UniversityAdmin.objects.get(**{key: value})
     elif role == 'College Admin':
         user = CollegeAdmin.objects.get(**{key: value})
-
     return user
+
+
