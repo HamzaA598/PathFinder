@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import axios from "axios";
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { useParams } from "react-router-dom";
@@ -13,12 +13,16 @@ const Overview = ({ uni_name }) => {
 
   const [universityInfo, setUniversityInfo] = useState([]);
 
+  const effectRan = useRef(false);
+
   const url = `http://127.0.0.1:8000/webapp/University/name/${uni_name}`;
 
   console.log("dicnsiucnsievn " + url);
 
   //npx json-server --watch uni_data/public_universities.json --port 9000
   React.useEffect(() => {
+    if (effectRan.current) return;
+
     axios
       .get(url)
       .then((response) => {
@@ -51,6 +55,7 @@ const Overview = ({ uni_name }) => {
           description: errorDesc,
         });
       });
+    effectRan.current = true;
   }, [universityInfo, url]);
 
   console.log(universityInfo);
