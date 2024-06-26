@@ -97,6 +97,7 @@ class Course(models.Model):
 
 class Announcement(models.Model):
     id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=50)
     description = models.TextField()
     date = models.DateField()
     college = models.CharField(blank=True, null=True, max_length=50)
