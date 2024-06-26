@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 interface NewsItem {
   university: string;
@@ -10,6 +11,7 @@ interface NewsItem {
 
 const News = () => {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
+  const [isAdmin, setIsAdmin] = useState(true);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -23,8 +25,27 @@ const News = () => {
       }
     };
 
+    // Replace with actual logic to determine admin status
+    // const fetchAdminStatus = async () => {
+    //   const adminResponse = await axios.get(
+    //     "http://localhost:8000/webapp/checkAdminStatus"
+    //   );
+    //   setIsAdmin(adminResponse.data.isAdmin);
+    // };
+
+    // fetchAdminStatus();
     fetchNews();
   }, []);
+
+  // const handleEdit = (index: number) => {
+  //   console.log(`Editing news item at index: ${index}`);
+  //   // Implement the edit logic here
+  // };
+
+  // const handleDelete = (index: number) => {
+  //   console.log(`Deleting news item at index: ${index}`);
+  //   // Implement the delete logic here
+  // };
 
   return (
     <div className="News_page w-[1300px]">
@@ -33,6 +54,7 @@ const News = () => {
           <CardTitle>News Page</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-4">
+          {isAdmin && <Button className="mb-4">Add News</Button>}{" "}
           {newsItems.map((news_item, index) => (
             <div
               key={index}
@@ -43,6 +65,22 @@ const News = () => {
                 <p className="text-lg font-semibold">{news_item.university}</p>
                 <p className="text-base font-medium">{news_item.date}</p>
                 <p className="text-sm">{news_item.description}</p>
+                {isAdmin && (
+                  <div className="flex space-x-2">
+                    <Button
+                      onClick={() => handleEdit(index)}
+                      className="edit-button"
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      onClick={() => handleDelete(index)}
+                      className="delete-button"
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           ))}
