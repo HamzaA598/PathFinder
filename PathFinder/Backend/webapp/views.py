@@ -88,20 +88,30 @@ def CollegeByUniversity(request, id):
 
 
 # {
-#     adminId: id
 #     university:{
 #
 #     }
 # }
 @api_view(['PUT'])
 def EditUniversity(request):
+    payload = authorize(request)
+    try:
+        adminId = payload.get('id')
+        role = payload.get('role')
+        user = get_user_from_models(role, 'id', adminId)
+    except Exception:
+        return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
+
+    if not user:
+        return
     data = json.loads(request.body.decode('utf-8'))
-    adminId = data['adminId']
     university = data['university']
     try:
         oldUniversity = University.objects.get(_id=str(university['_id']))
     except University.DoesNotExist:
         return JsonResponse({'error': 'University not found'}, status=status.HTTP_404_NOT_FOUND)
+    print(adminId)
+    print(oldUniversity.admin_id)
     if adminId == oldUniversity.admin_id:
         serializer = UniversitySerializer(oldUniversity, data=university)
         if serializer.is_valid():
@@ -113,15 +123,26 @@ def EditUniversity(request):
 
 @api_view(['PUT'])
 def EditCollege(request):
+    payload = authorize(request)
+    try:
+        adminId = payload.get('id')
+        role = payload.get('role')
+        user = get_user_from_models(role, 'id', adminId)
+    except Exception:
+        return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
+
+    if not user:
+        return
     data = json.loads(request.body.decode('utf-8'))
-    adminId = data['adminId']
-    role = data['role']
     college = data['college']
     try:
-        oldCollege = University.objects.get(_id=str(college['_id']))
+        print(college['_id'])
+        oldCollege = College.objects.get(_id=str(college['_id']))
     except College.DoesNotExist:
-        return JsonResponse({'error': 'University not found'}, status=status.HTTP_404_NOT_FOUND)
-    if adminId == str(oldCollege.admin_id) or (role == "UniversityAdmin" and University.objects.get(_id=oldCollege.university).admin_id) == adminId:
+        return JsonResponse({'error': 'College not found'}, status=status.HTTP_404_NOT_FOUND)
+
+    if adminId == str(oldCollege.admin_id) or (
+            role == "University Admin" and University.objects.get(_id=oldCollege.university).admin_id) == adminId:
         serializer = CollegeSerializer(oldCollege, data=college)
         if serializer.is_valid():
             serializer.save()
@@ -213,7 +234,6 @@ def login(request):
     response.data = {
         # TODO: should i put the id or role here again?
         'message': 'Login successful!',
-        'name': user.name,
         'jwt': token
     }
 
@@ -257,7 +277,6 @@ def get_user_from_jwt(request):
     return Response({
         'message': 'Authenticated successfully!',
         'id': user.id,
-        'name': user.name,
         'role': role
     }, status=status.HTTP_200_OK)
 
@@ -287,9 +306,6 @@ def get_user_from_models(role, key, value):
 
 
 # {
-#     "adminId"
-#     "role"
-#
 #     "announcement"{
 #           "college or university ID"
 #     }
@@ -299,11 +315,18 @@ def get_user_from_models(role, key, value):
 
 @api_view(['POST'])
 def addAnnouncement(request):
-    data = json.loads(request.body.decode('utf-8'))
-    role = data['role']
-    announcement = data['announcement']
-    adminId = request.data.get('adminId')
+    payload = authorize(request)
+    try:
+        adminId = payload.get('id')
+        role = payload.get('role')
+        user = get_user_from_models(role, 'id', adminId)
+    except Exception:
+        return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
 
+    if not user:
+        return
+    data = json.loads(request.body.decode('utf-8'))
+    announcement = data['announcement']
 
     try:
         if role == "College Admin":
@@ -312,15 +335,12 @@ def addAnnouncement(request):
             id = University.objects.get(_id=announcement['university']).admin_id
 
         if str(id) != adminId:
-            print(id)
-            print(adminId)
             return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
 
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=status.HTTP_404_NOT_FOUND)
 
     serializer = AnnouncementSerializer(data=announcement)
-    print(serializer)
 
     if role == "College Admin" and hasattr(serializer, "university"):
         return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
@@ -336,3 +356,24 @@ def GetAllAnnouncement(request):
     announcements = Announcement.objects.all()
     serializer = AnnouncementSerializer(announcements, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+def authorize(request):
+    token = request.COOKIES.get('jwt')
+
+    if not token:
+        return 'Unauthenticated'
+
+    try:
+        # TODO: is it ok to use the django secret_key for jwt?
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        return 'Unauthenticated'
+
+    user_id = payload.get('id')
+    role = payload.get('role')
+
+    if not user_id or not role:
+        raise AuthenticationFailed('Invalid payload!')
+
+    return payload
