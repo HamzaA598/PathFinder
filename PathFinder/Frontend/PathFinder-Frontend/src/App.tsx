@@ -42,7 +42,7 @@ function App() {
       );
       const content = await response.json();
 
-      //console.log("role " + content.role);
+      console.log("role " + content.role);
       setUser(content);
 
       if (response.ok) setAuthenticated(true);

@@ -11,9 +11,11 @@ const Overview = ({ uni_name, user }) => {
 
   const [isAdmin, setIsAdmin] = useState(false);
 
+  console.log("el user iudcaui " + user.role);
+
   useEffect(() => {
     if (user) {
-      if (user.role === "University Admin") {
+      if (user.role == "University Admin") {
         setIsAdmin(true);
       }
     }

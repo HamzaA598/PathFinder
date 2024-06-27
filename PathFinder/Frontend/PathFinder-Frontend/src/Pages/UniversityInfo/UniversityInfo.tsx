@@ -7,7 +7,7 @@ import Colleges from "./components/Colleges";
 const UniversityInfo = ({ user }) => {
   const { uni_name } = useParams<{ uni_name: string }>();
 
-  console.log("this is the name " + uni_name);
+  //console.log("this is the name " + uni_name);
 
   const [activeSection, setActiveSection] = useState("overview");
 
