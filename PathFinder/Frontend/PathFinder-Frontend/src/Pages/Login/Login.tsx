@@ -28,9 +28,7 @@ const Login = (props: {
 
       if (response.status === 200) {
         toast({
-          title: content.message,
-          // TODO: add the name of the user
-          description: `Welcome back ${content.name}!`,
+          description: `Login successefully`,
         });
         props.setAuthenticated(true);
         setRedirect(true);
