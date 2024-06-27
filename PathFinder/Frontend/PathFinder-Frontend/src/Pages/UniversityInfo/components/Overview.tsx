@@ -1,15 +1,23 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import axios from "axios";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-const Overview = ({ uni_name }) => {
+const Overview = ({ uni_name, user }) => {
   console.log("dicnsiucnsievn " + uni_name);
 
-  const [university_admin, setUniversity_admin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      if (user.role === "University Admin") {
+        setIsAdmin(true);
+      }
+    }
+  }, [user]);
 
   const [universityInfo, setUniversityInfo] = useState([]);
 
@@ -62,7 +70,7 @@ const Overview = ({ uni_name }) => {
 
   return (
     <div className="grid gap-8">
-      {university_admin && <Button className="p-8S">add</Button>}
+      {isAdmin && <Button className="p-8S">add</Button>}
       {Object.entries(universityInfo).map(([key, value]) => (
         <Card key={key}>
           <CardHeader>
@@ -71,12 +79,8 @@ const Overview = ({ uni_name }) => {
           <CardContent>
             <div className="content-wrapper">
               <div className="content-text">{value}</div>
-              {university_admin && (
-                <Button className="edit-button">edit</Button>
-              )}
-              {university_admin && (
-                <Button className=" m-8 edit-button">delete</Button>
-              )}
+              {isAdmin && <Button className="edit-button">edit</Button>}
+              {isAdmin && <Button className=" m-8 edit-button">delete</Button>}
             </div>
           </CardContent>
         </Card>

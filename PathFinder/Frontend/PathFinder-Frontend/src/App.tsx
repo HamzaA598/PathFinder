@@ -17,6 +17,7 @@ import UniversityInfo from "./Pages/UniversityInfo/UniversityInfo";
 import CollegeInfo from "./Pages/CollegeInfo/CollegeInfo";
 import Compare from "./Pages/Compare/Compare";
 import News from "./Pages/News/News";
+import { Content } from "@radix-ui/react-navigation-menu";
 
 function App() {
   // Get the current location using the useLocation hook
@@ -25,6 +26,7 @@ function App() {
   const isChatRoute = location.pathname === "/chat";
 
   const [authenticated, setAuthenticated] = useState(false);
+  const [user, setUser] = useState();
   const effectRan = useRef(false);
 
   useEffect(() => {
@@ -39,6 +41,9 @@ function App() {
         }
       );
       const content = await response.json();
+
+      //console.log("role " + content.role);
+      setUser(content);
 
       if (response.ok) setAuthenticated(true);
 
@@ -73,7 +78,10 @@ function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/chat" element={<Chat />}></Route>
         <Route path="/university" element={<University />}></Route>
-        <Route path="/:uni_name" element={<UniversityInfo />}></Route>
+        <Route
+          path="/:uni_name"
+          element={<UniversityInfo user={user} />}
+        ></Route>
         <Route path="/:uni_name/:col_name" element={<CollegeInfo />}></Route>
         <Route path="/Compare" element={<Compare />}></Route>
         <Route path="/News" element={<News />}></Route>

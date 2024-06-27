@@ -4,7 +4,7 @@ import "./components/sidenav.css";
 import Overview from "./components/Overview";
 import Colleges from "./components/Colleges";
 
-const UniversityInfo = () => {
+const UniversityInfo = ({ user }) => {
   const { uni_name } = useParams<{ uni_name: string }>();
 
   console.log("this is the name " + uni_name);
@@ -48,7 +48,9 @@ const UniversityInfo = () => {
           <span className="block">{uni_name}</span>
         </h1>
         <div className="grid gap-8">
-          {activeSection === "overview" && <Overview uni_name={uni_name} />}
+          {activeSection === "overview" && (
+            <Overview uni_name={uni_name} user={user} />
+          )}
           {activeSection === "colleges" && <Colleges uni_name={uni_name} />}
         </div>
       </div>
