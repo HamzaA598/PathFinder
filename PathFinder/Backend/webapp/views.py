@@ -110,8 +110,7 @@ def EditUniversity(request):
         oldUniversity = University.objects.get(_id=str(university['_id']))
     except University.DoesNotExist:
         return JsonResponse({'error': 'University not found'}, status=status.HTTP_404_NOT_FOUND)
-    print(adminId)
-    print(oldUniversity.admin_id)
+
     if adminId == oldUniversity.admin_id:
         serializer = UniversitySerializer(oldUniversity, data=university)
         if serializer.is_valid():
@@ -136,12 +135,11 @@ def EditCollege(request):
     data = json.loads(request.body.decode('utf-8'))
     college = data['college']
     try:
-        print(college['_id'])
         oldCollege = College.objects.get(_id=str(college['_id']))
     except College.DoesNotExist:
         return JsonResponse({'error': 'College not found'}, status=status.HTTP_404_NOT_FOUND)
 
-    if adminId == str(oldCollege.admin_id) or (
+    if str(adminId) == str(oldCollege.admin_id) or (
             role == "University Admin" and University.objects.get(_id=oldCollege.university).admin_id) == adminId:
         serializer = CollegeSerializer(oldCollege, data=college)
         if serializer.is_valid():
@@ -334,7 +332,7 @@ def addAnnouncement(request):
         else:
             id = University.objects.get(_id=announcement['university']).admin_id
 
-        if str(id) != adminId:
+        if id != adminId:
             return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
 
     except Exception as e:
