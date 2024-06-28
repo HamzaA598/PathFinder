@@ -3,15 +3,39 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
+const customScrollbarStyles = `
+  /* WebKit browsers (Chrome, Safari) */
+  ::-webkit-scrollbar {
+    width: 12px; /* Adjust the width of the scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background color of the scrollbar track */
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #4caf50; /* Scrollbar color to match your theme */
+    border-radius: 10px;
+    border: 3px solid #f1f1f1; /* Adjust border size and color */
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin; /* Scrollbar width */
+    scrollbar-color: #4caf50 #f1f1f1; /* Scrollbar color and background color */
+  }
+`;
+
 interface NewsItem {
   university: string;
   date: string;
   description: string;
 }
 
-const News = () => {
+const News = ({ user }) => {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -25,36 +49,32 @@ const News = () => {
       }
     };
 
-    // Replace with actual logic to determine admin status
-    // const fetchAdminStatus = async () => {
-    //   const adminResponse = await axios.get(
-    //     "http://localhost:8000/webapp/checkAdminStatus"
-    //   );
-    //   setIsAdmin(adminResponse.data.isAdmin);
-    // };
-
-    // fetchAdminStatus();
     fetchNews();
   }, []);
+
+  console.log(user.role);
+  useEffect(() => {
+    if (user) {
+      if (user.role === "University Admin") {
+        setIsAdmin(true);
+      }
+    }
+  }, [user]);
 
   // const handleEdit = (index: number) => {
   //   console.log(`Editing news item at index: ${index}`);
   //   // Implement the edit logic here
   // };
 
-  // const handleDelete = (index: number) => {
-  //   console.log(`Deleting news item at index: ${index}`);
-  //   // Implement the delete logic here
-  // };
-
   return (
     <div className="News_page w-[1300px]">
+      <style>{customScrollbarStyles}</style>
       <Card className="ml-64 h-screen items-center justify-center">
         <CardHeader>
           <CardTitle>News Page</CardTitle>
         </CardHeader>
-        <CardContent className="grid gap-4">
-          {isAdmin && <Button className="mb-4">Add News</Button>}{" "}
+        <CardContent className="overflow-auto max-h-[75vh] grid gap-4">
+          {isAdmin && <Button className="mb-4">Add News</Button>}
           {newsItems.map((news_item, index) => (
             <div
               key={index}
@@ -72,12 +92,6 @@ const News = () => {
                       className="edit-button"
                     >
                       Edit
-                    </Button>
-                    <Button
-                      onClick={() => handleDelete(index)}
-                      className="delete-button"
-                    >
-                      Delete
                     </Button>
                   </div>
                 )}
