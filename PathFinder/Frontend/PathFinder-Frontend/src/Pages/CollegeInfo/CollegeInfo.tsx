@@ -10,21 +10,20 @@ const CollegeInfo = () => {
 
   const [collegeInfo, setCollegeInfo] = useState([]);
 
-  const url = `http://127.0.0.1:8000/webapp/College/name/${
-    col_name?.split(" ")[0]
-  }`;
+  const url = `http://127.0.0.1:8000/webapp/College/name/${col_name}`;
 
   //npx json-server --watch uni_data/public_universities.json --port 9000
   React.useEffect(() => {
     axios
       .get(url)
       .then((response) => {
-        response.data.map((col_data) => {
+        /*response.data.map((col_data) => {
           if (col_data.name == col_name) {
             setCollegeInfo(col_data);
           }
         });
-        //setCollegeInfo(response.data);
+        */
+        setCollegeInfo(response.data[0]);
       })
       .catch((error) => {
         let errorMessage = "Uh oh! Something went wrong.";

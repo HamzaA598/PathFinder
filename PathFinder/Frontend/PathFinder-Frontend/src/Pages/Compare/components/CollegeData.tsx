@@ -4,20 +4,16 @@ import React from "react";
 import { useState } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { useParams } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 
-const Overview = ({ uni_name }) => {
-  console.log("dicnsiucnsievn " + uni_name);
+const CollegeData = ({ col_name }) => {
+  console.log("dicnsiucnsievn " + col_name);
 
-  const [university_admin, setUniversity_admin] = useState(true);
+  const [collegeInfo, setCollegeInfo] = useState([]);
 
-  const [universityInfo, setUniversityInfo] = useState([]);
-
-  const url = `http://127.0.0.1:8000/webapp/University/name/${uni_name}`;
+  const url = `http://127.0.0.1:8000/webapp/College/name/${col_name}`;
 
   console.log("dicnsiucnsievn " + url);
 
-  //npx json-server --watch uni_data/public_universities.json --port 9000
   React.useEffect(() => {
     axios
       .get(url)
@@ -25,7 +21,7 @@ const Overview = ({ uni_name }) => {
         if (response.data.length === 0) {
           throw new Error("EmptyResponse");
         }
-        setUniversityInfo(response.data[0]);
+        setCollegeInfo(response.data[0]);
       })
       .catch((error) => {
         let errorMessage = "Uh oh! Something went wrong.";
@@ -33,7 +29,7 @@ const Overview = ({ uni_name }) => {
 
         if (error.message === "EmptyResponse") {
           errorMessage = "No Data Found";
-          errorDesc = "The response data is empty.";
+          errorDesc = "no college data";
         } else if (error.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
@@ -51,33 +47,23 @@ const Overview = ({ uni_name }) => {
           description: errorDesc,
         });
       });
-  }, [universityInfo, url]);
+  }, [collegeInfo, url]);
 
-  console.log(universityInfo);
+  console.log(collegeInfo);
 
   return (
     <div className="grid gap-8">
-      {university_admin && <Button className="p-8S">add</Button>}
-      {Object.entries(universityInfo).map(([key, value]) => (
-        <Card key={key}>
+      {Object.entries(collegeInfo).map(([key, value]) => (
+        <Card>
           <CardHeader>
             <CardTitle>{key}</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="content-wrapper">
-              <div className="content-text">{value}</div>
-              {university_admin && (
-                <Button className="edit-button">edit</Button>
-              )}
-              {university_admin && (
-                <Button className=" m-8 edit-button">delete</Button>
-              )}
-            </div>
-          </CardContent>
+
+          <CardContent>{value}</CardContent>
         </Card>
       ))}
     </div>
   );
 };
 
-export default Overview;
+export default CollegeData;
