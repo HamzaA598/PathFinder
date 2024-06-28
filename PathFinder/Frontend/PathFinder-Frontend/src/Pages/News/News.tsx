@@ -61,11 +61,6 @@ const News = ({ user }) => {
     }
   }, [user]);
 
-  // const handleEdit = (index: number) => {
-  //   console.log(`Editing news item at index: ${index}`);
-  //   // Implement the edit logic here
-  // };
-
   return (
     <div className="News_page w-[1300px]">
       <style>{customScrollbarStyles}</style>
