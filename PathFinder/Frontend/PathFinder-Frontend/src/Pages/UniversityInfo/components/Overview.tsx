@@ -10,9 +10,6 @@ const Overview = ({ uni_name, user }) => {
   console.log("dicnsiucnsievn " + uni_name);
 
   const [isAdmin, setIsAdmin] = useState(false);
-
-  //console.log("el user iudcaui " + user.role);
-
   const [universityInfo, setUniversityInfo] = useState([]);
   const [isEditing, setIsEditing] = useState(null);
 
@@ -69,29 +66,44 @@ const Overview = ({ uni_name, user }) => {
     setIsEditing(key);
   };
 
-  const handleSave = () => {
-    axios
-      .put("http://127.0.0.1:8000/webapp/University/edit/", universityInfo)
-      .then(
-        (response) => {
-          console.log("Data updated successfully:", response.data);
-          toast({
-            title: "Success",
-            description: "Data updated successfully.",
-          });
-          setIsEditing(null);
-        },
+  const handleSave = async () => {
+    try {
+      const response = await axios.put(
+        "http://localhost:8000/webapp/University/edit/",
         {
-          withCredentials: true,
-        }
-      )
-      .catch((error) => {
-        console.error("Error updating data:", error);
-        toast({
-          title: "Update Failed",
-          description: "There was a problem updating the data.",
-        });
+          university: universityInfo,
+        },
+        { withCredentials: true }
+      );
+
+      setUniversityInfo(response.data);
+      setIsEditing(null); // Reset isEditing to null to remove the save button
+
+      toast({
+        title: "Success",
+        description: "University information saved successfully.",
       });
+    } catch (error) {
+      let errorMessage = "Uh oh! Something went wrong.";
+      let errorDesc = "There was a problem with your request.";
+
+      if (error.response) {
+        errorMessage = "Internal Server Error";
+        errorDesc = "Please try again later.";
+      } else if (error.request) {
+        errorMessage = "Network Error";
+        errorDesc =
+          "Couldn't connect to the server. Please check your internet connection.";
+      } else {
+        errorMessage = "Request Error";
+        errorDesc = "An error occurred while setting up the request.";
+      }
+
+      toast({
+        title: errorMessage,
+        description: errorDesc,
+      });
+    }
   };
 
   return (
