@@ -11,17 +11,10 @@ const Overview = ({ uni_name, user }) => {
 
   const [isAdmin, setIsAdmin] = useState(false);
 
-  console.log("el user iudcaui " + user.role);
-
-  useEffect(() => {
-    if (user) {
-      if (user.role == "University Admin") {
-        setIsAdmin(true);
-      }
-    }
-  }, [user]);
+  //console.log("el user iudcaui " + user.role);
 
   const [universityInfo, setUniversityInfo] = useState([]);
+  const [isEditing, setIsEditing] = useState(null);
 
   const effectRan = useRef(false);
 
@@ -29,7 +22,6 @@ const Overview = ({ uni_name, user }) => {
 
   console.log("dicnsiucnsievn " + url);
 
-  //npx json-server --watch uni_data/public_universities.json --port 9000
   React.useEffect(() => {
     if (effectRan.current) return;
 
@@ -49,12 +41,9 @@ const Overview = ({ uni_name, user }) => {
           errorMessage = "No Data Found";
           errorDesc = "The response data is empty.";
         } else if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
           errorMessage = "Internal Server Error";
           errorDesc = " Please try again later.";
         } else if (error.request) {
-          // The request was made but no response was received
           errorMessage = "Network Error";
           errorDesc =
             "Couldn't connect to the server. Please check your internet connection.";
@@ -68,11 +57,45 @@ const Overview = ({ uni_name, user }) => {
     effectRan.current = true;
   }, [universityInfo, url]);
 
-  console.log(universityInfo);
+  useEffect(() => {
+    if (user) {
+      if (user.role == "University Admin" && user.id == universityInfo.admin) {
+        setIsAdmin(true);
+      }
+    }
+  }, [universityInfo.admin, user]);
+
+  const handleEdit = (key) => {
+    setIsEditing(key);
+  };
+
+  const handleSave = () => {
+    axios
+      .put("http://127.0.0.1:8000/webapp/University/edit/", universityInfo)
+      .then(
+        (response) => {
+          console.log("Data updated successfully:", response.data);
+          toast({
+            title: "Success",
+            description: "Data updated successfully.",
+          });
+          setIsEditing(null);
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .catch((error) => {
+        console.error("Error updating data:", error);
+        toast({
+          title: "Update Failed",
+          description: "There was a problem updating the data.",
+        });
+      });
+  };
 
   return (
     <div className="grid gap-8">
-      {isAdmin && <Button className="p-8S">add</Button>}
       {Object.entries(universityInfo).map(([key, value]) => (
         <Card key={key}>
           <CardHeader>
@@ -80,9 +103,31 @@ const Overview = ({ uni_name, user }) => {
           </CardHeader>
           <CardContent>
             <div className="content-wrapper">
-              <div className="content-text">{value}</div>
-              {isAdmin && <Button className="edit-button">edit</Button>}
-              {isAdmin && <Button className=" m-8 edit-button">delete</Button>}
+              {isEditing === key ? (
+                <input
+                  className="text-black"
+                  type="text"
+                  value={value}
+                  onChange={(e) =>
+                    setUniversityInfo({
+                      ...universityInfo,
+                      [key]: e.target.value,
+                    })
+                  }
+                />
+              ) : (
+                <div className="content-text">{value}</div>
+              )}
+              {isAdmin && (
+                <Button
+                  className="edit-button"
+                  onClick={() =>
+                    isEditing === key ? handleSave() : handleEdit(key)
+                  }
+                >
+                  {isEditing === key ? "save" : "edit"}
+                </Button>
+              )}
             </div>
           </CardContent>
         </Card>
