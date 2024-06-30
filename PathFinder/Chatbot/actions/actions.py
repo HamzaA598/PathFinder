@@ -113,14 +113,6 @@ class ValidateRecommendationForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `location` value."""
-        # TODO: Make sure location is set correctly by validation
-        # you can add print statements to help debugging
-        # example validation
-        # LOGIC TO VALIDATE SLOT_VALUE
-        # if not correct:
-        #     dispatcher.utter_message(text="data entered incorrectly")
-        #     return {"location": None} # reset slot value
-        # return {"location": validated_slot_value}
         if slot_value is None:
             dispatcher.utter_message(response="utter_ask_location")
             return {"location": None}
@@ -134,7 +126,6 @@ class ValidateRecommendationForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `grade` value."""
-        # TODO: Make sure grade is set correctly by validation
         if slot_value is None:
             dispatcher.utter_message(response="utter_ask_grade")
             return {"grade": None}
@@ -199,14 +190,6 @@ class ValidateRecommendationForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `private_college` value."""
-        # TODO: Make sure private_college is set correctly by validation
-        # you can add print statements to help debugging
-        # example validation
-        # LOGIC TO VALIDATE SLOT_VALUE
-        # if not correct:
-        #     dispatcher.utter_message(text="data entered incorrectly")
-        #     return {"private_college": None} # reset slot value
-        # return {"private_college": validated_slot_value}
         if slot_value is None:
             dispatcher.utter_message(response="utter_ask_private_college")
             return {"private_college": None}
@@ -220,7 +203,6 @@ class ValidateRecommendationForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `preference` value."""
-        # TODO: Make sure preference is set correctly by validation
         preferences = [
             "engineering",
             "medicine",
