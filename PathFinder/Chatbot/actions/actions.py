@@ -31,7 +31,8 @@ class ActionGiveCollegeRecommendation(Action):
         # Retrieve the values of the slots
         location = tracker.get_slot("location")
         grade = tracker.get_slot("grade")
-        interest = tracker.get_slot("interest")
+        interest = tracker.get_slot("preference")
+        private_college = tracker.get_slot("private_college")
 
         # Create a Neo4j driver instance
         uri = "neo4j+s://68b1987c.databases.neo4j.io"
@@ -148,7 +149,7 @@ class ValidateRecommendationForm(FormValidationAction):
         elif school_system == "stem":
             if re.match(stem_pattern, slot_value):
                 correct_grade = True
-                grade_value = float(slot_value) / 700
+                grade_value = (float(slot_value) / 700) * 100
         elif school_system == "ig":
             correct_grade = True
         elif school_system == "american":
