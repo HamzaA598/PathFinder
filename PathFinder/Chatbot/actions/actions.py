@@ -34,9 +34,9 @@ class ActionGiveCollegeRecommendation(Action):
         interest = tracker.get_slot("interest")
 
         # Create a Neo4j driver instance
-        uri = "bolt://localhost:7687"  # Replace with your Neo4j URI
-        username = "neo4j"  # Replace with your Neo4j username
-        password = "password"  # Replace with your Neo4j password
+        uri = "neo4j+s://68b1987c.databases.neo4j.io"
+        username = "neo4j"
+        password = "lUe03x_VbIj0HOpsjd6kHbZHcvzsFgShuTmmXk3Hp60"
 
         recommendations = []
 
