@@ -157,7 +157,7 @@ class ValidateRecommendationForm(FormValidationAction):
         elif school_system == "stem":
             if re.match(stem_pattern, slot_value):
                 correct_grade = True
-                grade_value = 700 / slot_value
+                grade_value = float(slot_value) / 700
         elif school_system == "ig":
             correct_grade = True
         elif school_system == "american":
