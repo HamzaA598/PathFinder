@@ -12,6 +12,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
+from neo4j import GraphDatabase
 import re
 
 
@@ -27,21 +28,71 @@ class ActionGiveCollegeRecommendation(Action):
         tracker: "Tracker",
         domain: DomainDict,
     ) -> List[Dict[Text, Any]]:
-
         # Retrieve the values of the slots
         location = tracker.get_slot("location")
         grade = tracker.get_slot("grade")
-        school_system = tracker.get_slot("school_system")
-        private_college = tracker.get_slot("private_college")
-        # TODO: call recommendation engine and get recommendations using slots
+        interest = tracker.get_slot("interest")
 
-        # Generate a message based on the slot values
-        college_type = "كلية خاصة" if private_college else "كلية حكومية"
-        recommendation_message = (
-            f"بناءً على تفضيلاتك، أنت تبحث عن كلية في {location}. "
-            f"مستوى درجتك هو {grade}. "
-            f"تفضل {college_type}."
+        # Create a Neo4j driver instance
+        uri = "bolt://localhost:7687"  # Replace with your Neo4j URI
+        username = "neo4j"  # Replace with your Neo4j username
+        password = "password"  # Replace with your Neo4j password
+
+        recommendations = []
+
+        # Step 1: Find the coordinates of the provided city
+        query_steps = (
+            "MATCH (c:City {name: $city}) "
+            "WITH c.lat AS lat, c.long AS long "
+            # Step 2: Find cities within a certain radius (e.g., 50 km)
+            "MATCH (nearby:City) "
+            "WHERE point.distance(point({latitude: lat, longitude: long}), point({latitude: nearby.lat, longitude: nearby.long})) < 50000 "
+            "WITH collect(nearby.name) AS nearbyCities "
+            # Step 3: Find colleges in those cities that match the student's grade and interest
+            "MATCH (college:College)-[:LOCATED_IN]->(city:City), "
+            "      (college)-[:OFFERS_MAJOR]->(major:Major)-[:BELONGS_TO]->(category:Major_Category {name: $interest}) "
+            "WHERE city.name IN nearbyCities "
+            "  AND any(grade IN college.acceptance_history WHERE grade <= $grade) "
+            # Step 4: Return the matched colleges with relevant details
+            "RETURN college.name AS collegeName, "
+            "       college.university AS universityName, "
+            "       city.name AS cityName, "
+            "       category.name AS majorCategory, "
+            "       college.acceptance_history AS acceptanceHistory, "
+            "       college.acceptance_average AS acceptanceAverage"
         )
+
+        params = {"city": location, "grade": grade, "interest": interest}
+
+        # Execute the query and get recommendations
+        with GraphDatabase.driver(uri, auth=(username, password)) as driver:
+            records, summary, keys = driver.execute_query(query_steps, params)
+            recommendations = [
+                {
+                    "collegeName": record["collegeName"],
+                    "universityName": record["universityName"],
+                    "cityName": record["cityName"],
+                    "majorCategory": record["majorCategory"],
+                    "acceptanceHistory": record["acceptanceHistory"],
+                    "acceptanceAverage": record["acceptanceAverage"],
+                }
+                for record in records
+            ]
+
+        # Generate a message based on the recommendations
+        if recommendations:
+            recommendation_message = "إليك بعض التوصيات للكليات:\n"
+            for rec in recommendations:
+                recommendation_message += (
+                    f"- اسم الكلية: {rec['collegeName']}, "
+                    f"الجامعة: {rec['universityName']}, "
+                    f"المدينة: {rec['cityName']}, "
+                    f"التخصص: {rec['majorCategory']}, "
+                    f"تاريخ القبول: {rec['acceptanceHistory']}, "
+                    f"متوسط القبول: {rec['acceptanceAverage']}\n"
+                )
+        else:
+            recommendation_message = "عذرًا، لا توجد كليات تتطابق مع تفضيلاتك."
 
         # Send the message to the user
         dispatcher.utter_message(text=recommendation_message)
