@@ -152,6 +152,8 @@ class ValidateRecommendationForm(FormValidationAction):
         if school_system == "thanawya":
             if re.match(thanawya_pattern, slot_value):
                 correct_grade = True
+                if slot_value[-1] == "%":
+                    grade_value = float(slot_value[:-1])
         elif school_system == "stem":
             if re.match(stem_pattern, slot_value):
                 correct_grade = True
