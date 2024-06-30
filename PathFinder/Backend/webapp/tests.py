@@ -167,7 +167,6 @@ class EditUniversityTests(APITestCase):
                 "Fax": "facts",
                 "UniversityPresidents": "ay had",
                 "description": "cdyan",
-                "email": "ada@aaa.com"
             }
         }
         self.college_payload = {
@@ -198,6 +197,7 @@ class EditUniversityTests(APITestCase):
                 "AcceptationPercentage-2017": "Coordination of the academic year 2017/2018 : 89%",
                 "AcceptationPercentageScientificDivision-2018": "91.83%",
                 "AcceptationPercentageScientificDivision-2019": "92.56%",
+                "email": "ada@aaa.com",
                 "university": "1"
             }
         }
