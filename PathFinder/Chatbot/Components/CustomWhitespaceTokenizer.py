@@ -81,6 +81,8 @@ class WhitespaceTokenizer(Tokenizer):
 
         # remove 'not a word character' if
         words = regex.sub(
+            # there is a space or an end of a string after it
+            r"[^\w#@&%]+(?=\s|$)|"
             # there is a space or beginning of a string before it
             # not followed by a number
             r"(\s|^)[^\w#@&]+(?=[^0-9\s])|"
