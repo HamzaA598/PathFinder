@@ -204,7 +204,7 @@ responses:
     - text: "ما هي الدرجة التي حصلت عليها؟"
 
   utter_ask_private_college:
-    - text: "هل تفضل الكليات الخاصة على الكليات الحكومية؟"
+    - text: "هل تفضل أن نُضيف الكليات الخاصة أيضًا؟"
       buttons:
       - title: "نعم"
         payload: /affirm{{"private_college":"True"}}
@@ -215,17 +215,17 @@ responses:
     - text: "ما هو مجال الدراسة الذي تفضله؟"
       buttons:
       - title: "علوم الكمبيوتر"
-        payload: '/inform_preference{{"preference":"computer science"}}'
+        payload: '/inform_preference{{"preference":"Computer Science"}}'
       - title: "الهندسة"
-        payload: '/inform_preference{{"preference":"engineering"}}'
+        payload: '/inform_preference{{"preference":"Engineering"}}'
       - title: "الطب"
-        payload: '/inform_preference{{"preference":"medicine"}}'
+        payload: '/inform_preference{{"preference":"Medicine"}}'
       - title: "القانون"
-        payload: '/inform_preference{{"preference":"law"}}'
+        payload: '/inform_preference{{"preference":"Law"}}'
       - title: "إدارة الأعمال"
-        payload: '/inform_preference{{"preference":"business"}}'
+        payload: '/inform_preference{{"preference":"Business"}}'
       - title: "الفنون"
-        payload: '/inform_preference{{"preference":"arts"}}'
+        payload: '/inform_preference{{"preference":"Arts"}}'
 
 
   utter_greet:

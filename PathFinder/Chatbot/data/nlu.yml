@@ -147,28 +147,40 @@ nlu:
 
   - intent: inform_location
     examples: |
-      - أنا في [القاهرة]{"entity": "location", "value": "cairo"}
-      - أسكن في [الإسكندرية]{"entity": "location", "value": "alexandria"}
-      - أعيش في [الجيزة]{"entity": "location", "value": "giza"}
-      - أسكن في [طنطا]{"entity": "location", "value": "tanta"}
-      - موقعي في [الإسماعيلية]{"entity": "location", "value": "ismailia"}
-      - أعيش في [المنيا]{"entity": "location", "value": "minya"}
-      - أسكن في [السويس]{"entity": "location", "value": "suez"}
-      - موقعي في [الأقصر]{"entity": "location", "value": "luxor"}
-      - أعيش في [الفيوم]{"entity": "location", "value": "fayoum"}
-      - أسكن في [المنصورة]{"entity": "location", "value": "mansoura"}
-      - موقعي في [بورسعيد]{"entity": "location", "value": "port said"}
-      - أسكن في [دمياط]{"entity": "location", "value": "damietta"}
-      - موقعي في [سوهاج]{"entity": "location", "value": "sohag"}
-      - أعيش في [شرم الشيخ]{"entity": "location", "value": "sharm el sheikh"}
-      - [القاهرة]{"entity": "location", "value": "cairo"}
-      - [الإسكندرية]{"entity": "location", "value": "alexandria"}
-      - [الجيزة]{"entity": "location", "value": "giza"}
-      - [طنطا]{"entity": "location", "value": "tanta"}
-      - [الإسماعيلية]{"entity": "location", "value": "ismailia"}
-      - [المنيا]{"entity": "location", "value": "minya"}
-      - [السويس]{"entity": "location", "value": "suez"}
-      - [الأقصر]{"entity": "location", "value": "luxor"}
+      - أنا في [القاهرة]{"entity": "location", "value": "Cairo"}
+      - أسكن في [الإسكندرية]{"entity": "location", "value": "Alexandria"}
+      - أعيش في [الجيزة]{"entity": "location", "value": "Giza"}
+      - موقعي في [الإسماعيلية]{"entity": "location", "value": "Ismailia"}
+      - أعيش في [المنيا]{"entity": "location", "value": "Minya"}
+      - أسكن في [السويس]{"entity": "location", "value": "Suez"}
+      - موقعي في [الأقصر]{"entity": "location", "value": "Luxor"}
+      - أعيش في [الفيوم]{"entity": "location", "value": "Fayoum"}
+      - موقعي في [بورسعيد]{"entity": "location", "value": "Port Said"}
+      - أسكن في [دمياط]{"entity": "location", "value": "Damietta"}
+      - موقعي في [سوهاج]{"entity": "location", "value": "Sohag"}
+      - [القاهرة]{"entity": "location", "value": "Cairo"}
+      - [الإسكندرية]{"entity": "location", "value": "Alexandria"}
+      - [الجيزة]{"entity": "location", "value": "Giza"}
+      - [الإسماعيلية]{"entity": "location", "value": "Ismailia"}
+      - [المنيا]{"entity": "location", "value": "Minya"}
+      - [السويس]{"entity": "location", "value": "Suez"}
+      - [الأقصر]{"entity": "location", "value": "Luxor"}
+      - أنا في [الدقهلية]{"entity": "location", "value": "Dakahlia"}
+      - أسكن في [الشرقية]{"entity": "location", "value": "Sharkia"}
+      - أعيش في [المنوفية]{"entity": "location", "value": "Menofia"}
+      - موقعي في [القليوبية]{"entity": "location", "value": "Qaliubiya"}
+      - أعيش في [البحيرة]{"entity": "location", "value": "Beheira"}
+      - موقعي في [الغربية]{"entity": "location", "value": "Gharbiya"}
+      - أسكن في [كفر الشيخ]{"entity": "location", "value": "Kafr Al sheikh"}
+      - موقعي في [مطروح]{"entity": "location", "value": "Matrouh"}
+      - أعيش في [شمال سيناء]{"entity": "location", "value": "North Sinai"}
+      - موقعي في [جنوب سيناء]{"entity": "location", "value": "South Sinai"}
+      - أسكن في [بني سويف]{"entity": "location", "value": "Beni Suef"}
+      - موقعي في [أسيوط]{"entity": "location", "value": "Assiut"}
+      - أعيش في [قنا]{"entity": "location", "value": "Qena"}
+      - موقعي في [البحر الأحمر]{"entity": "location", "value": "Red Sea"}
+      - أسكن في [أسوان]{"entity": "location", "value": "Aswan"}
+      - أعيش في [الوادي الجديد]{"entity": "location", "value": "New Valley"}
 
   - intent: inform_grade
     examples: |
@@ -242,18 +254,18 @@ nlu:
 
   - intent: inform_preference
     examples: |
-      - أفضّل [الهندسة]{"entity": "preference", "value": "engineering"}
-      - تفضيلي هو [الطب]{"entity": "preference", "value": "medicine"}
-      - أرغب في دراسة [القانون]{"entity": "preference", "value": "law"}
-      - أنا مهتم بـ [إدارة الأعمال]{"entity": "preference", "value": "business"}
-      - أريد أن أدرس [الفنون]{"entity": "preference", "value": "arts"}
-      - أختار [علوم الكمبيوتر]{"entity": "preference", "value": "computer science"}
-      - [الهندسة]{"entity": "preference", "value": "engineering"} هو اختياري
-      - أنا مهتم بـ [الطب]{"entity": "preference", "value": "medicine"}
-      - مجال اهتمامي هو [القانون]{"entity": "preference", "value": "law"}
-      - أفضّل دراسة [إدارة الأعمال]{"entity": "preference", "value": "business"}
-      - أميل نحو [الفنون]{"entity": "preference", "value": "arts"}
-      - أود التخصص في [علوم الكمبيوتر]{"entity": "preference", "value": "computer science"}
+      - أفضّل [الهندسة]{"entity": "preference", "value": "Engineering"}
+      - تفضيلي هو [الطب]{"entity": "preference", "value": "Medicine"}
+      - أرغب في دراسة [القانون]{"entity": "preference", "value": "Law"}
+      - أنا مهتم بـ [إدارة الأعمال]{"entity": "preference", "value": "Business"}
+      - أريد أن أدرس [الفنون]{"entity": "preference", "value": "Arts"}
+      - أختار [علوم الكمبيوتر]{"entity": "preference", "value": "Computer Science"}
+      - [الهندسة]{"entity": "preference", "value": "Engineering"} هو اختياري
+      - أنا مهتم بـ [الطب]{"entity": "preference", "value": "Medicine"}
+      - مجال اهتمامي هو [القانون]{"entity": "preference", "value": "Law"}
+      - أفضّل دراسة [إدارة الأعمال]{"entity": "preference", "value": "Business"}
+      - أميل نحو [الفنون]{"entity": "preference", "value": "Arts"}
+      - أود التخصص في [علوم الكمبيوتر]{"entity": "preference", "value": "Computer Science"}
       
   - intent: faq/ask_cs
     examples: |

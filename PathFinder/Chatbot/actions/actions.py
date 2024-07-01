@@ -34,67 +34,67 @@ class ActionGiveCollegeRecommendation(Action):
         interest = tracker.get_slot("preference")
         private_college = tracker.get_slot("private_college")
 
+        uni_type = "private" if private_college else "public"
         # Create a Neo4j driver instance
-        uri = "neo4j+s://68b1987c.databases.neo4j.io"
+        uri = "uri"
         username = "neo4j"
-        password = "lUe03x_VbIj0HOpsjd6kHbZHcvzsFgShuTmmXk3Hp60"
+        password = "pass"
 
-        recommendations = []
+        query = """
+        // Step 1: Find the coordinates of the provided city
+        MATCH (c:City)
+        WHERE toLower(c.name) = toLower($city)
+        WITH c.lat AS lat, c.long AS long
 
-        # Step 1: Find the coordinates of the provided city
-        query_steps = (
-            "MATCH (c:City {name: $city}) "
-            "WITH c.lat AS lat, c.long AS long "
-            # Step 2: Find cities within a certain radius (e.g., 50 km)
-            "MATCH (nearby:City) "
-            "WHERE point.distance(point({latitude: lat, longitude: long}), point({latitude: nearby.lat, longitude: nearby.long})) < 50000 "
-            "WITH collect(nearby.name) AS nearbyCities "
-            # Step 3: Find colleges in those cities that match the student's grade and interest
-            "MATCH (college:College)-[:LOCATED_IN]->(city:City), "
-            "      (college)-[:OFFERS_MAJOR]->(major:Major)-[:BELONGS_TO]->(category:Major_Category {name: $interest}) "
-            "WHERE city.name IN nearbyCities "
-            "  AND any(grade IN college.acceptance_history WHERE grade <= $grade) "
-            # Step 4: Return the matched colleges with relevant details
-            "RETURN college.name AS collegeName, "
-            "       college.university AS universityName, "
-            "       city.name AS cityName, "
-            "       category.name AS majorCategory, "
-            "       college.acceptance_history AS acceptanceHistory, "
-            "       college.acceptance_average AS acceptanceAverage"
-        )
+        // Step 2: Find cities within a certain radius (e.g., 50 km)
+        MATCH (nearby:City)
+        WHERE point.distance(point({latitude: lat, longitude: long}), point({latitude: nearby.lat, longitude: nearby.long})) < 50000
+        WITH collect(nearby.name) AS nearbyCities
 
-        params = {"city": location, "grade": grade, "interest": interest}
+        // Step 3: Find colleges in those cities that match the student's grade and interest
+        MATCH (college:College)-[:LOCATED_IN]->(city:City), 
+            (college)-[:OFFERS_MAJOR]->(major:Major)-[:BELONGS_TO]->(category:Major_Category {name: $interest}),
+            (university:University)-[:HAS_COLLEGE]->(college)
+        WHERE city.name IN nearbyCities 
+        AND any(grade IN college.acceptance_history WHERE grade <= $grade)
+        AND (university.type = 'public' OR university.type = $uniType)
+
+        // Step 4: Return the matched colleges with relevant details
+        RETURN DISTINCT college.name AS collegeName, 
+            college.university AS universityName, 
+            university.type AS universityType,
+            city.name AS cityName, 
+            category.name AS majorCategory,
+            college.acceptance_history AS acceptanceHistory,
+            college.acceptance_average AS acceptanceAverage
+        LIMIT 5
+        """
+
+        params = {
+            "city": location,
+            "grade": grade,
+            "interest": interest,
+            "uniType": uni_type,
+        }
 
         # Execute the query and get recommendations
         with GraphDatabase.driver(uri, auth=(username, password)) as driver:
-            records, summary, keys = driver.execute_query(query_steps, params)
-            recommendations = [
-                {
-                    "collegeName": record["collegeName"],
-                    "universityName": record["universityName"],
-                    "cityName": record["cityName"],
-                    "majorCategory": record["majorCategory"],
-                    "acceptanceHistory": record["acceptanceHistory"],
-                    "acceptanceAverage": record["acceptanceAverage"],
-                }
-                for record in records
-            ]
-
+            records, summary, keys = driver.execute_query(query, params)
         # Generate a message based on the recommendations
-        if recommendations:
+        if records:
             recommendation_message = "إليك بعض التوصيات للكليات:\n"
-            for rec in recommendations:
+            for record in records:
                 recommendation_message += (
-                    f"- اسم الكلية: {rec['collegeName']}, "
-                    f"الجامعة: {rec['universityName']}, "
-                    f"المدينة: {rec['cityName']}, "
-                    f"التخصص: {rec['majorCategory']}, "
-                    f"تاريخ القبول: {rec['acceptanceHistory']}, "
-                    f"متوسط القبول: {rec['acceptanceAverage']}\n"
+                    f"- اسم الكلية: {record['collegeName']}, "
+                    f"الجامعة: {record['universityName']}, "
+                    f"نوع الجامعة: {record['universityType']}, "
+                    f"المدينة: {record['cityName']}, "
+                    f"التخصص: {record['majorCategory']}, "
+                    f"تاريخ القبول: {record['acceptanceHistory']}, "
+                    f"متوسط القبول: {record['acceptanceAverage']}\n"
                 )
         else:
             recommendation_message = "عذرًا، لا توجد كليات تتطابق مع تفضيلاتك."
-
         # Send the message to the user
         dispatcher.utter_message(text=recommendation_message)
 
