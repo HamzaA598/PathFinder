@@ -13,7 +13,11 @@ from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from neo4j import GraphDatabase
+from dotenv import load_dotenv
+import os
 import re
+
+load_dotenv()
 
 
 class ActionGiveCollegeRecommendation(Action):
@@ -36,9 +40,9 @@ class ActionGiveCollegeRecommendation(Action):
 
         uni_type = "private" if private_college else "public"
         # Create a Neo4j driver instance
-        uri = "uri"
-        username = "neo4j"
-        password = "pass"
+        uri = os.getenv("NEO4J_URI")
+        username = os.getenv("NEO4J_USERNAME")
+        password = os.getenv("NEO4J_PASSWORD")
 
         query = """
         // Step 1: Find the coordinates of the provided city
