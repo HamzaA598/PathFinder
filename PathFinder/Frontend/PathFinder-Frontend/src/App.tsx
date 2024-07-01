@@ -5,6 +5,7 @@ import { toast } from "./components/ui/use-toast";
 import { Toaster } from "./components/ui/toaster";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
+import { Content } from "@radix-ui/react-navigation-menu";
 
 import "./App.css";
 
@@ -25,6 +26,7 @@ function App() {
   const isChatRoute = location.pathname === "/chat";
 
   const [authenticated, setAuthenticated] = useState(false);
+  const [user, setUser] = useState();
   const effectRan = useRef(false);
 
   useEffect(() => {
@@ -39,6 +41,7 @@ function App() {
         }
       );
       const content = await response.json();
+      setUser(content);
 
       if (response.ok) setAuthenticated(true);
 
@@ -76,7 +79,7 @@ function App() {
         <Route path="/:uni_name" element={<UniversityInfo />}></Route>
         <Route path="/:uni_name/:col_name" element={<CollegeInfo />}></Route>
         <Route path="/Compare" element={<Compare />}></Route>
-        <Route path="/News" element={<News />}></Route>
+        <Route path="/News" element={<News user={user} />}></Route>
       </Routes>
       {!isChatRoute && <Footer />}
       <Toaster />
