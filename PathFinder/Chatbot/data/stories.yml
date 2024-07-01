@@ -110,7 +110,7 @@ stories:
         - grade: 92.5%
       - action: recommend_college_form
       - slot_was_set:
-        - grade: 92.5%
+        - grade: 92.5
       - slot_was_set:
         - requested_slot: private_college
       - intent: affirm
@@ -131,6 +131,70 @@ stories:
       - action: recommend_college_form
       - slot_was_set:
         - preference: computer science
+      - slot_was_set:
+        - requested_slot: null
+      - active_loop: null
+      - action: give_college_recommendation
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: interactive_story_2
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: recommend_college
+      - action: recommend_college_form
+      - active_loop: recommend_college_form
+      - slot_was_set:
+        - requested_slot: location
+      - intent: inform_location
+        entities:
+        - location: Cairo
+      - slot_was_set:
+        - location: Cairo
+      - action: recommend_college_form
+      - slot_was_set:
+        - location: Cairo
+      - slot_was_set:
+        - requested_slot: school_system
+      - intent: inform_school_system
+        entities:
+        - school_system: thanawya
+      - slot_was_set:
+        - school_system: thanawya
+      - action: recommend_college_form
+      - slot_was_set:
+        - school_system: thanawya
+      - slot_was_set:
+        - requested_slot: grade
+      - intent: inform_grade
+        entities:
+        - grade: 90%
+      - slot_was_set:
+        - grade: 90%
+      - action: recommend_college_form
+      - slot_was_set:
+        - grade: 90.0
+      - slot_was_set:
+        - requested_slot: private_college
+      - intent: affirm
+        entities:
+        - private_college: 'True'
+      - slot_was_set:
+        - private_college: true
+      - action: recommend_college_form
+      - slot_was_set:
+        - private_college: true
+      - slot_was_set:
+        - requested_slot: preference
+      - intent: inform_preference
+        entities:
+        - preference: Computer Science
+      - slot_was_set:
+        - preference: Computer Science
+      - action: recommend_college_form
+      - slot_was_set:
+        - preference: Computer Science
       - slot_was_set:
         - requested_slot: null
       - active_loop: null
