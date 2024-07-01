@@ -89,12 +89,12 @@ class ActionGiveCollegeRecommendation(Action):
             recommendation_message = "إليك بعض التوصيات للكليات:\n"
             for record in records:
                 recommendation_message += (
-                    f"- اسم الكلية: {record['collegeName']}, "
-                    f"الجامعة: {record['universityName']}, "
-                    f"نوع الجامعة: {record['universityType']}, "
-                    f"المدينة: {record['cityName']}, "
-                    f"التخصص: {record['majorCategory']}, "
-                    f"تاريخ القبول: {record['acceptanceHistory']}, "
+                    f"- اسم الكلية: {record['collegeName']}, \n"
+                    f"الجامعة: {record['universityName']}, \n"
+                    f"نوع الجامعة: {record['universityType']}, \n"
+                    f"المدينة: {record['cityName']}, \n"
+                    f"التخصص: {record['majorCategory']}, \n"
+                    f"تاريخ القبول: {record['acceptanceHistory']}, \n"
                     f"متوسط القبول: {record['acceptanceAverage']}\n"
                 )
         else:
