@@ -1,11 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface FeatureProps {
   title: string;
@@ -16,45 +10,42 @@ const features: FeatureProps[] = [
   {
     title: "Responsive Design",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Experience seamless usability on any device, with a web app designed to adapt beautifully to smartphones, tablets, and desktops",
   },
   {
     title: "Intuitive user interface",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Navigate effortlessly with a clean and straightforward design that makes finding your ideal college simple and enjoyable",
   },
   {
     title: "AI-Powered insights",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Leverage advanced AI technology to receive smart, data-driven recommendations and insights tailored to your unique academic profile and goals",
   },
   {
-    title: "AI-Powered insights",
+    title: "Smart Chatbot Assistance",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Interact with our intelligent chatbot for instant answers and personalized guidance throughout your college search journey",
   },
   {
-    title: "AI-Powered insights",
+    title: "AI-Driven Matching",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Benefit from AI-driven algorithms that match you with colleges perfectly aligned with your academic strengths and career aspirations",
   },
   {
-    title: "AI-Powered insights",
+    title: "Predictive Analytics",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Utilize predictive analytics to forecast admission chances and potential career outcomes based on your unique profile and preferences",
   },
 ];
 
 const featureList: string[] = [
-  "Lorem ipsum",
-  "Lorem ipsum",
-  "Lorem ipsum",
-  "Lorem ipsum",
-  "Lorem ipsum",
-  "Lorem ipsum",
-  "Lorem ipsum",
-  "Lorem ipsum",
-  "Lorem ipsum",
+  "Personalized College Recommendations",
+  "Interactive Chatbot",
+  "College and University Database",
+  "Search and Filter Options",
+  "Comparison Tool",
+  "Latest News",
 ];
 
 export const Features = () => {
@@ -85,11 +76,6 @@ export const Features = () => {
             </CardHeader>
 
             <CardContent>{description}</CardContent>
-
-            <CardFooter>
-              {/* type something in the footer */}
-              Lorem ipsum dolor sit amet.
-            </CardFooter>
           </Card>
         ))}
       </div>

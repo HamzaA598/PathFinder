@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (
@@ -12,13 +13,17 @@ export const Hero = () => {
           </h1>{" "}
         </main>
         <p className="text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nibh
-          magna, hendrerit ut elit sed, finibus imperdiet diam.
+          A platform for high school students to get personalized
+          recommendations and suggestions for colleges
         </p>
 
         <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <Button className="w-full md:w-1/3">Sign in</Button>
-          <Button className="w-full md:w-1/3">Sign up</Button>
+          <Link to={"/login"}>
+            <Button className="w-full md:w-1/3">Log in</Button>
+          </Link>
+          <Link to={"/signup"}>
+            <Button className="w-full md:w-1/3">Sign up</Button>
+          </Link>
         </div>
       </div>
 

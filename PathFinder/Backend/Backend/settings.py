@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "corsheaders",
     "rest_framework",
+    "webapp",
 ]
 
 MIDDLEWARE = [
@@ -54,6 +59,14 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
+CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_HEADERS = [
+#     'content-type',
+#     'authorization',
+#     'x-csrftoken',
+# ]
+
+# CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']
 
 ROOT_URLCONF = "Backend.urls"
 
@@ -82,10 +95,12 @@ WSGI_APPLICATION = "Backend.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "djongo",
-        "NAME": "test",
+        "NAME": "PathFinder",
+        'CLIENT': {
+            'host': os.environ.get('CONNECTION_STRING'),
+        }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
