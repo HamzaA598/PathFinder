@@ -1,6 +1,7 @@
 from djongo import models
 import datetime
 
+
 class Admin(models.Model):
     id = models.AutoField(primary_key=True)
     email = models.EmailField()
