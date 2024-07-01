@@ -1,6 +1,7 @@
 from djongo import models
 import datetime
 
+
 class Admin(models.Model):
     id = models.AutoField(primary_key=True)
     email = models.EmailField()
@@ -101,4 +102,4 @@ class Announcement(models.Model):
     description = models.TextField()
     date = models.DateField()
     college = models.CharField(blank=True, null=True, max_length=50)
-    university = models.CharField(blank=True, null=True, max_length=50)
+    university = models.CharField(blank=True, null=False, max_length=50)
