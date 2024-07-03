@@ -5,7 +5,6 @@ import { toast } from "./components/ui/use-toast";
 import { Toaster } from "./components/ui/toaster";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
-import { Content } from "@radix-ui/react-navigation-menu";
 
 import "./App.css";
 
@@ -18,7 +17,6 @@ import UniversityInfo from "./Pages/UniversityInfo/UniversityInfo";
 import CollegeInfo from "./Pages/CollegeInfo/CollegeInfo";
 import Compare from "./Pages/Compare/Compare";
 import News from "./Pages/News/News";
-import { Content } from "@radix-ui/react-navigation-menu";
 
 function App() {
   // Get the current location using the useLocation hook
