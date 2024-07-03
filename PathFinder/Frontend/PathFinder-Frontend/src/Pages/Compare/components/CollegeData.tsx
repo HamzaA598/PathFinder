@@ -9,6 +9,7 @@ const CollegeData = ({ col_name }) => {
 
   const effectRan = useRef(false);
 
+  console.log(col_name);
   const url = `http://127.0.0.1:8000/webapp/College/name/${col_name}`;
 
   React.useEffect(() => {
@@ -17,6 +18,7 @@ const CollegeData = ({ col_name }) => {
     axios
       .get(url)
       .then((response) => {
+        console.log(response.data[0]);
         if (response.data.length === 0) {
           throw new Error("EmptyResponse");
         }
@@ -52,15 +54,17 @@ const CollegeData = ({ col_name }) => {
 
   return (
     <div className="grid gap-8">
-      {Object.entries(collegeInfo).map(([key, value]) => (
-        <Card>
-          <CardHeader>
-            <CardTitle>{key}</CardTitle>
-          </CardHeader>
+      {Object.entries(collegeInfo)
+        .filter(([key, value]) => !["_id", "name", "university"].includes(key))
+        .map(([key, value]) => (
+          <Card>
+            <CardHeader>
+              <CardTitle>{key}</CardTitle>
+            </CardHeader>
 
-          <CardContent>{value}</CardContent>
-        </Card>
-      ))}
+            <CardContent>{value}</CardContent>
+          </Card>
+        ))}
     </div>
   );
 };
