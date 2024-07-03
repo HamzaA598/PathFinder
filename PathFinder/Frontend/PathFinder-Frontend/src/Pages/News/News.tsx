@@ -60,6 +60,8 @@ const News = ({ user }) => {
       if (user.role === "university_admin") {
         setIsAdmin(true);
       }
+    } else {
+      setIsAdmin(false);
     }
   }, [user]);
 

@@ -58,6 +58,8 @@ const Overview = ({ uni_name, user }) => {
     if (user) {
       if (user.role == "university_admin" && user.id == universityInfo.admin) {
         setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
       }
     }
   }, [universityInfo, user]);
