@@ -7,8 +7,6 @@ import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const Overview = ({ uni_name, user }) => {
-  console.log("user hagattt : " + user.role);
-
   const [isAdmin, setIsAdmin] = useState(false);
   const [universityInfo, setUniversityInfo] = useState([]);
   const [isEditing, setIsEditing] = useState(null);
@@ -16,8 +14,6 @@ const Overview = ({ uni_name, user }) => {
   const effectRan = useRef(false);
 
   const url = `http://127.0.0.1:8000/webapp/University/name/${uni_name}`;
-
-  console.log("dicnsiucnsievn " + url);
 
   React.useEffect(() => {
     if (effectRan.current) return;

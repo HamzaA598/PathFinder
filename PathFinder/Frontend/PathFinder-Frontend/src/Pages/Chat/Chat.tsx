@@ -27,11 +27,10 @@ function Chat() {
       role: user,
       buttons: buttons || [],
     };
-    console.log(newMessage);
     setMessages([...messages, newMessage]);
   };
 
-  const fetchAmswer = async () => {
+  const fetchAnswer = async () => {
     setIsLoading(true);
     try {
       const msgTxt =
@@ -48,7 +47,6 @@ function Chat() {
       );
       // handle incoming bot message
       const responseData = response.data[0];
-      console.log(response);
       append(responseData.text, "", "chatbot", responseData.buttons);
     } catch (error) {
       let errorMessage = "Uh oh! Something went wrong.";
@@ -81,8 +79,7 @@ function Chat() {
     ) {
       return;
     }
-    console.log(messages);
-    fetchAmswer();
+    fetchAnswer();
   }, [messages]);
 
   return (
