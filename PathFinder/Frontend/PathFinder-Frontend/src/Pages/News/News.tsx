@@ -57,7 +57,7 @@ const News = ({ user }) => {
 
   useEffect(() => {
     if (user) {
-      if (user.role === "University Admin") {
+      if (user.role === "university_admin") {
         setIsAdmin(true);
       }
     }

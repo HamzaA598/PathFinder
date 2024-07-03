@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const Overview = ({ uni_name, user }) => {
-  console.log("dicnsiucnsievn " + uni_name);
+  console.log("user hagattt : " + user.role);
 
   const [isAdmin, setIsAdmin] = useState(false);
   const [universityInfo, setUniversityInfo] = useState([]);
@@ -56,11 +56,11 @@ const Overview = ({ uni_name, user }) => {
 
   useEffect(() => {
     if (user) {
-      if (user.role == "University Admin" && user.id == universityInfo.admin) {
+      if (user.role == "university_admin" && user.id == universityInfo.admin) {
         setIsAdmin(true);
       }
     }
-  }, [universityInfo.admin, user]);
+  }, [universityInfo, user]);
 
   const handleEdit = (key) => {
     setIsEditing(key);
