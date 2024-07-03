@@ -5,17 +5,15 @@ from django.http import JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.forms.models import model_to_dict
 from django.contrib.auth.hashers import check_password
-
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.exceptions import AuthenticationFailed
-
 import json
 import jwt
-
 from .models import *
 from .serializers import *
+from .utils import get_user_from_models, authorize
 
 
 @api_view(['GET'])
@@ -150,6 +148,58 @@ def EditCollege(request):
     return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
+# {
+#     "announcement"{
+#           "college or university ID"
+#     }
+#
+# }
+@api_view(['POST'])
+def addAnnouncement(request):
+    payload = authorize(request)
+    try:
+        adminId = payload.get('id')
+        role = payload.get('role')
+        user = get_user_from_models(role, 'id', adminId)
+    except Exception:
+        return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
+
+    if not user:
+        return
+    data = json.loads(request.body.decode('utf-8'))
+    announcement = data['announcement']
+
+    try:
+        if role == "college_admin":
+            id = University.objects.get(_id=announcement['college']).admin_id
+        else:
+            id = University.objects.get(
+                _id=announcement['university']).admin_id
+
+        if id != adminId:
+            return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=status.HTTP_404_NOT_FOUND)
+
+    serializer = AnnouncementSerializer(data=announcement)
+
+    if role == "college_admin" and hasattr(serializer, "university"):
+        return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
+
+    if serializer.is_valid():
+        serializer.save()
+        return JsonResponse(serializer.data, status=status.HTTP_200_OK)
+    return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def GetAllAnnouncement(request):
+    announcements = Announcement.objects.all()
+    serializer = AnnouncementSerializer(announcements, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
 @api_view(['POST'])
 def signup(request):
     serializer = SignupSerializer(data=request.data)
@@ -267,93 +317,3 @@ def logout(request):
         'message': 'Logout successful'
     }
     return response
-
-# utils
-
-
-def get_user_from_models(role, field, value):
-    model = {
-        'student': Student,
-        'university_admin': UniversityAdmin,
-        'college_admin': CollegeAdmin,
-    }.get(role)
-
-    if not model:
-        raise ValueError("Invalid role")
-
-    user = model.objects.get(**{field: value})
-    return user
-
-
-# {
-#     "announcement"{
-#           "college or university ID"
-#     }
-#
-# }
-
-
-@api_view(['POST'])
-def addAnnouncement(request):
-    payload = authorize(request)
-    try:
-        adminId = payload.get('id')
-        role = payload.get('role')
-        user = get_user_from_models(role, 'id', adminId)
-    except Exception:
-        return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
-
-    if not user:
-        return
-    data = json.loads(request.body.decode('utf-8'))
-    announcement = data['announcement']
-
-    try:
-        if role == "college_admin":
-            id = University.objects.get(_id=announcement['college']).admin_id
-        else:
-            id = University.objects.get(_id=announcement['university']).admin_id
-
-        if id != adminId:
-            return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
-
-    except Exception as e:
-        return JsonResponse({'error': str(e)}, status=status.HTTP_404_NOT_FOUND)
-
-    serializer = AnnouncementSerializer(data=announcement)
-
-    if role == "college_admin" and hasattr(serializer, "university"):
-        return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
-
-    if serializer.is_valid():
-        serializer.save()
-        return JsonResponse(serializer.data, status=status.HTTP_200_OK)
-    return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(['GET'])
-def GetAllAnnouncement(request):
-    announcements = Announcement.objects.all()
-    serializer = AnnouncementSerializer(announcements, many=True)
-    return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-def authorize(request):
-    token = request.COOKIES.get('jwt')
-
-    if not token:
-        return 'Unauthenticated'
-
-    try:
-        # TODO: is it ok to use the django secret_key for jwt?
-        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        return 'Unauthenticated'
-
-    user_id = payload.get('id')
-    role = payload.get('role')
-
-    if not user_id or not role:
-        raise AuthenticationFailed('Invalid payload!')
-
-    return payload
