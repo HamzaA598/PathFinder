@@ -4,6 +4,7 @@ import jwt
 
 def authorize(request):
     token = request.COOKIES.get('jwt')
+
     if not token:
         return False
 
