@@ -17,7 +17,6 @@ import UniversityInfo from "./Pages/UniversityInfo/UniversityInfo";
 import CollegeInfo from "./Pages/CollegeInfo/CollegeInfo";
 import Compare from "./Pages/Compare/Compare";
 import News from "./Pages/News/News";
-import { Content } from "@radix-ui/react-navigation-menu";
 
 function App() {
   // Get the current location using the useLocation hook

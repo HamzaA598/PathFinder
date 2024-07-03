@@ -4,15 +4,16 @@ from django.conf import settings
 from rest_framework.exceptions import AuthenticationFailed
 
 
-def get_user_from_models(role, key, value):
-    user = None
-    if role == 'Student':
-        user = Student.objects.get(**{key: value})
-    elif role == 'University Admin':
-        user = UniversityAdmin.objects.get(**{key: value})
-    elif role == 'College Admin':
-        user = CollegeAdmin.objects.get(**{key: value})
+def get_user_from_models(role, field, value):
+    model = {
+        'student': Student,
+        'university_admin': UniversityAdmin,
+        'college_admin': CollegeAdmin,
+    }.get(role)
 
+    if not model:
+        raise ValueError("Invalid role")
+    user = model.objects.get(**{field: value})
     return user
 
 
