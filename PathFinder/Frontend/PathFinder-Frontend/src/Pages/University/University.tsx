@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
@@ -14,9 +14,12 @@ const University = () => {
   const [universities, setUniversities] = useState<University[]>([]);
   const [search, setSearch] = useState<string>("");
 
+  const effectRan = useRef(false);
+
   // Fetch universities data
   //npx json-server --watch uni_data/university_names.json --port 8000
   useEffect(() => {
+    if (effectRan.current) return;
     axios
       .get<University[]>("http://127.0.0.1:8000/webapp/University")
       .then((response) => {
@@ -41,6 +44,7 @@ const University = () => {
           description: errorDesc,
         });
       });
+    effectRan.current = true;
   }, []);
 
   // Update search query state
