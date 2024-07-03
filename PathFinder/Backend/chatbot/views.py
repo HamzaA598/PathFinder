@@ -56,11 +56,7 @@ def authorize(request):
         return False
 
     try:
-        # TODO: is it ok to use the django secret_key for jwt?
-        print(1)
-
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
-        print(payload)
 
     except jwt.ExpiredSignatureError:
         return False
@@ -68,8 +64,6 @@ def authorize(request):
     user_id = payload.get('id')
     role = payload.get('role')
 
-    print(user_id)
-    print(role)
     if not user_id or not role:
         return False
 
