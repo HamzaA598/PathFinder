@@ -1,5 +1,6 @@
 version: "3.1"
 
+
 stories:
   - story: beginning of flow
     steps:
@@ -37,35 +38,166 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
+#* USE RASA INTERACTIVE TO BUILD STORIES!
+# TODO: Add a story representing the form (use rasa interactive)
+# TODO: Basic stroy structure
+# TODO: Put direct examples of slots values being set (see comments)
+# TODO: Use the intents inform_slotname and utterances utter_ask_slotname
+# TODO: Create a story where the user interupts form with a faq then continues it
+  - story: recommendation story 1
+    steps:
+      - checkpoint: greetings
+      - intent: recommend_college
+      - action: recommend_college_form
+      - active_loop: recommend_college_form
+      - slot_was_set:
+        - requested_slot: location
+      # - slot_was_set:
+      #   - location: "location"
+      - slot_was_set:
+        - requested_slot: school_system
+      # - slot_was_set:
+      #   - school_system: "school_system"
+      - slot_was_set:
+        - requested_slot: grade
+      # - slot_was_set:
+      #   - grade: "grade"
+      - slot_was_set:
+        - requested_slot: private_college
+      # - slot_was_set:
+      #   - private_college: "private_college"
+      - slot_was_set:
+        - requested_slot: preference
+      - slot_was_set:
+        - requested_slot: null
+      - active_loop: null
+      - action: give_college_recommendation
 
-  # - story: Information about Computer Science
-  #   steps:
-  #     - checkpoint: greetings
-  #     - intent: ask_cs
-  #     - action: utter_info_cs
-  #     - intent: goodbye
-  #     - action: utter_goodbye
-
-  # - story: Information about Computer Science colleges
-  #   steps:
-  #     - checkpoint: greetings
-  #     - intent: ask_colleges
-  #     - action: utter_info_colleges
-  #     - intent: goodbye
-  #     - action: utter_goodbye
-
-  # - story: Information about Computer Science departments
-  #   steps:
-  #     - checkpoint: greetings
-  #     - intent: ask_departments
-  #     - action: utter_info_departments
-  #     - intent: goodbye
-  #     - action: utter_goodbye
-
-  # - story: best department
-  #   steps:
-  #     - intent: greet
-  #     - action: utter_greet
-  #     - intent: best_department
-  #     - action: utter_best_department
       
+  - story: interactive_story_1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: recommend_college
+      - action: recommend_college_form
+      - active_loop: recommend_college_form
+      - slot_was_set:
+        - requested_slot: location
+      - intent: inform_location
+        entities:
+        - location: cairo
+      - slot_was_set:
+        - location: cairo
+      - action: recommend_college_form
+      - slot_was_set:
+        - location: cairo
+      - slot_was_set:
+        - requested_slot: school_system
+      - intent: inform_school_system
+        entities:
+        - school_system: thanawya
+      - slot_was_set:
+        - school_system: thanawya
+      - action: recommend_college_form
+      - slot_was_set:
+        - school_system: thanawya
+      - slot_was_set:
+        - requested_slot: grade
+      - intent: inform_grade
+        entities:
+        - grade: 92.5%
+      - slot_was_set:
+        - grade: 92.5%
+      - action: recommend_college_form
+      - slot_was_set:
+        - grade: 92.5
+      - slot_was_set:
+        - requested_slot: private_college
+      - intent: affirm
+        entities:
+        - private_college: 'True'
+      - slot_was_set:
+        - private_college: true
+      - action: recommend_college_form
+      - slot_was_set:
+        - private_college: true
+      - slot_was_set:
+        - requested_slot: preference
+      - intent: inform_preference
+        entities:
+        - preference: computer science
+      - slot_was_set:
+        - preference: computer science
+      - action: recommend_college_form
+      - slot_was_set:
+        - preference: computer science
+      - slot_was_set:
+        - requested_slot: null
+      - active_loop: null
+      - action: give_college_recommendation
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: interactive_story_2
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: recommend_college
+      - action: recommend_college_form
+      - active_loop: recommend_college_form
+      - slot_was_set:
+        - requested_slot: location
+      - intent: inform_location
+        entities:
+        - location: Cairo
+      - slot_was_set:
+        - location: Cairo
+      - action: recommend_college_form
+      - slot_was_set:
+        - location: Cairo
+      - slot_was_set:
+        - requested_slot: school_system
+      - intent: inform_school_system
+        entities:
+        - school_system: thanawya
+      - slot_was_set:
+        - school_system: thanawya
+      - action: recommend_college_form
+      - slot_was_set:
+        - school_system: thanawya
+      - slot_was_set:
+        - requested_slot: grade
+      - intent: inform_grade
+        entities:
+        - grade: 90%
+      - slot_was_set:
+        - grade: 90%
+      - action: recommend_college_form
+      - slot_was_set:
+        - grade: 90.0
+      - slot_was_set:
+        - requested_slot: private_college
+      - intent: affirm
+        entities:
+        - private_college: 'True'
+      - slot_was_set:
+        - private_college: true
+      - action: recommend_college_form
+      - slot_was_set:
+        - private_college: true
+      - slot_was_set:
+        - requested_slot: preference
+      - intent: inform_preference
+        entities:
+        - preference: Computer Science
+      - slot_was_set:
+        - preference: Computer Science
+      - action: recommend_college_form
+      - slot_was_set:
+        - preference: Computer Science
+      - slot_was_set:
+        - requested_slot: null
+      - active_loop: null
+      - action: give_college_recommendation
+      - intent: goodbye
+      - action: utter_goodbye

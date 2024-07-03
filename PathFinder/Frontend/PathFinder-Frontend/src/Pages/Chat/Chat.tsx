@@ -38,12 +38,17 @@ function Chat() {
         messages[messages.length - 1].payload !== ""
           ? messages[messages.length - 1].payload
           : messages[messages.length - 1].text;
-      const response = await axios.post("http://localhost:8000/chatbot/", {
-        sender: "tester",
-        message: msgTxt,
-      });
+      const response = await axios.post(
+        "http://localhost:8000/chatbot/",
+        {
+          sender: "tester",
+          message: msgTxt,
+        },
+        { withCredentials: true }
+      );
       // handle incoming bot message
       const responseData = response.data[0];
+      console.log(response);
       append(responseData.text, "", "chatbot", responseData.buttons);
     } catch (error) {
       let errorMessage = "Uh oh! Something went wrong.";

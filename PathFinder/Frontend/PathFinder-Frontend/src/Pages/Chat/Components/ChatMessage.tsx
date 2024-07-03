@@ -25,7 +25,7 @@ function ChatMessage({
       </div>
 
       <div className="flex-1 px-1 ml-4 space-y-2 overflow-hidden">
-        <ReactMarkdown className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 mb-2 last:mb-0">
+        <ReactMarkdown className=" prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 mb-2 last:mb-0">
           {message.text}
         </ReactMarkdown>
         {message.buttons && message.buttons.length > 0 && (
