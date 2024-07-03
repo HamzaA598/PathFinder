@@ -51,8 +51,6 @@ const CollegeInfo = () => {
     effectRan.current = true;
   }, [collegeInfo, url]);
 
-  console.log(collegeInfo);
-
   return (
     <div>
       <div>

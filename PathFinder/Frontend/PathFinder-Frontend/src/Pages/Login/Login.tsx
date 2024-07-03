@@ -42,7 +42,6 @@ const Login = (props: {
         });
       }
     } catch (error: any) {
-      console.log("catch");
       toast({
         title: "Uh oh! Something went wrong.",
         description:

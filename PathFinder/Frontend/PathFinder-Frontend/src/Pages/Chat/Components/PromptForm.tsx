@@ -58,7 +58,6 @@ function PromptForm({ onSubmit, input, setInput, isLoading }: PromptProps) {
             tabIndex={0}
             onChange={(e) => {
               setInput(e.target.value);
-              console.log(input);
             }}
             placeholder="Send a message."
             spellCheck={true}
