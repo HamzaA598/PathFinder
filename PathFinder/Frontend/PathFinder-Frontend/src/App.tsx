@@ -5,7 +5,6 @@ import { toast } from "./components/ui/use-toast";
 import { Toaster } from "./components/ui/toaster";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
-import { Content } from "@radix-ui/react-navigation-menu";
 
 import "./App.css";
 
