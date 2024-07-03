@@ -260,9 +260,11 @@ def login(request):
     response = Response()
     response.set_cookie(key='jwt', value=token, httponly=True,
                         expires=datetime.utcnow() + timedelta(hours=24))
+
+    name = user.name if role == "student" else role
     response.data = {
-        # TODO: should i put the id or role here again?
         'message': 'Login successful!',
+        'name': name,
         'jwt': token
     }
     response.status_code = status.HTTP_200_OK
@@ -302,9 +304,11 @@ def get_user_from_jwt(request):
             status=status.HTTP_404_NOT_FOUND
         )
 
+    name = user.name if role == "student" else role
     return Response({
         'message': 'Authenticated successfully!',
         'id': user.id,
+        'name': name,
         'role': role
     }, status=status.HTTP_200_OK)
 
