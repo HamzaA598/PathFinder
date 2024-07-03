@@ -1,12 +1,10 @@
 import requests
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from rest_framework.exceptions import AuthenticationFailed
-from django.conf import settings
-import jwt
 from rest_framework import status
 import google.generativeai as genai
 import os
+from .utils import authorize
 
 
 @api_view(['POST'])
@@ -52,29 +50,6 @@ def chat(request):
     except Exception as e:
         answer = askChatGPT(message)
         return Response(answer)
-
-
-def authorize(request):
-    token = request.COOKIES.get('jwt')
-
-    print(token)
-
-    if not token:
-        return False
-
-    try:
-        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
-
-    except jwt.ExpiredSignatureError:
-        return False
-
-    user_id = payload.get('id')
-    role = payload.get('role')
-
-    if not user_id or not role:
-        return False
-
-    return True
 
 
 def askChatGPT(message):
