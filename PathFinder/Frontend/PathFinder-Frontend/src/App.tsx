@@ -42,8 +42,6 @@ function App() {
       const content = await response.json();
       setUser(content);
 
-      setUser(content);
-
       if (response.ok) setAuthenticated(true);
 
       toast({

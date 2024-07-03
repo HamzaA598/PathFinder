@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useRef } from "react";
 import { useState } from "react";
 import { toast } from "@/components/ui/use-toast";
-import { useParams } from "react-router-dom";
 
 const CollegeData = ({ col_name }) => {
   const [collegeInfo, setCollegeInfo] = useState([]);
