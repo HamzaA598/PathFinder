@@ -1,10 +1,10 @@
+from .utils import authorize
+import os
+import google.generativeai as genai
 import requests
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
-import google.generativeai as genai
-import os
-from .utils import authorize
 
 
 @api_view(['POST'])
