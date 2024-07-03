@@ -147,6 +147,59 @@ def EditCollege(request):
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
 
+# {
+#     "announcement"{
+#           "college or university ID"
+#     }
+#
+# }
+
+
+@api_view(['POST'])
+def addAnnouncement(request):
+    payload = authorize(request)
+    try:
+        adminId = payload.get('id')
+        role = payload.get('role')
+        user = get_user_from_models(role, 'id', adminId)
+    except Exception:
+        return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
+
+    if not user:
+        return
+    data = json.loads(request.body.decode('utf-8'))
+    announcement = data['announcement']
+
+    try:
+        if role == "College Admin":
+            id = University.objects.get(_id=announcement['college']).admin_id
+        else:
+            id = University.objects.get(
+                _id=announcement['university']).admin_id
+
+        if id != adminId:
+            return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=status.HTTP_404_NOT_FOUND)
+
+    serializer = AnnouncementSerializer(data=announcement)
+
+    if role == "College Admin" and hasattr(serializer, "university"):
+        return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
+
+    if serializer.is_valid():
+        serializer.save()
+        return JsonResponse(serializer.data, status=status.HTTP_200_OK)
+    return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def GetAllAnnouncement(request):
+    announcements = Announcement.objects.all()
+    serializer = AnnouncementSerializer(announcements, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 # {
 #     "announcement"{
