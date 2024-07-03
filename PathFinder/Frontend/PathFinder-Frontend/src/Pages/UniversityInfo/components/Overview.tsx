@@ -2,7 +2,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "@/components/ui/use-toast";
-import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const Overview = ({ uni_name, user }) => {
@@ -158,10 +157,6 @@ const Overview = ({ uni_name, user }) => {
     }
   };
 
-  function checkConditions(key: string, value: any): boolean {
-    return key !== "_id" && Boolean(value);
-  }
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewAnnouncement((prev) => ({ ...prev, [name]: value }));
@@ -205,45 +200,44 @@ const Overview = ({ uni_name, user }) => {
           )}
         </div>
       )}
-      {Object.entries(universityInfo).map(
-        ([key, value]) =>
-          checkConditions(key, value) && (
-            <Card key={key}>
-              <CardHeader>
-                <CardTitle>{key}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="content-wrapper">
-                  {isEditing === key ? (
-                    <input
-                      className="text-black"
-                      type="text"
-                      value={value}
-                      onChange={(e) =>
-                        setUniversityInfo({
-                          ...universityInfo,
-                          [key]: e.target.value,
-                        })
-                      }
-                    />
-                  ) : (
-                    <div className="content-text">{value}</div>
-                  )}
-                  {isAdmin && (
-                    <Button
-                      className="edit-button"
-                      onClick={() =>
-                        isEditing === key ? handleSave() : handleEdit(key)
-                      }
-                    >
-                      {isEditing === key ? "Save" : "Edit"}
-                    </Button>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          )
-      )}
+      {Object.entries(universityInfo)
+        .filter(([key, value]) => !["_id", "name"].includes(key) && value)
+        .map(([key, value]) => (
+          <Card key={key}>
+            <CardHeader>
+              <CardTitle>{key}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="content-wrapper">
+                {isEditing === key ? (
+                  <input
+                    className="text-black"
+                    type="text"
+                    value={value}
+                    onChange={(e) =>
+                      setUniversityInfo({
+                        ...universityInfo,
+                        [key]: e.target.value,
+                      })
+                    }
+                  />
+                ) : (
+                  <div className="content-text">{value}</div>
+                )}
+                {isAdmin && (
+                  <Button
+                    className="edit-button"
+                    onClick={() =>
+                      isEditing === key ? handleSave() : handleEdit(key)
+                    }
+                  >
+                    {isEditing === key ? "save" : "edit"}
+                  </Button>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
     </div>
   );
 };
