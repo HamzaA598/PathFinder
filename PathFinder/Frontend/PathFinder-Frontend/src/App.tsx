@@ -25,6 +25,7 @@ function App() {
   const isChatRoute = location.pathname === "/chat";
 
   const [authenticated, setAuthenticated] = useState(false);
+  const [user, setUser] = useState();
   const effectRan = useRef(false);
 
   useEffect(() => {
@@ -39,6 +40,10 @@ function App() {
         }
       );
       const content = await response.json();
+      setUser(content);
+
+      console.log("role " + content.role + " w name : " + content.id);
+      setUser(content);
 
       if (response.ok) setAuthenticated(true);
 
@@ -73,10 +78,13 @@ function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/chat" element={<Chat />}></Route>
         <Route path="/university" element={<University />}></Route>
-        <Route path="/:uni_name" element={<UniversityInfo />}></Route>
+        <Route
+          path="/:uni_name"
+          element={<UniversityInfo user={user} />}
+        ></Route>
         <Route path="/:uni_name/:col_name" element={<CollegeInfo />}></Route>
         <Route path="/Compare" element={<Compare />}></Route>
-        <Route path="/News" element={<News />}></Route>
+        <Route path="/News" element={<News user={user} />}></Route>
       </Routes>
       {!isChatRoute && <Footer />}
       <Toaster />

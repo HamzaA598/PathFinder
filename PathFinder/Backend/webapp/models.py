@@ -1,5 +1,6 @@
 from djongo import models
-import datetime
+from datetime import date
+
 
 class Admin(models.Model):
     id = models.AutoField(primary_key=True)
@@ -24,7 +25,7 @@ class Student(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=100)
-    dob = models.DateField(default=datetime.date(2000, 1, 1))
+    dob = models.DateField(default=date(2000, 1, 1))
     highSchoolSystem = models.CharField(max_length=100)
     governorate = models.CharField(max_length=100, default="Cairo")
     gradeInHighSchool = models.CharField(max_length=100)
@@ -38,7 +39,8 @@ class University(models.Model):
     email = models.EmailField()
     Address = models.TextField()
     description = models.TextField(blank=True)
-    admin = models.OneToOneField(UniversityAdmin, on_delete=models.CASCADE, blank=True,)
+    admin = models.OneToOneField(
+        UniversityAdmin, on_delete=models.CASCADE, blank=True,)
     FacebookPage = models.CharField(max_length=100)
     Fax = models.CharField(max_length=100, blank=True)
     PhoneNumber = models.TextField()
@@ -62,7 +64,8 @@ class College(models.Model):
     noOfStudents = models.IntegerField(blank=True)
     collegeType = models.CharField(max_length=100, blank=True)
     fees = models.IntegerField(blank=True)
-    admin = models.OneToOneField(CollegeAdmin, on_delete=models.CASCADE, blank=True)
+    admin = models.OneToOneField(
+        CollegeAdmin, on_delete=models.CASCADE, blank=True)
     AdmissionCertificates = models.CharField(max_length=200)
     AdmissionRequirements = models.CharField(max_length=200)
     CreditHours = models.CharField(max_length=20)
@@ -101,4 +104,4 @@ class Announcement(models.Model):
     description = models.TextField()
     date = models.DateField()
     college = models.CharField(blank=True, null=True, max_length=50)
-    university = models.CharField(blank=True, null=True, max_length=50)
+    university = models.CharField(blank=True, null=False, max_length=50)
