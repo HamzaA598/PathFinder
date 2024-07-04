@@ -367,3 +367,41 @@ def logout(request):
         'message': 'Logout successful'
     }
     return response
+
+
+@api_view(['POST'])
+def add_college_admin(request):
+    payload = authorize(request)
+    try:
+        role = payload.get('role')
+        if role != "university_admin":
+            raise Exception('invalid role')
+        uni_admin_id = payload.get('id')
+        uni_admin = get_user_from_models(role, 'id', uni_admin_id)
+    except Exception:
+        return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
+
+    if not uni_admin:
+        return
+
+    college_id = request.data.get('college_id')
+    college_admin_email = request.data.get('college_admin_email')
+
+    try:
+        college = College.objects.get(_id=college_id)
+
+        if College.objects.filter(_id=college_id, admin__isnull=False):
+            return Response({"error": "There is already an admin assigned to this college."}, status=status.HTTP_400_BAD_REQUEST)
+
+        college_admin = CollegeAdmin.objects.get(email=college_admin_email)
+        college.admin = college_admin
+        college.save()
+
+        return Response({'message': "college admin added successfully"}, status=status.HTTP_200_OK)
+
+    except College.DoesNotExist:
+        return Response({'error': 'College not found'}, status=status.HTTP_404_NOT_FOUND)
+    except CollegeAdmin.DoesNotExist:
+        return Response({'error': 'College Admin not found'}, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
