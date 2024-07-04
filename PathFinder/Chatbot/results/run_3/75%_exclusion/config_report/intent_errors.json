@@ -1,0 +1,58 @@
+[
+  {
+    "text": "غير سعيد",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.4935593008995056
+    }
+  },
+  {
+    "text": "افضّل دراسة إدارة الاعمال",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.9967279434204102
+    }
+  },
+  {
+    "text": "ابداً",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.3508464992046356
+    }
+  },
+  {
+    "text": "يبدو جيدًا",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.5295276641845703
+    }
+  },
+  {
+    "text": "اجل",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.23871539533138275
+    }
+  },
+  {
+    "text": "ig",
+    "intent": "inform_school_system",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.3709042966365814
+    }
+  },
+  {
+    "text": "ثانوية",
+    "intent": "inform_school_system",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.22696641087532043
+    }
+  }
+]

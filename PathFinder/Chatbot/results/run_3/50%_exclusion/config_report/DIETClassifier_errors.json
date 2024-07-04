@@ -1,0 +1,26 @@
+[
+  {
+    "text": "افضّل دراسة إدارة الاعمال",
+    "entities": [
+      {
+        "start": 12,
+        "end": 25,
+        "value": "Business",
+        "entity": "preference"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "ستيم",
+    "entities": [
+      {
+        "start": 0,
+        "end": 4,
+        "value": "stem",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": []
+  }
+]

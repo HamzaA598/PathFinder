@@ -1,0 +1,82 @@
+[
+  {
+    "text": "السلام عليكم ورحمة الله",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.35992249846458435
+    }
+  },
+  {
+    "text": "السلام عليكم",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.3864021301269531
+    }
+  },
+  {
+    "text": "صباح الخير",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.34750524163246155
+    }
+  },
+  {
+    "text": "افضّل الهندسة",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.9376747608184814
+    }
+  },
+  {
+    "text": "افضّل دراسة إدارة الاعمال",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.9951392412185669
+    }
+  },
+  {
+    "text": "اشعر وكاني ملك",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.3010962903499603
+    }
+  },
+  {
+    "text": "ما هي الكليات التي توصي بها؟",
+    "intent": "recommend_college",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.9699695706367493
+    }
+  },
+  {
+    "text": "بالعكس",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "inform_school_system",
+      "confidence": 0.30839091539382935
+    }
+  },
+  {
+    "text": "بالطبع",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.18780726194381714
+    }
+  },
+  {
+    "text": "بالفعل",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.14297907054424286
+    }
+  }
+]

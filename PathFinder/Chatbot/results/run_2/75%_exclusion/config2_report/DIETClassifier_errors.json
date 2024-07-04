@@ -1,0 +1,160 @@
+[
+  {
+    "text": "افضّل الهندسة",
+    "entities": [
+      {
+        "start": 6,
+        "end": 13,
+        "value": "Engineering",
+        "entity": "preference"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "افضّل دراسة إدارة الاعمال",
+    "entities": [
+      {
+        "start": 12,
+        "end": 25,
+        "value": "Business",
+        "entity": "preference"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "ig",
+    "entities": [
+      {
+        "start": 0,
+        "end": 2,
+        "value": "ig",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "انا في نظام ثانوية",
+    "entities": [
+      {
+        "start": 12,
+        "end": 18,
+        "value": "thanawya",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "انا في المدرسة الامريكية (american)",
+    "entities": [
+      {
+        "start": 26,
+        "end": 34,
+        "value": "american",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "school_system",
+        "start": 15,
+        "end": 24,
+        "confidence_entity": 0.9160344004631042,
+        "value": "american",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "school_system",
+        "start": 26,
+        "end": 34,
+        "confidence_entity": 0.9866262078285217,
+        "value": "american",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "انا في البحر الاحمر",
+    "entities": [
+      {
+        "start": 7,
+        "end": 19,
+        "value": "Red Sea",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location",
+        "start": 13,
+        "end": 19,
+        "confidence_entity": 0.47882285714149475,
+        "value": "الاحمر",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "اعيش في جنوب سيناء",
+    "entities": [
+      {
+        "start": 8,
+        "end": 18,
+        "value": "South Sinai",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location",
+        "start": 13,
+        "end": 18,
+        "confidence_entity": 0.9026495814323425,
+        "value": "سيناء",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "انا في السويس",
+    "entities": [
+      {
+        "start": 7,
+        "end": 13,
+        "value": "Suez",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "موقعي في جنوب سيناء",
+    "entities": [
+      {
+        "start": 9,
+        "end": 19,
+        "value": "South Sinai",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location",
+        "start": 14,
+        "end": 19,
+        "confidence_entity": 0.9054582715034485,
+        "value": "سيناء",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]

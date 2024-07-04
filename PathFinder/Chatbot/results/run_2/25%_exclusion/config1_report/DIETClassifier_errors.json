@@ -1,0 +1,51 @@
+[
+  {
+    "text": "تحدث عن علوم الحاسب",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "preference",
+        "start": 8,
+        "end": 12,
+        "confidence_entity": 0.7006932497024536,
+        "value": "علوم",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "انا في المدرسة الامريكية (american)",
+    "entities": [
+      {
+        "start": 26,
+        "end": 34,
+        "value": "american",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "school_system",
+        "start": 15,
+        "end": 24,
+        "confidence_entity": 0.9590831995010376,
+        "value": "american",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "school_system",
+        "start": 26,
+        "end": 34,
+        "confidence_entity": 0.996733546257019,
+        "value": "american",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  }
+]

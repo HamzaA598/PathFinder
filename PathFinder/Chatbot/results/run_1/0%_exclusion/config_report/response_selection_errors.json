@@ -1,0 +1,66 @@
+[
+  {
+    "text": "\"ما هي مدة الدراسة في تخصص الحاسبات والمعلومات؟\"",
+    "intent_response_key_target": "faq/duration_of_study",
+    "intent_response_key_prediction": {
+      "name": "faq/educational_materials_in_computer_science_colleges",
+      "confidence": 0.374577134847641
+    }
+  },
+  {
+    "text": "\"ما هي المهارات الضرورية في مجال علوم الحاسب؟\"",
+    "intent_response_key_target": "faq/essential_skills_in_computer_science_field",
+    "intent_response_key_prediction": {
+      "name": "faq/required_skills_during_study",
+      "confidence": 0.392316073179245
+    }
+  },
+  {
+    "text": "\"ما هي الاسباب التي تجعل تخصص الحاسبات خيارًا جيدًا؟\"",
+    "intent_response_key_target": "faq/reasons_for_choosing_computer_science",
+    "intent_response_key_prediction": {
+      "name": "faq/why_choose_computer_science_over_engineering",
+      "confidence": 0.3547116816043854
+    }
+  },
+  {
+    "text": "\"ما هي الدورات المتاحة لتهيئة طلاب الثانوية العامة للالتحاق بالكلية؟\"",
+    "intent_response_key_target": "faq/courses_for_high_school_students_preparation",
+    "intent_response_key_prediction": {
+      "name": "faq/prerequisite_programming_experience",
+      "confidence": 0.1489604413509369
+    }
+  },
+  {
+    "text": "\"ما هي القدرات والمهارات التي يبحث عنها اصحاب العمل بعد التخرج؟\"",
+    "intent_response_key_target": "faq/skills_required_for_job_market_after_graduation",
+    "intent_response_key_prediction": {
+      "name": "faq/available_career_opportunities_after_graduation",
+      "confidence": 0.43187007308006287
+    }
+  },
+  {
+    "text": "\"ما هي اختلافات مجالات العمل داخل تخصص الحاسبات؟\"",
+    "intent_response_key_target": "faq/differences_in_computer_science_work_fields",
+    "intent_response_key_prediction": {
+      "name": "faq/difference_between_computer_science_departments",
+      "confidence": 0.3610774576663971
+    }
+  },
+  {
+    "text": "يمكنك شرح الاختلاف بين قسم علم الحاسوب وقسم الذكاء الاصطناعي؟",
+    "intent_response_key_target": "faq/ask_departments",
+    "intent_response_key_prediction": {
+      "name": "faq/profitability_of_computer_science_field",
+      "confidence": 0.20634131133556366
+    }
+  },
+  {
+    "text": "اريد معرفة المزيد عن اقسام علم الحاسوب.",
+    "intent_response_key_target": "faq/ask_departments",
+    "intent_response_key_prediction": {
+      "name": "faq/ask_colleges",
+      "confidence": 0.3915456235408783
+    }
+  }
+]

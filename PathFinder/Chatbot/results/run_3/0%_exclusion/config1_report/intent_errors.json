@@ -1,0 +1,26 @@
+[
+  {
+    "text": "ليس جيدًا جدًا",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.9787551760673523
+    }
+  },
+  {
+    "text": "غير سعيد",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.7153527140617371
+    }
+  },
+  {
+    "text": "يبدو جيدًا",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.4657950699329376
+    }
+  }
+]

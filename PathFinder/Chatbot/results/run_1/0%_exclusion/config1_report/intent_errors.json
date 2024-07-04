@@ -1,0 +1,26 @@
+[
+  {
+    "text": "كان يومي فظيعًا",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.40427711606025696
+    }
+  },
+  {
+    "text": "سلام",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.9890240430831909
+    }
+  },
+  {
+    "text": "اه",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.9574706554412842
+    }
+  }
+]

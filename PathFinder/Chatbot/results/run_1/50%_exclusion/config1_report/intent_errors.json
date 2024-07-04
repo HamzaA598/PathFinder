@@ -1,0 +1,74 @@
+[
+  {
+    "text": "كان يومي فظيعًا",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.35293906927108765
+    }
+  },
+  {
+    "text": "السلام عليكم ورحمة الله و براكاته",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.5454705953598022
+    }
+  },
+  {
+    "text": "اميل نحو الفنون",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.5483932495117188
+    }
+  },
+  {
+    "text": "رائع",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.355890691280365
+    }
+  },
+  {
+    "text": "مذهل",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.3412559926509857
+    }
+  },
+  {
+    "text": "انا سانقذ العالم",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "inform_school_system",
+      "confidence": 0.3813541829586029
+    }
+  },
+  {
+    "text": "سلام",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.724159836769104
+    }
+  },
+  {
+    "text": "اود الحصول على توصيات للجامعات",
+    "intent": "recommend_college",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.5091260075569153
+    }
+  },
+  {
+    "text": "اه",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.4306325316429138
+    }
+  }
+]

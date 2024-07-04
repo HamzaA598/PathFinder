@@ -1,0 +1,74 @@
+[
+  {
+    "text": "افضّل دراسة إدارة الاعمال",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.9983349442481995
+    }
+  },
+  {
+    "text": "اريد ان ادرس الفنون",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "inform_school_system",
+      "confidence": 0.794352650642395
+    }
+  },
+  {
+    "text": "متحمس جدًا",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.2521074414253235
+    }
+  },
+  {
+    "text": "جيد جدًا",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.5836333632469177
+    }
+  },
+  {
+    "text": "ادعو لك بالخير",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.29458072781562805
+    }
+  },
+  {
+    "text": "اتمنى لك يومًا جيدًا",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.39497074484825134
+    }
+  },
+  {
+    "text": "يبدو جيدًا",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.23527629673480988
+    }
+  },
+  {
+    "text": "اجل",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "inform_school_system",
+      "confidence": 0.20127107203006744
+    }
+  },
+  {
+    "text": "ثانوية",
+    "intent": "inform_school_system",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.18409660458564758
+    }
+  }
+]

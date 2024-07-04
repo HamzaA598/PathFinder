@@ -1,0 +1,42 @@
+[
+  {
+    "text": "كان يومي فظيعًا",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.28511306643486023
+    }
+  },
+  {
+    "text": "انا محبط",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.5066721439361572
+    }
+  },
+  {
+    "text": "انا سانقذ العالم",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "inform_school_system",
+      "confidence": 0.5597124099731445
+    }
+  },
+  {
+    "text": "سلام",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.9954071044921875
+    }
+  },
+  {
+    "text": "اه",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.8793231844902039
+    }
+  }
+]

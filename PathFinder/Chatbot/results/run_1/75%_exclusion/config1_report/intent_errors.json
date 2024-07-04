@@ -1,0 +1,106 @@
+[
+  {
+    "text": "كان يومي فظيعًا",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "inform_grade",
+      "confidence": 0.19831512868404388
+    }
+  },
+  {
+    "text": "انا محبط",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.1627209186553955
+    }
+  },
+  {
+    "text": "السلام عليكم ورحمة الله و براكاته",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.9609435796737671
+    }
+  },
+  {
+    "text": "مساء الخير",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.19476944208145142
+    }
+  },
+  {
+    "text": "مرحبا",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.2581992745399475
+    }
+  },
+  {
+    "text": "انا مهتم بـ الطب",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.2292189598083496
+    }
+  },
+  {
+    "text": "اميل نحو الفنون",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.34463587403297424
+    }
+  },
+  {
+    "text": "مذهل",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.4482511579990387
+    }
+  },
+  {
+    "text": "انا سانقذ العالم",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.32976722717285156
+    }
+  },
+  {
+    "text": "باي",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.55803382396698
+    }
+  },
+  {
+    "text": "ساتركك الآن، مع السلامة",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.48068681359291077
+    }
+  },
+  {
+    "text": "بيتوافق",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.19361554086208344
+    }
+  },
+  {
+    "text": "اه",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "inform_grade",
+      "confidence": 0.23621128499507904
+    }
+  }
+]

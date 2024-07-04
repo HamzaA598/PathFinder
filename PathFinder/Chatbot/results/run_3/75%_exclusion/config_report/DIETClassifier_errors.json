@@ -1,0 +1,110 @@
+[
+  {
+    "text": "افضّل دراسة إدارة الاعمال",
+    "entities": [
+      {
+        "start": 12,
+        "end": 25,
+        "value": "Business",
+        "entity": "preference"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "اريد ان ادرس الفنون",
+    "entities": [
+      {
+        "start": 13,
+        "end": 19,
+        "value": "Arts",
+        "entity": "preference"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "نظام مدرستي هو ثانوية",
+    "entities": [
+      {
+        "start": 15,
+        "end": 21,
+        "value": "thanawya",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "ستيم",
+    "entities": [
+      {
+        "start": 0,
+        "end": 4,
+        "value": "stem",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "ثانوية",
+    "entities": [
+      {
+        "start": 0,
+        "end": 6,
+        "value": "thanawya",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "موقعي في كفر الشيخ",
+    "entities": [
+      {
+        "start": 9,
+        "end": 18,
+        "value": "Kafr Al sheikh",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "اسكن في الدقهلية",
+    "entities": [
+      {
+        "start": 8,
+        "end": 16,
+        "value": "Dakahlia",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "اسيوط",
+    "entities": [
+      {
+        "start": 0,
+        "end": 5,
+        "value": "Assiut",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "اسكن في كفر الشيخ",
+    "entities": [
+      {
+        "start": 8,
+        "end": 17,
+        "value": "Kafr Al sheikh",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  }
+]
