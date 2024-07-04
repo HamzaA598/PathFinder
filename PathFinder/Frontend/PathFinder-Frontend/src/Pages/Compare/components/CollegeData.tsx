@@ -9,7 +9,6 @@ const CollegeData = ({ col_name }) => {
 
   const effectRan = useRef(false);
 
-  console.log(col_name);
   const url = `http://127.0.0.1:8000/webapp/College/name/${col_name}`;
 
   React.useEffect(() => {
@@ -18,7 +17,6 @@ const CollegeData = ({ col_name }) => {
     axios
       .get(url)
       .then((response) => {
-        console.log(response.data[0]);
         if (response.data.length === 0) {
           throw new Error("EmptyResponse");
         }
@@ -57,12 +55,12 @@ const CollegeData = ({ col_name }) => {
       {Object.entries(collegeInfo)
         .filter(([key, value]) => !["_id", "name", "university"].includes(key))
         .map(([key, value]) => (
-          <Card>
-            <CardHeader>
-              <CardTitle>{key}</CardTitle>
+          <Card className="card">
+            <CardHeader className="card-header">
+              <CardTitle className="card-title">{key}</CardTitle>
             </CardHeader>
 
-            <CardContent>{value}</CardContent>
+            <CardContent className="card-content">{value}</CardContent>
           </Card>
         ))}
     </div>
