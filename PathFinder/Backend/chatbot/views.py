@@ -35,7 +35,6 @@ def chat(request):
         response = requests.post(rasa_url, json=payload)
         rasa_response = response.json()
 
-        # todo: do i need to handle [0]?
         # handling bad responses
         if 'recipient_id' not in rasa_response[0] or 'text' not in rasa_response[0]:
             return Response({"error": "Bad response"})

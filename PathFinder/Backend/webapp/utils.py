@@ -24,7 +24,6 @@ def authorize(request):
         return 'Unauthenticated'
 
     try:
-        # TODO: is it ok to use the django secret_key for jwt?
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
     except jwt.ExpiredSignatureError:
         return 'Unauthenticated'
