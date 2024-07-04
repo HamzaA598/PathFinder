@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "@/components/ui/use-toast";
 import CollegeData from "./components/CollegeData";
 
@@ -18,61 +18,106 @@ interface University_College {
 
 const Compare = () => {
   const [universities, setUniversities] = useState<University_College[]>([]);
-  const [CollegesList1, setCollegesList1] = useState<University_College[]>([]);
-  const [CollegesList2, setCollegesList2] = useState<University_College[]>([]);
-  const [uniButtonName1, setuniButtonName1] = useState("University");
-  const [colButtonName1, setcolButtonName1] = useState("College");
-  const [uniButtonName2, setuniButtonName2] = useState("University");
-  const [colButtonName2, setcolButtonName2] = useState("College");
-  const [col_id_1, setcollegeID1] = useState("");
-  const [col_id_2, setcollegeID2] = useState("");
+  const [leftCollegesList, setLeftCollegesList] = useState<
+    University_College[]
+  >([]);
+  const [rightCollegesList, setRightCollegesList] = useState<
+    University_College[]
+  >([]);
+  const [leftUniButtonName, setLeftUniButtonName] = useState("University");
+  const [leftCollegeButtonName, setLeftCollegeButtonName] = useState("College");
+  const [rightUniButtonName, setRightUniButtonName] = useState("University");
+  const [rightCollegeButtonName, setRightCollegeButtonName] =
+    useState("College");
+  const [showComparison, setShowComparison] = useState(false);
 
-  const handleUni1 = (name: string) => {
-    setuniButtonName1(name);
-    setcolButtonName1("College");
-    fetchColleges1(name);
+  const firstColumnRef = useRef(null);
+  const secondColumnRef = useRef(null);
+
+  const handleLeftUni = (name: string) => {
+    setLeftUniButtonName(name);
+    setLeftCollegeButtonName("College");
+    fetchLeftColleges(name);
+    setShowComparison(false);
   };
 
-  const handleCol1 = (name: string, id: string) => {
-    setcolButtonName1(name);
-    setcollegeID1(id);
+  const handleLeftCollege = (name: string) => {
+    setLeftCollegeButtonName(name);
+    setShowComparison(false);
   };
 
-  const handleUni2 = (name: string) => {
-    setuniButtonName2(name);
-    setcolButtonName2("College");
-    fetchColleges2(name);
+  const handleRightUni = (name: string) => {
+    setRightUniButtonName(name);
+    setRightCollegeButtonName("College");
+    fetchRightColleges(name);
+    setShowComparison(false);
   };
 
-  const handleCol2 = (name: string, id: string) => {
-    setcolButtonName2(name);
-    setcollegeID2(id);
+  const handleRightCollege = (name: string) => {
+    setRightCollegeButtonName(name);
+    setShowComparison(false);
   };
 
-  const fetchColleges1 = (universityName: string) => {
+  const fetchLeftColleges = (universityName: string) => {
     axios
       .get<University_College[]>(
         `http://127.0.0.1:8000/webapp/College/name/${universityName}`
       )
       .then((response) => {
-        setCollegesList1(response.data);
+        setLeftCollegesList(response.data);
       })
       .catch((error) => {
         handleError(error);
       });
   };
 
-  const fetchColleges2 = (universityName: string) => {
+  const fetchRightColleges = (universityName: string) => {
     axios
       .get<University_College[]>(
         `http://127.0.0.1:8000/webapp/College/name/${universityName}`
       )
       .then((response) => {
-        setCollegesList2(response.data);
+        setRightCollegesList(response.data);
       })
       .catch((error) => {
         handleError(error);
       });
+  };
+
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+
+  const handleCompare = async () => {
+    setShowComparison(true);
+
+    await sleep(4000);
+
+    const firstCards = firstColumnRef.current.querySelectorAll(".card");
+    const secondCards = secondColumnRef.current.querySelectorAll(".card");
+    const firstCardsContent =
+      firstColumnRef.current.querySelectorAll(".card-content");
+    const secondCardsContent =
+      secondColumnRef.current.querySelectorAll(".card-content");
+
+    firstCards.forEach((card, index) => {
+      const secondCard = secondCards[index];
+      if (secondCard) {
+        if (
+          firstCardsContent[index].textContent === "" &&
+          secondCardsContent[index].textContent === ""
+        ) {
+          card.style.display = "none";
+          secondCard.style.display = "none";
+        } else {
+          const maxHeight = Math.max(
+            card.offsetHeight,
+            secondCard.offsetHeight
+          );
+          card.style.height = `${maxHeight}px`;
+          secondCard.style.height = `${maxHeight}px`;
+        }
+      }
+    });
   };
 
   const handleError = (error: { response: unknown; request: unknown }) => {
@@ -105,104 +150,117 @@ const Compare = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-2 divide-x">
-      <div className="First content-start">
-        <div className="University_menu ml-40 mb-10 mt-20">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="w-96 text-wrap" variant="outline">
-                {uniButtonName1}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className=" w-96 max-h-96 overflow-y-auto">
-              <DropdownMenuGroup>
-                {universities.map((university) => (
-                  <DropdownMenuItem
-                    key={university._id}
-                    onClick={() => handleUni1(university.name)}
-                  >
-                    <span>{university.name}</span>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
+    <div>
+      <div className="grid grid-cols-2 divide-x">
+        <div className="First content-start">
+          <div className="University_menu ml-40 mb-10 mt-20">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="w-96 text-wrap" variant="outline">
+                  {leftUniButtonName}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-96 max-h-96 overflow-y-auto">
+                <DropdownMenuGroup>
+                  {universities.map((university) => (
+                    <DropdownMenuItem
+                      key={university._id}
+                      onClick={() => handleLeftUni(university.name)}
+                    >
+                      <span>{university.name}</span>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+          <div className="College_menu ml-40 mb-10">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="w-96 text-wrap" variant="outline">
+                  {leftCollegeButtonName}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-96 max-h-96 overflow-y-auto">
+                <DropdownMenuGroup>
+                  {leftCollegesList.map((College) => (
+                    <DropdownMenuItem
+                      key={College._id}
+                      onClick={() => handleLeftCollege(College.name)}
+                    >
+                      <span>{College.name}</span>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
-        <div className="College_menu ml-40 mb-10">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="w-96 text-wrap" variant="outline">
-                {colButtonName1}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className=" w-96 max-h-96 overflow-y-auto">
-              <DropdownMenuGroup>
-                {CollegesList1.map((College) => (
-                  <DropdownMenuItem
-                    key={College._id}
-                    onClick={() => handleCol1(College.name, College._id)}
-                  >
-                    <span>{College.name}</span>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-        <div className="m-8">
-          {colButtonName1 != "College" && (
-            <CollegeData col_name={colButtonName1} />
-          )}
+
+        <div className="Second content-start">
+          <div className="University_menu ml-40 mb-10 mt-20">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="w-96 text-wrap" variant="outline">
+                  {rightUniButtonName}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-96 max-h-96 overflow-y-auto">
+                <DropdownMenuGroup>
+                  {universities.map((university) => (
+                    <DropdownMenuItem
+                      key={university._id}
+                      onClick={() => handleRightUni(university.name)}
+                    >
+                      <span>{university.name}</span>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+          <div className="College_menu ml-40 mb-10">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className="w-96 text-wrap" variant="outline">
+                  {rightCollegeButtonName}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-96 max-h-96 overflow-y-auto">
+                <DropdownMenuGroup>
+                  {rightCollegesList.map((College) => (
+                    <DropdownMenuItem
+                      key={College._id}
+                      onClick={() => handleRightCollege(College.name)}
+                    >
+                      <span>{College.name}</span>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
       </div>
 
-      <div className="Second content-start">
-        <div className="University_menu ml-40 mb-10 mt-20">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="w-96 text-wrap" variant="outline">
-                {uniButtonName2}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className=" w-96 max-h-96 overflow-y-auto">
-              <DropdownMenuGroup>
-                {universities.map((university) => (
-                  <DropdownMenuItem
-                    key={university._id}
-                    onClick={() => handleUni2(university.name)}
-                  >
-                    <span>{university.name}</span>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
+      <div className="flex justify-center mt-10 mb-10">
+        <Button type="submit" onClick={handleCompare}>
+          compare
+        </Button>
+      </div>
+
+      <div className="grid grid-cols-2 divide-x">
+        <div className="First content-start">
+          <div className="m-8" ref={firstColumnRef}>
+            {showComparison && <CollegeData col_name={leftCollegeButtonName} />}
+          </div>
         </div>
-        <div className="College_menu ml-40 mb-10">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="w-96 text-wrap" variant="outline">
-                {colButtonName2}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className=" w-96 max-h-96 overflow-y-auto">
-              <DropdownMenuGroup>
-                {CollegesList2.map((College) => (
-                  <DropdownMenuItem
-                    key={College._id}
-                    onClick={() => handleCol2(College.name, College._id)}
-                  >
-                    <span>{College.name}</span>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-        <div className="m-8">
-          {colButtonName2 != "College" && (
-            <CollegeData col_name={colButtonName2} />
-          )}
+        <div className="Second content-start">
+          <div className="m-8" ref={secondColumnRef}>
+            {showComparison && (
+              <CollegeData col_name={rightCollegeButtonName} />
+            )}
+          </div>
         </div>
       </div>
     </div>
