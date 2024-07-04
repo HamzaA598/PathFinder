@@ -41,7 +41,7 @@ function Chat() {
       const response = await axios.post("http://localhost:8000/chatbot/", {
         sender: "tester",
         message: msgTxt,
-      });
+      }, {withCredentials: true});
       // handle incoming bot message
       const responseData = response.data[0];
       append(responseData.text, "", "chatbot", responseData.buttons);
