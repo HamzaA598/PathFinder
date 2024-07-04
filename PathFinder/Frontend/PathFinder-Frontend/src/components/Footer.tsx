@@ -61,10 +61,15 @@ export const Footer = () => {
               Universities
             </a>
           </div>
+          <div>
+            <a href="/Compare" className="opacity-60 hover:opacity-100">
+              Compare
+            </a>
+          </div>
 
           <div>
             <a href="/News" className="opacity-60 hover:opacity-100">
-              news page
+              News
             </a>
           </div>
         </div>
