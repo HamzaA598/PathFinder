@@ -43,11 +43,6 @@ def UniversityInfoByName(request, name):
         return JsonResponse({'error': 'University not found'}, status=status.HTTP_404_NOT_FOUND)
 
 
-# TODO: get all colleges
-# TODO: get all colleges of a university by its id
-# TODO get a college by id
-
-
 @api_view(['GET'])
 def AllColleges(request):
     colleges = College.objects.values('_id', 'name')
@@ -307,7 +302,6 @@ def login(request):
         "iat": datetime.utcnow(),
     }
 
-    # TODO: is it ok to use the django secret_key for jwt?
     token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
 
     response = Response()
@@ -335,7 +329,6 @@ def get_user_from_jwt(request):
         }, status=status.HTTP_401_UNAUTHORIZED)
 
     try:
-        # TODO: is it ok to use the django secret_key for jwt?
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
     except jwt.ExpiredSignatureError:
         return Response({
