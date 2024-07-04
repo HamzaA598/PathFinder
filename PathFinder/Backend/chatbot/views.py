@@ -5,6 +5,7 @@ from rest_framework.exceptions import AuthenticationFailed
 from django.conf import settings
 import jwt
 from rest_framework import status
+import openai
 
 
 @api_view(['POST'])
@@ -40,11 +41,13 @@ def chat(request):
         # todo: do i need to handle [0]?
         # handling bad responses
         if 'recipient_id' not in rasa_response[0] or 'text' not in rasa_response[0]:
-            return Response({"error": "Bad response"})
+            answer = askChatGPT(message)
+            return Response(answer)
 
         return Response(rasa_response)
     except Exception as e:
-        return Response({"error": str(e)}, status=500)
+        answer = askChatGPT(message)
+        return Response(answer)
 
 
 def authorize(request):
@@ -74,3 +77,17 @@ def authorize(request):
         return False
 
     return True
+
+
+def askChatGPT(message):
+    openai.api_key = 'pk-lKIkOOkYRsmzKiEPSnhrbDCtEWpTfWqAztQwFmrltIcqwWDA'
+    openai.base_url = "http://localhost:3040/v1"
+
+    completion = openai.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": "How do I list all files in a directory using Python?"},
+        ],
+    )
+    print(completion)
+    return completion.choices[0].message.content
