@@ -87,7 +87,7 @@ class AuthTests(APITestCase):
         data = {
             "email": self.student.email,
             "password": self.student_password,
-            "role": "Student"
+            "role": "student"
         }
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -97,7 +97,7 @@ class AuthTests(APITestCase):
         data = {
             "email": self.student.email,
             "password": self.student_password,
-            "role": "Student"
+            "role": "student"
         }
         response = self.client.post(url, data, format='json')
         token = response.data['jwt']
@@ -112,7 +112,7 @@ class AuthTests(APITestCase):
         data = {
             "email": self.student.email,
             "password": self.student_password,
-            "role": "Student"
+            "role": "student"
         }
         response = self.client.post(url, data, format='json')
         token = response.data['jwt']
@@ -216,7 +216,7 @@ class EditUniversityTests(APITestCase):
         data = {
             "email": self.admin.email,
             "password": "password",
-            "role": "University Admin"
+            "role": "university_admin"
         }
         response = self.client.post(url, data, format='json')
         token = response.data['jwt']
@@ -233,7 +233,7 @@ class EditUniversityTests(APITestCase):
         data = {
             "email": self.student.email,
             "password": "pass",
-            "role": "Student"
+            "role": "student"
         }
         response = self.client.post(url, data, format='json')
         token = response.data['jwt']
@@ -249,7 +249,7 @@ class EditUniversityTests(APITestCase):
         data = {
             "email": self.admin.email,
             "password": "password",
-            "role": "University Admin"
+            "role": "university_admin"
         }
         response = self.client.post(url, data, format='json')
         token = response.data['jwt']

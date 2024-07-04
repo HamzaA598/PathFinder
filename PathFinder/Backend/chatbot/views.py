@@ -5,7 +5,8 @@ from rest_framework.exceptions import AuthenticationFailed
 from django.conf import settings
 import jwt
 from rest_framework import status
-import openai
+import google.generativeai as genai
+import os
 
 
 @api_view(['POST'])
@@ -44,6 +45,9 @@ def chat(request):
             answer = askChatGPT(message)
             return Response(answer)
 
+        if rasa_response == "عذرًا، لم أفهم ذلك تمامًا. هل يمكنك إعادة صياغتها؟" or rasa_response == "أنا آسف، لم أفهم ذلك جيدًا. هل بإمكانك إعادة الصياغة؟" or rasa_response == "عذرًا، لم يتسنى لي فهم ذلك تمامًا. هل يمكنك تعديل ما قلت؟":
+            answer = askChatGPT(message)
+            return Response(answer)
         return Response(rasa_response)
     except Exception as e:
         answer = askChatGPT(message)
@@ -80,14 +84,9 @@ def authorize(request):
 
 
 def askChatGPT(message):
-    openai.api_key = 'pk-lKIkOOkYRsmzKiEPSnhrbDCtEWpTfWqAztQwFmrltIcqwWDA'
-    openai.base_url = "http://localhost:3040/v1"
+    genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
-    completion = openai.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "user", "content": "How do I list all files in a directory using Python?"},
-        ],
-    )
-    print(completion)
-    return completion.choices[0].message.content
+    model = genai.GenerativeModel(model_name="gemini-1.5-flash")
+    response = model.generate_content([message])
+    print(response.text)
+    return response.text
