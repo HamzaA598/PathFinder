@@ -17,6 +17,7 @@ import UniversityInfo from "./Pages/UniversityInfo/UniversityInfo";
 import CollegeInfo from "./Pages/CollegeInfo/CollegeInfo";
 import Compare from "./Pages/Compare/Compare";
 import News from "./Pages/News/News";
+import AddCollegeAdmin from "./Pages/AddCollegeAdmin/AddCollegeAdmin";
 
 function App() {
   // Get the current location using the useLocation hook
@@ -69,6 +70,10 @@ function App() {
         <Route path="/:uni_name/:col_name" element={<CollegeInfo />}></Route>
         <Route path="/Compare" element={<Compare />}></Route>
         <Route path="/News" element={<News user={user} />}></Route>
+        <Route
+          path="/add_college_admin"
+          element={<AddCollegeAdmin user={user} setUser={setUser} />}
+        ></Route>
       </Routes>
       {!isChatRoute && <Footer />}
       <Toaster />
