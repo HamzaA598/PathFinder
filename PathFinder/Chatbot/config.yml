@@ -1,6 +1,9 @@
 language: ar
 pipeline:
-  - name: WhitespaceTokenizer
+  - name: Components.CustomWhitespaceTokenizer.WhitespaceTokenizer
+  - name: LanguageModelFeaturizer
+    model_name: "bert"
+    model_weights: "rasa/LaBSE"
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer
@@ -8,13 +11,13 @@ pipeline:
     analyzer: "char_wb"
     min_ngram: 1
     max_ngram: 4
-  - name: DIETClassifier  
+  - name: DIETClassifier
     epochs: 100
   - name: FallbackClassifier
     threshold: 0.5
   - name: EntitySynonymMapper
   - name: ResponseSelector
-    epochs: 100
+    epochs: 300
     retrieval_intent: faq
 
 policies:

@@ -38,11 +38,7 @@ const routeList: RouteProps[] = [
   },
   {
     href: "/News",
-    label: "News page",
-  },
-  {
-    href: "",
-    label: "Other Feature",
+    label: "News",
   },
 ];
 

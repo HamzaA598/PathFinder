@@ -59,7 +59,7 @@ const University = () => {
         value={search}
         placeholder="Search"
       />
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center">
         {universities
           .filter((university) => {
             return search.toLowerCase() === ""
