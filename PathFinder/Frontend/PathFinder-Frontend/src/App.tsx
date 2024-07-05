@@ -24,8 +24,7 @@ function App() {
   // Check if the current route is /chat
   const isChatRoute = location.pathname === "/chat";
 
-  const [authenticated, setAuthenticated] = useState(false);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
   const effectRan = useRef(false);
 
   useEffect(() => {
@@ -40,9 +39,8 @@ function App() {
         }
       );
       const content = await response.json();
-      setUser(content);
 
-      if (response.ok) setAuthenticated(true);
+      if (response.ok) setUser(content);
 
       toast({
         title: content.message,
@@ -57,21 +55,10 @@ function App() {
 
   return (
     <>
-      <Navbar
-        authenticated={authenticated}
-        setAuthenticated={setAuthenticated}
-      />
+      <Navbar user={user} setUser={setUser} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route
-          path="/login"
-          element={
-            <Login
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
-          }
-        ></Route>
+        <Route path="/login" element={<Login setUser={setUser} />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/chat" element={<Chat />}></Route>
         <Route path="/university" element={<University />}></Route>
