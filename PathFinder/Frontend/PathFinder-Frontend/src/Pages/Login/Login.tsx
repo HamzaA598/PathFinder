@@ -2,6 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "@/components/ui/use-toast";
 import LoginForm from "./components/LoginForm";
 import { useState } from "react";
+import { jwtDecode } from "jwt-decode";
+
+interface DecodedToken {
+  id: string;
+  name: string;
+  role: string;
+}
 
 const Login = (props: { setUser }) => {
   const navigate = useNavigate();
@@ -24,11 +31,20 @@ const Login = (props: { setUser }) => {
       const content = await response.json();
 
       if (response.status === 200) {
+        // decode token and set user
+        const token = content.jwt;
+        const decodedToken: DecodedToken = jwtDecode(token);
+        const user = {
+          id: decodedToken.id,
+          name: decodedToken.name,
+          role: decodedToken.role,
+        };
         props.setUser(user);
+
         toast({
           title: content.message,
           description: response.ok
-            ? `Welcome back ${content.name}!`
+            ? `Welcome back ${user.name}!`
             : "Please Log in",
         });
 
