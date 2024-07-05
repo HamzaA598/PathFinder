@@ -3,10 +3,7 @@ import { toast } from "@/components/ui/use-toast";
 import LoginForm from "./components/LoginForm";
 import { useState } from "react";
 
-const Login = (props: {
-  authenticated: boolean;
-  setAuthenticated: (authenticated: boolean) => void;
-}) => {
+const Login = (props: { setUser }) => {
   const navigate = useNavigate();
   const [redirect, setRedirect] = useState(false);
 
@@ -27,13 +24,14 @@ const Login = (props: {
       const content = await response.json();
 
       if (response.status === 200) {
+        props.setUser(user);
         toast({
           title: content.message,
           description: response.ok
             ? `Welcome back ${content.name}!`
             : "Please Log in",
         });
-        props.setAuthenticated(true);
+
         setRedirect(true);
       } else {
         toast({

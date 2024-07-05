@@ -42,10 +42,7 @@ const routeList: RouteProps[] = [
   },
 ];
 
-export const Navbar = (props: {
-  authenticated: boolean;
-  setAuthenticated: (authenticated: boolean) => void;
-}) => {
+export const Navbar = (props: { user; setUser }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const logout = async () => {
@@ -57,7 +54,7 @@ export const Navbar = (props: {
 
     const content = await response.json();
 
-    props.setAuthenticated(false);
+    props.setUser(null);
 
     toast({
       title: content.message,
@@ -67,7 +64,7 @@ export const Navbar = (props: {
 
   const mobile_dynamic_buttons = (
     <>
-      {props.authenticated ? (
+      {props.user ? (
         <Link
           to="/login"
           className={`border ${buttonVariants({ variant: "secondary" })}`}
@@ -95,7 +92,19 @@ export const Navbar = (props: {
     </>
   );
 
-  const desktop_dynamic_buttons = !props.authenticated ? (
+  const desktop_dynamic_buttons = props.user ? (
+    <div className="hidden md:flex gap-2">
+      <Link
+        to="/login"
+        className={`border ${buttonVariants({ variant: "secondary" })}`}
+        onClick={logout}
+      >
+        Log out
+      </Link>
+
+      <ModeToggle />
+    </div>
+  ) : (
     <div className="hidden md:flex gap-2">
       <Link
         to="/login"
@@ -108,18 +117,6 @@ export const Navbar = (props: {
         className={`border ${buttonVariants({ variant: "secondary" })}`}
       >
         Sign up
-      </Link>
-
-      <ModeToggle />
-    </div>
-  ) : (
-    <div className="hidden md:flex gap-2">
-      <Link
-        to="/login"
-        className={`border ${buttonVariants({ variant: "secondary" })}`}
-        onClick={logout}
-      >
-        Log out
       </Link>
 
       <ModeToggle />
