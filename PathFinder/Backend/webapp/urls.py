@@ -26,4 +26,6 @@ urlpatterns = [
     path('Announcement', views.GetAllAnnouncement, name='Get All Announcement'),
 
     path('add_college_admin', views.add_college_admin, name='Add College Admin'),
+    path('get_university_of_admin/<int:id>',
+         views.get_university_of_admin, name='Get University of Admin'),
 ]

@@ -354,3 +354,15 @@ def add_college_admin(request):
         return Response({'error': 'College Admin not found'}, status=status.HTTP_404_NOT_FOUND)
     except Exception as e:
         return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@api_view(['GET'])
+def get_university_of_admin(request, id):
+    try:
+        print(id)
+        university = University.objects.get(admin_id=id)
+        return Response({"message": "University of Admin is found successfully", "uniId": university._id}, status=status.HTTP_200_OK)
+    except University.DoesNotExist:
+        return Response({'error': 'This admin is not assigned to any university'}, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
