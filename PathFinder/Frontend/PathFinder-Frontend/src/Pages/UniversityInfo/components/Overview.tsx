@@ -106,7 +106,9 @@ const Overview = ({ uni_name, user }) => {
   return (
     <div className="grid gap-8">
       {Object.entries(universityInfo)
-        .filter(([key, value]) => !["_id", "name"].includes(key) && value)
+        .filter(
+          ([key, value]) => !["_id", "name", "admin"].includes(key) && value
+        )
         .map(([key, value]) => (
           <Card key={key}>
             <CardHeader>

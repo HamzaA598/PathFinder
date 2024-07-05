@@ -53,7 +53,10 @@ const CollegeData = ({ col_name }) => {
   return (
     <div className="grid gap-8">
       {Object.entries(collegeInfo)
-        .filter(([key, value]) => !["_id", "name", "university"].includes(key))
+        .filter(
+          ([key, value]) =>
+            !["_id", "name", "university", "admin"].includes(key)
+        )
         .map(([key, value]) => (
           <Card className="card">
             <CardHeader className="card-header">
