@@ -18,27 +18,38 @@ import { ModeToggle } from "./mode-toggle";
 import { LogoIcon } from "./Icons";
 import { toast } from "./ui/use-toast";
 
+const all_roles = ["university_admin", "college_admin", "student"];
 interface RouteProps {
   href: string;
   label: string;
+  roles: string[];
 }
 
 const routeList: RouteProps[] = [
   {
     href: "/chat",
     label: "Chatbot",
+    roles: ["null", all_roles[2]],
   },
   {
     href: "/University",
     label: "Universities",
+    roles: ["null", ...all_roles],
   },
   {
     href: "/Compare",
     label: "Compare",
+    roles: ["null", all_roles[2]],
   },
   {
     href: "/News",
     label: "News page",
+    roles: ["null", ...all_roles],
+  },
+  {
+    href: "/add_college_admin",
+    label: "Add College Admin",
+    roles: [all_roles[0]],
   },
 ];
 
@@ -153,16 +164,22 @@ export const Navbar = (props: { user; setUser }) => {
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
-                  {routeList.map(({ href, label }: RouteProps) => (
-                    <Link
-                      key={label}
-                      to={href}
-                      onClick={() => setIsOpen(false)}
-                      className={buttonVariants({ variant: "ghost" })}
-                    >
-                      {label}
-                    </Link>
-                  ))}
+                  {routeList
+                    .filter((route) =>
+                      props.user
+                        ? route.roles.includes(props.user.role)
+                        : route.roles.includes("null")
+                    )
+                    .map(({ href, label }: RouteProps) => (
+                      <Link
+                        key={label}
+                        to={href}
+                        onClick={() => setIsOpen(false)}
+                        className={buttonVariants({ variant: "ghost" })}
+                      >
+                        {label}
+                      </Link>
+                    ))}
 
                   {mobile_dynamic_buttons}
                 </nav>
@@ -172,17 +189,23 @@ export const Navbar = (props: { user; setUser }) => {
 
           {/* desktop */}
           <nav className="hidden md:flex gap-2">
-            {routeList.map((route: RouteProps, i) => (
-              <Link
-                to={route.href}
-                key={i}
-                className={`text-[17px] ${buttonVariants({
-                  variant: "ghost",
-                })}`}
-              >
-                {route.label}
-              </Link>
-            ))}
+            {routeList
+              .filter((route) =>
+                props.user
+                  ? route.roles.includes(props.user.role)
+                  : route.roles.includes("null")
+              )
+              .map((route: RouteProps, i) => (
+                <Link
+                  to={route.href}
+                  key={i}
+                  className={`text-[17px] ${buttonVariants({
+                    variant: "ghost",
+                  })}`}
+                >
+                  {route.label}
+                </Link>
+              ))}
           </nav>
 
           {desktop_dynamic_buttons}
