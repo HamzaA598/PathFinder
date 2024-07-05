@@ -62,7 +62,7 @@ const CollegeInfo = () => {
         {Object.entries(collegeInfo)
           .filter(
             ([key, value]) =>
-              !["_id", "name", "university"].includes(key) && value
+              !["_id", "name", "university", "admin"].includes(key) && value
           )
           .map(([key, value]) => (
             <Card>

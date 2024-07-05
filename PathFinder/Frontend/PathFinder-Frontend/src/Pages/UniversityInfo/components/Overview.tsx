@@ -201,7 +201,9 @@ const Overview = ({ uni_name, user }) => {
         </div>
       )}
       {Object.entries(universityInfo)
-        .filter(([key, value]) => !["_id", "name"].includes(key) && value)
+        .filter(
+          ([key, value]) => !["_id", "name", "admin"].includes(key) && value
+        )
         .map(([key, value]) => (
           <Card key={key}>
             <CardHeader>
