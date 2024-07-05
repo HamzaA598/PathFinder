@@ -166,7 +166,7 @@ def addAnnouncement(request):
     announcement = data['announcement']
 
     try:
-        if role == "College Admin":
+        if role == "college_admin":
             id = University.objects.get(_id=announcement['college']).admin_id
         else:
             id = University.objects.get(
@@ -180,7 +180,7 @@ def addAnnouncement(request):
 
     serializer = AnnouncementSerializer(data=announcement)
 
-    if role == "College Admin" and hasattr(serializer, "university"):
+    if role == "college_admin" and hasattr(serializer, "university"):
         return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
 
     if serializer.is_valid():
