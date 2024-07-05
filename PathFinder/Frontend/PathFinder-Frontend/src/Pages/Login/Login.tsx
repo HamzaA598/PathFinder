@@ -35,7 +35,7 @@ const Login = (props: {
         });
         props.setAuthenticated(true);
         setRedirect(true);
-      } else if (response.status === 401) {
+      } else {
         toast({
           title: "Uh oh! Something went wrong.",
           description: content.error,
