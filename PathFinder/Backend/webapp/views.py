@@ -134,7 +134,7 @@ def EditCollege(request):
         return JsonResponse({'error': 'College not found'}, status=status.HTTP_404_NOT_FOUND)
 
     if str(adminId) == str(oldCollege.admin_id) or (
-            role == "University Admin" and University.objects.get(_id=oldCollege.university).admin_id) == adminId:
+            role == "university_admin" and University.objects.get(_id=oldCollege.university).admin_id) == adminId:
         serializer = CollegeSerializer(oldCollege, data=college)
         if serializer.is_valid():
             serializer.save()
@@ -166,7 +166,7 @@ def addAnnouncement(request):
     announcement = data['announcement']
 
     try:
-        if role == "College Admin":
+        if role == "college_admin":
             id = University.objects.get(_id=announcement['college']).admin_id
         else:
             id = University.objects.get(
@@ -180,7 +180,7 @@ def addAnnouncement(request):
 
     serializer = AnnouncementSerializer(data=announcement)
 
-    if role == "College Admin" and hasattr(serializer, "university"):
+    if role == "college_admin" and hasattr(serializer, "university"):
         return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
 
     if serializer.is_valid():
