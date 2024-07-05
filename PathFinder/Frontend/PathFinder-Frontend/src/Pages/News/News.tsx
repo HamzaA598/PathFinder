@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 const customScrollbarStyles = `
@@ -35,9 +34,8 @@ interface NewsItem {
   description: string;
 }
 
-const News = ({ user }) => {
+const News = () => {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
@@ -54,18 +52,6 @@ const News = ({ user }) => {
 
     fetchNews();
   }, []);
-
-  useEffect(() => {
-    if (user) {
-      if (user.role === "university_admin") {
-        setIsAdmin(true);
-      }
-    } else {
-      setIsAdmin(false);
-    }
-  }, [user]);
-
-  //handleEdit function awaiting api endpoint to edit
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -105,16 +91,6 @@ const News = ({ user }) => {
                   <p className="text-base font-medium">{news_item.college}</p>
                   <p className="text-base font-medium">{news_item.title}</p>
                   <p className="text-sm">{news_item.description}</p>
-                  {isAdmin && (
-                    <div className="flex space-x-2">
-                      <Button
-                        onClick={() => handleEdit(index)}
-                        className="edit-button"
-                      >
-                        Edit
-                      </Button>
-                    </div>
-                  )}
                 </div>
               </div>
             ))}
