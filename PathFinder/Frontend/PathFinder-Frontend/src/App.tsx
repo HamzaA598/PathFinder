@@ -5,7 +5,6 @@ import { toast } from "./components/ui/use-toast";
 import { Toaster } from "./components/ui/toaster";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
-import { Content } from "@radix-ui/react-navigation-menu";
 
 import "./App.css";
 
@@ -43,6 +42,9 @@ function App() {
       const content = await response.json();
       setUser(content);
 
+      console.log("role " + content.role + " w name : " + content.id);
+      setUser(content);
+
       if (response.ok) setAuthenticated(true);
 
       toast({
@@ -76,7 +78,10 @@ function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/chat" element={<Chat />}></Route>
         <Route path="/university" element={<University />}></Route>
-        <Route path="/:uni_name" element={<UniversityInfo />}></Route>
+        <Route
+          path="/:uni_name"
+          element={<UniversityInfo user={user} />}
+        ></Route>
         <Route path="/:uni_name/:col_name" element={<CollegeInfo />}></Route>
         <Route path="/Compare" element={<Compare />}></Route>
         <Route path="/News" element={<News user={user} />}></Route>

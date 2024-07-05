@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
@@ -14,12 +14,15 @@ const Colleges = ({ uni_name }) => {
   const [Colleges, setColleges] = useState<College[]>([]);
   const [search, setSearch] = useState<string>("");
 
+  const effectRan = useRef(false);
+
   // Fetch universities data
   //npx json-server --watch uni_data/university_names.json --port 8000
 
   const url = `http://127.0.0.1:8000/webapp/College/name/${uni_name}`;
 
   useEffect(() => {
+    if (effectRan.current) return;
     axios
       .get<College[]>(url)
       .then((response) => {
@@ -44,6 +47,7 @@ const Colleges = ({ uni_name }) => {
           description: errorDesc,
         });
       });
+    effectRan.current = true;
   }, []);
 
   // Update search query state
@@ -58,20 +62,22 @@ const Colleges = ({ uni_name }) => {
         value={search}
         placeholder="Search"
       />
-      {Colleges.filter((college) => {
-        return search.toLowerCase() === ""
-          ? college
-          : college.name.toLowerCase().includes(search.toLowerCase());
-      }).map((college) => (
-        <Link to={`/${uni_name}/${college.name}`}>
-          <Button
-            className="m-5 w-60 p-7 pe-8 hover:bg-emerald-600  content-center  text-balance"
-            variant="secondary"
-          >
-            {college.name}
-          </Button>
-        </Link>
-      ))}
+      <div className="flex flex-wrap">
+        {Colleges.filter((college) => {
+          return search.toLowerCase() === ""
+            ? college
+            : college.name.toLowerCase().includes(search.toLowerCase());
+        }).map((college) => (
+          <Link to={`/${uni_name}/${college.name}`}>
+            <Button
+              className="m-5 w-60 h-20 p-2 hover:bg-emerald-600 object-center content-center break-words whitespace-normal overflow-hidden"
+              variant="secondary"
+            >
+              {college.name}
+            </Button>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

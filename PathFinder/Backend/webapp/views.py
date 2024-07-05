@@ -1,20 +1,21 @@
+from datetime import datetime, timedelta
+from django.db import transaction
+from django.conf import settings
+from django.http import JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import render
+from django.forms.models import model_to_dict
+from django.contrib.auth.hashers import check_password
+
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.exceptions import AuthenticationFailed
-from django.http import JsonResponse
+
 import json
-from bson import ObjectId
-from django.forms.models import model_to_dict
+import jwt
+
 from .models import *
 from .serializers import *
-from django.contrib.auth.hashers import make_password, check_password
-from django.conf import settings
-import jwt
-from datetime import datetime, timedelta
-from bson import ObjectId
 
 
 @api_view(['GET'])
@@ -140,7 +141,7 @@ def EditCollege(request):
         return JsonResponse({'error': 'College not found'}, status=status.HTTP_404_NOT_FOUND)
 
     if str(adminId) == str(oldCollege.admin_id) or (
-            role == "University Admin" and University.objects.get(_id=oldCollege.university).admin_id) == adminId:
+            role == "university_admin" and University.objects.get(_id=oldCollege.university).admin_id) == adminId:
         serializer = CollegeSerializer(oldCollege, data=college)
         if serializer.is_valid():
             serializer.save()
@@ -151,57 +152,39 @@ def EditCollege(request):
 
 @api_view(['POST'])
 def signup(request):
-    name = request.data.get('name')
-    email = request.data.get('email')
-    password = request.data.get('password')
-    dob = request.data.get('dob')
-    highSchoolSystem = request.data.get('highSchoolSystem')
-    governorate = request.data.get('governorate')
+    serializer = SignupSerializer(data=request.data)
 
-    if not all([name, email, password, dob, highSchoolSystem, governorate]):
-        return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
+    if serializer.is_valid():
+        if Student.objects.filter(email=serializer.validated_data['email']).first():
+            return Response({"error": "A student with this email already exists."}, status=status.HTTP_409_CONFLICT)
 
-    if Student.objects.filter(email=email).first():
-        return Response({"error": "A student with this email already exists."}, status=status.HTTP_409_CONFLICT)
-
-    try:
-        hashed_password = make_password(password)
-
-        student = Student(
-            name=name,
-            email=email,
-            password=hashed_password,
-            dob=dob,
-            highSchoolSystem=highSchoolSystem,
-            governorate=governorate
-        )
-
-        if student is not None:
-            student.save()
+        try:
+            with transaction.atomic():
+                serializer.save()
             return Response({"message": "Signup successful!"}, status=status.HTTP_201_CREATED)
-        else:
-            return Response({"error": "'student' is None. Cannot save."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    except Exception as e:
-        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
 def login(request):
-    email = request.data.get('email')
-    password = request.data.get('password')
-    role = request.data.get('role')
+    serializer = LoginSerializer(data=request.data)
 
-    if not all([email, password, role]):
+    if not serializer.is_valid():
         return Response(
-            {'error': 'Missing required fields'},
+            serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
 
+    email = serializer.validated_data['email']
+    password = serializer.validated_data['password']
+    role = serializer.validated_data['role']
+
     try:
         user = get_user_from_models(role, 'email', email)
-    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist,
-            CollegeAdmin.DoesNotExist):
+    except (Student.DoesNotExist, UniversityAdmin.DoesNotExist, CollegeAdmin.DoesNotExist):
         return Response(
             {'error': 'User not found!'},
             status=status.HTTP_404_NOT_FOUND
@@ -214,8 +197,6 @@ def login(request):
         )
 
     # JWT
-    response = Response()
-
     payload = {
         'id': user.id,
         'role': role,
@@ -226,15 +207,14 @@ def login(request):
     # TODO: is it ok to use the django secret_key for jwt?
     token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
 
+    response = Response()
     response.set_cookie(key='jwt', value=token, httponly=True,
                         expires=datetime.utcnow() + timedelta(hours=24))
-
     response.data = {
         # TODO: should i put the id or role here again?
         'message': 'Login successful!',
         'jwt': token
     }
-
     response.status_code = status.HTTP_200_OK
 
     return response
@@ -291,15 +271,17 @@ def logout(request):
 # utils
 
 
-def get_user_from_models(role, key, value):
-    user = None
-    if role == 'Student':
-        user = Student.objects.get(**{key: value})
-    elif role == 'University Admin':
-        user = UniversityAdmin.objects.get(**{key: value})
-    elif role == 'College Admin':
-        user = CollegeAdmin.objects.get(**{key: value})
+def get_user_from_models(role, field, value):
+    model = {
+        'student': Student,
+        'university_admin': UniversityAdmin,
+        'college_admin': CollegeAdmin,
+    }.get(role)
 
+    if not model:
+        raise ValueError("Invalid role")
+
+    user = model.objects.get(**{field: value})
     return user
 
 
@@ -327,7 +309,7 @@ def addAnnouncement(request):
     announcement = data['announcement']
 
     try:
-        if role == "College Admin":
+        if role == "college_admin":
             id = University.objects.get(_id=announcement['college']).admin_id
         else:
             id = University.objects.get(_id=announcement['university']).admin_id
@@ -340,7 +322,7 @@ def addAnnouncement(request):
 
     serializer = AnnouncementSerializer(data=announcement)
 
-    if role == "College Admin" and hasattr(serializer, "university"):
+    if role == "college_admin" and hasattr(serializer, "university"):
         return JsonResponse({'error': 'UNAUTHORIZED'}, status=status.HTTP_401_UNAUTHORIZED)
 
     if serializer.is_valid():

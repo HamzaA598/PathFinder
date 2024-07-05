@@ -7,6 +7,12 @@ input {
   unicode-bidi: plaintext;
 }
 
+li,
+.rtlsupport {
+  text-align: start;
+  unicode-bidi: plaintext;
+}
+
 /* HeroCards background shadow */
 .shadow {
   position: absolute;

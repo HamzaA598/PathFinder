@@ -23,7 +23,7 @@ interface SociaNetworkslProps {
 
 const teamList: TeamProps[] = [
   {
-    imageUrl: "",
+    imageUrl: "https://avatars.githubusercontent.com/u/68874104?v=4&size=64",
     name: "Ziad Ibrahim",
     position: "Developer",
     socialNetworks: [
@@ -42,7 +42,7 @@ const teamList: TeamProps[] = [
     ],
   },
   {
-    imageUrl: "",
+    imageUrl: "https://avatars.githubusercontent.com/u/40593938?v=4",
     name: "Hamza Abdul-Hameed",
     position: "Developer",
     socialNetworks: [
@@ -58,7 +58,7 @@ const teamList: TeamProps[] = [
     ],
   },
   {
-    imageUrl: "",
+    imageUrl: "https://avatars.githubusercontent.com/u/89139790?v=4",
     name: "Yahia El-Hadidi",
     position: "Developer",
     socialNetworks: [
@@ -71,7 +71,7 @@ const teamList: TeamProps[] = [
     ],
   },
   {
-    imageUrl: "",
+    imageUrl: "https://avatars.githubusercontent.com/u/105240016?v=4",
     name: "Yahia Ashraf",
     position: "Developer",
     socialNetworks: [
@@ -83,7 +83,7 @@ const teamList: TeamProps[] = [
     ],
   },
   {
-    imageUrl: "",
+    imageUrl: "https://avatars.githubusercontent.com/u/81865160?v=4",
     name: "Omar Tarek",
     position: "Developer",
     socialNetworks: [
