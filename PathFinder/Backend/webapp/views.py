@@ -232,7 +232,7 @@ def login(request):
         user = get_user_from_models(role, 'email', email)
     except (Student.DoesNotExist, UniversityAdmin.DoesNotExist, CollegeAdmin.DoesNotExist):
         return Response(
-            {'error': 'User not found!'},
+            {'error': f'{role} not found!'},
             status=status.HTTP_404_NOT_FOUND
         )
 
