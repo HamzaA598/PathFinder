@@ -47,9 +47,9 @@ function Chat() {
         { withCredentials: true }
       );
       // handle incoming bot message
-      const responseData = response.data[0];
+      const responseData = response.data.replace(/\n\n+/g, '');
       console.log(response);
-      append(responseData.text, "", "chatbot", responseData.buttons);
+      append(responseData, "", "chatbot", responseData.buttons);
     } catch (error) {
       let errorMessage = "Uh oh! Something went wrong.";
       let errorDesc = "There was a problem with your request.";
