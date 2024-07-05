@@ -327,7 +327,7 @@ def add_college_admin(request):
         uni_admin_id = payload.get('id')
         uni_admin = get_user_from_models(role, 'id', uni_admin_id)
     except Exception:
-        return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
+        return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
 
     if not uni_admin:
         return
