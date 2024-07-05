@@ -30,9 +30,10 @@ def authorize(request):
         return 'Unauthenticated'
 
     user_id = payload.get('id')
+    name = payload.get('name')
     role = payload.get('role')
 
-    if not user_id or not role:
+    if not user_id or not name or not role:
         raise AuthenticationFailed('Invalid payload!')
 
     return payload

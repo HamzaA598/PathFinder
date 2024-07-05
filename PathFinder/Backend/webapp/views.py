@@ -294,9 +294,12 @@ def login(request):
             status=status.HTTP_401_UNAUTHORIZED
         )
 
+    name = user.name if role == "student" else role
+
     # JWT
     payload = {
         'id': user.id,
+        'name': name,
         'role': role,
         "exp": datetime.utcnow() + timedelta(hours=24),
         "iat": datetime.utcnow(),
@@ -308,10 +311,8 @@ def login(request):
     response.set_cookie(key='jwt', value=token, httponly=True,
                         expires=datetime.utcnow() + timedelta(hours=24))
 
-    name = user.name if role == "student" else role
     response.data = {
         'message': 'Login successful!',
-        'name': name,
         'jwt': token
     }
     response.status_code = status.HTTP_200_OK
