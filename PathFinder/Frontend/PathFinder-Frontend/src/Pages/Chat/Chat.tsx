@@ -4,8 +4,10 @@ import { toast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { ChatConvo } from "./Components/ChatConvo";
 import { Message, MessageButton } from "./Components/ChatInterfaces";
+import { useNavigate } from "react-router-dom";
 
-function Chat() {
+function Chat({ user }) {
+  const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -73,6 +75,14 @@ function Chat() {
   };
 
   useEffect(() => {
+    if (!user) {
+      navigate("/login");
+      toast({
+        title: "Uh oh!",
+        description: "Please login first to use the chatbot",
+      });
+      return;
+    }
     if (
       messages.length === 0 ||
       messages[messages.length - 1].role === "chatbot"

@@ -61,7 +61,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setUser={setUser} />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/chat" element={<Chat />}></Route>
+        <Route path="/chat" element={<Chat user={user} />}></Route>
         <Route path="/university" element={<University />}></Route>
         <Route
           path="/:uni_name"
