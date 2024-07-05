@@ -6,10 +6,10 @@ import { HowItWorks } from "./components/HowItWorks";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { Team } from "./components/Team";
 
-const Home = () => {
+const Home = ({ user }) => {
   return (
     <>
-      <Hero />
+      <Hero user={user} />
       <About />
       <HowItWorks />
       <Features />
