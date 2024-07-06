@@ -23,7 +23,6 @@ function AddCollegeAdminForm({ user, addCollegeAdmin }: addCollegeAdminProbs) {
 
   useEffect(() => {
     if (uniOfAdminEffectRan.current) return;
-    console.log(user.id);
 
     (async () => {
       const response = await fetch(
