@@ -236,6 +236,18 @@ class ValidateRecommendationForm(FormValidationAction):
         return {"preference": slot_value}
 
 
+class ActionRestart(Action):
+
+  def name(self) -> Text:
+      return "action_restart"
+
+  async def run(
+      self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
+  ) -> List[Dict[Text, Any]]:
+
+      # custom behavior
+
+      return [AllSlotsReset(), Restarted()]
 # class ActionHelloWorld(Action):
 #
 #     def name(self) -> Text:

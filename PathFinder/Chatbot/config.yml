@@ -33,10 +33,10 @@ policies:
   - name: RulePolicy
   - name: UnexpecTEDIntentPolicy
     max_history: 5
-    epochs: 100
+    epochs: 200
   - name: TEDPolicy
     max_history: 5
-    epochs: 100
+    epochs: 200
     constrain_similarities: true
     evaluate_on_number_of_examples: 0
     evaluate_every_number_of_epochs: 5
