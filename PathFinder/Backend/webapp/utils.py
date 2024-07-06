@@ -13,7 +13,6 @@ def get_user_from_models(role, field, value):
 
     if not model:
         raise ValueError("Invalid role")
-
     user = model.objects.get(**{field: value})
     return user
 
