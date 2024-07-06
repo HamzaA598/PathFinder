@@ -29,6 +29,7 @@ const customScrollbarStyles = `
 
 interface NewsItem {
   university: string;
+  universityName: string;
   college: string;
   title: string;
   description: string;
@@ -45,6 +46,7 @@ const News = () => {
           "http://localhost:8000/webapp/Announcement"
         );
         setNewsItems(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching news:", error);
       }
@@ -75,7 +77,7 @@ const News = () => {
             .filter((NewsItem) => {
               return search.toLowerCase() === ""
                 ? NewsItem
-                : NewsItem.university
+                : NewsItem.universityName
                     .toLowerCase()
                     .includes(search.toLowerCase());
             })
@@ -87,7 +89,7 @@ const News = () => {
                 <span className="flex h-3 w-3 translate-y-1 rounded-full bg-emerald-700" />
                 <div className="space-y-2 pl-4">
                   <p className="text-lg font-semibold">
-                    {news_item.university}
+                    {news_item.universityName}
                   </p>
                   <p className="text-base font-medium">{news_item.college}</p>
                   <p className="text-base font-medium">{news_item.title}</p>

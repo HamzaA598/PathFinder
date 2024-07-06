@@ -37,7 +37,9 @@ const Overview = ({ uni_name, user }) => {
         setNewAnnouncement((prev) => ({
           ...prev,
           university: universityData._id, // Set university ID
+          universityName: universityData.name, // Set university name
         }));
+        console.log(universityData);
       })
       .catch((error) => {
         let errorMessage = "Uh oh! Something went wrong.";
@@ -61,7 +63,7 @@ const Overview = ({ uni_name, user }) => {
         });
       });
     effectRan.current = true;
-  }, [url]);
+  }, []);
 
   useEffect(() => {
     if (user) {

@@ -10,12 +10,14 @@ class Admin(models.Model):
 
 class UniversityAdmin(models.Model):
     id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=100)
 
 
 class CollegeAdmin(models.Model):
     id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=100)
 
@@ -40,7 +42,10 @@ class University(models.Model):
     Address = models.TextField()
     description = models.TextField(blank=True)
     admin = models.OneToOneField(
-        UniversityAdmin, on_delete=models.CASCADE, blank=True,)
+        UniversityAdmin,
+        on_delete=models.CASCADE,
+        blank=True,
+    )
     FacebookPage = models.CharField(max_length=100)
     Fax = models.CharField(max_length=100, blank=True)
     PhoneNumber = models.TextField()
@@ -64,8 +69,7 @@ class College(models.Model):
     noOfStudents = models.IntegerField(blank=True)
     collegeType = models.CharField(max_length=100, blank=True)
     fees = models.IntegerField(blank=True)
-    admin = models.OneToOneField(
-        CollegeAdmin, on_delete=models.CASCADE, blank=True)
+    admin = models.OneToOneField(CollegeAdmin, on_delete=models.CASCADE, blank=True)
     AdmissionCertificates = models.CharField(max_length=200)
     AdmissionRequirements = models.CharField(max_length=200)
     CreditHours = models.CharField(max_length=20)
@@ -76,8 +80,8 @@ class College(models.Model):
     PhoneNumber = models.CharField(max_length=100)
     SpecializationYear = models.CharField(max_length=100)
     YearFounded = models.CharField(max_length=50)
-#   ForeignKey
-    university = models.CharField(blank=True,  max_length=50)
+    #   ForeignKey
+    university = models.CharField(blank=True, max_length=50)
 
     def __str__(self):
         return self.name
@@ -105,3 +109,4 @@ class Announcement(models.Model):
     date = models.DateField()
     college = models.CharField(blank=True, null=True, max_length=50)
     university = models.CharField(blank=True, null=False, max_length=50)
+    universityName = models.CharField(blank=True, null=False, max_length=50)
