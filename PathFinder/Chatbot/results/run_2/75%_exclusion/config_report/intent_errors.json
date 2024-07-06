@@ -1,0 +1,74 @@
+[
+  {
+    "text": "افضّل الهندسة",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.8932512402534485
+    }
+  },
+  {
+    "text": "افضّل دراسة إدارة الاعمال",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.9975366592407227
+    }
+  },
+  {
+    "text": "مثالي جدًا",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.6888535618782043
+    }
+  },
+  {
+    "text": "اشعر وكاني ملك",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.3242400586605072
+    }
+  },
+  {
+    "text": "ما هي الكليات التي توصي بها؟",
+    "intent": "recommend_college",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.9553989171981812
+    }
+  },
+  {
+    "text": "بالعكس",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.3246484398841858
+    }
+  },
+  {
+    "text": "بينفع",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.4935518205165863
+    }
+  },
+  {
+    "text": "بالفعل",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "inform_grade",
+      "confidence": 0.24980992078781128
+    }
+  },
+  {
+    "text": "ig",
+    "intent": "inform_school_system",
+    "intent_prediction": {
+      "name": "inform_preference",
+      "confidence": 0.19450318813323975
+    }
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "text": "انا حزين للغاية",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.356382817029953
+    }
+  },
+  {
+    "text": "افضّل الهندسة",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.9918381571769714
+    }
+  },
+  {
+    "text": "افضّل دراسة إدارة الاعمال",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.9978221654891968
+    }
+  },
+  {
+    "text": "اشعر وكاني ملك",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.2426626980304718
+    }
+  },
+  {
+    "text": "ساتحدث معك في وقت آخر",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "recommend_college",
+      "confidence": 0.4057612717151642
+    }
+  },
+  {
+    "text": "بايباي",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.2953243553638458
+    }
+  },
+  {
+    "text": "بالعكس",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.31303972005844116
+    }
+  },
+  {
+    "text": "ig",
+    "intent": "inform_school_system",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.3677964210510254
+    }
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "text": "انا في المدرسة الامريكية",
+    "entities": [
+      {
+        "start": 15,
+        "end": 24,
+        "value": "american",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": []
+  }
+]

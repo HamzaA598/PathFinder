@@ -1,0 +1,125 @@
+[
+  {
+    "text": "اميل نحو الفنون",
+    "entities": [
+      {
+        "start": 9,
+        "end": 15,
+        "value": "Arts",
+        "entity": "preference"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location",
+        "start": 9,
+        "end": 15,
+        "confidence_entity": 0.4276489019393921,
+        "value": "Arts",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "انا في المدرسة الامريكية",
+    "entities": [
+      {
+        "start": 15,
+        "end": 24,
+        "value": "american",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "نظام مدرستي هو ثانوية",
+    "entities": [
+      {
+        "start": 15,
+        "end": 21,
+        "value": "thanawya",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "انا في مطروح",
+    "entities": [
+      {
+        "start": 7,
+        "end": 12,
+        "value": "Matrouh",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "اسكن في الوادي الجديد",
+    "entities": [
+      {
+        "start": 8,
+        "end": 21,
+        "value": "New Valley",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location",
+        "start": 15,
+        "end": 21,
+        "confidence_entity": 0.8554487824440002,
+        "value": "الجديد",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "اسكن في جنوب سيناء",
+    "entities": [
+      {
+        "start": 8,
+        "end": 18,
+        "value": "South Sinai",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location",
+        "start": 13,
+        "end": 18,
+        "confidence_entity": 0.9867810606956482,
+        "value": "سيناء",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "اعيش في جنوب سيناء",
+    "entities": [
+      {
+        "start": 8,
+        "end": 18,
+        "value": "South Sinai",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location",
+        "start": 13,
+        "end": 18,
+        "confidence_entity": 0.9788984060287476,
+        "value": "سيناء",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]

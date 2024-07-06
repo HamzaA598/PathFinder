@@ -1,0 +1,170 @@
+[
+  {
+    "text": "\"ما هو التباين بين الجامعات الحكومية والجامعات الخاصة؟\"",
+    "intent_response_key_target": "faq/difference_between_public_and_private_universities",
+    "intent_response_key_prediction": {
+      "name": "faq/coordination_system_for_each_college",
+      "confidence": 0.531277596950531
+    }
+  },
+  {
+    "text": "\"ما هي المواد الاساسية التي يجب على الطلاب دراستها بجانب مادة البرمجة؟\"",
+    "intent_response_key_target": "faq/core_educational_materials_besides_programming",
+    "intent_response_key_prediction": {
+      "name": "faq/educational_materials_in_computer_science_colleges",
+      "confidence": 0.27775850892066956
+    }
+  },
+  {
+    "text": "\"هل تقدم الكلية منحًا دراسية للطلاب؟ وما هي التفاصيل؟\"",
+    "intent_response_key_target": "faq/scholarship_availability",
+    "intent_response_key_prediction": {
+      "name": "faq/existence_of_student_union_and_its_name_and_address",
+      "confidence": 0.3782958388328552
+    }
+  },
+  {
+    "text": "\"هل يختلف التوظيف بين خريجي اقسام الحاسبات في الكليات المختلفة؟\"",
+    "intent_response_key_target": "faq/job_opportunities_comparison",
+    "intent_response_key_prediction": {
+      "name": "faq/difference_between_computer_science_departments",
+      "confidence": 0.32950952649116516
+    }
+  },
+  {
+    "text": "\"ما هي المهارات الاساسية التي يجب تعلمها في تخصص الحاسبات؟\"",
+    "intent_response_key_target": "faq/essential_skills_in_computer_science_field",
+    "intent_response_key_prediction": {
+      "name": "faq/learning_scope_in_computer_science_and_next_steps",
+      "confidence": 0.15732118487358093
+    }
+  },
+  {
+    "text": "\"ما هو تاريخ بدء التنسيق؟\"",
+    "intent_response_key_target": "faq/coordination_start_date",
+    "intent_response_key_prediction": {
+      "name": "faq/difference_between_computer_science_departments",
+      "confidence": 0.09882543981075287
+    }
+  },
+  {
+    "text": "\"هل هناك ارتفاع في الطلب على خريجي كليات الحاسبات والمعلومات من الشركات؟\"",
+    "intent_response_key_target": "faq/demand_for_computer_science_graduates",
+    "intent_response_key_prediction": {
+      "name": "faq/best_time_to_study_specific_field",
+      "confidence": 0.22325465083122253
+    }
+  },
+  {
+    "text": "\"ما هي الدورات المتاحة للطلاب الذين يرغبون في الالتحاق بتخصص الحاسبات في الكلية؟\"",
+    "intent_response_key_target": "faq/courses_for_high_school_students_preparation",
+    "intent_response_key_prediction": {
+      "name": "faq/available_specializations_in_computer_science",
+      "confidence": 0.6313710808753967
+    }
+  },
+  {
+    "text": "\"هل تعتقد ان هذا النهج مناسب لطلاب السنة الاولى في كلية الحاسبات والمعلومات؟\"",
+    "intent_response_key_target": "faq/suitable_learning_approach_for_first_year",
+    "intent_response_key_prediction": {
+      "name": "faq/differences_between_computer_fields",
+      "confidence": 0.35536447167396545
+    }
+  },
+  {
+    "text": "\"ما هي المادة الاساسية التي يجب ان ادرسها في الثانوية للتسجيل في الكلية؟\"",
+    "intent_response_key_target": "faq/high_school_general_certificate_requirements_for_college_admission",
+    "intent_response_key_prediction": {
+      "name": "faq/application_process_for_college_admission",
+      "confidence": 0.3625697195529938
+    }
+  },
+  {
+    "text": "\"ما هي الخيارات التي يمكنني اختيارها في الكلية؟\"",
+    "intent_response_key_target": "faq/available_tracks_within_the_college",
+    "intent_response_key_prediction": {
+      "name": "faq/available_specializations_in_computer_science",
+      "confidence": 0.3844930827617645
+    }
+  },
+  {
+    "text": "\"هل هناك اختبارات للالتحاق بالكلية؟ وإذا كان الامر كذلك، فما هي؟\"",
+    "intent_response_key_target": "faq/college_admission_tests_if_exist",
+    "intent_response_key_prediction": {
+      "name": "faq/ask_departments",
+      "confidence": 0.13219338655471802
+    }
+  },
+  {
+    "text": "\"ما هي العناوين لكل من الكليات؟\"",
+    "intent_response_key_target": "faq/location_of_each_college",
+    "intent_response_key_prediction": {
+      "name": "faq/application_process_for_college_admission",
+      "confidence": 0.17070262134075165
+    }
+  },
+  {
+    "text": "\"ماذا يعني بالضبط مهارة حل المشاكل في سياق الحوسبة؟\"",
+    "intent_response_key_target": "faq/problem_solving_skill_definition",
+    "intent_response_key_prediction": {
+      "name": "faq/nature_of_work_for_computer_science_graduates",
+      "confidence": 0.16546577215194702
+    }
+  },
+  {
+    "text": "\"ما هي المهارات الاساسية التي يجب على الخريجين اكتسابها للعمل في سوق العمل؟\"",
+    "intent_response_key_target": "faq/skills_required_for_job_market_after_graduation",
+    "intent_response_key_prediction": {
+      "name": "faq/college_directly_qualify_for_job_market_or_additional_studies",
+      "confidence": 0.15367066860198975
+    }
+  },
+  {
+    "text": "\"ما هي الانشطة والمسؤوليات التي تقوم بها خريجي كلية الحاسبات في بيئة العمل؟\"",
+    "intent_response_key_target": "faq/nature_of_work_for_computer_science_graduates",
+    "intent_response_key_prediction": {
+      "name": "faq/available_specializations_in_computer_science",
+      "confidence": 0.37139809131622314
+    }
+  },
+  {
+    "text": "\"ما هو مدة الدراسة في الكلية؟\"",
+    "intent_response_key_target": "faq/duration_of_study_in_college",
+    "intent_response_key_prediction": {
+      "name": "faq/application_process_for_college_admission",
+      "confidence": 0.12353261560201645
+    }
+  },
+  {
+    "text": "\"هل يمكن العمل بشكل حر في جميع التخصصات؟\"",
+    "intent_response_key_target": "faq/freelancing_opportunities_in_various_specializations",
+    "intent_response_key_prediction": {
+      "name": "faq/available_tracks_within_the_college",
+      "confidence": 0.16330327093601227
+    }
+  },
+  {
+    "text": "\"هل يُسمح بالعمل اثناء الدراسة؟\"",
+    "intent_response_key_target": "faq/working_while_studying",
+    "intent_response_key_prediction": {
+      "name": "faq/high_school_general_certificate_requirements_for_college_admission",
+      "confidence": 0.209262415766716
+    }
+  },
+  {
+    "text": "يمكنك شرح الاختلاف بين قسم علم الحاسوب وقسم الذكاء الاصطناعي؟",
+    "intent_response_key_target": "faq/ask_departments",
+    "intent_response_key_prediction": {
+      "name": "faq/difference_between_computer_science_departments",
+      "confidence": 0.38109883666038513
+    }
+  },
+  {
+    "text": "\"ما هو محتوى التعليم في كلية الحاسبات والمعلومات؟\"",
+    "intent_response_key_target": "faq/educational_materials_in_computer_science_colleges",
+    "intent_response_key_prediction": {
+      "name": "faq/available_specializations_in_computer_science",
+      "confidence": 0.2645430564880371
+    }
+  }
+]

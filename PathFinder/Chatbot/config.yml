@@ -13,11 +13,19 @@ pipeline:
     max_ngram: 4
   - name: DIETClassifier
     epochs: 100
+    evaluate_on_number_of_examples: 0
+    evaluate_every_number_of_epochs: 5
+    tensorboard_log_directory: "./tensorboard"
+    tensorboard_log_level: "epoch"
   - name: FallbackClassifier
     threshold: 0.5
   - name: EntitySynonymMapper
   - name: ResponseSelector
-    epochs: 300
+    epochs: 200
+    evaluate_on_number_of_examples: 0
+    evaluate_every_number_of_epochs: 5
+    tensorboard_log_directory: "./tensorboard"
+    tensorboard_log_level: "epoch"
     retrieval_intent: faq
 
 policies:
@@ -25,9 +33,13 @@ policies:
   - name: RulePolicy
   - name: UnexpecTEDIntentPolicy
     max_history: 5
-    epochs: 100
+    epochs: 200
   - name: TEDPolicy
     max_history: 5
-    epochs: 100
+    epochs: 200
     constrain_similarities: true
+    evaluate_on_number_of_examples: 0
+    evaluate_every_number_of_epochs: 5
+    tensorboard_log_directory: "./tensorboard"
+    tensorboard_log_level: "epoch"
 assistant_id: 20231008-190837-cross-assistant

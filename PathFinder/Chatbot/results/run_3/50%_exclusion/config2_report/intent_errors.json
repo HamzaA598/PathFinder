@@ -1,0 +1,66 @@
+[
+  {
+    "text": "ليس جيدًا جدًا",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.9398466944694519
+    }
+  },
+  {
+    "text": "غير سعيد",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.544808566570282
+    }
+  },
+  {
+    "text": "صباح النور",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.813248336315155
+    }
+  },
+  {
+    "text": "افضّل دراسة إدارة الاعمال",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.9964942336082458
+    }
+  },
+  {
+    "text": "متحمس جدًا",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.8403748273849487
+    }
+  },
+  {
+    "text": "ادعو لك بالخير",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.358819842338562
+    }
+  },
+  {
+    "text": "يبدو جيدًا",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.5103841423988342
+    }
+  },
+  {
+    "text": "اجل",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.2809908986091614
+    }
+  }
+]

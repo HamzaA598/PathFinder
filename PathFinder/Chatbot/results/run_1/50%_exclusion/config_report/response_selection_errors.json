@@ -1,0 +1,122 @@
+[
+  {
+    "text": "\"هل يوفر تخصص علوم الحاسب فرصًا اقتصادية؟\"",
+    "intent_response_key_target": "faq/profitability_of_computer_science_field",
+    "intent_response_key_prediction": {
+      "name": "faq/ask_departments",
+      "confidence": 0.08287546783685684
+    }
+  },
+  {
+    "text": "\"ما هي المهارات الضرورية في مجال علوم الحاسب؟\"",
+    "intent_response_key_target": "faq/essential_skills_in_computer_science_field",
+    "intent_response_key_prediction": {
+      "name": "faq/required_skills_during_study",
+      "confidence": 0.40249913930892944
+    }
+  },
+  {
+    "text": "\"ما هي الاسباب التي تجعل تخصص الحاسبات خيارًا جيدًا؟\"",
+    "intent_response_key_target": "faq/reasons_for_choosing_computer_science",
+    "intent_response_key_prediction": {
+      "name": "faq/essential_skills_in_computer_science_field",
+      "confidence": 0.15325751900672913
+    }
+  },
+  {
+    "text": "\"هل يمكنك ان توجهني بخطة دراسية لاربع سنوات بدون الحاجة إلى الانضمام إلى برنامج مثل ITI او الاستعداد لمتطلبات سوق العمل بعد التخرج؟\"",
+    "intent_response_key_target": "faq/study_plan_without_iti",
+    "intent_response_key_prediction": {
+      "name": "faq/college_directly_qualify_for_job_market_or_additional_studies",
+      "confidence": 0.10482620447874069
+    }
+  },
+  {
+    "text": "\"ما هي الدورات المتاحة لتهيئة طلاب الثانوية العامة للالتحاق بالكلية؟\"",
+    "intent_response_key_target": "faq/courses_for_high_school_students_preparation",
+    "intent_response_key_prediction": {
+      "name": "faq/high_school_general_certificate_requirements_for_college_admission",
+      "confidence": 0.1754789650440216
+    }
+  },
+  {
+    "text": "\"هل هناك اتحاد طلابي في الكلية؟ وما هو اسمه واين يقع؟\"",
+    "intent_response_key_target": "faq/existence_of_student_union_and_its_name_and_address",
+    "intent_response_key_prediction": {
+      "name": "faq/best_department",
+      "confidence": 0.21351337432861328
+    }
+  },
+  {
+    "text": "\"ما هو البرنامج الدراسي المطلوب لتخصص علوم الحاسب وما هي الخطوات التي يجب اتخاذها بعد اكتساب المعرفة؟\"",
+    "intent_response_key_target": "faq/learning_scope_in_computer_science_and_next_steps",
+    "intent_response_key_prediction": {
+      "name": "faq/demand_for_computer_science_graduates",
+      "confidence": 0.11444997042417526
+    }
+  },
+  {
+    "text": "\"هل يمكنك توضيح نوعية العمل التي يقوم بها خريجو كلية علوم الحاسب؟\"",
+    "intent_response_key_target": "faq/nature_of_work_for_computer_science_graduates",
+    "intent_response_key_prediction": {
+      "name": "faq/enjoyment_of_computer_science_without_extensive_computer_knowledge",
+      "confidence": 0.09343905746936798
+    }
+  },
+  {
+    "text": "\"كم تستغرق الدراسة في الكلية عادةً؟\"",
+    "intent_response_key_target": "faq/duration_of_study_in_college",
+    "intent_response_key_prediction": {
+      "name": "faq/duration_of_study",
+      "confidence": 0.3341943025588989
+    }
+  },
+  {
+    "text": "\"ما هي مجالات العمل المتاحة بعد انتهاء سنوات الدراسة في الكلية؟\"",
+    "intent_response_key_target": "faq/available_career_opportunities_after_graduation",
+    "intent_response_key_prediction": {
+      "name": "faq/duration_of_study_in_college",
+      "confidence": 0.1576545238494873
+    }
+  },
+  {
+    "text": "\"ما هي فرص العمل بعد التخرج من الكلية؟\"",
+    "intent_response_key_target": "faq/available_career_opportunities_after_graduation",
+    "intent_response_key_prediction": {
+      "name": "faq/duration_of_study_in_college",
+      "confidence": 0.3382239043712616
+    }
+  },
+  {
+    "text": "\"هل تختلف الاقسام في كلية الحاسبات؟\"",
+    "intent_response_key_target": "faq/difference_between_computer_science_departments",
+    "intent_response_key_prediction": {
+      "name": "faq/ask_departments",
+      "confidence": 0.5004318952560425
+    }
+  },
+  {
+    "text": "ماذا تعني بعلوم الحاسب؟",
+    "intent_response_key_target": "faq/ask_cs",
+    "intent_response_key_prediction": {
+      "name": "faq/profitability_of_computer_science_field",
+      "confidence": 0.16568759083747864
+    }
+  },
+  {
+    "text": "يمكنك شرح الاختلاف بين قسم علم الحاسوب وقسم الذكاء الاصطناعي؟",
+    "intent_response_key_target": "faq/ask_departments",
+    "intent_response_key_prediction": {
+      "name": "faq/difference_between_computer_science_departments",
+      "confidence": 0.1466054469347
+    }
+  },
+  {
+    "text": "\"ما هو محتوى التعليم في كلية الحاسبات والمعلومات؟\"",
+    "intent_response_key_target": "faq/educational_materials_in_computer_science_colleges",
+    "intent_response_key_prediction": {
+      "name": "faq/available_specializations_in_computer_science",
+      "confidence": 0.12710508704185486
+    }
+  }
+]

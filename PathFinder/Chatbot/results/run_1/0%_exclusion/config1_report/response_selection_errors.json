@@ -1,0 +1,114 @@
+[
+  {
+    "text": "\"ما هي مدة الدراسة في تخصص الحاسبات والمعلومات؟\"",
+    "intent_response_key_target": "faq/duration_of_study",
+    "intent_response_key_prediction": {
+      "name": "faq/best_time_to_study_specific_field",
+      "confidence": 0.4088512063026428
+    }
+  },
+  {
+    "text": "\"ما هي المواد التعليمية الاساسية غير البرمجية؟\"",
+    "intent_response_key_target": "faq/core_educational_materials_besides_programming",
+    "intent_response_key_prediction": {
+      "name": "faq/educational_materials_in_computer_science_colleges",
+      "confidence": 0.6755810379981995
+    }
+  },
+  {
+    "text": "\"ما هي الاسباب التي تجعل تخصص الحاسبات خيارًا جيدًا؟\"",
+    "intent_response_key_target": "faq/reasons_for_choosing_computer_science",
+    "intent_response_key_prediction": {
+      "name": "faq/why_choose_computer_science_over_engineering",
+      "confidence": 0.4212646782398224
+    }
+  },
+  {
+    "text": "\"ما هي الدورات المتاحة لتهيئة طلاب الثانوية العامة للالتحاق بالكلية؟\"",
+    "intent_response_key_target": "faq/courses_for_high_school_students_preparation",
+    "intent_response_key_prediction": {
+      "name": "faq/high_school_general_certificate_requirements_for_college_admission",
+      "confidence": 0.39315497875213623
+    }
+  },
+  {
+    "text": "\"هل يوجد تخصصات مختلفة يمكنني اختيارها داخل الكلية؟\"",
+    "intent_response_key_target": "faq/available_tracks_within_the_college",
+    "intent_response_key_prediction": {
+      "name": "faq/available_specializations_in_computer_science",
+      "confidence": 0.6406301259994507
+    }
+  },
+  {
+    "text": "\"ما هي القدرات والمهارات التي يبحث عنها اصحاب العمل بعد التخرج؟\"",
+    "intent_response_key_target": "faq/skills_required_for_job_market_after_graduation",
+    "intent_response_key_prediction": {
+      "name": "faq/freelancing_opportunities_in_various_specializations",
+      "confidence": 0.12456757575273514
+    }
+  },
+  {
+    "text": "\"ما هو البرنامج الدراسي المطلوب لتخصص علوم الحاسب وما هي الخطوات التي يجب اتخاذها بعد اكتساب المعرفة؟\"",
+    "intent_response_key_target": "faq/learning_scope_in_computer_science_and_next_steps",
+    "intent_response_key_prediction": {
+      "name": "faq/educational_materials_in_computer_science_colleges",
+      "confidence": 0.14956611394882202
+    }
+  },
+  {
+    "text": "\"هل تتركز كل اقسام الكلية على تعلم البرمجة والاكواد فقط؟\"",
+    "intent_response_key_target": "faq/programming_and_codes_in_college_departments",
+    "intent_response_key_prediction": {
+      "name": "faq/ask_colleges",
+      "confidence": 0.32218682765960693
+    }
+  },
+  {
+    "text": "\"ما هي مجالات العمل المتاحة بعد انتهاء سنوات الدراسة في الكلية؟\"",
+    "intent_response_key_target": "faq/available_career_opportunities_after_graduation",
+    "intent_response_key_prediction": {
+      "name": "faq/duration_of_study_in_college",
+      "confidence": 0.10973857343196869
+    }
+  },
+  {
+    "text": "ارغب في فهم المزيد حول مجال علم الحاسوب.",
+    "intent_response_key_target": "faq/ask_cs",
+    "intent_response_key_prediction": {
+      "name": "faq/ask_colleges",
+      "confidence": 0.8950561881065369
+    }
+  },
+  {
+    "text": "ما هي المعلومات العامة التي تعرفها عن علم الحاسوب؟",
+    "intent_response_key_target": "faq/ask_cs",
+    "intent_response_key_prediction": {
+      "name": "faq/ask_colleges",
+      "confidence": 0.29365962743759155
+    }
+  },
+  {
+    "text": "يمكنك شرح الاختلاف بين قسم علم الحاسوب وقسم الذكاء الاصطناعي؟",
+    "intent_response_key_target": "faq/ask_departments",
+    "intent_response_key_prediction": {
+      "name": "faq/why_choose_computer_science_over_engineering",
+      "confidence": 0.10165191441774368
+    }
+  },
+  {
+    "text": "اريد معرفة المزيد عن اقسام علم الحاسوب.",
+    "intent_response_key_target": "faq/ask_departments",
+    "intent_response_key_prediction": {
+      "name": "faq/ask_colleges",
+      "confidence": 0.925717830657959
+    }
+  },
+  {
+    "text": "\"ما هي تخصصات كلية الحاسبات؟\"",
+    "intent_response_key_target": "faq/available_specializations_in_computer_science",
+    "intent_response_key_prediction": {
+      "name": "faq/ask_departments",
+      "confidence": 0.5518086552619934
+    }
+  }
+]

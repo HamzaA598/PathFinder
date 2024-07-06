@@ -1,0 +1,460 @@
+version: "3.1"
+nlu:
+- intent: faq/difference_between_programming_and_software_engineering
+  examples: |
+    - "ما هي الفروق بين البرمجة وهندسة البرمجيات؟"
+- intent: faq/difference_between_college_and_institute
+  examples: |
+    - "ما هو التباين بين الكلية والمعهد في مجال الحاسبات؟"
+- intent: faq/difference_between_public_and_private_universities
+  examples: |
+    - "ما الفارق بين الجامعات الحكومية والجامعات الخاصة؟"
+- intent: faq/duration_of_study
+  examples: |
+    - "ما هي مدة الدراسة في تخصص الحاسبات والمعلومات؟"
+- intent: faq/required_skills_during_study
+  examples: |
+    - "ما هي المهارات الضرورية لطلاب كلية الحاسبات والمعلومات؟"
+- intent: faq/successful_egyptian_engineers
+  examples: |
+    - "ذكر امثلة لمهندسين مصريين حققوا نجاحات ملحوظة."
+- intent: faq/core_educational_materials_besides_programming
+  examples: |
+    - "ما هي المواد الاساسية التي يجب دراستها بجانب مادة البرمجة؟"
+- intent: faq/application_process_for_college_admission
+  examples: |
+    - "كيف يمكنني التقديم للالتحاق بالكلية؟"
+- intent: faq/scholarship_availability
+  examples: |
+    - "هل يمكنني الحصول على منحة دراسية من الكلية؟"
+- intent: faq/software_engineering_specialization
+  examples: |
+    - "ما هي تخصص هندسة البرمجيات؟"
+- intent: faq/profitability_of_computer_science_field
+  examples: |
+    - "هل يعتبر تخصص علوم الحاسب مجالًا مربحًا؟"
+- intent: faq/difficulty_of_learning_programming
+  examples: |
+    - "هل تعتبر دراسة البرمجة صعبة؟"
+- intent: faq/prerequisite_programming_experience
+  examples: |
+    - "هل يلزم ان يكون لدي خبرة مسبقة في البرمجة للالتحاق بالكلية؟"
+- intent: faq/job_opportunities_comparison
+  examples: |
+    - "هل هناك اختلاف في فرص العمل بين خريجي الحاسبات في الجامعات المختلفة؟"
+- intent: faq/essential_skills_in_computer_science_field
+  examples: |
+    - "ما هي المهارات الضرورية في مجال علوم الحاسب؟"
+- intent: faq/reasons_for_choosing_computer_science
+  examples: |
+    - "لماذا يجب اختيار تخصص الحاسبات؟"
+- intent: faq/recommend_online_courses
+  examples: |
+    - "هل يمكنك توصية بدورات دراسية عبر الإنترنت؟"
+- intent: faq/coordination_start_date
+  examples: |
+    - "هل تعرف متى يبدا التنسيق؟"
+- intent: faq/work_as_programmer_without_college
+  examples: |
+    - "هل يمكن للافراد العمل كمطورين برمجيات بدون حضور الكلية؟"
+- intent: faq/study_plan_without_iti
+  examples: |
+    - "هل يمكنك توجيهي بخطة دراسية لمدة اربع سنوات تساعدني في تحديد مساري المهني دون الحاجة إلى الانضمام إلى برنامج مثل ITI او قضاء اشهر في الاستعداد لمتطلبات سوق العمل بعد التخرج؟"
+- intent: faq/demand_for_computer_science_graduates
+  examples: |
+    - "هل يتوقع زيادة في فرص العمل لخريجي كليات الحاسبات والمعلومات في المستقبل القريب؟"
+- intent: faq/total_required_admission_score
+  examples: |
+    - "ما هو المعدل الذي يجب الحصول عليه للقبول في الكلية؟"
+- intent: faq/best_time_to_study_specific_field
+  examples: |
+    - "متى يكون افضل وقت للتخصص في مجال معين في كلية الحاسبات والمعلومات؟"
+- intent: faq/opportunities_for_egyptian_software_engineers_abroad
+  examples: |
+    - "هل هناك فرص للحصول على وظائف في اوروبا والولايات المتحدة لمهندسي البرمجيات المصريين؟"
+- intent: faq/courses_for_high_school_students_preparation
+  examples: |
+    - "هل يتوفر برامج تحضيرية للطلاب الثانوية للالتحاق بتخصص الحاسبات في الجامعة؟"
+- intent: faq/difference_between_mathematics_and_science_in_computer_science_context
+  examples: |
+    - "هل يمكنكم توضيح الاختلاف بين الرياضيات والعلوم في سياق علوم الحاسب؟"
+- intent: faq/suitable_learning_approach_for_first_year
+  examples: |
+    - "هل تعتقد ان هذا النهج مناسب لطلاب السنة الاولى في كلية الحاسبات والمعلومات؟"
+- intent: faq/egyptian_software_engineers_working_in_large_companies
+  examples: |
+    - "هل يمكن لمهندسي البرمجيات المصريين العمل في شركات كبيرة مثل جوجل وفيسبوك وامازون ومايكروسوفت؟"
+- intent: faq/coordination_system_for_each_college
+  examples: |
+    - "كيف يتم التنسيق في كل كلية؟"
+- intent: faq/high_school_general_certificate_requirements_for_college_admission
+  examples: |
+    - "ما هي المادة الاساسية التي يجب ان ادرسها في الثانوية للتسجيل في الكلية؟"
+- intent: faq/available_tracks_within_the_college
+  examples: |
+    - "هل يوجد تخصصات مختلفة يمكنني اختيارها داخل الكلية؟"
+- intent: faq/college_admission_tests_if_exist
+  examples: |
+    - "ما هي الاختبارات التي يجب على المتقدمين اداؤها للحصول على قبول في الكلية؟"
+- intent: faq/nature_of_study_in_college_difficulty_and_ease
+  examples: |
+    - "هل الدراسة في الكلية تعتبر صعبة ام سهلة؟"
+- intent: faq/existence_of_student_union_and_its_name_and_address
+  examples: |
+    - "هل هناك اتحاد طلابي في الكلية؟ وما هو اسمه واين يقع؟"
+- intent: faq/location_of_each_college
+  examples: |
+    - "هل يمكنكم توضيح مواقع الكليات؟"
+- intent: faq/proficiency_in_mathematics_for_computer_science
+  examples: |
+    - "هل الرياضيات مهمة جدًا للنجاح في تخصص الحاسبات؟"
+- intent: faq/problem_solving_skill_definition
+  examples: |
+    - "ماذا يعني بالضبط مهارة حل المشاكل في سياق الحوسبة؟"
+- intent: faq/available_housing_options_for_college_students
+  examples: |
+    - "ما هي الخيارات المتاحة للإقامة لطلاب الجامعات؟"
+- intent: faq/enjoyment_of_computer_science_without_extensive_computer_knowledge
+  examples: |
+    - "هل يمكن ان تكون دراسة علوم الحاسب ممتعة ومثيرة حتى لو لم اكن لدي معرفة متقدمة في مجال اجهزة الكمبيوتر؟"
+- intent: faq/replacement_of_programmers_by_artificial_intelligence
+  examples: |
+    - "هل تعتقد ان الذكاء الاصطناعي سيحل محل المبرمجين في المستقبل؟"
+- intent: faq/college_ranking
+  examples: |
+    - "ماذا يعني تصنيف الكليات؟"
+- intent: faq/skills_required_for_job_market_after_graduation
+  examples: |
+    - "ما هي المهارات التي يجب تطويرها لتحسين فرص العمل بعد التخرج؟"
+- intent: faq/learning_scope_in_computer_science_and_next_steps
+  examples: |
+    - "ما هي المهارات والمفاهيم التي ينبغي على الشخص تعلمها في تخصص علوم الحاسب وما هي الخطوات التالية بعد ذلك؟"
+- intent: faq/differences_in_computer_science_work_fields
+  examples: |
+    - "ما هي الفروقات بين مجالات العمل المختلفة التي يمكن العمل بها في تخصص علوم الحاسب؟"
+- intent: faq/nature_of_work_for_computer_science_graduates
+  examples: |
+    - "ما هي الوظائف الشائعة التي يمكن ان يؤديها خريجو كلية الحاسبات؟"
+- intent: faq/duration_of_study_in_college
+  examples: |
+    - "ما هو مدة الدراسة في الكلية؟"
+- intent: faq/programming_and_codes_in_college_departments
+  examples: |
+    - "هل تقدم جميع الاقسام في الكلية دروسًا في البرمجة والاكواد؟"
+- intent: faq/freelancing_opportunities_in_various_specializations
+  examples: |
+    - "هل يمكن العمل كمستقل في جميع مجالات التخصص؟"
+- intent: faq/job_opportunities_in_software_development_field
+  examples: |
+    - "ما هي الفرص الوظيفية المتاحة للمطورين البرمجيات؟"
+- intent: faq/working_while_studying
+  examples: |
+    - "هل من الممكن العمل خلال فترة الدراسة؟"
+- intent: faq/best_department
+  examples: |
+    - "ما هو القسم الافضل في الكلية؟"
+    - "ما هو افضل تخصص في الكلية؟"
+- intent: faq/available_career_opportunities_after_graduation
+  examples: |
+    - "هل يمكنكم ذكر بعض الوظائف التي يمكن لخريجي كليات الحاسبات العمل بها؟"
+    - "ما هي الوظائف المتاحة للخريجين من كليات الحاسبات؟"
+- intent: faq/difference_between_computer_science_departments
+  examples: |
+    - "هل هناك اختلاف بين اقسام كلية الحاسبات؟"
+    - "هل تختلف البرامج الدراسية في اقسام كلية الحاسبات؟"
+- intent: faq/average_salaries_for_software_engineers
+  examples: |
+    - "هل يمكنك ذكر متوسط الرواتب للمهندسين البرمجيات في دول الخليج والدول العربية؟"
+    - "ما هو متوسط الرواتب لمهندسي البرمجيات في الخليج وبقية الدول العربية؟"
+- intent: faq/differences_between_computer_fields
+  examples: |
+    - "ما هي الاختلافات بين تخصص هندسة الحاسبات وكلية الحاسبات والمعلومات؟"
+    - "ما هي الاختلافات بين علوم الحاسب وهندسة الحاسب؟"
+- intent: faq/scientific_students_enrollment_in_computer_science_colleges
+  examples: |
+    - "هل يسمح لطلاب الشعبة العلمية بالالتحاق بكليات الحاسبات؟"
+    - "هل يمكن لطلاب الشعبة العلمية التقديم على الالتحاق بكليات الحاسبات؟"
+- intent: faq/college_directly_qualify_for_job_market_or_additional_studies
+  examples: |
+    - "هل يتضمن المنهاج الجامعي المهارات اللازمة للتفوق في سوق العمل؟"
+    - "هل يمكن لخريجي الكلية العمل مباشرة بعد التخرج ام انهم يحتاجون إلى دراسات إضافية؟"
+- intent: faq/examples_of_egyptian_software_development_companies
+  examples: |
+    - "اذكر امثلة لشركات مصرية تعمل في مجال تطوير البرمجيات."
+    - "ما هي بعض الشركات المصرية المعروفة في مجال تطوير البرمجيات؟"
+- intent: faq/ask_colleges
+  examples: |
+    - ما هي الكليات المتاحة في مصر التي تعلم علم الحاسوب؟
+    - اريد ان ادرس علوم الحاسب في مصر, هل يمكنك ان ترشح لي اشهر كليات الحاسبات والمعلومات المصرية؟
+    - ارغب في معرفة الجامعات الريادية التي تقدم برامج علم الحاسوب في مصر.
+- intent: faq/ask_cs
+  examples: |
+    - هل يمكنك شرح علم الحاسوب لي؟
+    - قدم لي معلومات عامة عن علم الحاسوب.
+    - ما هو علم الحاسوب بالضبط؟
+- intent: faq/ask_departments
+  examples: |
+    - كيف يمكنني اختيار القسم المناسب في مجال الحوسبة؟
+    - يمكنك شرح الاختلاف بين قسم علم الحاسوب وقسم الذكاء الاصطناعي؟
+    - هل يوجد اقسام في كلية حاسبات؟
+- intent: faq/study_costs_in_colleges
+  examples: |
+    - "ما هي تكاليف الدراسة في الكليات؟"
+    - "ما هي تكاليف الدراسة في كل كلية، سواء كانت حكومية او خاصة؟"
+    - "ما هي التكاليف المتوقعة للدراسة في الكليات، بما في ذلك الحكومية والخاصة؟"
+- intent: faq/why_choose_computer_science_over_engineering
+  examples: |
+    - "لماذا ينبغي اختيار تخصص الحاسبات بدلاً من الهندسة؟"
+    - "ما السبب في اختيار تخصص الحاسبات على حساب تخصص الهندسة؟"
+    - "ما هي الاسباب التي تجعل تخصص الحاسبات والمعلومات افضل من تخصص الهندسة؟"
+- intent: faq/available_specializations_in_computer_science
+  examples: |
+    - "ما هي الاختصاصات المتاحة في كلية الحاسبات التي يمكنني اختيارها؟"
+    - "هل يمكنكم توضيح التخصصات المتوفرة في كلية الحاسبات؟"
+    - "هل يمكنكم ذكر التخصصات المتاحة في مجال الحاسبات؟"
+- intent: faq/educational_materials_in_computer_science_colleges
+  examples: |
+    - "ما هي المواد التعليمية التي يتم دراستها في كليات الحاسبات والمعلومات؟"
+    - "هل يمكنك استعراض المواد الدراسية التي سادرسها في الكلية؟"
+    - "ما هي المقررات الدراسية في كلية الحاسبات والمعلومات؟"
+    - "ما هي المواد الدراسية الاساسية التي يجب ان اركز عليها في الكلية؟"
+- intent: mood_unhappy
+  examples: |
+    - انا حزين
+    - ليس جيدًا
+- intent: greet
+  examples: |
+    - مرحبا
+    - مساء النور
+    - السلام
+- intent: inform_preference
+  examples: |
+    - مجال اهتمامي هو [القانون]{"entity": "preference", "value": "Law"}
+    - انا مهتم بـ [الطب]{"entity": "preference", "value": "Medicine"}
+- intent: mood_great
+  examples: |
+    - رائعة
+    - انا بخير
+    - مذهل
+- intent: goodbye
+  examples: |
+    - باللقاء
+    - مع السلامة يا رفاق
+    - بسلامة
+    - نلتقي لاحقًا، مع السلامة
+- intent: recommend_college
+  examples: |
+    - اود الحصول على توصيات للجامعات
+    - ما هي الجامعات التي تنصحني بها؟
+    - ما الكلية التي تقترحها لي؟
+- intent: deny
+  examples: |
+    - لا اوافق على ذلك
+    - لا، غير صحيح
+    - بالعكس، ليس كذلك
+    - لا يمكنني الموافقة على ذلك
+- intent: affirm
+  examples: |
+    - بيحصل كدا
+    - بالفعل
+    - صحيح، موافق
+    - 
+    - صحيح وبالتاكيد
+- intent: inform_grade
+  examples: |
+    - حققت [95%](grade)
+    - [78](grade)
+    - لقد حصلت على [650](grade)
+    - حصلت على [375](grade)
+    - [300](grade)
+    - معدلي [300](grade)
+    - [92.5%](grade)
+- intent: inform_school_system
+  examples: |
+    - انا في نظام [thanawya](school_system)
+    - انا ادرس في نظام [american](school_system)
+    - درست في نظام [stem](school_system) لمدة سنتين
+    - [امريكي]{"entity": "school_system", "value": "american"}
+    - ادرس في [stem](school_system)
+    - انا حاليا ادرس في نظام [ig](school_system)
+    - انا درست في نظام [stem](school_system)
+    - مدرستي تتبع نظام التعليم [american](school_system)
+    - انا في [american](school_system)
+- intent: inform_location
+  examples: |
+    - انا في [المنوفية]{"entity": "location", "value": "Menofia"}
+    - اعيش في [القليوبية]{"entity": "location", "value": "Qaliubiya"}
+    - اسكن في [البحر الاحمر]{"entity": "location", "value": "Red Sea"}
+    - [الوادي الجديد]{"entity": "location", "value": "New Valley"}
+    - موقعي في [الفيوم]{"entity": "location", "value": "Fayoum"}
+    - انا في [الاقصر]{"entity": "location", "value": "Luxor"}
+    - انا في [جنوب سيناء]{"entity": "location", "value": "South Sinai"}
+    - انا في [الغربية]{"entity": "location", "value": "Gharbiya"}
+    - انا في [اسوان]{"entity": "location", "value": "Aswan"}
+    - موقعي في [الغربية]{"entity": "location", "value": "Gharbiya"}
+    - موقعي في [دمياط]{"entity": "location", "value": "Damietta"}
+    - اعيش في [بني سويف]{"entity": "location", "value": "Beni Suef"}
+    - اسكن في [الفيوم]{"entity": "location", "value": "Fayoum"}
+    - اعيش في [البحيرة]{"entity": "location", "value": "Beheira"}
+    - [شمال سيناء]{"entity": "location", "value": "North Sinai"}
+    - [بني سويف]{"entity": "location", "value": "Beni Suef"}
+    - اسكن في [الغربية]{"entity": "location", "value": "Gharbiya"}
+    - اعيش في [الإسماعيلية]{"entity": "location", "value": "Ismailia"}
+    - اعيش في [البحر الاحمر]{"entity": "location", "value": "Red Sea"}
+    - اسكن في [الإسكندرية]{"entity": "location", "value": "Alexandria"}
+    - [البحر الاحمر]{"entity": "location", "value": "Red Sea"}
+    - اعيش في [مطروح]{"entity": "location", "value": "Matrouh"}
+    - اسكن في [الاقصر]{"entity": "location", "value": "Luxor"}
+    - موقعي في [بورسعيد]{"entity": "location", "value": "Port Said"}
+    - اسكن في [الإسماعيلية]{"entity": "location", "value": "Ismailia"}
+    - اسكن في [الجيزة]{"entity": "location", "value": "Giza"}
+    - انا في [السويس]{"entity": "location", "value": "Suez"}
+- synonym: Cairo
+  examples: |
+    - القاهرة
+- synonym: Alexandria
+  examples: |
+    - الإسكندرية
+- synonym: Giza
+  examples: |
+    - الجيزة
+- synonym: Ismailia
+  examples: |
+    - الإسماعيلية
+- synonym: Minya
+  examples: |
+    - المنيا
+- synonym: Suez
+  examples: |
+    - السويس
+- synonym: Luxor
+  examples: |
+    - الاقصر
+- synonym: Fayoum
+  examples: |
+    - الفيوم
+- synonym: Port Said
+  examples: |
+    - بورسعيد
+- synonym: Damietta
+  examples: |
+    - دمياط
+- synonym: Sohag
+  examples: |
+    - سوهاج
+- synonym: Dakahlia
+  examples: |
+    - الدقهلية
+- synonym: Sharkia
+  examples: |
+    - الشرقية
+- synonym: Menofia
+  examples: |
+    - المنوفية
+- synonym: Qaliubiya
+  examples: |
+    - القليوبية
+- synonym: Beheira
+  examples: |
+    - البحيرة
+- synonym: Gharbiya
+  examples: |
+    - الغربية
+- synonym: Kafr Al sheikh
+  examples: |
+    - كفر الشيخ
+- synonym: Matrouh
+  examples: |
+    - مطروح
+- synonym: North Sinai
+  examples: |
+    - شمال سيناء
+- synonym: South Sinai
+  examples: |
+    - جنوب سيناء
+- synonym: Beni Suef
+  examples: |
+    - بني سويف
+- synonym: Assiut
+  examples: |
+    - اسيوط
+- synonym: Qena
+  examples: |
+    - قنا
+- synonym: Red Sea
+  examples: |
+    - البحر الاحمر
+- synonym: Aswan
+  examples: |
+    - اسوان
+- synonym: New Valley
+  examples: |
+    - الوادي الجديد
+- synonym: thanawya
+  examples: |
+    - ثانوية
+- synonym: stem
+  examples: |
+    - ستيم
+- synonym: american
+  examples: |
+    - الامريكية
+    - الامريكي
+    - امريكي
+- synonym: Engineering
+  examples: |
+    - الهندسة
+- synonym: Medicine
+  examples: |
+    - الطب
+- synonym: Law
+  examples: |
+    - القانون
+- synonym: Business
+  examples: |
+    - إدارة الاعمال
+- synonym: Arts
+  examples: |
+    - الفنون
+- synonym: Computer Science
+  examples: |
+    - علوم الكمبيوتر
+- regex: grade
+  examples: |
+    - '(\b((100(\.0{1,2})?)|([0-9]?[0-9](\.[0-9]{1,2})?))%?\b) | (\b(?<!\.)((?:1\d{2}|[2-6]\d{2}|700)(?:\.\d+)?)\b)'
+- lookup: location
+  examples: |
+    - القاهرة
+    - الجيزة
+    - الاسكندرية
+    - الأسكندرية
+    - الدقهلية
+    - الشرقية
+    - المنوفية
+    - القليوبية
+    - البحيرة
+    - الغربية
+    - بور سعيد
+    - دمياط
+    - الإسماعيلية
+    - الاسماعيلية
+    - السويس
+    - كفر الشيخ
+    - الفيوم
+    - بني سويف
+    - مطروح
+    - شمال سيناء
+    - جنوب سيناء
+    - المنيا
+    - أسيوط
+    - اسيوط
+    - سوهاج
+    - قنا
+    - البحر الأحمر
+    - البحر الاحمر
+    - الأقصر
+    - الاقصر
+    - أسوان
+    - اسوان
+    - الواحات
+    - الوادي الجديد

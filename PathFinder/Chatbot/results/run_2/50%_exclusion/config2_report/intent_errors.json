@@ -1,0 +1,50 @@
+[
+  {
+    "text": "افضّل الهندسة",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.6552705764770508
+    }
+  },
+  {
+    "text": "افضّل دراسة إدارة الاعمال",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.9990862607955933
+    }
+  },
+  {
+    "text": "اشعر وكاني ملك",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "inform_preference",
+      "confidence": 0.400236040353775
+    }
+  },
+  {
+    "text": "بايباي",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.44096270203590393
+    }
+  },
+  {
+    "text": "ادعو لك بالخير",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.7147617340087891
+    }
+  },
+  {
+    "text": "بالعكس",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "inform_preference",
+      "confidence": 0.34795767068862915
+    }
+  }
+]

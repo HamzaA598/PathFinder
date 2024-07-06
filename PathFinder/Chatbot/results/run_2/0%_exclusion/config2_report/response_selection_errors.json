@@ -1,0 +1,66 @@
+[
+  {
+    "text": "\"لماذا ينبغي على الطلاب اختيار تخصص الحاسبات؟\"",
+    "intent_response_key_target": "faq/reasons_for_choosing_computer_science",
+    "intent_response_key_prediction": {
+      "name": "faq/why_choose_computer_science_over_engineering",
+      "confidence": 0.24875055253505707
+    }
+  },
+  {
+    "text": "\"ما هي الدورات المتاحة للطلاب الذين يرغبون في الالتحاق بتخصص الحاسبات في الكلية؟\"",
+    "intent_response_key_target": "faq/courses_for_high_school_students_preparation",
+    "intent_response_key_prediction": {
+      "name": "faq/reasons_for_choosing_computer_science",
+      "confidence": 0.14620982110500336
+    }
+  },
+  {
+    "text": "\"هل هناك اتحاد طلابي في الكلية؟ وما هو اسمه واين يقع؟\"",
+    "intent_response_key_target": "faq/existence_of_student_union_and_its_name_and_address",
+    "intent_response_key_prediction": {
+      "name": "faq/location_of_each_college",
+      "confidence": 0.35870397090911865
+    }
+  },
+  {
+    "text": "\"ما هي الانشطة والمسؤوليات التي تقوم بها خريجي كلية الحاسبات في بيئة العمل؟\"",
+    "intent_response_key_target": "faq/nature_of_work_for_computer_science_graduates",
+    "intent_response_key_prediction": {
+      "name": "faq/differences_in_computer_science_work_fields",
+      "confidence": 0.1473824828863144
+    }
+  },
+  {
+    "text": "\"ما هي الفروقات بين تخصص الحاسبات في كلية الهندسة وتخصص الحاسبات في كلية العلوم؟\"",
+    "intent_response_key_target": "faq/difference_between_computer_science_departments",
+    "intent_response_key_prediction": {
+      "name": "faq/differences_between_computer_fields",
+      "confidence": 0.3249739408493042
+    }
+  },
+  {
+    "text": "يمكنك شرح الاختلاف بين قسم علم الحاسوب وقسم الذكاء الاصطناعي؟",
+    "intent_response_key_target": "faq/ask_departments",
+    "intent_response_key_prediction": {
+      "name": "faq/ask_cs",
+      "confidence": 0.22292187809944153
+    }
+  },
+  {
+    "text": "\"ما هي تخصصات كلية الحاسبات؟\"",
+    "intent_response_key_target": "faq/available_specializations_in_computer_science",
+    "intent_response_key_prediction": {
+      "name": "faq/ask_departments",
+      "confidence": 0.6266358494758606
+    }
+  },
+  {
+    "text": "\"ما هو محتوى التعليم في كلية الحاسبات والمعلومات؟\"",
+    "intent_response_key_target": "faq/educational_materials_in_computer_science_colleges",
+    "intent_response_key_prediction": {
+      "name": "faq/ask_departments",
+      "confidence": 0.1973016858100891
+    }
+  }
+]

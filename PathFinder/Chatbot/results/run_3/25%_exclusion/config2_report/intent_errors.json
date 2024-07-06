@@ -1,0 +1,58 @@
+[
+  {
+    "text": "صباح النور",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.4714341461658478
+    }
+  },
+  {
+    "text": "افضّل دراسة إدارة الاعمال",
+    "intent": "inform_preference",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.7163238525390625
+    }
+  },
+  {
+    "text": "إلى اللقاء في وقت لاحق",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.5319339632987976
+    }
+  },
+  {
+    "text": "ادعو لك بالخير",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.7904384136199951
+    }
+  },
+  {
+    "text": "إلى اللقاء",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.6781748533248901
+    }
+  },
+  {
+    "text": "يبدو جيدًا",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.6627392768859863
+    }
+  },
+  {
+    "text": "ig",
+    "intent": "inform_school_system",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.6673493385314941
+    }
+  }
+]

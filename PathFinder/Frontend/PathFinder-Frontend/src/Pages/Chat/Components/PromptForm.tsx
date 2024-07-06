@@ -73,6 +73,7 @@ function PromptForm({ onSubmit, input, setInput, isLoading }: PromptProps) {
             </Button>
             <Button
               onClick={() => {
+                onSubmit("/session_start", "","user")
                 navigate(0);
               }}
               variant="secondary"

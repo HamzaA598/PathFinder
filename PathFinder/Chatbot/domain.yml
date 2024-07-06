@@ -165,7 +165,7 @@ slots:
         requested_slot: preference
 
 actions:
-  - give_college_recommendation #TODO: implement this custom action
+  - give_college_recommendation
   - validate_recommend_college_form
   
 forms:
@@ -570,4 +570,4 @@ responses:
   
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false
