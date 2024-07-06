@@ -173,29 +173,29 @@ const Overview = ({ uni_name, user }) => {
           </Button>
           {isAddingNews && (
             <div className="announcement-form">
-              <input
+              <Input
+                className="my-5"
                 type="text"
                 name="college"
                 placeholder="College"
                 value={newAnnouncement.college}
                 onChange={handleInputChange}
-                className="text-black"
               />
-              <input
+              <Input
+                className="my-5"
                 type="text"
                 name="title"
                 placeholder="Title"
                 value={newAnnouncement.title}
                 onChange={handleInputChange}
-                className="text-black"
               />
-              <input
-                type="text"
+              <Textarea
+                className="my-5"
+                rows={5}
                 name="description"
                 placeholder="Description"
                 value={newAnnouncement.description}
                 onChange={handleInputChange}
-                className="text-black"
               />
               <Button onClick={handleAddNews}>Post Announcement</Button>
             </div>
