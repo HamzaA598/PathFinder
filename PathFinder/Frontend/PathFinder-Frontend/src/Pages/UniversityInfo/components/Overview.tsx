@@ -3,6 +3,8 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const Overview = ({ uni_name, user }) => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -210,11 +212,10 @@ const Overview = ({ uni_name, user }) => {
               <CardTitle>{key}</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="content-wrapper">
+              <div className="content-wrapper flex">
                 {isEditing === key ? (
-                  <input
-                    className="text-black"
-                    type="text"
+                  <Textarea
+                    className=" w-11/12 mr-5 dark:bg-black bg-white"
                     value={value}
                     onChange={(e) =>
                       setUniversityInfo({
@@ -224,11 +225,11 @@ const Overview = ({ uni_name, user }) => {
                     }
                   />
                 ) : (
-                  <div className="content-text">{value}</div>
+                  <div className="content-text w-11/12">{value}</div>
                 )}
                 {isAdmin && (
                   <Button
-                    className="edit-button"
+                    className="edit-button w-1/12"
                     onClick={() =>
                       isEditing === key ? handleSave() : handleEdit(key)
                     }
