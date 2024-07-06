@@ -73,13 +73,14 @@ const News = ({ user }) => {
 
   return (
     <div className="News_page w-[1300px]">
-      <style>{customScrollbarStyles}</style>
+      {/* <style>{customScrollbarStyles}</style> */}
       <Card className="ml-64 h-screen items-center justify-center">
         <CardHeader>
           <CardTitle>News Page</CardTitle>
         </CardHeader>
         <CardContent className="overflow-auto max-h-[75vh] grid gap-4">
           <Input
+            className="my-5"
             onChange={handleSearchChange}
             value={search}
             placeholder="Search"
