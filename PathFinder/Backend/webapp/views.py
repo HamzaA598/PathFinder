@@ -411,7 +411,6 @@ def add_college_admin(request):
 @api_view(['GET'])
 def get_university_of_admin(request, id):
     try:
-        print(id)
         university = University.objects.get(admin_id=id)
         return Response({"message": "University of Admin is found successfully", "uniId": university._id}, status=status.HTTP_200_OK)
     except University.DoesNotExist:
