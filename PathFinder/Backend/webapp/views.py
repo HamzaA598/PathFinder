@@ -294,12 +294,10 @@ def login(request):
             status=status.HTTP_401_UNAUTHORIZED
         )
 
-    name = user.name if role == "student" else role
-
     # JWT
     payload = {
         'id': user.id,
-        'name': name,
+        'name': user.name,
         'role': role,
         "exp": datetime.utcnow() + timedelta(hours=24),
         "iat": datetime.utcnow(),
@@ -351,11 +349,10 @@ def get_user_from_jwt(request):
             status=status.HTTP_404_NOT_FOUND
         )
 
-    name = user.name if role == "student" else role
     return Response({
         'message': 'Authenticated successfully!',
         'id': user.id,
-        'name': name,
+        'name': user.name,
         'role': role
     }, status=status.HTTP_200_OK)
 
