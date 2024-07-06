@@ -1,4 +1,3 @@
-from .utils import authorize
 import os
 import google.generativeai as genai
 import requests
