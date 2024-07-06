@@ -42,7 +42,7 @@ function Chat({ user }) {
       const response = await axios.post(
         "http://localhost:8000/chatbot/",
         {
-          sender: "tester",
+          sender: user.id,
           message: msgTxt,
         },
         { withCredentials: true }
