@@ -51,8 +51,6 @@ const CollegeInfo = () => {
     effectRan.current = true;
   }, [collegeInfo, url]);
 
-  console.log(collegeInfo);
-
   return (
     <div>
       <div>
@@ -61,15 +59,20 @@ const CollegeInfo = () => {
         </h1>
       </div>
       <div className="grid gap-8 m-20">
-        {Object.entries(collegeInfo).map(([key, value]) => (
-          <Card>
-            <CardHeader>
-              <CardTitle>{key}</CardTitle>
-            </CardHeader>
+        {Object.entries(collegeInfo)
+          .filter(
+            ([key, value]) =>
+              !["_id", "name", "university", "admin"].includes(key) && value
+          )
+          .map(([key, value]) => (
+            <Card>
+              <CardHeader>
+                <CardTitle>{key}</CardTitle>
+              </CardHeader>
 
-            <CardContent>{value}</CardContent>
-          </Card>
-        ))}
+              <CardContent>{value}</CardContent>
+            </Card>
+          ))}
       </div>
     </div>
   );

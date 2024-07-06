@@ -3,18 +3,13 @@ import axios from "axios";
 import React, { useRef } from "react";
 import { useState } from "react";
 import { toast } from "@/components/ui/use-toast";
-import { useParams } from "react-router-dom";
 
 const CollegeData = ({ col_name }) => {
-  console.log("dicnsiucnsievn " + col_name);
-
   const [collegeInfo, setCollegeInfo] = useState([]);
 
   const effectRan = useRef(false);
 
   const url = `http://127.0.0.1:8000/webapp/College/name/${col_name}`;
-
-  console.log("dicnsiucnsievn " + url);
 
   React.useEffect(() => {
     if (effectRan.current) return;
@@ -55,19 +50,22 @@ const CollegeData = ({ col_name }) => {
     effectRan.current = true;
   }, [collegeInfo, url]);
 
-  console.log(collegeInfo);
-
   return (
     <div className="grid gap-8">
-      {Object.entries(collegeInfo).map(([key, value]) => (
-        <Card>
-          <CardHeader>
-            <CardTitle>{key}</CardTitle>
-          </CardHeader>
+      {Object.entries(collegeInfo)
+        .filter(
+          ([key, value]) =>
+            !["_id", "name", "university", "admin"].includes(key)
+        )
+        .map(([key, value]) => (
+          <Card className="card">
+            <CardHeader className="card-header">
+              <CardTitle className="card-title">{key}</CardTitle>
+            </CardHeader>
 
-          <CardContent>{value}</CardContent>
-        </Card>
-      ))}
+            <CardContent className="card-content">{value}</CardContent>
+          </Card>
+        ))}
     </div>
   );
 };

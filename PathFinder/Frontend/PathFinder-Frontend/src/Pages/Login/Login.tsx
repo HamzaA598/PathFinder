@@ -2,11 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "@/components/ui/use-toast";
 import LoginForm from "./components/LoginForm";
 import { useState } from "react";
+import { jwtDecode } from "jwt-decode";
 
-const Login = (props: {
-  authenticated: boolean;
-  setAuthenticated: (authenticated: boolean) => void;
-}) => {
+interface DecodedToken {
+  id: string;
+  name: string;
+  role: string;
+}
+
+const Login = (props: { setUser }) => {
   const navigate = useNavigate();
   const [redirect, setRedirect] = useState(false);
 
@@ -27,19 +31,31 @@ const Login = (props: {
       const content = await response.json();
 
       if (response.status === 200) {
+        // decode token and set user
+        const token = content.jwt;
+        const decodedToken: DecodedToken = jwtDecode(token);
+        const user = {
+          id: decodedToken.id,
+          name: decodedToken.name,
+          role: decodedToken.role,
+        };
+        props.setUser(user);
+
         toast({
-          description: `Login successefully`,
+          title: content.message,
+          description: response.ok
+            ? `Welcome back ${user.name}!`
+            : "Please Log in",
         });
-        props.setAuthenticated(true);
+
         setRedirect(true);
-      } else if (response.status === 401) {
+      } else {
         toast({
           title: "Uh oh! Something went wrong.",
           description: content.error,
         });
       }
     } catch (error: any) {
-      console.log("catch");
       toast({
         title: "Uh oh! Something went wrong.",
         description:

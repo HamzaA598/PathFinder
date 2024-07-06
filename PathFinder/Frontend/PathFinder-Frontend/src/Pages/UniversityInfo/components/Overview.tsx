@@ -2,8 +2,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "@/components/ui/use-toast";
-import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const Overview = ({ uni_name, user }) => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -158,10 +159,6 @@ const Overview = ({ uni_name, user }) => {
     }
   };
 
-  function checkConditions(key: string, value: any): boolean {
-    return key !== "_id" && Boolean(value);
-  }
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewAnnouncement((prev) => ({ ...prev, [name]: value }));
@@ -205,45 +202,45 @@ const Overview = ({ uni_name, user }) => {
           )}
         </div>
       )}
-      {Object.entries(universityInfo).map(
-        ([key, value]) =>
-          checkConditions(key, value) && (
-            <Card key={key}>
-              <CardHeader>
-                <CardTitle>{key}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="content-wrapper">
-                  {isEditing === key ? (
-                    <input
-                      className="text-black"
-                      type="text"
-                      value={value}
-                      onChange={(e) =>
-                        setUniversityInfo({
-                          ...universityInfo,
-                          [key]: e.target.value,
-                        })
-                      }
-                    />
-                  ) : (
-                    <div className="content-text">{value}</div>
-                  )}
-                  {isAdmin && (
-                    <Button
-                      className="edit-button"
-                      onClick={() =>
-                        isEditing === key ? handleSave() : handleEdit(key)
-                      }
-                    >
-                      {isEditing === key ? "Save" : "Edit"}
-                    </Button>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          )
-      )}
+      {Object.entries(universityInfo)
+        .filter(
+          ([key, value]) => !["_id", "name", "admin"].includes(key) && value
+        )
+        .map(([key, value]) => (
+          <Card key={key}>
+            <CardHeader>
+              <CardTitle>{key}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="content-wrapper flex">
+                {isEditing === key ? (
+                  <Textarea
+                    className=" w-11/12 mr-5 dark:bg-black bg-white"
+                    value={value}
+                    onChange={(e) =>
+                      setUniversityInfo({
+                        ...universityInfo,
+                        [key]: e.target.value,
+                      })
+                    }
+                  />
+                ) : (
+                  <div className="content-text w-11/12">{value}</div>
+                )}
+                {isAdmin && (
+                  <Button
+                    className="edit-button w-1/12"
+                    onClick={() =>
+                      isEditing === key ? handleSave() : handleEdit(key)
+                    }
+                  >
+                    {isEditing === key ? "save" : "edit"}
+                  </Button>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
     </div>
   );
 };

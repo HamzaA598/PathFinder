@@ -4,8 +4,10 @@ import { toast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { ChatConvo } from "./Components/ChatConvo";
 import { Message, MessageButton } from "./Components/ChatInterfaces";
+import { useNavigate } from "react-router-dom";
 
-function Chat() {
+function Chat({ user }) {
+  const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -27,11 +29,10 @@ function Chat() {
       role: user,
       buttons: buttons || [],
     };
-    console.log(newMessage);
     setMessages([...messages, newMessage]);
   };
 
-  const fetchAmswer = async () => {
+  const fetchAnswer = async () => {
     setIsLoading(true);
     try {
       const msgTxt =
@@ -47,9 +48,8 @@ function Chat() {
         { withCredentials: true }
       );
       // handle incoming bot message
-      const responseData = response.data.replace(/\n\n+/g, '');
-      console.log(response);
-      append(responseData, "", "chatbot", responseData.buttons);
+      const responseData = response.data[0];
+      append(responseData.text, "", "chatbot", responseData.buttons);
     } catch (error) {
       let errorMessage = "Uh oh! Something went wrong.";
       let errorDesc = "There was a problem with your request.";
@@ -75,14 +75,21 @@ function Chat() {
   };
 
   useEffect(() => {
+    if (!user) {
+      navigate("/login");
+      toast({
+        title: "Uh oh!",
+        description: "Please login first to use the chatbot",
+      });
+      return;
+    }
     if (
       messages.length === 0 ||
       messages[messages.length - 1].role === "chatbot"
     ) {
       return;
     }
-    console.log(messages);
-    fetchAmswer();
+    fetchAnswer();
   }, [messages]);
 
   return (
