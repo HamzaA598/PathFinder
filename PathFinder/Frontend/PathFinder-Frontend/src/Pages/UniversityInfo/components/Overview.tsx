@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+const replaceNulls = (obj) => 
+  JSON.parse(JSON.stringify(obj, (key, value) => (value === null ? '' : value)));
+
 const Overview = ({ uni_name, user }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [universityInfo, setUniversityInfo] = useState({});
@@ -32,7 +35,7 @@ const Overview = ({ uni_name, user }) => {
         if (response.data.length === 0) {
           throw new Error("EmptyResponse");
         }
-        const universityData = response.data[0];
+        const universityData = replaceNulls(response.data[0]);
         setUniversityInfo(universityData);
         setNewAnnouncement((prev) => ({
           ...prev,
