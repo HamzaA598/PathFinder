@@ -38,7 +38,7 @@ class Student(models.Model):
 class University(models.Model):
     _id = models.CharField(primary_key=True, max_length=50)
     name = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(blank=True)
     Address = models.TextField()
     description = models.TextField(blank=True)
     admin = models.OneToOneField(
@@ -69,7 +69,8 @@ class College(models.Model):
     noOfStudents = models.IntegerField(blank=True)
     collegeType = models.CharField(max_length=100, blank=True)
     fees = models.IntegerField(blank=True)
-    admin = models.OneToOneField(CollegeAdmin, on_delete=models.CASCADE, blank=True)
+    admin = models.OneToOneField(
+        CollegeAdmin, on_delete=models.CASCADE, blank=True)
     AdmissionCertificates = models.CharField(max_length=200)
     AdmissionRequirements = models.CharField(max_length=200)
     CreditHours = models.CharField(max_length=20)
