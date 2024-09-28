@@ -1,0 +1,49 @@
+{
+  "preference": {
+    "precision": 1.0,
+    "recall": 0.3333333333333333,
+    "f1-score": 0.5,
+    "support": 3,
+    "confused_with": {}
+  },
+  "location": {
+    "precision": 0.96875,
+    "recall": 1.0,
+    "f1-score": 0.9841269841269841,
+    "support": 31,
+    "confused_with": {}
+  },
+  "school_system": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9,
+    "confused_with": {}
+  },
+  "grade": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 7,
+    "confused_with": {}
+  },
+  "micro avg": {
+    "precision": 0.9795918367346939,
+    "recall": 0.96,
+    "f1-score": 0.9696969696969697,
+    "support": 50
+  },
+  "macro avg": {
+    "precision": 0.9921875,
+    "recall": 0.8333333333333333,
+    "f1-score": 0.871031746031746,
+    "support": 50
+  },
+  "weighted avg": {
+    "precision": 0.980625,
+    "recall": 0.96,
+    "f1-score": 0.9601587301587301,
+    "support": 50
+  },
+  "accuracy": 0.997093023255814
+}

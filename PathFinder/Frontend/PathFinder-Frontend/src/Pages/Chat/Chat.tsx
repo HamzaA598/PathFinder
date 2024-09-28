@@ -3,90 +3,111 @@ import PromptForm from "./Components/PromptForm";
 import { toast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { ChatConvo } from "./Components/ChatConvo";
-import { ChatScrollAnchor } from "./Components/chat-scroll-anchor";
-export interface Message {
-  id: number;
-  message: string;
-  role: string;
-}
+import { Message, MessageButton } from "./Components/ChatInterfaces";
+import { useNavigate } from "react-router-dom";
 
-function Chat() {
+function Chat({ user }) {
+  const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const append = (value: string, user: string) => {
+  const handleMessageButtonClick = (text: string, payload: string) => {
+    append(text, payload, "user");
+  };
+
+  const append = (
+    text: string,
+    payload: string,
+    user: string,
+    buttons?: MessageButton[]
+  ) => {
     const newMessage: Message = {
-      id: messages.length + 1,
-      message: value,
+      MessageNumber: messages.length + 1,
+      text: text,
+      payload: payload,
       role: user,
+      buttons: buttons || [],
     };
     setMessages([...messages, newMessage]);
   };
 
-  // const { messages, append, reload, stop, isLoading } = useChat({
-  //   initialMessages,
-  //   id,
-  //   api: "http://0.0.0.0:5005/webhooks/rest/webhook",
-  //   body: {
-  //     // add body to send to api endpoint
-  //     sender: "tester",
-  //   },
-  //   onResponse(response) {
-  //     if (response.status >= 400) {
-  //       toast({
-  //         title: "Uh oh! Something went wrong.",
-  //         description: "There was a problem with your request.",
-  //       });
-  //     }
-  //   },
-  // });
-  const fetchAmswer = async () => {
+  const fetchAnswer = async () => {
     setIsLoading(true);
     try {
+      const msgTxt =
+        messages[messages.length - 1].payload !== ""
+          ? messages[messages.length - 1].payload
+          : messages[messages.length - 1].text;
       const response = await axios.post(
-        "http://localhost:5005/webhooks/rest/webhook",
+        "http://localhost:8000/chatbot/",
         {
-          sender: "tester",
-          message: messages[messages.length - 1],
-        }
+          sender: user.id,
+          message: msgTxt,
+        },
+        { withCredentials: true }
       );
       // handle incoming bot message
-      append(response.data.message, "chatbot");
+      const responseData = response.data[0];
+      append(responseData.text, "", "chatbot", responseData.buttons);
     } catch (error) {
-      // messages.pop();
-      append("bye", "chatbot");
+      let errorMessage = "Uh oh! Something went wrong.";
+      let errorDesc = "There was a problem with your request.";
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          errorMessage = "Internal Server Error";
+          errorDesc = " Please try again later.";
+        } else if (error.request) {
+          // The request was made but no response was received
+          errorMessage = "Network Error";
+          errorDesc =
+            "Couldn't connect to the server. Please check your internet connection.";
+        }
+      }
       toast({
-        title: "Uh oh! Something went wrong.",
-        description: "There was a problem with your request.",
+        title: errorMessage,
+        description: errorDesc,
       });
     }
     setIsLoading(false);
   };
 
   useEffect(() => {
+    if (!user) {
+      navigate("/login");
+      toast({
+        title: "Uh oh!",
+        description: "Please login first to use the chatbot",
+      });
+      return;
+    }
     if (
       messages.length === 0 ||
       messages[messages.length - 1].role === "chatbot"
     ) {
       return;
     }
-    console.log(messages);
-    fetchAmswer();
+    fetchAnswer();
   }, [messages]);
 
   return (
-    <div className="grid grid-rows-2">
-      <div>
-        <ChatConvo messages={messages} />
-        {/* <ChatScrollAnchor trackVisibility={isLoading} /> */}
+    <div className="flex">
+      <div className="flex-1 h-[calc(100vh-145px)]">
+        <ChatConvo
+          messages={messages}
+          messageButtonClick={handleMessageButtonClick}
+        />
       </div>
-      <PromptForm
-        onSubmit={append}
-        input={input}
-        setInput={setInput}
-        isLoading={isLoading}
-      ></PromptForm>
+      <div>
+        <PromptForm
+          onSubmit={append}
+          input={input}
+          setInput={setInput}
+          isLoading={isLoading}
+        ></PromptForm>
+      </div>
     </div>
   );
 }

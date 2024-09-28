@@ -12,42 +12,128 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 import { LogoIcon } from "./Icons";
+import { toast } from "./ui/use-toast";
 
+const all_roles = ["university_admin", "college_admin", "student"];
 interface RouteProps {
   href: string;
   label: string;
+  roles: string[];
 }
 
 const routeList: RouteProps[] = [
   {
     href: "/chat",
     label: "Chatbot",
+    roles: ["null", all_roles[2]],
   },
   {
     href: "/University",
     label: "Universities",
+    roles: ["null", ...all_roles],
   },
   {
-    href: "",
-    label: "Other Feature",
+    href: "/Compare",
+    label: "Compare",
+    roles: ["null", all_roles[2]],
   },
   {
-    href: "",
-    label: "Other Feature",
+    href: "/News",
+    label: "News",
+    roles: ["null", ...all_roles],
   },
   {
-    href: "",
-    label: "Other Feature",
+    href: "/add_college_admin",
+    label: "Add College Admin",
+    roles: [all_roles[0]],
   },
 ];
 
-export const Navbar = () => {
+export const Navbar = (props: { user; setUser }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const logout = async () => {
+    const response = await fetch("http://localhost:8000/webapp/logout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    });
+
+    const content = await response.json();
+
+    props.setUser(null);
+
+    toast({
+      title: content.message,
+      description: "sad to see you leave",
+    });
+  };
+
+  const mobile_dynamic_buttons = (
+    <>
+      {props.user ? (
+        <Link
+          to="/login"
+          className={`border ${buttonVariants({ variant: "secondary" })}`}
+          onClick={logout}
+        >
+          Log out
+        </Link>
+      ) : (
+        <>
+          <Link
+            to="/login"
+            className={`border ${buttonVariants({ variant: "secondary" })}`}
+          >
+            Log in
+          </Link>
+          <Link
+            to="/signup"
+            className={`border ${buttonVariants({ variant: "secondary" })}`}
+          >
+            Sign up
+          </Link>
+        </>
+      )}
+      <ModeToggle />
+    </>
+  );
+
+  const desktop_dynamic_buttons = props.user ? (
+    <div className="hidden md:flex gap-2">
+      <Link
+        to="/login"
+        className={`border ${buttonVariants({ variant: "secondary" })}`}
+        onClick={logout}
+      >
+        Log out
+      </Link>
+
+      <ModeToggle />
+    </div>
+  ) : (
+    <div className="hidden md:flex gap-2">
+      <Link
+        to="/login"
+        className={`border ${buttonVariants({ variant: "secondary" })}`}
+      >
+        Log in
+      </Link>
+      <Link
+        to="/signup"
+        className={`border ${buttonVariants({ variant: "secondary" })}`}
+      >
+        Sign up
+      </Link>
+
+      <ModeToggle />
+    </div>
+  );
+
   return (
     <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
       <NavigationMenu className="mx-auto">
@@ -61,8 +147,6 @@ export const Navbar = () => {
 
           {/* mobile */}
           <span className="flex md:hidden">
-            <ModeToggle />
-
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="px-2">
                 <Menu
@@ -80,35 +164,24 @@ export const Navbar = () => {
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
-                  {routeList.map(({ href, label }: RouteProps) => (
-                    <Link
-                      key={label}
-                      to={href}
-                      onClick={() => setIsOpen(false)}
-                      className={buttonVariants({ variant: "ghost" })}
-                    >
-                      {label}
-                    </Link>
-                  ))}
-                  <Link
-                    to=""
-                    target="_blank"
-                    className={`border ${buttonVariants({
-                      variant: "secondary",
-                    })}`}
-                  >
-                    Sign in
-                  </Link>
-                  <a
-                    href=""
-                    target="_blank"
-                    className={`w-[110px] border ${buttonVariants({
-                      variant: "secondary",
-                    })}`}
-                  >
-                    <GitHubLogoIcon className="mr-2 w-5 h-5" />
-                    Github
-                  </a>
+                  {routeList
+                    .filter((route) =>
+                      props.user
+                        ? route.roles.includes(props.user.role)
+                        : route.roles.includes("null")
+                    )
+                    .map(({ href, label }: RouteProps) => (
+                      <Link
+                        key={label}
+                        to={href}
+                        onClick={() => setIsOpen(false)}
+                        className={buttonVariants({ variant: "ghost" })}
+                      >
+                        {label}
+                      </Link>
+                    ))}
+
+                  {mobile_dynamic_buttons}
                 </nav>
               </SheetContent>
             </Sheet>
@@ -116,37 +189,26 @@ export const Navbar = () => {
 
           {/* desktop */}
           <nav className="hidden md:flex gap-2">
-            {routeList.map((route: RouteProps, i) => (
-              <Link
-                to={route.href}
-                key={i}
-                className={`text-[17px] ${buttonVariants({
-                  variant: "ghost",
-                })}`}
-              >
-                {route.label}
-              </Link>
-            ))}
+            {routeList
+              .filter((route) =>
+                props.user
+                  ? route.roles.includes(props.user.role)
+                  : route.roles.includes("null")
+              )
+              .map((route: RouteProps, i) => (
+                <Link
+                  to={route.href}
+                  key={i}
+                  className={`text-[17px] ${buttonVariants({
+                    variant: "ghost",
+                  })}`}
+                >
+                  {route.label}
+                </Link>
+              ))}
           </nav>
 
-          <div className="hidden md:flex gap-2">
-            <Link
-              to="/login"
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
-            >
-              Sign in
-            </Link>
-            <a
-              href=""
-              target="_blank"
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
-            >
-              <GitHubLogoIcon className="mr-2 w-5 h-5" />
-              Github
-            </a>
-
-            <ModeToggle />
-          </div>
+          {desktop_dynamic_buttons}
         </NavigationMenuList>
       </NavigationMenu>
     </header>

@@ -1,0 +1,61 @@
+[
+  {
+    "text": "افضّل الهندسة",
+    "entities": [
+      {
+        "start": 6,
+        "end": 13,
+        "value": "Engineering",
+        "entity": "preference"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "افضّل دراسة إدارة الاعمال",
+    "entities": [
+      {
+        "start": 12,
+        "end": 25,
+        "value": "Business",
+        "entity": "preference"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "انا في المدرسة الامريكية (american)",
+    "entities": [
+      {
+        "start": 26,
+        "end": 34,
+        "value": "american",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "school_system",
+        "start": 15,
+        "end": 24,
+        "confidence_entity": 0.9404245615005493,
+        "value": "american",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "school_system",
+        "start": 26,
+        "end": 34,
+        "confidence_entity": 0.9986816048622131,
+        "value": "american",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  }
+]

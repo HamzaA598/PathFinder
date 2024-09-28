@@ -1,0 +1,534 @@
+{
+  "faq/available_housing_options_for_college_students": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/duration_of_study_in_college": {
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1-score": 0.6666666666666666,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/nature_of_study_in_college_difficulty_and_ease": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/skills_required_for_job_market_after_graduation": {
+    "precision": 0.16666666666666666,
+    "recall": 1.0,
+    "f1-score": 0.2857142857142857,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/difference_between_college_and_institute": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/college_directly_qualify_for_job_market_or_additional_studies": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 2,
+    "confused_with": {
+      "faq/skills_required_for_job_market_after_graduation": 2
+    }
+  },
+  "faq/difference_between_computer_science_departments": {
+    "precision": 1.0,
+    "recall": 0.5,
+    "f1-score": 0.6666666666666666,
+    "support": 2,
+    "confused_with": {
+      "faq/why_choose_computer_science_over_engineering": 1
+    }
+  },
+  "faq/average_salaries_for_software_engineers": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2,
+    "confused_with": {}
+  },
+  "faq/prerequisite_programming_experience": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/high_school_general_certificate_requirements_for_college_admission": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/replacement_of_programmers_by_artificial_intelligence": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/work_as_programmer_without_college": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/skills_required_for_job_market_after_graduation": 1
+    }
+  },
+  "faq/college_admission_tests_if_exist": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/skills_required_for_job_market_after_graduation": 1
+    }
+  },
+  "faq/egyptian_software_engineers_working_in_large_companies": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/best_department": {
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1-score": 0.6666666666666666,
+    "support": 2,
+    "confused_with": {}
+  },
+  "faq/ask_cs": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3,
+    "confused_with": {}
+  },
+  "faq/opportunities_for_egyptian_software_engineers_abroad": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/programming_and_codes_in_college_departments": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/difficulty_of_learning_programming": 1
+    }
+  },
+  "faq/difficulty_of_learning_programming": {
+    "precision": 0.25,
+    "recall": 1.0,
+    "f1-score": 0.4,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/available_specializations_in_computer_science": {
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1-score": 0.7499999999999999,
+    "support": 3,
+    "confused_with": {}
+  },
+  "faq/best_time_to_study_specific_field": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/suitable_learning_approach_for_first_year": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/difference_between_mathematics_and_science_in_computer_science_context": 1
+    }
+  },
+  "faq/job_opportunities_in_software_development_field": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/skills_required_for_job_market_after_graduation": 1
+    }
+  },
+  "faq/available_tracks_within_the_college": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/differences_in_computer_science_work_fields": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/difference_between_mathematics_and_science_in_computer_science_context": 1
+    }
+  },
+  "faq/why_choose_computer_science_over_engineering": {
+    "precision": 0.75,
+    "recall": 1.0,
+    "f1-score": 0.8571428571428571,
+    "support": 3,
+    "confused_with": {}
+  },
+  "faq/proficiency_in_mathematics_for_computer_science": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/difference_between_mathematics_and_science_in_computer_science_context": 1
+    }
+  },
+  "faq/freelancing_opportunities_in_various_specializations": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/working_while_studying": 1
+    }
+  },
+  "faq/difference_between_public_and_private_universities": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/differences_between_computer_fields": {
+    "precision": 1.0,
+    "recall": 0.5,
+    "f1-score": 0.6666666666666666,
+    "support": 2,
+    "confused_with": {
+      "faq/differences_in_computer_science_work_fields": 1
+    }
+  },
+  "faq/required_skills_during_study": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/ask_departments": 1
+    }
+  },
+  "faq/courses_for_high_school_students_preparation": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/problem_solving_skill_definition": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/difficulty_of_learning_programming": 1
+    }
+  },
+  "faq/essential_skills_in_computer_science_field": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/required_skills_during_study": 1
+    }
+  },
+  "faq/learning_scope_in_computer_science_and_next_steps": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/difference_between_mathematics_and_science_in_computer_science_context": 1
+    }
+  },
+  "faq/nature_of_work_for_computer_science_graduates": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/difference_between_mathematics_and_science_in_computer_science_context": 1
+    }
+  },
+  "faq/recommend_online_courses": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/examples_of_egyptian_software_development_companies": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2,
+    "confused_with": {}
+  },
+  "faq/ask_colleges": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3,
+    "confused_with": {}
+  },
+  "faq/total_required_admission_score": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/college_admission_tests_if_exist": 1
+    }
+  },
+  "faq/job_opportunities_comparison": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/enjoyment_of_computer_science_without_extensive_computer_knowledge": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/proficiency_in_mathematics_for_computer_science": 1
+    }
+  },
+  "faq/software_engineering_specialization": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/study_plan_without_iti": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/difference_between_programming_and_software_engineering": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/reasons_for_choosing_computer_science": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/location_of_each_college": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/coordination_system_for_each_college": 1
+    }
+  },
+  "faq/difference_between_mathematics_and_science_in_computer_science_context": {
+    "precision": 0.16666666666666666,
+    "recall": 1.0,
+    "f1-score": 0.2857142857142857,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/profitability_of_computer_science_field": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/proficiency_in_mathematics_for_computer_science": 1
+    }
+  },
+  "faq/educational_materials_in_computer_science_colleges": {
+    "precision": 1.0,
+    "recall": 0.75,
+    "f1-score": 0.8571428571428571,
+    "support": 4,
+    "confused_with": {
+      "faq/coordination_system_for_each_college": 1
+    }
+  },
+  "faq/ask_departments": {
+    "precision": 0.6666666666666666,
+    "recall": 0.6666666666666666,
+    "f1-score": 0.6666666666666666,
+    "support": 3,
+    "confused_with": {
+      "faq/available_specializations_in_computer_science": 1
+    }
+  },
+  "faq/existence_of_student_union_and_its_name_and_address": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/duration_of_study": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/duration_of_study_in_college": 1
+    }
+  },
+  "faq/available_career_opportunities_after_graduation": {
+    "precision": 1.0,
+    "recall": 0.5,
+    "f1-score": 0.6666666666666666,
+    "support": 2,
+    "confused_with": {
+      "faq/available_specializations_in_computer_science": 1
+    }
+  },
+  "faq/core_educational_materials_besides_programming": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/scientific_students_enrollment_in_computer_science_colleges": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2,
+    "confused_with": {}
+  },
+  "faq/scholarship_availability": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/best_department": 1
+    }
+  },
+  "faq/college_ranking": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/application_process_for_college_admission": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/best_department": 1
+    }
+  },
+  "faq/working_while_studying": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/nature_of_work_for_computer_science_graduates": 1
+    }
+  },
+  "faq/demand_for_computer_science_graduates": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1,
+    "confused_with": {
+      "faq/nature_of_work_for_computer_science_graduates": 1
+    }
+  },
+  "faq/successful_egyptian_engineers": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/coordination_system_for_each_college": {
+    "precision": 0.3333333333333333,
+    "recall": 1.0,
+    "f1-score": 0.5,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/coordination_start_date": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1,
+    "confused_with": {}
+  },
+  "faq/study_costs_in_colleges": {
+    "precision": 1.0,
+    "recall": 0.6666666666666666,
+    "f1-score": 0.8,
+    "support": 3,
+    "confused_with": {
+      "faq/difficulty_of_learning_programming": 1
+    }
+  },
+  "accuracy": 0.6590909090909091,
+  "macro avg": {
+    "precision": 0.5682051282051283,
+    "recall": 0.608974358974359,
+    "f1-score": 0.5651648351648351,
+    "support": 88
+  },
+  "weighted avg": {
+    "precision": 0.6416666666666667,
+    "recall": 0.6590909090909091,
+    "f1-score": 0.62637987012987,
+    "support": 88
+  },
+  "micro avg": {
+    "precision": 0.6590909090909091,
+    "recall": 0.6590909090909091,
+    "f1-score": 0.6590909090909091,
+    "support": 88
+  }
+}

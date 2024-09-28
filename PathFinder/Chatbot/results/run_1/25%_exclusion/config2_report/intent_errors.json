@@ -1,0 +1,50 @@
+[
+  {
+    "text": "كان يومي فظيعًا",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.6362556219100952
+    }
+  },
+  {
+    "text": "باي",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.5001122355461121
+    }
+  },
+  {
+    "text": "سلام",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.9829074740409851
+    }
+  },
+  {
+    "text": "ليس صحيحًا",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.7747571468353271
+    }
+  },
+  {
+    "text": "لا، غير صحيح",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.6934383511543274
+    }
+  },
+  {
+    "text": "اه",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.8588964343070984
+    }
+  }
+]

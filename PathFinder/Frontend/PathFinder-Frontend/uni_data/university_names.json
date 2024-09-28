@@ -1,0 +1,31 @@
+{
+  "universities": [
+    { "id": 1, "name": "Cairo University" },
+    { "id": 2, "name": "Ain Shams University" },
+    { "id": 3, "name": "Helwan University" },
+    { "id": 4, "name": "Benha University" },
+    { "id": 5, "name": "Tanta University" },
+    { "id": 6, "name": "Menoufia University" },
+    { "id": 7, "name": "University of Sadat city" },
+    { "id": 8, "name": "Damanhour University" },
+    { "id": 9, "name": "Zagazig University" },
+    { "id": 10, "name": "Alexandria University" },
+    { "id": 11, "name": "Kafr El Sheikh University" },
+    { "id": 12, "name": "Damietta University" },
+    { "id": 13, "name": "Mansoura University" },
+    { "id": 14, "name": "Suez Canal University" },
+    { "id": 15, "name": "Suez University" },
+    { "id": 16, "name": "Port Said University" },
+    { "id": 17, "name": "Fayoum University" },
+    { "id": 18, "name": "Beni Suef University" },
+    { "id": 19, "name": "Minia University" },
+    { "id": 20, "name": "Assiut University" },
+    { "id": 21, "name": "Sohag University" },
+    { "id": 22, "name": "South Valley University" },
+    { "id": 23, "name": "Aswan University" },
+    { "id": 24, "name": "Al-Azhar University - Boys Faculties" },
+    { "id": 25, "name": "Al-Azhar University - Girls Faculties" },
+    { "id": 26, "name": "Arish University" },
+    { "id": 27, "name": "Matrouh University" }
+  ]
+}

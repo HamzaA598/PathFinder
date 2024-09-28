@@ -1,0 +1,26 @@
+[
+  {
+    "text": "ادعو لك بالخير",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.4792904257774353
+    }
+  },
+  {
+    "text": "بينفع",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.4547569155693054
+    }
+  },
+  {
+    "text": "ig",
+    "intent": "inform_school_system",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.31219202280044556
+    }
+  }
+]

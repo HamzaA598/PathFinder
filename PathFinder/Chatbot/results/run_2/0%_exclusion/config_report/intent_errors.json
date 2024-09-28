@@ -1,0 +1,34 @@
+[
+  {
+    "text": "السلام عليكم",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.6950325965881348
+    }
+  },
+  {
+    "text": "اشعر وكاني ملك",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.6556901931762695
+    }
+  },
+  {
+    "text": "ادعو لك بالخير",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.7592474818229675
+    }
+  },
+  {
+    "text": "ليس صحيحًا",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.6920860409736633
+    }
+  }
+]

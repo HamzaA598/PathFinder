@@ -4,5 +4,13 @@ PathFinder/Chatbot/models/
 PathFinder/Chatbot/.rasa/cache/
 Documentation/~$commendation System.docx
 PathFinder/Chatbot/.rasa/cache/cache.db
-PathFinder/Chatbot/.rasa/cache/cache.db
-PathFinder/Backend/Backend/__pycache__/
+.rasa/
+__pycache__/
+.env
+.venv
+env/
+venv/
+ENV/
+/PathFinder/Chatbot/.rasa
+PathFinder/Chatbot/story_graph.dot
+/PathFinder/Chatbot/actions/__pycache__

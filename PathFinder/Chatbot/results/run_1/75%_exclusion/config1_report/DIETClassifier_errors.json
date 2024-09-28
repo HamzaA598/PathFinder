@@ -1,0 +1,152 @@
+[
+  {
+    "text": "اميل نحو الفنون",
+    "entities": [
+      {
+        "start": 9,
+        "end": 15,
+        "value": "Arts",
+        "entity": "preference"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "انا في المدرسة الامريكية",
+    "entities": [
+      {
+        "start": 15,
+        "end": 24,
+        "value": "american",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "نظام مدرستي هو ثانوية",
+    "entities": [
+      {
+        "start": 15,
+        "end": 21,
+        "value": "thanawya",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "انا في مطروح",
+    "entities": [
+      {
+        "start": 7,
+        "end": 12,
+        "value": "Matrouh",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "اسكن في الإسكندرية",
+    "entities": [
+      {
+        "start": 8,
+        "end": 18,
+        "value": "Alexandria",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "اسكن في البحيرة",
+    "entities": [
+      {
+        "start": 8,
+        "end": 15,
+        "value": "Beheira",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "انا في القليوبية",
+    "entities": [
+      {
+        "start": 7,
+        "end": 16,
+        "value": "Qaliubiya",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "اسكن في القاهرة",
+    "entities": [
+      {
+        "start": 8,
+        "end": 15,
+        "value": "Cairo",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "اعيش في البحيرة",
+    "entities": [
+      {
+        "start": 8,
+        "end": 15,
+        "value": "Beheira",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "بني سويف",
+    "entities": [
+      {
+        "start": 0,
+        "end": 8,
+        "value": "Beni Suef",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location",
+        "start": 4,
+        "end": 8,
+        "confidence_entity": 0.6092779636383057,
+        "value": "سويف",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "انا في بني سويف",
+    "entities": [
+      {
+        "start": 7,
+        "end": 15,
+        "value": "Beni Suef",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "location",
+        "start": 11,
+        "end": 15,
+        "confidence_entity": 0.3161344826221466,
+        "value": "سويف",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]

@@ -23,9 +23,9 @@ interface SociaNetworkslProps {
 
 const teamList: TeamProps[] = [
   {
-    imageUrl: "",
+    imageUrl: "https://avatars.githubusercontent.com/u/68874104?v=4&size=64",
     name: "Ziad Ibrahim",
-    position: "Position",
+    position: "Developer",
     socialNetworks: [
       {
         name: "Linkedin",
@@ -42,9 +42,9 @@ const teamList: TeamProps[] = [
     ],
   },
   {
-    imageUrl: "",
+    imageUrl: "https://avatars.githubusercontent.com/u/40593938?v=4",
     name: "Hamza Abdul-Hameed",
-    position: "Position",
+    position: "Developer",
     socialNetworks: [
       { name: "Linkedin", url: "http://linkedin.com" },
       {
@@ -58,9 +58,9 @@ const teamList: TeamProps[] = [
     ],
   },
   {
-    imageUrl: "",
+    imageUrl: "https://avatars.githubusercontent.com/u/89139790?v=4",
     name: "Yahia El-Hadidi",
-    position: "Position",
+    position: "Developer",
     socialNetworks: [
       { name: "Linkedin", url: "http://linkedin.com" },
 
@@ -71,9 +71,9 @@ const teamList: TeamProps[] = [
     ],
   },
   {
-    imageUrl: "",
+    imageUrl: "https://avatars.githubusercontent.com/u/105240016?v=4",
     name: "Yahia Ashraf",
-    position: "Position",
+    position: "Developer",
     socialNetworks: [
       { name: "Linkedin", url: "http://linkedin.com" },
       {
@@ -83,9 +83,9 @@ const teamList: TeamProps[] = [
     ],
   },
   {
-    imageUrl: "",
+    imageUrl: "https://avatars.githubusercontent.com/u/81865160?v=4",
     name: "Omar Tarek",
-    position: "Position",
+    position: "Developer",
     socialNetworks: [
       { name: "Linkedin", url: "http://linkedin.com" },
       {
@@ -119,12 +119,7 @@ export const Team = () => {
         Crew
       </h2>
 
-      <p className="mt-4 mb-10 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
-      </p>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-10">
+      <div className="pt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-10">
         {teamList.map(
           ({ imageUrl, name, position, socialNetworks }: TeamProps) => (
             <Card
@@ -142,10 +137,6 @@ export const Team = () => {
                   {position}
                 </CardDescription>
               </CardHeader>
-
-              <CardContent className="text-center pb-2">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              </CardContent>
 
               <CardFooter>
                 {socialNetworks.map(({ name, url }: SociaNetworkslProps) => (

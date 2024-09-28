@@ -1,0 +1,26 @@
+[
+  {
+    "text": "كان يومي فظيعًا",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.2656100392341614
+    }
+  },
+  {
+    "text": "انا سانقذ العالم",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "inform_location",
+      "confidence": 0.18524469435214996
+    }
+  },
+  {
+    "text": "سلام",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.9795871376991272
+    }
+  }
+]

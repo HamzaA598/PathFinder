@@ -1,0 +1,58 @@
+[
+  {
+    "text": "كان يومي فظيعًا",
+    "intent": "mood_unhappy",
+    "intent_prediction": {
+      "name": "mood_great",
+      "confidence": 0.4080113172531128
+    }
+  },
+  {
+    "text": "انا سانقذ العالم",
+    "intent": "mood_great",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.38474100828170776
+    }
+  },
+  {
+    "text": "باي",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.3355482816696167
+    }
+  },
+  {
+    "text": "سلام",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.9409133195877075
+    }
+  },
+  {
+    "text": "اود الحصول على توصيات للجامعات",
+    "intent": "recommend_college",
+    "intent_prediction": {
+      "name": "faq",
+      "confidence": 0.8677396774291992
+    }
+  },
+  {
+    "text": "ليس صحيحًا",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.7618603110313416
+    }
+  },
+  {
+    "text": "لا، غير صحيح",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "mood_unhappy",
+      "confidence": 0.5467368364334106
+    }
+  }
+]

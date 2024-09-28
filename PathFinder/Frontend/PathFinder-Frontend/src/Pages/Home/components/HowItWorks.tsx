@@ -12,25 +12,25 @@ const features: FeatureProps[] = [
     icon: <MedalIcon />,
     title: "Accesibility",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Ensuring that every student can easily access and navigate our platform, regardless of their abilities, to find the perfect college match",
   },
   {
     icon: <MapIcon />,
     title: "Community",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Connect with a supportive network through our chatbot and access a wealth of information on universities and colleges to help you make informed decisions",
   },
   {
     icon: <PlaneIcon />,
     title: "Scalability",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Our platform grows with you, providing personalized recommendations and insights as your preferences and ambitions evolve",
   },
   {
     icon: <GiftIcon />,
     title: "Gamification",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Engage with our interactive tools and challenges designed to make your college search exciting and rewarding",
   },
 ];
 
@@ -44,12 +44,8 @@ export const HowItWorks = () => {
         </span>
         Step-by-Step Guide
       </h2>
-      <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
-      </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {features.map(({ icon, title, description }: FeatureProps) => (
           <Card key={title} className="bg-muted/50">
             <CardHeader>

@@ -1,0 +1,37 @@
+[
+  {
+    "text": "انا في المدرسة الامريكية (american)",
+    "entities": [
+      {
+        "start": 26,
+        "end": 34,
+        "value": "american",
+        "entity": "school_system"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "school_system",
+        "start": 15,
+        "end": 24,
+        "confidence_entity": 0.9491836428642273,
+        "value": "american",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "school_system",
+        "start": 26,
+        "end": 34,
+        "confidence_entity": 0.9993177652359009,
+        "value": "american",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  }
+]

@@ -16,7 +16,12 @@ export const Footer = () => {
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Follow US</h3>
           <div>
-            <a href="#" className="opacity-60 hover:opacity-100">
+            <a
+              href="https://github.com/HamzaA598/PathFinder"
+              className="opacity-60 hover:opacity-100"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Github
             </a>
           </div>
@@ -25,7 +30,7 @@ export const Footer = () => {
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">About</h3>
           <div>
-            <a href="#" className="opacity-60 hover:opacity-100">
+            <a href="/" className="opacity-60 hover:opacity-100">
               Landing Page
             </a>
           </div>
@@ -37,7 +42,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <a href="#" className="opacity-60 hover:opacity-100">
+            <a href="#faq" className="opacity-60 hover:opacity-100">
               FAQ
             </a>
           </div>
@@ -46,20 +51,25 @@ export const Footer = () => {
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Use our features</h3>
           <div>
-            <a href="#" className="opacity-60 hover:opacity-100">
+            <a href="/chat" className="opacity-60 hover:opacity-100">
               Chatbot
             </a>
           </div>
 
           <div>
-            <a href="#" className="opacity-60 hover:opacity-100">
-              College Info
+            <a href="/university" className="opacity-60 hover:opacity-100">
+              Universities
+            </a>
+          </div>
+          <div>
+            <a href="/Compare" className="opacity-60 hover:opacity-100">
+              Compare
             </a>
           </div>
 
           <div>
-            <a href="#" className="opacity-60 hover:opacity-100">
-              Other features
+            <a href="/News" className="opacity-60 hover:opacity-100">
+              News
             </a>
           </div>
         </div>
